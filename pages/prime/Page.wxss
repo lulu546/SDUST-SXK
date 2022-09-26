@@ -1,0 +1,49 @@
+/* pages/prime/Page.wxss */
+.curriculum {
+
+  position: absolute;
+  width: 353px;
+  height: 432px;
+  left: 18px;
+  top: 30px;
+  
+  background: #792626;
+  border-radius: 17px;
+  
+
+
+
+}
+
+.eroom {
+  position: absolute;
+  width: 353px;
+  height: 95px;
+  left: 18px;
+  top: 469px;
+  
+  background: #355cc9;
+  border-radius: 17px;
+
+}
+
+.room{
+  position: absolute;
+  width: 68px;
+  height: 25px;
+  left: 37px;
+  top: 479px;
+  background: #0d296686;
+  border-radius: 7px;
+}
+
+.turn{
+  position: absolute;
+  width: 353px;
+  height: 432px;
+  left: 0px;
+  top: 0px;
+  
+  background: #267957;
+  border-radius: 17px;
+}

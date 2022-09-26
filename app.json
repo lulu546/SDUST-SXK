@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/prime/Page",
+    "pages/edit/edit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}
