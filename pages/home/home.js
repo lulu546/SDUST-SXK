@@ -13,7 +13,7 @@ Page({
       hour: new Date().getHours() < 10 ? '0' + new Date().getHours() : new Date().getHours(),
       minutes: new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes(),
     },
-    weekwhat: "几呀",
+    weekwhat: "几",
     week_ordinal:0,
     courseflag: true,
     now_course: {
@@ -42,7 +42,9 @@ Page({
       },
       {}
 
-    ]
+    ],
+    set_schedule:{}
+
 
 
 
@@ -52,7 +54,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onReady()  {
 
 
 
@@ -60,39 +62,46 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
+ onLoad(options) {
+
+  const app = getApp()
+
+         var that=this;
         //渲染周几
         var weekArray = new Array("日", "一", "二", "三", "四", "五", "六")
         var weeknumber = new Date().getDay();
         var week = weekArray[weeknumber] //判断今天周几
-        var share = require('../../data/date_share');
-        var table_schedule = share.table_schedule();
-        var week_ordinal = share.weekord_schedule();
-        if (weeknumber == 0) {
+
+        var table_schedule = app.globalData.class_info;
+        
+        var set_schedule=app.globalData.set_all_data;
+        
+        var week_ordinal = app.globalData.week_time;
+        if (weeknumber == 0){
           weeknumber = 7
         }
         weeknumber--;
         this.setData({
           weekwhat: week,
-          week_ordinal,
+          week_ordinal:week_ordinal,
           nowtimes: {
             month: new Date().getMonth() + 1 < 10 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1,
             day: new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate(),
             hour: new Date().getHours() < 10 ? '0' + new Date().getHours() : new Date().getHours(),
             minutes: new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes(),
           },
-          weekwhat: week
+          set_schedule
     
         })
         
         
-        var that = this;
+
         var coursetime_i = 0;//显示的时间点
         var nowhour = parseInt(that.data.nowtimes.hour);
         var nowminutes = parseInt(that.data.nowtimes.minutes);//数字后时间
         var course = {};//显示的课程
         //进行couse赋值，显示课程的函数
-        function Once_Couse(){
+        let Once_Couse = () => {
           if ((nowhour < 9 || (nowhour == 9 && nowminutes < 50))) {
             coursetime_i = 0;
           
@@ -106,12 +115,7 @@ Page({
         
           } else if (((nowhour == 21 && nowminutes < 50) || (nowhour >= 18 && nowhour < 21))) {
             coursetime_i = 4;
-            // while (1) {
-            //   if (table_schedule[weeknumber][coursetime_i][0].length >  0 || coursetime_i == 5) {
-            //     course = table_schedule[weeknumber][coursetime_i]
-            //     break;
-            //   } else if (coursetime_i <= 5) coursetime_i++
-            // }
+
   
           } 
           if (nowhour > 21) {
@@ -150,7 +154,7 @@ Page({
     
         // 启动计时器
         setInterval(function () {
-            
+
           Once_Couse()
             
           }, 1000);
@@ -203,29 +207,19 @@ Page({
    */
   turn_crouselist(e) {
 
-    console.log("shab");
 
     wx.navigateTo({
       url: "../../pages/ScheduleShare/Schedule/ScheduleShare"
     })
 
   },
-  turn_crouselist2(e) {
-
-    var arr = this.data.homeOutObj.height.split("p")
-    var a = arr[0] * 1
-    console.log(this.data.homeOutObj.height)
-    console.log(a)
-    a = a + 5
-    this.setData({
-
-      homeOutObj: {
-
-        height: "400px"
-      }
-
+  turn_bind(e){
+    wx.navigateTo({
+       url: "../../pages/login/login"
+      //登录
     })
   }
+
   // 时间函数
 
 

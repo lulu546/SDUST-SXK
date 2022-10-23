@@ -98,7 +98,7 @@
   top: 10rpx;
   border-radius: 30rpx;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
- 
+
 }
 
 .tableheader {
@@ -109,6 +109,7 @@
   top: 20rpx;
   display: flex;
   box-sizing: border-box;
+  
  
 }
 
@@ -159,7 +160,7 @@
   min-height: 130px;
 
   height: 100%;
-  margin: 5rpx 3.5rpx;
+  margin: 3rpx 3.5rpx;
   word-break: break-all;
   color: #fff;
   padding: 3px;
@@ -188,11 +189,22 @@
   
 
 }
+.timetablehrshare {
+  margin: 5rpx 0 5rpx 0;
+  background-color: rgb(226, 226, 226) !important;
+  height: 3px;
+  border: none;
+  width:100%;
+  position: relative; 
+  
+  
+
+}
 .dayschedule{
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  
+ 
 
   
 
@@ -231,7 +243,6 @@
   word-break: break-all;
   color: #fff;
   padding: 1px;
-
   font-size: 13px;
   flex:1;
 }
@@ -255,5 +266,6 @@
   display: flex;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-  height: 100%
+  height: 100%;
+  line-height:35rpx;
 }

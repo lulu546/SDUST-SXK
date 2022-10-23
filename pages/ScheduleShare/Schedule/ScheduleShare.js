@@ -1,5 +1,14 @@
 // pages/prime/Page.js
+/*
+问题：
+✔请求+渲染时间感知性太强
+  1.将数据缓存在本地。
+  已解决：有bug所以导致其时间缓慢
 
+?按键的动画效果
+?新加课表功能
+?共享课表功能
+  */
 Page({
 
   /**
@@ -292,26 +301,29 @@ Page({
    */
   onLoad(options) {
    
-   console.log((this.data.table1[1]&&this.data.table1[1][0])||(this.data.table2[1]&&this.data.table2[1][0]))
-  },
+    },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() { 
+    const app = getApp();
     // 请求一周日期 begin
   var utils = require('../../../utils/util');
-  var count_weekdaywhat=utils.count_weekday();
-  console.log(count_weekdaywhat)
+  
+  var count_weekdaywhat=utils.count_weekday(0);
+  
+
   this.setData({
     weekday:count_weekdaywhat
   })
   // 请求一周日期 end
   //请求配置&&课表&&周数
-  var share = require('../../../data/date_share');
-  var set_schedule=share.set_schedule();
-  var table_schedule=share.table_schedule();
-  var week_ordinal=share.weekord_schedule()
+
+  
+  var set_schedule=app.globalData.set_all_data;
+  var table_schedule=app.globalData.class_info;
+  var week_ordinal = app.globalData.week_time;
   this.setData({
     set_schedule,
     table1:table_schedule,
@@ -365,9 +377,7 @@ Page({
    * 点击函数
    */
   turn_crouselist(e){
-    
 
-    
     wx.navigateTo({
       url: "../../pages/Schedule/schedule"
     })
@@ -376,22 +386,7 @@ Page({
 
 
   },
-  turn_crouselist2(e){
-  
-    var arr=this.data.homeOutObj.height.split("p")
-    var a=arr[0]*1
-  
-    a=a+5
-     this.setData({
-    
-        homeOutObj: {
-    
-        
-          height:"400px"
-     }
-     
-    })
-  },
+
   switchShare(e){
     var that=this
     var newshareflag=!that.data.shareflag
@@ -422,21 +417,131 @@ Page({
   },
   weekchange(e){
     //左右跳转
+    var that=this;
+    var week_ordinal=that.data.week_ordinal;
+    console.log(week_ordinal)
+    const app = getApp()
+    var utils = require('../../../utils/util');
+    
+
       if(e.target.dataset.change=="pre"){
+       
+      week_ordinal=week_ordinal-1;
        var new_table1,new_table2
+       var count_weekdaywhat=utils.count_weekday(week_ordinal-app.globalData.week_time);
+       
+       this.setData({
+         weekday:count_weekdaywhat
+       })
+      if(that.data.checked_value==true){
+        //  wx.request({
+      //    url: 'url',
+      //    data: data,
+      //    dataType: dataType,
+      //    enableCache: true,
+      //    enableHttp2: true,
+      //    enableQuic: true,
+      //    header: header,
+      //    method: method,
+      //    responseType: responseType,
+      //    timeout: 0,
+      //    success: (result) => {},
+      //    fail: (res) => {},
+      //    complete: (res) => {},
+      //  })
         this.setData({
           table1:new_table1,
           table2:new_table2
         })
+      }
+      else{
+        wx.request({
+          url: 'http://127.0.0.1:5000/get_class_info',
+          method:'POST',
+          data:{
+            account:wx.getStorageSync('useraccount'),
+            cookiesstr:wx.getStorageSync('cookiesstr'),
+            cont:week_ordinal
+          },
+          header:{
+            'content-type':'application/json'      
+          },
+          success: (res) => {
+            console.log(week_ordinal)
+            console.log(res.data)
+            this.setData({
+              table1:res.data,
+              week_ordinal:week_ordinal
+             
+            })
+            console.log(res.data)
+            console.log(this.data.table1)
+          },
+          fail: (res) => {
+            //清楚登录状态
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none'
+            })
+          }
+  
+        })
+        
+
+      }  
 
       }
       else if(e.target.dataset.change=="next"){
+        week_ordinal=week_ordinal+1;
         var new_table1,new_table2
-        this.setData({
-          table1:new_table1,
-          table2:new_table2
-        })
+        var count_weekdaywhat=utils.count_weekday(week_ordinal-app.globalData.week_time);
+       
+       this.setData({
+         weekday:count_weekdaywhat
+       })
+        if(that.data.checked_value==true){
+       
+          this.setData({
+            table1:new_table1,
+            table2:new_table2
+          })
+        }
+        else{
+          wx.request({
+            url: 'http://127.0.0.1:5000/get_class_info',
+            method:'POST',
+            data:{
+              account:wx.getStorageSync('useraccount'),
+              password:wx.getStorageSync('userpws'),
+              cookiesstr:wx.getStorageSync('cookiesstr'),
+              cont:week_ordinal
+            },
+            header:{
+              'content-type':'application/json'      
+            },
+            success: (res) => {
+              console.log(week_ordinal)
+              this.setData({
+                table1:res.data,
+                week_ordinal
+              })
+              console.log(res.data)
+              
+            console.log(this.data.table1)
+            },
+            fail: (res) => {
+              //清楚登录状态
+              wx.showToast({
+                title: '请求失败',
+                icon: 'none'
+              })
+            }
+    
+          })
+  
+        }  
       }
+
   },
   buttonadd(){
     wx.navigateTo({
@@ -445,6 +550,36 @@ Page({
      })
 
   },
+  rechange(){
+
+    wx.request({
+      url: 'http://127.0.0.1:5000/get_class_info',
+      method:'POST',
+      data:{
+        account:wx.getStorageSync('useraccount'),
+        password:wx.getStorageSync('userpws'),
+        cookiesstr:wx.getStorageSync('cookiesstr')
+      },
+
+      header:{
+        'content-type':'application/json'      
+        //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
+      },
+      success: (res) => {
+        // 将课表传输到schedule_table
+        const app = getApp();
+        app.globalData.class_info=res.data
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '请求失败',
+          icon: 'none'
+        })
+      }
+
+    })
+
+  }
   
   
  

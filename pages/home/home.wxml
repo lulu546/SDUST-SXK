@@ -8,7 +8,7 @@
   <text class="cssweekwhat">周{{weekwhat}}</text>
   <text class="cssdata">{{nowtimes.month}}月{{nowtimes.day}}日</text>
   <text class="csstime">{{nowtimes.hour}}:{{nowtimes.minutes}}</text>
-  <view wx:if="{{courseflag}}" class="lookcourselist">
+  <view wx:if="{{courseflag&&set_schedule.islogin}}" class="lookcourselist">
     <view class="line"></view>
     <view class="crousetime_begin">{{coursetime[coursetimei].timebegin}}</view>
     <view class="crousetime_end">{{coursetime[coursetimei].timeend}}</view>
@@ -16,13 +16,20 @@
     <view class="crouse_place">{{now_course[1]}}</view>
     <view class="crouse_teacher">{{now_course[2]}}</view>
   </view>
-  <view wx:else class="lookcourselist">
+  <view wx:if="{{!courseflag&&set_schedule.islogin}}" class="lookcourselist">
     <view class="line" style="position: absolute; left: 30rpx; top: 36rpx; width: 10rpx; height: 90rpx; display: block; box-sizing: border-box"></view>
     <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">今日的课程结束啦！</view>
     <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
-      {{courseover_onesencontent}}
+      (//▽//)
       </view>
-    
+  </view>
+  <view wx:if="{{!set_schedule.islogin}}" class="lookcourselist" catchtap="turn_bind">
+    <view class="line" style="position: absolute; left: 30rpx; top: 36rpx; width: 10rpx; height: 90rpx; display: block; box-sizing: border-box"></view>
+    <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">
+    请绑定强智账号捏！</view>
+    <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
+      点击即可绑定(//▽//)
+      </view>
   </view>
   </view>
 </view>

@@ -14,8 +14,8 @@ const formatNumber = n => {
   return n[1] ? n : `0${n}`
 }
 //计算一周时间
-const count_weekday = () =>{
-    
+const count_weekday = (cont) =>{
+  
   var day2 = new Date();
   day2.setTime(day2.getTime());
   var data = day2.getFullYear()+"-" + (day2.getMonth()+1) + "-" + (day2.getDate());
@@ -26,9 +26,11 @@ const count_weekday = () =>{
 		date_b.setDate(date_b.getDate() -6);
 	}else {
 		date_b.setDate(date_b.getDate() - date_b.getDay() + 1);
-	}
+  }
+  date_b.setDate(date_b.getDate() + cont*7);
 	var thisday=date_b.getDate();
-	var thismonth=date_b.getMonth() + 1;
+  var thismonth=date_b.getMonth() + 1;
+  
 	if(date_b.getDate()<10){
 		thisday= '0'+ thisday;
 	}
