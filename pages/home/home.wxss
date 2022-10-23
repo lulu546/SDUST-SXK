@@ -1,0 +1,245 @@
+/* pages/prime/Page.wxss */
+.button{
+  left: 1px;
+  top: 1px;
+
+}
+.curriculum {
+
+  position: absolute;
+  width: 670rpx;
+  height: 130px;
+  left: 40rpx;
+  top: 261px;
+
+  background: #f7f7f7;
+  border-radius: 17px;
+
+}
+
+.csswhatweek {
+  position: absolute;
+  width: 43px;
+  height: 18px;
+  left: 14px;
+  top: 20px;
+
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: -0.24px;
+
+  color: #000000;
+
+}
+
+.cssweekwhat {
+  position: absolute;
+  width: 28px;
+  height: 14px;
+  left: 14px;
+  top: 42px;
+
+
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: -0.24px;
+
+  color: #000000;
+
+}
+
+.cssdata {
+  position: absolute;
+  width: 56px;
+  height: 15px;
+  left: 14px;
+  top: 61px;
+
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: -0.24px;
+
+  color: #000000;
+}
+
+.cssdata {
+  position: absolute;
+  width: 56px;
+  height: 15px;
+  left: 14px;
+  top: 61px;
+
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: -0.24px;
+
+  color: #000000;
+}
+
+.csstime {
+
+  position: absolute;
+  width: 56px;
+  height: 30px;
+  left: 14px;
+  top: 80px;
+
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: -0.24px;
+
+  color: #000000;
+
+}
+
+.lookcourselist {
+  position: absolute;
+  width: 446rpx;
+  height: 182.6rpx;
+  left: 192rpx;
+  top: 25rpx;
+
+  background: #e4e4e48c;
+  border-radius: 12px;
+}
+
+.line {
+  position: absolute;
+  width: 4px;
+  height: 23px;
+  left: 50rpx;
+  top: 33px;
+
+  background: #4E11D1;
+  border-radius: 30rpx;
+}
+
+.crousetime_begin {
+  position: absolute;
+  width: 54px;
+  height: 24px;
+  left: 40rpx;
+  top: 11px;
+
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: -0.24px;
+
+  color: #000000;
+
+}
+
+.crousetime_end {
+  position: absolute;
+  width: 54px;
+  height: 24px;
+  left: 40rpx;
+  top: 56px;
+
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: -0.24px;
+
+  color: #000000;
+
+
+}
+
+.crouse_name {
+  position: absolute;
+  width: 224rpx;
+  height: 24px;
+  left: 91px;
+  top: 8px;
+  /* left: 22px;122
+top: 261px;269 */
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36rpx;
+  line-height: 24px;
+  /* identical to box height */
+
+  text-align: left;
+  letter-spacing: -0.24px;
+
+  color: #000000;
+
+
+}
+
+.crouse_place {
+  position: absolute;
+  width: 79px;
+  height: 19px;
+  left: 91px;
+  top: 36px;
+  /* left: 22px;122
+top: 261px;269 */
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+
+  text-align: left;
+  letter-spacing: -0.24px;
+
+  color: #404140;
+}
+
+.crouse_teacher {
+  position: absolute;
+  width: 48px;
+  height: 19px;
+  left: 91px;
+  top: 59px;
+  /* left: 22px;122
+top: 261px;269 */
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+
+  text-align: left;
+  letter-spacing: -0.24px;
+
+  color: #404140;
+}
+
+/* -课表- */

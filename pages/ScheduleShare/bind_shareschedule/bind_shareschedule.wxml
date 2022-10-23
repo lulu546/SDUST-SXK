@@ -1,0 +1,92 @@
+<view>
+  <layout vue-id="20e1d686-1" title="共享课表" bind:__l="__l" vue-slots="{{['default']}}">
+    <block wx:if="{{data.status===1}}">
+      <view class="top">
+        <view class="x-CenterCon" style="flex-direction:column;"><input class="a-input" placeholder="对方学号" data-event-opts="{{[['input',[['accountInput',['$event']]]]]}}" value="{{account}}" bindinput="__e" /><input class="a-input" style="margin-top:5px;" placeholder="对方姓名" data-event-opts="{{[['input',[['nameInput',['$event']]]]]}}" value="{{name}}" bindinput="__e" />
+          <view data-event-opts="{{[['tap',[['req',['$event']]]]]}}" class="a-btn a-btn-blue" bindtap="__e">发起请求</view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{data.status===2}}">
+      <view class="top">
+        <view style="display:flex;align-items:center;">
+          <view>{{data.pair_user[0]}}</view>
+          <view style="margin-left:5px;">{{data.pair_user[1]}}</view>
+          <view data-event-opts="{{[['tap',[['cancelreq',['$event']]]]]}}" class="a-btn a-btn-blue a-btn-mini" bindtap="__e">撤销请求</view>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{data.status!==0}}">
+      <view class="a-hr"></view>
+    </block>
+    <block wx:if="{{data.status!==0}}">
+      <view class="top">
+        <block wx:for="{{data.data}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view style="display:flex;align-items:center;">
+            <view>{{item.account}}</view>
+            <view style="margin-left:5px;">{{item.name}}</view>
+            <view class="a-btn a-btn-blue a-btn-mini" data-id="{{item.id}}" data-event-opts="{{[['tap',[['agree',['$event']]]]]}}" bindtap="__e">同意</view>
+            <view class="a-btn a-btn-blue a-btn-mini" data-id="{{item.id}}" data-event-opts="{{[['tap',[['refuse',['$event']]]]]}}" bindtap="__e">拒绝</view>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{data.status===0}}">
+      <view>
+        <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view>
+            <view class="line">
+              <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:for-item="inner" wx:for-index="innerIndex" wx:key="innerIndex">
+                <view style="width:calc(100% / 7);margin-left:3px;background:#eee;">
+                  <block wx:if="{{data.succ.timetable1[inner]&&data.succ.timetable1[inner][item]||data.succ.timetable2[inner]&&data.succ.timetable2[inner][item]}}">
+                    <view class="tableUnitCon">
+                      <block wx:if="{{data.succ.timetable2[inner]&&data.succ.timetable2[inner][item]}}">
+                        <view class="timetableHideBot" style="background:rgb(100, 149, 237);">
+                          <view>{{data.succ.timetable2[inner][item][2]}}</view>
+                          <view>{{data.succ.timetable2[inner][item][4]}}</view>
+                        </view>
+                      </block>
+                      <block wx:else>
+                        <view>
+                          <view class="timetableHideBot"></view>
+                        </view>
+                      </block>
+                      <block wx:if="{{data.succ.timetable1[inner]&&data.succ.timetable1[inner][item]}}">
+                        <view class="timetableHideTop" style="background:rgb(234, 167, 140);">
+                          <view>{{data.succ.timetable1[inner][item][2]}}</view>
+                          <view>{{data.succ.timetable1[inner][item][4]}}</view>
+                        </view>
+                      </block>
+                      <block wx:else>
+                        <view>
+                          <view class="timetableHideTop"></view>
+                        </view>
+                      </block>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view>
+                      <view class="timetableHide"></view>
+                    </view>
+                  </block>
+                </view>
+              </block>
+            </view>
+            <view class="a-hr timetablehr"></view>
+          </view>
+        </block>
+        <view class="a-hr"></view>
+        <view style="display:flex;align-items:center;">
+          <view>{{data.user+" -"}}</view>
+          <view>{{''+data.succ.pair}}</view>
+          <view class="a-btn a-btn-blue a-btn-mini" data-id="{{data.succ.id}}" data-event-opts="{{[['tap',[['lifting',['$event']]]]]}}" bindtap="__e">解除关系</view>
+        </view>
+      </view>
+    </block>
+  </layout>
+  <block wx:if="{{data.status===1}}">
+    <layout vue-id="20e1d686-2" title="Tips" bind:__l="__l" vue-slots="{{['default']}}">
+      <view>1.向对方发起请求(对方必须是正常登陆过软件或者小程序才可以)，对方通过后，你们将能够在此看到自己与对方的课表</view>
+    </layout>
+  </block>
+</view>

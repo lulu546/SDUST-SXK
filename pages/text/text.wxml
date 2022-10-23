@@ -1,0 +1,77 @@
+<view>
+  <layout vue-id="408dbbbc-1" title="查课表" bind:__l="__l" vue-slots="{{['default']}}">
+    <view class="tableTop">
+      <view class="week">{{"第"+week+"周"}}</view>
+      <view style="display:flex;">
+        <view class="a-btn a-btn-white a-btn-mini refresh" data-week="{{week}}" data-event-opts="{{[['tap',[['refresh',['$event']]]]]}}" bindtap="__e">
+          <view class="operate iconfont icon-shuaxin1"></view>
+        </view>
+        <view class="a-btn a-btn-white a-btn-mini pre" style="font-size:14px;" data-week="{{week}}" data-event-opts="{{[['tap',[['pre',['$event']]]]]}}" bindtap="__e">
+          <view class="operate iconfont icon-arrow-lift"></view>
+        </view>
+        <view class="a-btn a-btn-white a-btn-mini next" style="font-size:14px;" data-week="{{week}}" data-event-opts="{{[['tap',[['next',['$event']]]]]}}" bindtap="__e">
+          <view class="operate iconfont icon-arrow-right"></view>
+        </view>
+      </view>
+    </view>
+    <view class="a-hr timetablehr"></view>
+    <view class="line">
+      <view class="weekUnit">
+        <view>Mon</view>
+        <view class="{{[date[0].s]}}">{{date[0].d}}</view>
+      </view>
+      <view class="weekUnit">
+        <view>Tue</view>
+        <view class="{{[date[1].s]}}">{{date[1].d}}</view>
+      </view>
+      <view class="weekUnit">
+        <view>Wed</view>
+        <view class="{{[date[2].s]}}">{{date[2].d}}</view>
+      </view>
+      <view class="weekUnit">
+        <view>Thur</view>
+        <view class="{{[date[3].s]}}">{{date[3].d}}</view>
+      </view>
+      <view class="weekUnit">
+        <view>Fri</view>
+        <view class="{{[date[4].s]}}">{{date[4].d}}</view>
+      </view>
+      <view class="weekUnit">
+        <view>Sat</view>
+        <view class="{{[date[5].s]}}">{{date[5].d}}</view>
+      </view>
+      <view class="weekUnit">
+        <view>Sun</view>
+        <view class="{{[date[6].s]}}">{{date[6].d}}</view>
+      </view>
+    </view>
+    <!--  -->
+    <view class="a-hr timetablehr"></view>
+    <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view>
+        <view class="line">
+          <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:for-item="inner" wx:for-index="innerIndex" wx:key="innerIndex">
+            <view style="width:100%;">
+              <block wx:if="{{table[inner]&&table[inner][item]}}">
+                <view class="timetableHide" style="{{'background:'+(table[inner][item][2])+';'}}">
+                  <view>{{table[inner][item][0]}}</view>
+                  <view>{{table[inner][item][1]}}</view>
+                  
+                </view>
+              </block>
+              <block wx:else>
+                <view class="timetableHide"></view>
+              </block>
+            </view>
+          </block>
+        </view>
+        <view class="a-hr timetablehr"></view>
+      </view>
+    </block>
+  </layout>
+  <block wx:if="{{ad}}">
+    <layout vue-id="408dbbbc-2" bind:__l="__l" vue-slots="{{['default']}}">
+      <ad class="adapt" unit-id="adunit-ce81890e6ff0b2a7" data-event-opts="{{[['error',[['adError',['$event']]]]]}}" binderror="__e"></ad>
+    </layout>
+  </block>
+</view>

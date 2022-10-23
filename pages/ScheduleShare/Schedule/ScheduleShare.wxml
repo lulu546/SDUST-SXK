@@ -1,0 +1,157 @@
+<!-- <view class="curriculum">
+</view>
+<view class="eroom">
+<view class="room">
+</view>
+</view> 
+71.29-->
+<!-- 10/14 大劫-搞到凌晨一点
+1.勤备份！别瞎改。
+2.目前共享课表和普通课表的字体还有待修改。
+3.基本可以写下一个功能了
+
+ -->
+
+<view class="outer">
+  <view style="width: 729rpx; height: 193rpx; display: block; box-sizing: border-box">
+    <view class="weeknumber" style="width: 200rpx; height: 69rpx; display: block; box-sizing: border-box; left: 15rpx; top: 29rpx; position: relative; border-radius: 20rpx">
+      第{{week_ordinal}}周</view>
+    <view bindtap="buttonadd" class="buttonadd" style="position: absolute; left: 15rpx; top: 113rpx; width: 130rpx; height: 69rpx; display: block; box-sizing: border-box">
+      +</view>
+    <view class="buttonre" style="position: absolute; left: 192rpx; top: 113rpx; width: 130rpx; height: 69rpx; display: block; box-sizing: border-box">
+      F</view>
+
+    <view wx:if="{{set_schedule.isshareshow}}" class="buttonshare" style="position: absolute; left: 384rpx; top: 29rpx; width: 326rpx; height: 69rpx; display: block; box-sizing: border-box">
+      共享课表
+      <switch checked="{{checked_value}}" style="position: relative; left: 106rpx; top: 7rpx" bindchange="switchShare"></switch>
+    </view>
+
+    <view data-change="pre" bindtap="weekchange" class="buttonleft" style="position: absolute; left: 386rpx; top: 113rpx; width: 130rpx; height: 69rpx; display: block; box-sizing: border-box">
+      左</view>
+    <view data-change="next" bindtap="weekchange" class="buttonright" style="position: absolute; left: 581rpx; top: 113rpx; width: 130rpx; height: 69rpx; display: block; box-sizing: border-box">
+      右</view>
+
+
+
+  </view>
+  <view class="inner">
+    <view>
+      <view class="tableheader">
+        <view class="week1">Mon
+          <view class="weekday"> {{weekday[0].thismonth+'/'+weekday[0].thisday}}</view>
+          <view class="line" style="{{'background-color:'+(nowtimes.day==weekday[0].thisday?'coral':'#CCCCCC'+';')}}"></view>
+        </view>
+        <view class="week1">Tue
+          <view class="weekday">{{weekday[1].thismonth+'/'+weekday[1].thisday}}</view>
+          <view class="line" style="{{'background-color:'+(nowtimes.day==weekday[1].thisday?'coral':'#CCCCCC'+';')}}"></view>
+        </view>
+        <view class="week1">Wed
+          <view class="weekday">{{weekday[2].thismonth+'/'+weekday[2].thisday}}</view>
+          <view class="line" style="{{'background-color:'+(nowtimes.day==weekday[2].thisday?'coral':'#CCCCCC'+';')}}"></view>
+        </view>
+        <view class="week1">Thur
+          <view class="weekday">{{weekday[3].thismonth+'/'+weekday[3].thisday}}</view>
+          <view class="line" style="{{'background-color:'+(nowtimes.day==weekday[3].thisday?'coral':'#CCCCCC'+';')}}"></view>
+        </view>
+        <view class="week1">Fri
+          <view class="weekday">{{weekday[4].thismonth+'/'+weekday[4].thisday}}</view>
+          <view class="line" style="{{'background-color:'+(nowtimes.day==weekday[4].thisday?'coral':'#CCCCCC'+';')}}"></view>
+        </view>
+        <view class="week1">Sat
+          <view class="weekday">{{weekday[5].thismonth+'/'+weekday[5].thisday}}</view>
+          <view class="line" style="{{'background-color:'+(nowtimes.day==weekday[5].thisday?'coral':'#CCCCCC'+';')}}"></view>
+        </view>
+        <view class="week1">Sun
+          <view class="weekday">{{weekday[6].thismonth+'/'+weekday[6].thisday}}</view>
+          <view class="line" style="{{'background-color:'+(nowtimes.day==weekday[6].thisday?'coral':'#CCCCCC'+';')}}"></view>
+        </view>
+
+      </view>
+    </view>
+
+    <!-- 课表 -->
+    <view wx:if="{{shareflag}}">
+      <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <!-- index是下标变量名,0,1,2,3，item是数组当前项的变量名（a[1]） -->
+        <!-- 横着渲染，竖着渲染会对不起 -->
+
+        <view class="dayschedule">
+
+          <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:for-item="inner" wx:for-index="innerIndex" wx:key="innerIndex">
+            <view style="width:100%;">
+              <view style="height:100%;">
+                <block wx:if="{{table1[inner][item][0].length!=0}}">
+                  <view class="timetableHide" style="{{'background:'+(table1[inner][item][3])+';'}}">
+                    <view style="{{'color:'+(table[inner][item][4])+';'}}">{{table1[inner][item][0]}}</view>
+                    <!-- 2=课程，4=教室，3=名字，5=课表的背景颜色=苹果日历颜色,6是课程文字颜色 -->
+                    <!-- table[inner][item]，inner是天数，item是课程 -->
+                    <view style="{{'color:'+(table[inner][item][4])+';'}}">{{table1[inner][item][1]}}</view>
+                    <view style="{{'color:'+(table[inner][item][4])+';'}}">{{table1[inner][item][2]}}</view>
+                  </view>
+
+                </block>
+                <block wx:else>
+                  <view class="timetableHide"></view>
+
+                </block>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view wx:if="{{item!=4}}" class="timetablehr" style="position: relative; left: 0rpx; top: 9rpx"></view>
+      </block>
+    </view>
+
+    <view wx:else>
+      <view>
+        <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view>
+            <view class="dayschedule">
+              <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:for-item="inner" wx:for-index="innerIndex" wx:key="innerIndex">
+                 <!-- 填充 -->
+                <view style="flex:1;margin: 5rpx 3.5rpx;">
+                  <block wx:if="{{table1[inner][item][0].length!=0||table2[inner][item][0].length!=0}}">
+                    <view class="tableUnitCon">
+                      <block wx:if="{{table1[inner][item][0].length!=0}}">
+                        <view class="timetableHideBot" style="background:rgb(100, 149, 237);">
+                          <view>{{table1[inner][item][0]}}</view>
+                          <view>{{table1[inner][item][1]}}</view>
+                        </view>
+                      </block>
+                      <block wx:else>
+                        <view>
+                          <view class="timetableHideBot"></view>
+                        </view>
+                      </block>
+
+                      <block wx:if="{{table2[inner][item][0].length!=0}}">
+                        <view class="timetableHideTop" style="background:rgb(234, 167, 140);">
+                          <view>{{table2[inner][item][0]}}</view>
+                          <view>{{table2[inner][item][1]}}</view>
+                        </view>
+                      </block>
+                      <block wx:else>
+                        <view>
+                          <view class="timetableHideTop"></view>
+                        </view>
+                      </block>
+
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view>
+                      <view class="timetableHideshare"></view>
+                    </view>
+                  </block>
+                </view>
+                <!-- 填充 -->
+              </block>
+            </view>
+            <view class="a-hr timetablehr"></view>
+          </view>
+        </block>
+        <view class="a-hr"></view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,11 +1,11 @@
-// pages/prime/Page.js
+// pages/ScheduleShare/new_schedule/new_shedule.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    boolean:true
+
   },
 
   /**
@@ -62,21 +62,5 @@ Page({
    */
   onShareAppMessage() {
 
-  },
-   /**
-   * 点击函数
-   */
-  turnedit(e){
-    
-    console.log(e);
-    var bol = this.data.boolean;
-    this.setData({
-      boolean: !bol
-     })
-  
-
-
-
   }
-
 })

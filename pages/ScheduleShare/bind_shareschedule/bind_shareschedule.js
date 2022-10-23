@@ -1,4 +1,4 @@
-// pages/edit/edit.js
+// pages/reshareschedule/resharesch.js
 Page({
 
   /**
@@ -19,7 +19,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
+    var today=new Date();
+    var currentDate=today.getDay();//获取存储当前日期
+    var weekday=["7","1","2","3","4","5","6"];
+    var weekdaywhat=weekday[currentDate]
+      
 
+    this.setData({
+     
+       
+     
+    })
+    
+    
   },
 
   /**
