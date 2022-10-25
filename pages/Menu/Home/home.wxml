@@ -1,0 +1,75 @@
+<!-- <view class="curriculum" bindtap="turn_crouselist2" style="height:{{homeOutObj.height}};"> -->
+
+
+
+<view class="curriculum" bindtap="turn_crouselist" style="height:{{homeOutObj.height}};">
+  <view>
+  <text class="csswhatweek">第{{week_ordinal}}周</text>
+  <text class="cssweekwhat">周{{weekwhat}}</text>
+  <text class="cssdata">{{nowtimes.month}}月{{nowtimes.day}}日</text>
+  <text class="csstime">{{nowtimes.hour}}:{{nowtimes.minutes}}</text>
+  <view wx:if="{{courseflag&&set_schedule.islogin}}" class="lookcourselist">
+    <view class="line"></view>
+    <view class="crousetime_begin">{{coursetime[coursetimei].timebegin}}</view>
+    <view class="crousetime_end">{{coursetime[coursetimei].timeend}}</view>
+    <view class="crouse_name">{{now_course[0]}}</view>
+    <view class="crouse_place">{{now_course[1]}}</view>
+    <view class="crouse_teacher">{{now_course[2]}}</view>
+  </view>
+  <view wx:if="{{!courseflag&&set_schedule.islogin}}" class="lookcourselist">
+    <view class="line" style="position: absolute; left: 30rpx; top: 36rpx; width: 10rpx; height: 90rpx; display: block; box-sizing: border-box"></view>
+    <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">今日的课程结束啦！</view>
+    <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
+      (//▽//)
+      </view>
+  </view>
+  <view wx:if="{{!set_schedule.islogin}}" class="lookcourselist" catchtap="turn_bind">
+    <view class="line" style="position: absolute; left: 30rpx; top: 36rpx; width: 10rpx; height: 90rpx; display: block; box-sizing: border-box"></view>
+    <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">
+    请绑定强智账号捏！</view>
+    <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
+      点击即可绑定(//▽//)
+      </view>
+  </view>
+  </view>
+</view>
+
+<!-- <page-container
+	show="{{show}}"
+	overlay="{{overlay}}"
+	close-on-slide-down
+  duration="{{duration}}"
+  position="{{position}}"
+  bindbeforeenter="onBeforeEnter"
+  bindenter="onEnter"
+  bindafterenter="onAfterEnter"
+  bindbeforeleave="onBeforeLeave"
+  bindleave="onLeave"
+  bindafterleave="onAfterLeave"
+  bindclickoverlay="onClickOverlay"
+>
+	<view class="screen screen2">
+		<view class="contact">
+			<share-element class="avatar" duration="{{duration}}" key="avatar" transform>
+				<image style="width: 40px;" mode="widthFix" src="../images/{{contact.img}}" />
+			</share-element>
+			<share-element class="name" key="name" duration="{{duration}}" transform>
+				{{contact.name}}
+			</share-element>
+			<view class="paragraph {{show ? 'enter' : ''}}">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nisl enim, sodales non augue efficitur, sagittis
+				varius neque. Fusce dolor turpis, maximus eu volutpat quis, pellentesque et ligula. Ut vehicula metus in nibh
+				mollis ornare. Etiam aliquam lacinia malesuada. Vestibulum dignissim mollis quam a tristique. Maecenas neque
+				mauris, malesuada vitae magna eu, congue consectetur risus. Etiam vitae pulvinar ex. Maecenas suscipit mi ac
+				imperdiet pretium. Aliquam velit mauris, euismod quis elementum sed, malesuada non dui. Nunc rutrum sagittis
+				ligula in dapibus. Cras suscipit ut augue eget mollis. Donec auctor feugiat ipsum id viverra. Vestibulum eu nisi
+				risus. Vestibulum eleifend dignissim.
+				
+			</view>
+			<button class="screen2-button" bindtap="showPrev" hidden="{{!show}}" hover-class="none">Click Me</button>
+		</view>
+	</view>
+</page-container> -->
+
+
+

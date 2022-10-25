@@ -2,23 +2,28 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/Menu/Home/home",
         "text": "首页"
       },
       {
         "pagePath": "pages/text/text",
-        "text": "其他"
+        "text": "功能"
+      },
+      {
+        "pagePath": "pages/Menu/Studentinfo/studentinfo",
+        "text": "用户"
       }
     ]
   },
   "pages": [
-    "pages/home/home",
+    "pages/Menu/Home/home",
     "pages/text/text",
     "pages/ScheduleShare/Schedule/ScheduleShare",
     "pages/ScheduleShare/new_schedule/new_shedule",
     "pages/ScheduleShare/bind_shareschedule/bind_shareschedule",
-    "pages/login/login",
-    "pages/login/logintest"
+    "pages/Login/login",
+    "pages/Login/logintest",
+    "pages/Menu/Studentinfo/studentinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
