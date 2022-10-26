@@ -1,22 +1,24 @@
-// pages/studentinfo/studentinfo.js
+// pages/Menu/StudentinfoFunction/UserSet.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    account:null,
-    name:null,
-    academy:null,
-    student_info:null,
+    checkedflag:false, //是否显示分享
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
- 
+    var that=this
     
+    
+    this.setData({
+      checkedflag:wx.getStorageSync('isshareshow')
+
+    })
   },
 
   /**
@@ -30,12 +32,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    const app = getApp();
-    var that = this;
-    that.setData({
-      student_info:app.globalData.student_info
 
-    })
   },
 
   /**
@@ -72,27 +69,12 @@ Page({
   onShareAppMessage() {
 
   },
-  turn(e) {
+  isshareshow(e){
+    var that=this;
+    const app = getApp()
+    wx.setStorageSync('isshareshow', e.detail.value);
+    app.globalData.set_all_data.isshareshow=e.detail.value;
     
-    if(e.target.dataset.turn=="set"){
-      wx.navigateTo({
-        url: '../StudentinfoFunction/UserSet/UserSet',
-      })
-
-    }
-       
-  
-
-  },
-  logout(e) {
-    wx.removeStorageSync("cookiesstr");
-    wx.removeStorageSync("useraccount");
-    wx.removeStorageSync("userpws");
-    wx.setStorageSync("islogin",false);
-    wx.reLaunch({//重定向
-      url: '../../Login/login',
-    })
-  
 
   }
 })

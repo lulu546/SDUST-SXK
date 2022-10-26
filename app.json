@@ -23,7 +23,8 @@
     "pages/ScheduleShare/bind_shareschedule/bind_shareschedule",
     "pages/Login/login",
     "pages/Login/logintest",
-    "pages/Menu/Studentinfo/studentinfo"
+    "pages/Menu/Studentinfo/studentinfo",
+    "pages/Menu/StudentinfoFunction/UserSet/UserSet"
   ],
   "window": {
     "backgroundTextStyle": "light",

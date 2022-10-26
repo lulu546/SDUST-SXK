@@ -1,0 +1,23 @@
+<view>
+
+<view class="x-CenterCon">
+  <image style="width: 230px; height: 80px; margin: 20px 0 30px 0; position: relative; left: 174rpx; top: 13rpx" src="https://windrunner_max.gitee.io/imgpath/SHST/Static/SDUST.jpg"></image>
+</view>
+<view class="userInfoCon">
+
+
+
+  <view class="unitInfo"    >
+    <view style="display:flex;">
+      <view class="titleCon">
+        <view>共享课表</view>
+      </view>
+    </view>
+
+    <view>
+      <switch checked="{{checkedflag}}"  bindchange="isshareshow"></switch>
+    </view>
+  </view>
+
+</view>
+</view>

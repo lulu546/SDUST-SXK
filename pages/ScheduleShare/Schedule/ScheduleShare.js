@@ -329,7 +329,7 @@ Page({
     table1:table_schedule,
     week_ordinal
   })
-  console.log(this.data.nowtimes.day==this.data.weekday[3].thisday)
+
   },
 
   /**

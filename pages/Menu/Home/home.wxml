@@ -8,7 +8,7 @@
   <text class="cssweekwhat">周{{weekwhat}}</text>
   <text class="cssdata">{{nowtimes.month}}月{{nowtimes.day}}日</text>
   <text class="csstime">{{nowtimes.hour}}:{{nowtimes.minutes}}</text>
-  <view wx:if="{{courseflag&&set_schedule.islogin}}" class="lookcourselist">
+  <view wx:if="{{requestflag&&courseflag&&set_schedule.islogin}}" class="lookcourselist">
     <view class="line"></view>
     <view class="crousetime_begin">{{coursetime[coursetimei].timebegin}}</view>
     <view class="crousetime_end">{{coursetime[coursetimei].timeend}}</view>

@@ -31,7 +31,21 @@
         },
         {
           "name": "",
-          "pathName": "pages/login/login",
+          "pathName": "pages/Menu/Studentinfo/studentinfo",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Menu/Studentinfo/studentinfo",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Menu/StudentinfoFunction/UserSet/UserSet",
           "query": "",
           "launchMode": "default",
           "scene": null

@@ -5,12 +5,12 @@
     <view id="_type3">
       <input type="text" placeholder="请输入学号" id="_input1" value="{{useraccount}}" bindinput="getaccount" />
       <view>
-      <input password="{{!isshow}}" placeholder="请输入密码" id="_input2"  value="{{userpws}}" bindinput="getpassword" />
-      <view catchtap="changeshow" class="eyestyle">
-        <image src="{{_src}}" style="height: 37rpx;width: 37rpx;margin-top:16rpx;margin-left:10rpx"></image>
+        <input password="{{!isshow}}" placeholder="请输入密码" id="_input2" value="{{userpws}}" bindinput="getpassword" />
+        <view catchtap="changeshow" class="eyestyle">
+          <image src="{{_src}}" style="height: 37rpx;width: 37rpx;margin-top:16rpx;margin-left:10rpx"></image>
+        </view>
       </view>
-      </view>
-      <view id="_button"><button  bindtap="loginTo">登录</button></view>
+      <view id="_button"><button bindtap="loginTo">登录</button></view>
     </view>
     <view>{{isSuccess}}</view>
   </form>

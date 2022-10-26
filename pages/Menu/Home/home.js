@@ -66,12 +66,12 @@ Page({
 
     const app = getApp()
     var that = this;
-  
+
     //数据的基本读取，如果app中没有读取的话会激活这里。
     if (wx.getStorageSync('islogin') == true && app.globalData.class_info == null) {
       app.globalData.set_all_data = {
         isbindshareflag: true, //是否绑定分享
-        isshareshow: true, //是否显示分享
+        isshareshow: wx.getStorageSync('isshareshow'), //是否显示分享
         islogin: wx.getStorageSync('islogin') //是否绑定课表
       }
       wx.request({

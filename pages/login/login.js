@@ -55,7 +55,6 @@ Page({
         title: '学号不能为空',
         icon: 'error'
       })
-
       return;
     }
     let phoneReg = /^\d{12}$/;
@@ -64,10 +63,6 @@ Page({
         title: '学号格式错误',
         icon: 'error'
       })
-      this.setData({
-        userpws: '',
-        useraccount: ''
-      });
       return;
     }
     if (!userpws) {
@@ -128,10 +123,7 @@ Page({
             title: '账号或密码错误',
             icon: "error"
           });
-          this.setData({
-            userpws: ''
 
-          });
         }
 
 

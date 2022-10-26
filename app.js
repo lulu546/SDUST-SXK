@@ -125,8 +125,11 @@ App({
 
   },
   onShow() {
-
-
+    function isset(key) {//鉴别是否存在缓存
+    let val = wx.getStorageSync(key)
+    return val !== '' && val !== null & val !== undefined
+   }
+   if(isset('isshareshow')){wx.setStorageSync('isshareshow',true);}
   },
   globalData: {
     userInfo: null,
@@ -136,9 +139,9 @@ App({
     week_time: 0, //第几周
     set_all_data: {
       isbindshareflag: true, //是否绑定分享
-      isshareshow: true, //是否显示分享
+      isshareshow: wx.getStorageSync('isshareshow'), //是否显示分享
       islogin: wx.getStorageSync('islogin') //是否绑定课表
-    },
+    }, 
     requestflag: true //判断请求状态
   }
 
