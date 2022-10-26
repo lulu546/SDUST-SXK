@@ -1,5 +1,5 @@
 <!-- <view class="curriculum" bindtap="turn_crouselist2" style="height:{{homeOutObj.height}};"> -->
-
+<!-- 课程名长度显示问题 -->
 
 
 <view class="curriculum" bindtap="turn_crouselist" style="height:{{homeOutObj.height}};">
@@ -29,6 +29,14 @@
     请绑定强智账号捏！</view>
     <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
       点击即可绑定(//▽//)
+      </view>
+  </view>
+  <view wx:if="{{!requestflag&&set_schedule.islogin}}" class="lookcourselist" catchtap="turn_bind">
+    <view class="line" style="position: absolute; left: 30rpx; top: 36rpx; width: 10rpx; height: 90rpx; display: block; box-sizing: border-box"></view>
+    <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">
+    请求失败了....</view>
+    <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
+      请刷新重试(ᕑᗢᓫ∗)˒
       </view>
   </view>
   </view>

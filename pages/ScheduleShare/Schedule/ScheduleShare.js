@@ -481,7 +481,7 @@ Page({
             //清楚登录状态
             wx.showToast({
               title: '请求失败',
-              icon: 'none'
+              icon: 'error'
             })
           }
   
@@ -533,7 +533,7 @@ Page({
               //清楚登录状态
               wx.showToast({
                 title: '请求失败',
-                icon: 'none'
+                icon: 'error'
               })
             }
     

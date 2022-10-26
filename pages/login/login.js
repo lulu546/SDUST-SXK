@@ -31,13 +31,13 @@ Page({
     isshow: false, //是否显示密码
     _src: '/static/image/hidepws.png', //隐藏的图片，初始均为不可见
     islogin: true, //是否登录
-    
+
   },
   //将账号和密码进行传参到后端，返回值为ispermit,判断是否允许
   getdatalist() {
     var that = this;
 
-    
+
 
   },
 
@@ -53,16 +53,16 @@ Page({
     if (!useraccount) {
       wx.showToast({
         title: '学号不能为空',
-        icon: 'none'
+        icon: 'error'
       })
-      
+
       return;
     }
     let phoneReg = /^\d{12}$/;
     if (!phoneReg.test(useraccount)) {
       wx.showToast({
         title: '学号格式错误',
-        icon: 'none'
+        icon: 'error'
       })
       this.setData({
         userpws: '',
@@ -73,11 +73,11 @@ Page({
     if (!userpws) {
       wx.showToast({
         title: '密码不能为空',
-        icon: 'none'
+        icon: 'error'
       })
       return;
     }
-    
+
     //后端鉴权
     //后端鉴权有个核心问题，你没办法保证你的你在规定时间里获得request里的信息。
     //request的函数是回调函数
@@ -93,57 +93,64 @@ Page({
         //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
       },
       success: (res) => {
-        if(res.data["code"]==2002){
-          wx.setStorageSync('islogin',false);
+        if (res.data["code"] == 2002) {
+          wx.setStorageSync('islogin', false);
           console.log("请求失败了~")
         }
-          // 将用户的cookie存入至本地
-         
-         else{
+        // 将用户的cookie存入至本地
+        else {
 
-        wx.setStorageSync('cookiesstr', res.data);
-        wx.setStorageSync('islogin',true);
-      }
-      var status=wx.getStorageSync('islogin');
-      console.log("请求了~")
-      //登录成功
-      if (status) {
+          wx.setStorageSync('cookiesstr', res.data);
+          wx.setStorageSync('islogin', true);
+        }
+        var status = wx.getStorageSync('islogin');
+        console.log("请求了~")
+        //登录成功
+        if (status) {
+          wx.showToast({
+            title: '登录成功',
+            icon: "success"
+          });
+          that.setData({
+            islogin: true
+          })
+          wx.setStorageSync('useraccount', that.data.useraccount);
+          wx.setStorageSync('userpws', that.data.userpws);
+          console.log(wx.getStorageSync('islogin'))
+          wx.reLaunch({//重定向
+            url: '../Menu/Home/home',
+          })
+
+        }
+        //密码或账号错误
+        else {
+          wx.showToast({
+            title: '账号或密码错误',
+            icon: "error"
+          });
+          this.setData({
+            userpws: ''
+
+          });
+        }
+
+
+
+
+      },
+      fail: (res) => {
         wx.showToast({
-          title: '登录成功',
-          icon: "success"
-        });
-        that.setData({
-          islogin: true
-        })
-        wx.setStorageSync('useraccount', this.data.useraccount);
-        wx.setStorageSync('userpws', this.data.userpws);
-        console.log(wx.getStorageSync('islogin'))
-        wx.switchTab({
-          url: '../Menu/Home/home',
+          title: '网络请求失败',
+          icon: 'error'
         })
 
       }
-      //密码或账号错误
-      else {
-        wx.showToast({
-          title: '账号或密码错误',
-          icon: "error"
-        });
-        this.setData({
-          userpws: ''
-          
-        });
-      }
 
-
-
-        
-      }
 
     })
-    
 
-    
+
+
 
   },
 

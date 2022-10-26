@@ -19,6 +19,7 @@ Page({
     now_course: {},
     courseover_onesencontent: "(//▽//)",
     coursetimei: 2,
+    requestflag:null,
     coursetime: [{
         timebegin: "08:00",
         timeend: "09:50"
@@ -54,7 +55,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onReady() {
-
+    
     
 
   },
@@ -65,6 +66,7 @@ Page({
 
     const app = getApp()
     var that = this;
+  
     //数据的基本读取，如果app中没有读取的话会激活这里。
     if (wx.getStorageSync('islogin') == true && app.globalData.class_info == null) {
       app.globalData.set_all_data = {
@@ -88,7 +90,7 @@ Page({
           // 将用户的cookie存入至本地
           if (res.data["code"] == 2002) {
             wx.setStorageSync('islogin', false);
-
+            
           } else {
             
             wx.setStorageSync('cookiesstr', res.data);
@@ -115,9 +117,7 @@ Page({
                   wx.setStorageSync('islogin', false);
                 }
                 app.globalData.class_info = res.data
-                
                 var table_schedule = app.globalData.class_info;
-                
                 that.setData({
                   table_schedule
                 })
@@ -164,8 +164,11 @@ Page({
                 app.globalData.week_time = res.data["zc"]
                 wx.setStorageSync('zc',app.globalData.week_time);
                 var week_ordinal = app.globalData.week_time;
+                var requestflag=app.globalData.requestflag;
+
                 that.setData({
-                  week_ordinal
+                  week_ordinal,
+                  requestflag
                 })
               }
          
@@ -173,6 +176,12 @@ Page({
             })
     
           }
+
+        },
+        fail: (res) =>{
+          that.setData({
+            requestflag:false
+            })
 
         }
 
@@ -184,9 +193,11 @@ Page({
     else{
       var table_schedule = app.globalData.class_info;
       var week_ordinal = app.globalData.week_time;
+      var requestflag=app.globalData.requestflag;
       that.setData({
         week_ordinal,
-        table_schedule
+        table_schedule,
+        requestflag
       })
     }
 
