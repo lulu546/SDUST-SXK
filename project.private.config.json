@@ -49,6 +49,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/ScheduleShare/new_schedule/new_shedule",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/FoodWhat/foodwhat",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

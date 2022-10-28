@@ -1,0 +1,38 @@
+<view class="upcontiner">
+
+</view>
+
+
+<view class="midcontiner"bindtouchstart="touchstart" bindtouchmove="touchEvent">
+<view wx:if="{{select==0}}">
+<view data-take="true"  catchtap="isTake" class="midbutton" style="{{(oneShowlight==0?lightbutton:'')+'top:60rpx;'}}">
+外卖</view>
+<view data-take="flase" catchtap="isTake" class="midbutton" style="{{(oneShowlight==1?lightbutton:'')+'top:135rpx;'}}">
+堂食</view>
+<view data-take="all" catchtap="isTake" class="midbutton" style="{{(oneShowlight==2?lightbutton:'')+'top:210rpx;'}}">
+随机</view>
+</view>
+<!-- 第二轮 外卖 -->
+<view wx:elif="{{(select==1)&&isTakeaway}}">
+<!-- 选择分数功能  -->
+
+</view>
+
+<!-- 第二轮 堂食 -->
+<view wx:elif="{{(select==1)&&!isTakeaway}}">
+<view data-site="A餐" catchtap="onsit"  class="midbutton" style="top: 30rpx;background: #FFA319;box-shadow: 0px 10px 20px rgba(255, 182, 73, 0.2);color: #FFFFFF;">
+A餐</view>
+<view data-site="B餐" catchtap="onsit" class="midbutton" style="top: 60rpx; ">
+B餐</view>
+<view data-site="C餐" catchtap="onsit" class="midbutton" style="top: 90rpx; ">
+C餐</view>
+<view data-site="北门" catchtap="onsit" class="midbutton" style="top: 120rpx; ">
+北门</view>
+<view data-site="南门" catchtap="onsit" class="midbutton" style="top: 150rpx; ">
+南门</view>
+
+</view>
+</view>
+<view class="beginbutton">
+今天吃什么
+</view>

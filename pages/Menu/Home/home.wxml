@@ -1,6 +1,8 @@
 <!-- <view class="curriculum" bindtap="turn_crouselist2" style="height:{{homeOutObj.height}};"> -->
 <!-- 课程名长度显示问题 -->
+<view class="homegraph">
 
+</view>
 
 <view class="curriculum" bindtap="turn_crouselist" style="height:{{homeOutObj.height}};">
   <view>

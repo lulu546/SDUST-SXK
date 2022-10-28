@@ -1,0 +1,74 @@
+/* pages/FoodWhat/foodwhat.wxss */
+.upcontiner{
+  position: absolute;
+  width: 670rpx;
+  height: 380rpx;
+  left: 40rpx;
+  top: 20rpx;
+  
+  background: #F9F9F9;
+  border-radius: 17px;
+}
+
+.midcontiner{
+position: absolute;
+width: 670rpx;
+height: 670rpx;
+left: 40rpx;
+top: 440rpx;
+background: #F9F9F9;
+border-radius: 17px;
+}
+.beginbutton{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  width: 670rpx;
+  height: 90rpx;
+  left: 40rpx;
+  top: 1200rpx;
+  background: #FFA319;
+  box-shadow: 0px 10px 20px rgba(255, 182, 73, 0.2);
+  border-radius: 100px;
+  font-family: 'Abhaya Libre SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+}
+.midbutton{
+  /* background: #FFA319;
+  box-shadow: 0px 10px 20px rgba(255, 182, 73, 0.2);
+  color: #FFFFFF; */
+  background: #FFFFFF;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  color: #000000;
+  position: relative;
+  width: 600rpx;
+  left: 35rpx;
+  height: 100rpx;
+  border-radius: 100px;
+  
+  
+  border-radius: 100px;
+   /* font */
+  font-family: 'Abhaya Libre SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  
+}

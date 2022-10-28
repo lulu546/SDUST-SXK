@@ -1,4 +1,14 @@
 /* pages/prime/Page.wxss */
+.homegraph{
+  position: absolute;
+  width: 670rpx;
+  height: 380rpx;
+  left: 40rpx;
+  top: 20rpx;
+  
+  background: #F9F9F9;
+  border-radius: 17px;
+}
 .button{
   left: 1px;
   top: 1px;
@@ -6,11 +16,11 @@
 }
 .curriculum {
 
-  position: absolute;
+  position: relative;
   width: 670rpx;
-  height: 130px;
+  height: 230rpx;
   left: 40rpx;
-  top: 261px;
+  top: 430rpx;
 
   background: #f7f7f7;
   border-radius: 17px;

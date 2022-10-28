@@ -24,7 +24,8 @@
     "pages/Login/login",
     "pages/Login/logintest",
     "pages/Menu/Studentinfo/studentinfo",
-    "pages/Menu/StudentinfoFunction/UserSet/UserSet"
+    "pages/Menu/StudentinfoFunction/UserSet/UserSet",
+    "pages/FoodWhat/foodwhat"
   ],
   "window": {
     "backgroundTextStyle": "light",

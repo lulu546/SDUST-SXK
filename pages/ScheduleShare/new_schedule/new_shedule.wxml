@@ -1,4 +1,4 @@
-<view>
+    <view>
         <layout title="添加课程" v-if="edit !== -2">
             <view class="a-flex">
                 <view class="a-input-con-line a-mb y-center a-mt a-flex-full">
@@ -18,8 +18,9 @@
                 <view class="a-input-con-line a-mb y-center a-flex-full">
                     <picker
                         class="x-full"
-                       
-                        :value="unit.day.index":range="unit.day.range"
+                        change="dayPickerChange"
+                        :value="unit.day.index"
+                        :range="unit.day.range"
                     >
                         <view class="a-flex-space-between y-center">
                             <view>日期:</view>
@@ -36,7 +37,7 @@
                     <picker
                         class="x-full"
                         mode="multiSelector"
-                     
+                        change="weekPickerChange"
                         :value="unit.week.index"
                         :range="unit.week.range"
                     >
@@ -55,7 +56,7 @@
                     <picker
                         class="x-full"
                         mode="multiSelector"
-                        
+                        change="classPickerChange"
                         :value="unit.time.index"
                         :range="unit.time.range"
                     >
