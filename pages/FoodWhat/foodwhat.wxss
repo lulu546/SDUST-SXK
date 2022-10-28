@@ -29,7 +29,7 @@ border-radius: 17px;
   width: 670rpx;
   height: 90rpx;
   left: 40rpx;
-  top: 1200rpx;
+  top: 1300rpx;
   background: #FFA319;
   box-shadow: 0px 10px 20px rgba(255, 182, 73, 0.2);
   border-radius: 100px;
@@ -72,3 +72,6 @@ border-radius: 17px;
   
   
 }
+
+
+

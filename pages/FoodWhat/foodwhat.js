@@ -5,15 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 滑动翻页
-    startX: 0, //开始x坐标
-    startY: 0, //开始y坐标
-    isTakeaway: true, //false是堂食，true是外卖记录数据的
-    isWhere: "不知道", //A餐，B餐，C餐，北门，南门
-    isScore: 5, //大于几分
-    select: 0,//选择标识
-    oneShowlight: -1,//第一轮单选标识
-    lightbutton: "background: #FFA319;box-shadow: 0px 10px 20px rgba(255, 182, 73, 0.2);color: #FFFFFF;"
+   isselect:false,
+    twoShowlight: -1, //第二轮单选标识,0-A餐，1-B餐，2-C餐，3-北门，4-南门
+    oneShowlight: -1, //第一轮单选标识，0-外卖，1-堂食，2-全部随机
+    select: 0, //选择标识，表示第几轮
+    lightbutton: "background: #FFA319;box-shadow: 0px 10px 20px rgba(255, 182, 73, 0.2);color: #FFFFFF;",
+    selectdata:{
+      
+      isblack:false,
+      isshow:"",//（ABC）食物名字，（北门南门外卖）商户名字
+      islongshow:"",//（ABC）窗口位置,（北门南门外卖）商户位置
+      //需要后端给个数据库去搞
+
+    }
   },
 
   /**
@@ -73,81 +77,110 @@ Page({
   },
   isTake(e) {
     var that = this;
-
-    console.log(that.data.Showlight)
-    if (e.currentTarget.dataset.take == "all") {
+    if (e.currentTarget.dataset.take == "2") {
       //随机抽取
       that.setData({
-        isTakeaway: true,
-        select:3,
+        select: 0,
         oneShowlight: that.data.oneShowlight == 2 ? -1 : 2
       })
-    }
-
-    that.setData({
-      select:1,
-    })
-
-    console.log(e.currentTarget.dataset.take == "true")
-    if (e.currentTarget.dataset.take == "true") {
-      console.log(that.data.isTakeaway == true ? null : true)
+    } else if (e.currentTarget.dataset.take == "0") {
       that.setData({
-        isTakeaway: that.data.isTakeaway == true ? null : true,
         oneShowlight: that.data.oneShowlight == 0 ? -1 : 0
 
       })
-    } else if (e.currentTarget.dataset.take == "flase") {
+    } else if (e.currentTarget.dataset.take == "1") {
       that.setData({
-        isTakeaway: that.data.isTakeaway == false ? null : false,
         oneShowlight: that.data.oneShowlight == 1 ? -1 : 1
       })
 
     }
+    if (that.data.oneShowlight != -1) {
+      setTimeout(function () {
+          if (that.data.oneShowlight == 0) {
+            that.setData({
+              select: 0
+            })
+          } else if (that.data.oneShowlight == 1) {
+            that.setData({
+              select: 1,
+            })
+
+          }
+        }
+
+        , 300)
+    }
+
+
+
 
   },
   onsit(e) {
 
     var that = this;
 
-    that.setData({
-      thrid: true,
-      second: false
-    })
+
     var sitename;
     switch (e.currentTarget.dataset.site) {
-      case "A餐":
-        sitename=0;
+      case "0":
+        sitename = 0;
 
         break;
-      case "B餐":
-        sitename=1;
+      case "1":
+        sitename = 1;
         break;
-      case "C餐":
-        sitename=2;
+      case "2":
+        sitename = 2;
         break;
-      case "北门":
-        sitename=3;
+      case "3":
+        sitename = 3;
         break;
-      case "南门":
-        sitename=4;
+      case "4":
+        sitename = 4;
         break;
     }
     that.setData({
-      isWhere: e.currentTarget.dataset.site,
-      twoShowlight: that.data.oneShowlight == 0 ? -1 : 0
+      twoShowlight: that.data.twoShowlight == sitename ? -1 : sitename
 
     })
+    if (that.data.twoShowlight != -1) {
+      setTimeout(function () {
+        that.setData({
+          select: 1,
+        })
+      }, 300)
+    }
 
 
+  },
+  page(e) {
+    var that = this;
+    if (e.currentTarget.dataset.data == "next") {
+      that.setData({
+        select: that.data.select + 1 <= 1 ? that.data.select + 1 : that.data.select,
+      })
+    } else if (e.currentTarget.dataset.data == "pre") {
+      that.setData({
+        select: that.data.select - 1 >= 0 ? that.data.select - 1 : that.data.select,
+      })
+    }
+
+
+  },
+  turnhelp(){
+    wx.navigateTo({
+      url: '../FoodWhat/foodwhathelp/foodwhathelp'   
+
+    })
+  },
+  subeat(e){
+
+
+    that.setData({
+      isselect:true,
+    })
 
   }
-
-
-
-
-
-
-
 
 
 })
