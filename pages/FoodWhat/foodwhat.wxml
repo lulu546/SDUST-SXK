@@ -14,13 +14,13 @@
       堂食</view>
     <view data-take="2" catchtap="isTake" class="midbutton" style="{{(oneShowlight==2?lightbutton:'')+'top:150rpx;'}}">
       全部随机</view>
-      <view  catchtap="turnhelp" class="midbutton" style="{{(oneShowlight==2?lightbutton:'')+'top:210rpx;'}}">
+      <view  catchtap="turnhelp" class="midbutton" style="top:210rpx;">
       帮助</view>
   </view>
   <!-- 第二轮 外卖 -->
   <view wx:elif="{{(select==1)&&((oneShowlight==0)||(oneShowlight==2)||(oneShowlight==-1))}}">
     <!-- 选择分数功能  -->
-   <view>前面的道路以后再来探索吧~</view>
+   <view class="text">前面的道路以后再来探索吧~</view>
    
   </view>
 
