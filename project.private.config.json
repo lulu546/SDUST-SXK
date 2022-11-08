@@ -1,65 +1,42 @@
 {
-  "projectname": "miniprogram-4",
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "setting": {
-    "compileHotReLoad": true,
     "urlCheck": false
   },
-  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "condition": {
     "miniprogram": {
       "list": [
         {
           "name": "",
-          "pathName": "/pages/Login/login",
+          "pathName": "pages/Login/logintest",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/ScheduleShare/Schedule/ScheduleShare",
+          "pathName": "pages/Menu/Home/home",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/reshareschedule/resharesch",
+          "pathName": "pages/Login/login",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/Menu/Studentinfo/studentinfo",
+          "pathName": "pages/text",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/Menu/Studentinfo/studentinfo",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/Menu/StudentinfoFunction/UserSet/UserSet",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/ScheduleShare/new_schedule/new_shedule",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/FoodWhat/foodwhat",
+          "pathName": "pages/function/function",
           "query": "",
           "launchMode": "default",
           "scene": null

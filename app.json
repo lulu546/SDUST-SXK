@@ -6,7 +6,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/text/text",
+        "pagePath": "pages/function/function",
         "text": "功能"
       },
       {
@@ -17,16 +17,17 @@
   },
   "pages": [
     "pages/Menu/Home/home",
-    "pages/text/text",
+    "pages/function/function",
     "pages/ScheduleShare/Schedule/ScheduleShare",
     "pages/ScheduleShare/new_schedule/new_shedule",
     "pages/ScheduleShare/bind_shareschedule/bind_shareschedule",
     "pages/Login/login",
-    "pages/Login/logintest",
     "pages/Menu/Studentinfo/studentinfo",
     "pages/Menu/StudentinfoFunction/UserSet/UserSet",
     "pages/FoodWhat/foodwhat",
-    "pages/FoodWhat/foodwhathelp/foodwhathelp"
+    "pages/FoodWhat/foodwhathelp/foodwhathelp",
+    "pages/function/notepad",
+    "pages/text"
   ],
   "window": {
     "backgroundTextStyle": "light",
