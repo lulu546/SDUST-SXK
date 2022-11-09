@@ -28,14 +28,14 @@ Page({
       [
           {
             src:'/image/jishiben.jpg',
-            name:'电影',
+            name:'备忘录',
             id:2,
             backgroundcolor: '#00C67E;',
             shadow:'0px 10px 20px rgba(36, 209, 147, 0.2);'
           },
           {
             src:'/image/jishiben.jpg',
-            name:'备忘录',
+            name:'部门业务',
             id:3,
             backgroundcolor: '#FF574D;',
             shadow:'0px 10px 20px rgba(255, 101, 91, 0.2);'
@@ -47,12 +47,22 @@ Page({
   },
   turnpage(e){
     var that=this;
-
+    
     if(e.currentTarget.dataset.tar=="0"){
-      wx.navigateTo({
-        url: "/pages/ScheduleShare/Schedule/ScheduleShare"
+      that.setData({
+        islogin:wx.getStorageSync('islogin')
       })
-
+      console.log(that.data.islogin)
+      if(that.data.islogin){
+        wx.navigateTo({
+          url: "/pages/ScheduleShare/Schedule/ScheduleShare"
+        })
+      }
+      else {
+        wx.navigateTo({
+          url: "/pages/Login/login"
+        })
+      }
     }
     else if(e.currentTarget.dataset.tar=="1"){
       wx.navigateTo({
@@ -61,49 +71,19 @@ Page({
     }
     else if(e.currentTarget.dataset.tar=="2"){
       wx.navigateTo({
-        url: ""
+        url: "/pages/function/notepad"
       })
     }
     else if(e.currentTarget.dataset.tar=="3"){
       wx.navigateTo({
-        url: "/pages/function/notepad"
-      })
-    }
-    else if(e.currentTarget.dataset.tar=="4"){
-      wx.navigateTo({
-        url: "/pages/function/notepad"
+        url: "/pages/Departmentwork/Departmentwork"
       })
     }
 
+
   },
-  getevent1(){
-    console.log("hello")
-  },
-  getevent2(){
-    console.log("hello")
-  },
-  getevent3(){
-    wx.navigateTo({
-      url: "/pages/Login/login"
-    })
-  },
-  getevent4(){
-    this.setData({
-      islogin:wx.getStorageSync('islogin')
-    })
-    if(this.data.islogin){
-      wx.navigateTo({
-        url: "/pages/ScheduleShare/Schedule/ScheduleShare"
-      })
-    }
-    else {
-      wx.showToast({
-        title: '请先登录',
-        icon:'error'
-      })
-      
-    }
-  },
+
+ 
 
 
   /**

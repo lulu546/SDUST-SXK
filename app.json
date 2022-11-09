@@ -27,7 +27,8 @@
     "pages/FoodWhat/foodwhat",
     "pages/FoodWhat/foodwhathelp/foodwhathelp",
     "pages/function/notepad",
-    "pages/text"
+    "pages/text",
+    "pages/Departmentwork/Departmentwork"
   ],
   "window": {
     "backgroundTextStyle": "light",
