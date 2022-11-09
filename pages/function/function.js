@@ -8,19 +8,17 @@ Page({
     islogin:false,
     functions:[
       [
-        
           {
             src:'/image/jishiben.jpg',
-            name:'记事本',
+            name:'课表',
             id:0,
             backgroundcolor: '#FFA31A;',
             shadow:'0px 10px 20px rgba(255, 163, 25, 0.2);'
           },
           {
             src:'/image/jishiben.jpg',
-            name:'记事本',
+            name:'食物库',
             id:1,
-        
             backgroundcolor: '#03A4FF;',
             shadow:'0px 10px 20px rgba(3, 164, 255, 0.2);'
           }
@@ -28,18 +26,17 @@ Page({
         ]
       ,
       [
-        
           {
             src:'/image/jishiben.jpg',
-            name:'课表',
-            id:4,
+            name:'电影',
+            id:2,
             backgroundcolor: '#00C67E;',
             shadow:'0px 10px 20px rgba(36, 209, 147, 0.2);'
           },
           {
             src:'/image/jishiben.jpg',
-            name:'查教室',
-            id:5,
+            name:'备忘录',
+            id:3,
             backgroundcolor: '#FF574D;',
             shadow:'0px 10px 20px rgba(255, 101, 91, 0.2);'
           }
@@ -48,10 +45,36 @@ Page({
       ]
     ]
   },
-  getevent0(){
-    wx.navigateTo({
-      url: '/pages/function/notepad',
-    })
+  turnpage(e){
+    var that=this;
+
+    if(e.currentTarget.dataset.tar=="0"){
+      wx.navigateTo({
+        url: "/pages/ScheduleShare/Schedule/ScheduleShare"
+      })
+
+    }
+    else if(e.currentTarget.dataset.tar=="1"){
+      wx.navigateTo({
+        url: "/pages/FoodWhat/foodwhat"
+      })
+    }
+    else if(e.currentTarget.dataset.tar=="2"){
+      wx.navigateTo({
+        url: ""
+      })
+    }
+    else if(e.currentTarget.dataset.tar=="3"){
+      wx.navigateTo({
+        url: "/pages/function/notepad"
+      })
+    }
+    else if(e.currentTarget.dataset.tar=="4"){
+      wx.navigateTo({
+        url: "/pages/function/notepad"
+      })
+    }
+
   },
   getevent1(){
     console.log("hello")
@@ -81,9 +104,7 @@ Page({
       
     }
   },
-  getevent5(){
-    console.log("hello")
-  },
+
 
   /**
    * 生命周期函数--监听页面加载
