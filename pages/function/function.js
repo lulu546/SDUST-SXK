@@ -7,106 +7,45 @@ Page({
   data: {
     islogin:false,
     functions:[
-      {
-        classifyname:'工具',
-        datalist:[
+      [
+        
           {
             src:'/image/jishiben.jpg',
             name:'记事本',
-            id:0
+            id:0,
+            backgroundcolor: '#FFA31A;',
+            shadow:'0px 10px 20px rgba(255, 163, 25, 0.2);'
           },
           {
             src:'/image/jishiben.jpg',
             name:'记事本',
-            id:1
-          },
-          {
-            src:'/image/jishiben.jpg',
-            name:'记事本',
-            id:2
-          },
-          {
-            src:'/image/jishiben.jpg',
-            name:'记事本',
-            id:3
+            id:1,
+        
+            backgroundcolor: '#03A4FF;',
+            shadow:'0px 10px 20px rgba(3, 164, 255, 0.2);'
           }
+        
         ]
-      },
-      {
-        classifyname:'学习',
-        datalist:[
+      ,
+      [
+        
           {
             src:'/image/jishiben.jpg',
             name:'课表',
-            id:4
+            id:4,
+            backgroundcolor: '#00C67E;',
+            shadow:'0px 10px 20px rgba(36, 209, 147, 0.2);'
           },
           {
             src:'/image/jishiben.jpg',
             name:'查教室',
-            id:5
-          },
-          {
-            src:'/image/jishiben.jpg',
-            name:'查成绩',
-            id:6
-          },
-          {
-            src:'/image/jishiben.jpg',
-            name:'共享课表',
-            id:7
+            id:5,
+            backgroundcolor: '#FF574D;',
+            shadow:'0px 10px 20px rgba(255, 101, 91, 0.2);'
           }
-        ]
-      },
-      {
-        classifyname:'娱乐',
-        datalist:[
-          {
-            src:'/image/jishiben.jpg',
-            name:'记事本',
-            id:8
-          },
-          {
-            src:'/image/jishiben.jpg',
-            name:'记事本',
-            id:9
-          },
-          {
-            src:'/image/jishiben.jpg',
-            name:'记事本',
-            id:10
-          },
-          {
-            src:'/image/jishiben.jpg',
-            name:'记事本',
-            id:11
-          }
-        ]
-      },
-      {
-        classifyname:'外卖',
-        datalist:[
-          {
-            src:'/image/jishiben.jpg',
-            name:'今日推荐',
-            id:12
-          },
-          {
-            src:'/image/jishiben.jpg',
-            name:'记事本',
-            id:13
-          },
-          {
-            src:'/image/jishiben.jpg',
-            name:'记事本',
-            id:14
-          },
-          {
-            src:'/image/jishiben.jpg',
-            name:'记事本',
-            id:15
-          }
-        ]
-      }
+
+        
+      ]
     ]
   },
   getevent0(){
@@ -145,41 +84,13 @@ Page({
   getevent5(){
     console.log("hello")
   },
-  getevent6(){
-    console.log("hello")
-  },
-  getevent7(){
-    console.log("hello")
-  },
-  getevent8(){
-    console.log("hello")
-  },
-  getevent9(){
-    console.log("hello")
-  },
-  getevent10(){
-    console.log("hello")
-  },
-  getevent11(){
-    console.log("hello")
-  },
-  getevent12(){
-    console.log("hello")
-  },
-  getevent13(){
-    console.log("hello")
-  },
-  getevent14(){
-    console.log("hello")
-  },
-  getevent15(){
-    console.log("hello")
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+      console.log(this.data.functions[0][0].backgroundcolor)
+      console.log(this.data.functions[0][1].backgroundcolor)
   },
 
   /**
