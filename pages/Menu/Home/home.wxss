@@ -28,8 +28,8 @@
 }
 
 .csswhatweek {
-  position: absolute;
-  width: 43px;
+  position: relative;
+  width: 200rpx;
   height: 18px;
   left: 14px;
   top: 20px;

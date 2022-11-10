@@ -1,5 +1,5 @@
 <!-- <view class="curriculum" bindtap="turn_crouselist2" style="height:{{homeOutObj.height}};"> -->
-<!-- 课程名长度显示问题 -->
+<!-- 课程名长度显示问题，第11周等长周数不适配问题，留出的字符空间至少+1 -->
 <view class="homegraph">
 
 </view>
