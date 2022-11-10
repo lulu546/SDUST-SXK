@@ -47,6 +47,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Departmentwork/FuntionWork/SixMovie/SixMovie",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

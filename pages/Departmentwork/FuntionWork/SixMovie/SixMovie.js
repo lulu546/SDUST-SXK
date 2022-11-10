@@ -1,4 +1,14 @@
 // pages/function/function.js
+  /**
+   电影投票的业务逻辑
+   点击进行弹窗界面，是否确认投票；
+   点击否，则取消；
+   点击是，执行投票任务
+      投票任务具象实现；
+      1.每次打开会从后端读取此用户是否投过票,然后放置到全局变量
+      2.投过票的会进行相应记录，存放到全局变量存储
+    
+   */
 Page({
 
   /**
@@ -10,11 +20,19 @@ Page({
       
           {
             src:'/image/jishiben.jpg',
-            name:'周六放映室',
+            name:'那些年，我们一起追过的女孩',
             id:0,
             backgroundcolor: '#5374A5;',
             shadow:'0px 10px 20px rgba(102, 125, 159, 0.2);'
-          }
+          },
+          {
+            src:'/image/jishiben.jpg',
+            name:'那些年，我们一起追过的女孩',
+            id:1,
+            backgroundcolor: '#5374A5;',
+            shadow:'0px 10px 20px rgba(102, 125, 159, 0.2);'
+          },
+          
       // ,
           // {
           //   src:'/image/jishiben.jpg',
@@ -37,23 +55,37 @@ Page({
   },
   turnpage(e){
     var that=this;
-    if(e.currentTarget.dataset.tar=="none"){
-      wx.showToast({
-        title: '前面的道路以后再来探索吧！',
-        icon:'none'
-      })
+ 
+     if(e.currentTarget.dataset.tar=="0"){
+      wx.showModal({  
+        title: 'QAQ',  
+        content: '确认投给本电影吗？',  
+        success: function(res) {  
+            if (res.confirm) {  
+            console.log('用户点击确定')  
 
-    }
-    else if(e.currentTarget.dataset.tar=="0"){
-      wx.navigateTo({
-        url: "/pages/Departmentwork/FuntionWork/SixMovie/SixMovie"
-      })
+            } else if (res.cancel) {  
+            
+            console.log('用户点击取消')  
+            }  
+        }  
+    })   
 
     }
     else if(e.currentTarget.dataset.tar=="1"){
-      wx.navigateTo({
-        url: ""
-      })
+      wx.showModal({  
+        title: 'QAQ',  
+        content: '确认投给本电影吗？',  
+        success: function(res) {  
+            if (res.confirm) {  
+            console.log('用户点击确定')  
+
+            } else if (res.cancel) {  
+            
+            console.log('用户点击取消')  
+            }  
+        }  
+    })  
     }
    
 

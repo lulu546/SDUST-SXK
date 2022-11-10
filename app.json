@@ -28,7 +28,8 @@
     "pages/FoodWhat/foodwhathelp/foodwhathelp",
     "pages/function/notepad",
     "pages/text",
-    "pages/Departmentwork/Departmentwork"
+    "pages/Departmentwork/Departmentwork",
+    "pages/Departmentwork/FuntionWork/SixMovie/SixMovie"
   ],
   "window": {
     "backgroundTextStyle": "light",

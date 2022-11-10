@@ -1,0 +1,25 @@
+<!--pages/function/function.wxml-->
+
+<view id="_all">
+  <view id="_head">
+    <view id="_headtest">周六放映室</view>
+    <view id="_headtestlast">投票选出本周的电影！</view>
+    
+  </view>
+  <view class="_content">
+    <view class="_contentflex" wx:for="{{functions}}" wx:key="index">
+      <!-- 具体各个功能 -->
+      <view style="width: 100%;">
+        <view class="style_one" data-tar="{{item.id}}" bindtap="turnpage"  style="{{'background:'+(item.backgroundcolor)+'box-shadow:'+(item.shadow)}}">
+         <view style="height:100%;position: relative;width: 100%;display: flex;flex-direction: row;">
+         <image style="position: relative;flex: 1; height:100%;"></image>
+         </view>
+         <view  class="_text">{{item.name}}</view>
+        </view>
+        
+      </view>
+    </view>
+ 
+  </view>
+  <div style="clear:both;height:0px;font-size: 1px;line-height: 0px;"></div>
+</view>
