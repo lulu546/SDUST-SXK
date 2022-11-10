@@ -9,5 +9,7 @@
   box-sizing: border-box;
 } 
 page {
-  background-color: #FFFEF9;
+  /* background-color: #F0F2F5; */
+  background-color: #FAFAFA;
+  
 }

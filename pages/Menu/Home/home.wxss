@@ -1,45 +1,36 @@
 /* pages/prime/Page.wxss */
 .homegraph{
   position: absolute;
-  width: 670rpx;
+  width: 90%;
   height: 380rpx;
-  left: 40rpx;
+  left: 5%;
   top: 20rpx;
   
-  background: #F9F9F9;
+  background: #ffffff;
   border-radius: 17px;
+  border: 1px solid #E6E8EE;
+box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
 }
 .button{
   left: 1px;
   top: 1px;
 
 }
-.curriculum {
 
-  position: relative;
-  width: 670rpx;
-  height: 230rpx;
-  left: 40rpx;
-  top: 430rpx;
-
-  background: #f7f7f7;
-  border-radius: 17px;
-
-}
 
 .csswhatweek {
   position: relative;
   width: 200rpx;
   height: 18px;
   left: 14px;
-  top: 20px;
+  top: 16%;
 
   font-family: 'ABeeZee';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  text-align: center;
+  text-align: left;
   letter-spacing: -0.24px;
 
   color: #000000;
@@ -51,7 +42,7 @@
   width: 28px;
   height: 14px;
   left: 14px;
-  top: 42px;
+  top: 33%;
 
 
   font-family: 'ABeeZee';
@@ -59,44 +50,28 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 15px;
-  text-align: center;
+  text-align: left;
   letter-spacing: -0.24px;
 
   color: #000000;
 
 }
 
-.cssdata {
-  position: absolute;
-  width: 56px;
-  height: 15px;
-  left: 14px;
-  top: 61px;
 
-  font-family: 'ABeeZee';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 15px;
-  text-align: center;
-  letter-spacing: -0.24px;
-
-  color: #000000;
-}
 
 .cssdata {
   position: absolute;
   width: 56px;
   height: 15px;
   left: 14px;
-  top: 61px;
+  top: 48%;
 
   font-family: 'ABeeZee';
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 15px;
-  text-align: center;
+  text-align: left;
   letter-spacing: -0.24px;
 
   color: #000000;
@@ -105,31 +80,41 @@
 .csstime {
 
   position: absolute;
-  width: 56px;
+  width: 100px;
   height: 30px;
   left: 14px;
-  top: 80px;
+  top: 63%;
 
   font-family: 'ABeeZee';
   font-style: normal;
   font-weight: 400;
   font-size: 27px;
   line-height: 28px;
-  text-align: center;
+  text-align: left;
   letter-spacing: -0.24px;
 
   color: #000000;
 
 }
-
+.curriculum {
+  position: relative;
+  width: 90%;
+  height: 230rpx;
+  left: 5%;
+  top: 430rpx;
+  background: #ffffff;
+  border-radius: 17px;
+  border: 1px solid #E6E8EE;
+box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
+}
 .lookcourselist {
-  position: absolute;
-  width: 446rpx;
-  height: 182.6rpx;
-  left: 192rpx;
-  top: 25rpx;
+  position: relative;
+  width: 65%;
+  height: 80%;
+ 
+  top: 10%;
 
-  background: #e4e4e48c;
+  background: #F5F5F5;
   border-radius: 12px;
 }
 

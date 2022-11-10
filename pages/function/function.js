@@ -42,13 +42,20 @@ Page({
           }
 
         
-      ]
+      ],
+    
     ]
   },
   turnpage(e){
     var that=this;
-    
-    if(e.currentTarget.dataset.tar=="0"){
+    if(e.currentTarget.dataset.tar=="none"){
+      wx.showToast({
+        title: '前面的道路以后再来探索吧！',
+        icon:'none'
+      })
+
+    }
+    else if(e.currentTarget.dataset.tar=="0"){
       that.setData({
         islogin:wx.getStorageSync('islogin')
       })

@@ -26,15 +26,15 @@
 
   <!-- 第二轮 堂食 -->
   <view wx:elif="{{(select==1)&&(oneShowlight==1)}}">
-    <view data-site="0" catchtap="onsit" class="midbutton"  style="{{(twoShowlight==0?lightbutton:'')+'top:30rpx;'}}">
+    <view data-site="0" catchtap="onsit" class="midbutton"  style="{{(twoShowlight==0?lightbutton:'')+'top:26rpx;'}}">
       A餐</view>
-    <view data-site="1" catchtap="onsit" class="midbutton" style="{{(twoShowlight==1?lightbutton:'')+'top:60rpx;'}}">
+    <view data-site="1" catchtap="onsit" class="midbutton" style="{{(twoShowlight==1?lightbutton:'')+'top:52rpx;'}}">
       B餐</view>
-    <view data-site="2" catchtap="onsit" class="midbutton" style="{{(twoShowlight==2?lightbutton:'')+'top:90rpx;'}}">
+    <view data-site="2" catchtap="onsit" class="midbutton" style="{{(twoShowlight==2?lightbutton:'')+'top:78rpx;'}}">
       C餐</view>
-    <view data-site="3" catchtap="onsit" class="midbutton" style="{{(twoShowlight==3?lightbutton:'')+'top:120rpx;'}}">
+    <view data-site="3" catchtap="onsit" class="midbutton" style="{{(twoShowlight==3?lightbutton:'')+'top:104rpx;'}}">
       北门</view>
-    <view data-site="4" catchtap="onsit" class="midbutton" style="{{(twoShowlight==4?lightbutton:'')+'top:150rpx;'}}">
+    <view data-site="4" catchtap="onsit" class="midbutton" style="{{(twoShowlight==4?lightbutton:'')+'top:130rpx;'}}">
       南门</view>
 
   </view>

@@ -1,5 +1,10 @@
 .userInfoCon {
-  padding: 10px
+  
+  width: 100%;
+ border: 1px solid #E6E8EE;
+box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
+  top: 0%;
+  
 }
 
 .unitInfo {
@@ -14,7 +19,13 @@
   justify-content: space-between;
   padding: 10px 15px
 }
-
+.container{
+  position: relative;
+  width: 90%;
+  left: 5%;
+  border-radius: 13px;
+  background: #ffffff;
+}
 .point {
   width: 8px;
   height: 8px;
