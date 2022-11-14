@@ -1,6 +1,7 @@
 <!--pages/home/home.wxml-->
 <view class="wrap">
-  <scroll-view class="style1" scroll-y>
+<view class="outnotepadall">
+  <scroll-view class="notepadall" scroll-y>
     <view class="style2" wx:for="{{classlist}}" wx:key="index" bindtouchstart="getstarttime" bindtouchend="getendtime" data-event="{{item._event}}" >
       <!-- 竖线 -->
       <view class="style3" style="background-color: {{item.color}};"></view>
@@ -13,11 +14,12 @@
       <!-- 右侧空格
       <view></view> -->
     </view>
-    <view id="_add" catchtap="addlist">
+ 
+  </scroll-view>
+  <view id="_add" catchtap="addlist">
       <view id="_event">新增事件</view>
     </view>
-  </scroll-view>
-
+</view>
 
 <!-- 添加事件时设置弹出 -->
 <!-- <view style="position: absolute;">flag:{{flag}}</view> -->
