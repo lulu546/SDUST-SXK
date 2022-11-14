@@ -18,7 +18,11 @@
           "pathName": "pages/Menu/Home/home",
           "query": "",
           "launchMode": "default",
-          "scene": null
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         },
         {
           "name": "",

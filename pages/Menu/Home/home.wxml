@@ -46,6 +46,24 @@
   </view>
 </view>
 
+
+
+<view class="outnotepadall">
+  <scroll-view class="notepadall" scroll-y>
+    <view class="everyevent" wx:for="{{classlist}}" wx:key="index"  data-event="{{item._event}}" >
+      <!-- 竖线 -->
+      <view class="line" style="background-color: {{item.color}};"></view>
+        <!-- 事件名 -->
+        <view class="eventname">{{item._event}}</view>
+        <!-- 时间距离 -->
+        <view class="deadline">还剩{{item._data}}天</view>
+        <!-- 底部横线 -->
+        <view class="bottomline"></view>
+
+    </view>
+  </scroll-view>
+</view>
+
 <!-- <page-container
 	show="{{show}}"
 	overlay="{{overlay}}"

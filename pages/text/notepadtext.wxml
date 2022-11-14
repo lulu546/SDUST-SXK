@@ -1,0 +1,60 @@
+<!--pages/home/home.wxml-->
+<view class="wrap">
+<view class="outnotepadall">
+  <scroll-view class="notepadall" scroll-y>
+    <view class="style2" wx:for="{{classlist}}" wx:key="index" bindtouchstart="getstarttime" bindtouchend="getendtime" data-event="{{item._event}}" >
+      <!-- 竖线 -->
+      <view class="style3" style="background-color: {{item.color}};"></view>
+        <!-- 事件名 -->
+        <view class="style4">{{item._event}}</view>
+        <!-- 时间距离 -->
+        <view class="style5">还剩{{item._data}}天</view>
+        <!-- 底部横线 -->
+        <view class="style6"></view>
+      <!-- 右侧空格
+      <view></view> -->
+    </view>
+ 
+  </scroll-view>
+  <view id="_add" catchtap="addlist">
+      <view id="_event">新增事件</view>
+    </view>
+</view>
+
+
+<!-- 添加事件时设置弹出 -->
+<!-- <view style="position: absolute;">flag:{{flag}}</view> -->
+  <view class="shade" wx:if="{{isshow>0}}" hidden="{{flag}}" style="display: {{flag?none:flex}};flex-direction: row;">  
+        <view class="_form">
+          <scroll-view  class="_scroll">
+            <input type="text" placeholder="请输入事件名" class="_input1" bindinput="getevent" value="{{event}}"/>
+            <input type="text" placeholder="请输入时间" class="_input1"  bindinput="gettime"  value="{{time}}"/>
+            <!-- <input type="text" placeholder="请输入备注（可选）" id="_text" value="{{other}}" bindinput="getother"/> -->
+            <textarea type="text" placeholder="请输入备注（可选）" id="_text" value="{{other}}" bindinput="getother"></textarea>
+          </scroll-view>
+          <view class="_submit">
+            <view style="height: 60rpx;display: flex;flex-direction:row;margin-bottom: 10rpx;">
+              <button catchtap="makesure">确定</button>
+              <button catchtap="notsure">取消</button>
+            </view>
+          </view>
+        </view>
+  </view> 
+  <view class="shade" hidden="{{!isdelete}}" style="display: {{flag?none:flex}};flex-direction: row;">  
+    <!-- <view class="_delete">
+      <view id="_delete_font">确定删除<text style="font-size: 40rpx;">{{event}}</text>吗？</view>
+      <view id="_delete_button_view">
+        <button class="_delete_button" bindtap="confirm_delete">确认</button>
+        <button class="_delete_button" bindtap="nodelete">取消</button>
+      </view>
+    </view> -->
+    <view class="_select">
+    <view style="width: 100%;height: 100rpx;text-align: center;font-size: larger;">{{event}}</view>
+      <button class="_select_button" style="margin-top: 0rpx;" bindtap="changeitem">修改</button>
+      <button class="_select_button" style="margin-top: 0rpx;" bindtap="deleteitem">删除</button>
+      <button class="_select_button" style="margin-top: 10rpx;" bindtap="refusedelete">取消</button>
+    </view>
+  </view>
+</view>
+
+<!-- <view style="position: absolute;">flag:{{flag}}</view> -->

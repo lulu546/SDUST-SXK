@@ -29,7 +29,8 @@
     "pages/function/notepad",
     "pages/text",
     "pages/Departmentwork/Departmentwork",
-    "pages/Departmentwork/FuntionWork/SixMovie/SixMovie"
+    "pages/Departmentwork/FuntionWork/SixMovie/SixMovie",
+    "pages/text/notepadtext"
   ],
   "window": {
     "backgroundTextStyle": "light",

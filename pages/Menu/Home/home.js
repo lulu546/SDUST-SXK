@@ -66,7 +66,11 @@ Page({
 
     const app = getApp()
     var that = this;
-
+    //计划表的读取
+    that.setData({
+      classlist:[...this.data.classlist,...wx.getStorageSync('classlist')],
+      num:wx.getStorageSync('num')
+    })
     //数据的基本读取，如果app中没有读取的话会激活这里。
     if (wx.getStorageSync('islogin') == true && app.globalData.class_info == null) {
       app.globalData.set_all_data = {
