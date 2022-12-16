@@ -44,10 +44,6 @@ Page({
 
     ],
     set_schedule: {}
-
-
-
-
   },
 
 
@@ -68,10 +64,10 @@ Page({
     var that = this;
     //计划表的读取
  
-    //数据的基本读取，如果app中没有读取的话会激活这里。
+    //数据的基本读取，如果app中没有读取的话会激活这里。已经登录但是请求失败的情况
     if (wx.getStorageSync('islogin') == true && app.globalData.class_info == null) {
+
       app.globalData.set_all_data = {
-        isbindshareflag: true, //是否绑定分享
         isshareshow: wx.getStorageSync('isshareshow'), //是否显示分享
         islogin: wx.getStorageSync('islogin') //是否绑定课表
       }
@@ -92,10 +88,8 @@ Page({
           if (res.data["code"] == 2002) {
             wx.setStorageSync('islogin', false);
             
-          } else {
-            
+          } else {  
             wx.setStorageSync('cookiesstr', res.data);
-
           }
           if (wx.getStorageSync('islogin') == true) {
             //请求课程
@@ -180,16 +174,26 @@ Page({
 
         },
         fail: (res) =>{
-          that.setData({
-            requestflag:false
-            })
+          console.log("111YES")
+          console.log(app.globalData.xiaoguotest)
+
+          console.log("111YES")
+          if(app.globalData.xiaoguotest != true){
+            that.setData({
+              requestflag:false
+              })
+          }
+          else {
+
+            console.log("YES")
+            that.setData({
+              requestflag:true
+              })
+          }
+        
 
         }
-
       })
-    
-    
-
     }
     else{
       var table_schedule = app.globalData.class_info;

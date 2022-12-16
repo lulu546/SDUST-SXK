@@ -1,5 +1,5 @@
 <!--pages/login/login.wxml-->
-<view style="background-color: rgb(251, 253, 245);width: 100%;height: 750px;">
+<view style="background-color: rgb(255, 255, 255);width: 100%;height: 750px;">
   <form style="margin-top: 11px;">
     <text style="position: relative; left: 205rpx; top: 234rpx; text-align: -webkit-center; font-size: -webkit-xxx-large">山小科</text>
     <view id="_type3">
@@ -11,6 +11,8 @@
         </view>
       </view>
       <view id="_button"><button bindtap="loginTo">登录</button></view>
+      <view id="_button"><button ></button></view>
+      <view id="_button"><button bindtap="XiaoGuologinTo">小郭专属登录按钮</button></view>
     </view>
     <view>{{isSuccess}}</view>
   </form>

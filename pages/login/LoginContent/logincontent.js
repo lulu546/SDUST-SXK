@@ -33,12 +33,27 @@
     islogin: true, //是否登录
 
   },
+  XiaoGuologinTo(){
+    var that =this;
+    const app = getApp()
+    app.globalData.xiaoguotest = true//小郭测试
+    
+    console.log(app.globalData.xiaoguotest)
+    that.setData({
+      islogin: true
+    })
+    console.log(wx.getStorageSync('islogin'))
+    wx.reLaunch({//重定向
+      url: '../../Home/HomeContent/homecontent',
+    })
+    wx.setStorageSync('islogin', true);
+
+
+  },
+
   //将账号和密码进行传参到后端，返回值为ispermit,判断是否允许
   getdatalist() {
     var that = this;
-
-
-
   },
 
   //进行登录的设置
@@ -72,7 +87,6 @@
       })
       return;
     }
-
     //后端鉴权
     //后端鉴权有个核心问题，你没办法保证你的你在规定时间里获得request里的信息。
     //request的函数是回调函数
@@ -94,7 +108,6 @@
         }
         // 将用户的cookie存入至本地
         else {
-
           wx.setStorageSync('cookiesstr', res.data);
           wx.setStorageSync('islogin', true);
         }
@@ -113,9 +126,8 @@
           wx.setStorageSync('userpws', that.data.userpws);
           console.log(wx.getStorageSync('islogin'))
           wx.reLaunch({//重定向
-            url: '../Menu/Home/home',
+            url: '../../Home/HomeContent/homecontent',
           })
-
         }
         //密码或账号错误
         else {
@@ -123,27 +135,15 @@
             title: '账号或密码错误',
             icon: "error"
           });
-
         }
-
-
-
-
       },
       fail: (res) => {
         wx.showToast({
           title: '网络请求失败',
           icon: 'error'
         })
-
       }
-
-
     })
-
-
-
-
   },
 
   // 改变密码状态

@@ -156,9 +156,11 @@ App({
     set_all_data: {
       isbindshareflag: true, //是否绑定分享
       isshareshow: wx.getStorageSync('isshareshow'), //是否显示分享
-      islogin: wx.getStorageSync('islogin') //是否绑定课表
+      islogin: wx.getStorageSync('islogin'), //是否绑定课表
+      
     }, 
-    requestflag: true //判断请求状态
+    requestflag: true,//判断请求状态
+    xiaoguotest:false//小郭测试
   }
 
 })

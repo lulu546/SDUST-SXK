@@ -8,13 +8,6 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/Login/logintest",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
           "pathName": "pages/Menu/Home/home",
           "query": "",
           "launchMode": "default",
@@ -83,6 +76,13 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "",
+          "pathName": "pages/Home/HomeContent/homecontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
