@@ -1,0 +1,70 @@
+<view style="position: relative;">
+
+    
+<view style="width: 100%;position: relative;top: 50rpx;">
+<!-- <view class="container"> -->
+ 
+<view class="userInfoCon" style="width: 100%;top: 0%;border-radius: 13px; background: #ffffff; width: 90%; left: 5%; position: relative;">
+  <view class="x-CenterCon">
+  <image style="width: 230px; height: 80px;left: 20%; margin: 20px 0 30px 0; position: relative;  " src="https://windrunner_max.gitee.io/imgpath/SHST/Static/SDUST.jpg"></image>
+</view>
+  <view class="unitInfo" style="border-top:0px;">
+    <view class="titleCon">
+      <view>学号</view>
+    </view>
+    <view>{{student_info.xh}}</view>
+  </view>
+  <view class="unitInfo">
+    <view class="titleCon">
+      <view>姓名</view>
+    </view>
+    <view>{{student_info.xm}}</view>
+  </view>
+  <view class="unitInfo">
+    <view class="titleCon">
+      <view>学院</view>
+    </view>
+    <view>{{student_info.yxmc}}</view>
+  </view>
+  <view class="{{['a-hide',(today>'2020-03-26')?'a-show':'']}}">
+    <view class="unitInfo" data-copy="722942376" data-event-opts="{{[['tap',[['copy',['$event']]]]]}}" bindtap="__e">
+      <view class="titleCon">QQ群</view>
+      <view>691478474</view>
+    </view>
+  </view>
+  <view class="unitInfo" bindtap="turn">
+    <view style="display:flex;">
+      <view class="titleCon">
+        <view>公告</view>
+      </view>
+      <view class="point" style="{{'background:'+('green')+';'+('display:'+(point)+';')}}"></view>
+    </view>
+    <view>></view>
+  </view>
+  <view class="unitInfo"  bindtap="turn">
+    <view style="display:flex;">
+      <view class="titleCon">
+        <view>赞赏</view>
+      </view>
+    </view>
+    <view>></view>
+  </view>
+  <view class="unitInfo"  bindtap="turn">
+    <view class="titleCon">
+      <view>关于</view>
+    </view>
+    <view>></view>
+  </view>
+  <view class="unitInfo" data-turn="set"  bindtap="turn">
+    <view class="titleCon">
+      <view>设置</view>
+    </view>
+    <view>></view>
+  </view>
+  <view  class="unitInfo"style="border-bottom:0px;"  bindtap="logout">
+  注销</view>
+</view>
+</view>
+
+
+</view>

@@ -2,7 +2,21 @@
 
 App({
   onLaunch() {
-
+    var that = this;
+    //自定义导航栏
+    //自定义导航栏 获取设备顶部窗口的高度（不同设备窗口高度不一样，根据这个来设置自定义导航栏的高度）
+    wx.getSystemInfo({
+      success: (res) => {
+        // 基础库 2.1.0 开始支持wx.getMenuButtonBoundingClientRect()，低版本需要适配
+        let custom = wx.getMenuButtonBoundingClientRect()
+        // console.log('状态栏高度',res.statusBarHeight)
+        // console.log('右上角胶囊按钮的高度', custom.height)
+        // console.log('右上角胶囊按钮的上边界坐标', custom.top)
+        // console.log('右上角胶囊按钮的下边界坐标', custom.bottom)
+        that.globalData.statusBarHeight = res.statusBarHeight
+        that.globalData.navBarHeight = custom.height + (custom.top - res.statusBarHeight) * 2
+      }
+    })
 
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
@@ -16,7 +30,7 @@ App({
       }
     })
 
-    var that = this;
+    
     //上来请求数据
     if (wx.getStorageSync('islogin') == true) {
       //get_login_info
@@ -132,6 +146,8 @@ App({
    if(isset('isshareshow')){wx.setStorageSync('isshareshow',true);}
   },
   globalData: {
+    statusBarHeight: 0,//导航栏
+    navBarHeight: 0,//导航栏
     userInfo: null,
     class_info: null, //课程信息
     student_info: null, //学生信息

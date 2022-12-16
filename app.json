@@ -2,35 +2,39 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/Menu/Home/home",
+        "pagePath": "pages/Home/HomeContent/homecontent",
         "text": "首页"
       },
       {
-        "pagePath": "pages/function/function",
+        "pagePath": "pages/Function/FunctionContent/functioncontent",
         "text": "功能"
       },
       {
-        "pagePath": "pages/Menu/Studentinfo/studentinfo",
+        "pagePath": "pages/User/UserContent/usercontent",
         "text": "用户"
       }
     ]
   },
   "pages": [
-    "pages/Menu/Home/home",
-    "pages/function/function",
-    "pages/ScheduleShare/Schedule/ScheduleShare",
-    "pages/ScheduleShare/new_schedule/new_shedule",
-    "pages/ScheduleShare/bind_shareschedule/bind_shareschedule",
-    "pages/Login/login",
-    "pages/Menu/Studentinfo/studentinfo",
-    "pages/Menu/StudentinfoFunction/UserSet/UserSet",
-    "pages/FoodWhat/foodwhat",
-    "pages/FoodWhat/foodwhathelp/foodwhathelp",
-    "pages/function/notepad",
-    "pages/text",
-    "pages/Departmentwork/Departmentwork",
-    "pages/Departmentwork/FuntionWork/SixMovie/SixMovie",
-    "pages/text/notepadtext"
+    "pages/Login/LoginContent/logincontent",
+    "pages/Home/HomeContent/homecontent",
+    "pages/Function/Schedule/BindSchedule/bindschedule",
+    "pages/Function/Schedule/AddSchedule/addshedule",
+    "pages/Function/Schedule/ScheduleContent/schedulecontent",
+    "pages/Function/FoodWhat/FoodWhatInfo/foodwhatinfo",
+    "pages/Function/FoodWhat/FoodWhatContent/foodwhatcontent",
+    "pages/Function/BookCheck/BookCheckContent/bookcheckcontent",
+    "pages/Function/BorrowCheck/BorrowCheckContent/borrowcheckcontent",
+    "pages/Function/DepartmentWork/DepartmentWorkContent/departmentworkcontent",
+    "pages/Function/DepartmentWork/SaturdayMovie/SaturdayMovieContent/saturdaymoviecontent",
+    "pages/Function/DepartmentWork/ScienceBase/ScienceBaseContent/sciencebasecontent",
+    "pages/Function/DepartmentWork/TimeMail/TimeMailContent/timemailcontent",
+    "pages/Function/NotePad/NotePadContent/notepadcontent",
+    "pages/Function/GradeFind/GradeFindContent/gradefindcontent",
+    "pages/Function/PCourseComment/PCourseCommentContent/pcoursecommentcontent",
+    "pages/Function/FunctionContent/functioncontent",
+    "pages/User/UserContent/usercontent",
+    "pages/User/UserSetContent/usersetcontent"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,5 +42,6 @@
     "navigationBarTitleText": "山小科",
     "navigationBarTextStyle": "black"
   },
+  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
