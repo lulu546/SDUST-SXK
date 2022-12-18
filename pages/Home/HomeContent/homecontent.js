@@ -15,7 +15,7 @@ Page({
     },
     weekwhat: "几",
     week_ordinal: 0,
-    courseflag: true,
+    courseflag: true,//这个只区分上完课了没有，如果时间上上玩了课，这个就是flase，没有课是默认上万
     now_course: {},
     courseover_onesencontent: "(//▽//)",
     coursetimei: 2,
@@ -63,10 +63,22 @@ Page({
     const app = getApp()
     var that = this;
     //计划表的读取
- 
-    //数据的基本读取，如果app中没有读取的话会激活这里。已经登录但是请求失败的情况
+    //如果全局变量其
+    if(app.globalData.xiaoguotest == true){
+      var week_ordinal = app.globalData.week_time;
+      var requestflag=app.globalData.requestflag;
+      var table_schedule = app.globalData.class_info;
+      that.setData({
+        week_ordinal,
+        requestflag,
+        table_schedule,
+        requestflag:true
+      })
+    
+    }
+    else{
+          //数据的基本读取，如果app中没有读取的话会激活这里。已经登录但是请求失败的情况
     if (wx.getStorageSync('islogin') == true && app.globalData.class_info == null) {
-
       app.globalData.set_all_data = {
         isshareshow: wx.getStorageSync('isshareshow'), //是否显示分享
         islogin: wx.getStorageSync('islogin') //是否绑定课表
@@ -165,6 +177,7 @@ Page({
                   week_ordinal,
                   requestflag
                 })
+                
               }
          
     
@@ -174,22 +187,10 @@ Page({
 
         },
         fail: (res) =>{
-          console.log("111YES")
-          console.log(app.globalData.xiaoguotest)
-
-          console.log("111YES")
-          if(app.globalData.xiaoguotest != true){
             that.setData({
               requestflag:false
               })
-          }
-          else {
 
-            console.log("YES")
-            that.setData({
-              requestflag:true
-              })
-          }
         
 
         }
@@ -205,6 +206,8 @@ Page({
         requestflag
       })
     }
+    }
+
 
     //渲染周几
     var weekArray = new Array("日", "一", "二", "三", "四", "五", "六")
@@ -267,8 +270,6 @@ Page({
           });
           break;
         }
-   
-        
         if (that.data.table_schedule[weeknumber][coursetime_i][0].length > 0) {
           course = that.data.table_schedule[weeknumber][coursetime_i]
           break;

@@ -16,8 +16,8 @@
     ]
   },
   "pages": [
-    "pages/Login/LoginContent/logincontent",
     "pages/Home/HomeContent/homecontent",
+    "pages/Login/LoginContent/logincontent",
     "pages/Function/Schedule/BindSchedule/bindschedule",
     "pages/Function/Schedule/AddSchedule/addshedule",
     "pages/Function/Schedule/ScheduleContent/schedulecontent",
