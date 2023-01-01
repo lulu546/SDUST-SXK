@@ -35,7 +35,7 @@ App({
     if (wx.getStorageSync('islogin') == true) {
       //get_login_info
       wx.request({
-        url: 'http://127.0.0.1:5000/get_login_info',
+        url: 'http://192.168.21.128:8000/qz/get_login_info/',
         method: 'POST',
         data: {
           account: wx.getStorageSync('useraccount'),
@@ -56,7 +56,7 @@ App({
           }
           //请求课表数据
           wx.request({
-            url: 'http://127.0.0.1:5000/get_class_info',
+            url: 'http://192.168.21.128:8000/qz/get_class_info/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),
@@ -78,7 +78,7 @@ App({
           })
           //请求学生信息
           wx.request({
-            url: 'http://127.0.0.1:5000/get_student_info',
+            url: 'http://192.168.21.128:8000/qz/get_student_info/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),
@@ -98,7 +98,7 @@ App({
           })
           //请求时间信息
           wx.request({
-            url: 'http://127.0.0.1:5000/get_current_time',
+            url: 'http://192.168.21.128:8000/qz/get_current_time/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),

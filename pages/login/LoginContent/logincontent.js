@@ -371,7 +371,7 @@
     //后端鉴权有个核心问题，你没办法保证你的你在规定时间里获得request里的信息。
     //request的函数是回调函数
     wx.request({
-      url: 'http://127.0.0.1:5000/get_login_info',
+      url: 'http://192.168.21.128:8000/qz/get_login_info/',
       method: 'POST',
       data: {
         account: that.data.useraccount,
@@ -385,6 +385,13 @@
         if (res.data["code"] == 2002) {
           wx.setStorageSync('islogin', false);
           console.log("请求失败了~")
+        }
+        else if (!res.data["JSESSIONID"]) {
+          wx.setStorageSync('islogin', false);
+          wx.showToast({
+            title: '账号或密码错误',
+            icon: "error"
+          });
         }
         // 将用户的cookie存入至本地
         else {
@@ -409,13 +416,7 @@
             url: '../../Home/HomeContent/homecontent',
           })
         }
-        //密码或账号错误
-        else {
-          wx.showToast({
-            title: '账号或密码错误',
-            icon: "error"
-          });
-        }
+        
       },
       fail: (res) => {
         wx.showToast({

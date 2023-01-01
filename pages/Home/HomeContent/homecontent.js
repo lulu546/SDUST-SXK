@@ -65,8 +65,8 @@ Page({
     //计划表的读取
     //如果全局变量其
     if(app.globalData.xiaoguotest == true){
-      var week_ordinal = app.globalData.week_time;
-      var requestflag=app.globalData.requestflag;
+      var week_ordinal   = app.globalData.week_time;
+      var requestflag    = app.globalData.requestflag;
       var table_schedule = app.globalData.class_info;
       that.setData({
         week_ordinal,
@@ -77,14 +77,14 @@ Page({
     
     }
     else{
-          //数据的基本读取，如果app中没有读取的话会激活这里。已经登录但是请求失败的情况
+    //数据的基本读取，如果app中没有读取的话会激活这里。已经登录但是请求失败的情况
     if (wx.getStorageSync('islogin') == true && app.globalData.class_info == null) {
       app.globalData.set_all_data = {
         isshareshow: wx.getStorageSync('isshareshow'), //是否显示分享
         islogin: wx.getStorageSync('islogin') //是否绑定课表
       }
       wx.request({
-        url: 'http://127.0.0.1:5000/get_login_info',
+        url: 'http://192.168.21.128:8000/qz/get_login_info/',
         method: 'POST',
         data: {
           account: wx.getStorageSync('useraccount'),
@@ -106,7 +106,7 @@ Page({
           if (wx.getStorageSync('islogin') == true) {
             //请求课程
             wx.request({
-              url: 'http://127.0.0.1:5000/get_class_info',
+              url: 'http://192.168.21.128:8000/qz/get_class_info/',
               method: 'POST',
               data: {
                 account: wx.getStorageSync('useraccount'),
@@ -133,7 +133,7 @@ Page({
             })
             //请求学生信息
             wx.request({
-              url: 'http://127.0.0.1:5000/get_student_info',
+              url: 'http://192.168.21.128:8000/qz/get_student_info/',
               method: 'POST',
               data: {
                 account: wx.getStorageSync('useraccount'),
@@ -156,7 +156,7 @@ Page({
             })
             //请求时间信息
             wx.request({
-              url: 'http://127.0.0.1:5000/get_current_time',
+              url: 'http://192.168.21.128:8000/qz/get_current_time/',
               method: 'POST',
               data: {
                 account: wx.getStorageSync('useraccount'),
@@ -190,9 +190,6 @@ Page({
             that.setData({
               requestflag:false
               })
-
-        
-
         }
       })
     }
@@ -215,7 +212,6 @@ Page({
     var week = weekArray[weeknumber] //判断今天周几
     var set_schedule = app.globalData.set_all_data;
     
-
     
     if (weeknumber == 0) {
       weeknumber = 7

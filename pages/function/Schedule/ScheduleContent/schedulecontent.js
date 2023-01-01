@@ -427,7 +427,7 @@
 
       if(e.target.dataset.change=="pre"){
        
-      week_ordinal=week_ordinal-1;
+      if(week_ordinal>0)week_ordinal=week_ordinal-1;
        var new_table1,new_table2
        var count_weekdaywhat=utils.count_weekday(week_ordinal-app.globalData.week_time);
        
@@ -457,7 +457,7 @@
       }
       else{
         wx.request({
-          url: 'http://127.0.0.1:5000/get_class_info',
+          url: 'http://192.168.21.128:8000/qz/get_class_info/',
           method:'POST',
           data:{
             account:wx.getStorageSync('useraccount'),
@@ -509,7 +509,7 @@
         }
         else{
           wx.request({
-            url: 'http://127.0.0.1:5000/get_class_info',
+            url: 'http://192.168.21.128:8000/qz/get_class_info/',
             method:'POST',
             data:{
               account:wx.getStorageSync('useraccount'),
@@ -521,11 +521,22 @@
               'content-type':'application/json'      
             },
             success: (res) => {
-              console.log(week_ordinal)
+              if(typeof res.data == 'object'){
+                this.setData({
+                  table1:res.data,
+                  
+                })
+              }
+              else{
+                this.setData({
+                  table1:[]
+                })
+              }
               this.setData({
-                table1:res.data,
+               
                 week_ordinal
               })
+              
               console.log(res.data)
               
             console.log(this.data.table1)
@@ -554,7 +565,7 @@
   rechange(){
 
     wx.request({
-      url: 'http://127.0.0.1:5000/get_class_info',
+      url: 'http://192.168.21.128:8000/qz/get_class_info/',
       method:'POST',
       data:{
         account:wx.getStorageSync('useraccount'),
