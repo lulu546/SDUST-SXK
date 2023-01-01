@@ -8,7 +8,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/Menu/Home/home",
+          "pathName": "pages/Function/FunctionContent/functioncontent",
           "query": "",
           "launchMode": "default",
           "scene": null,

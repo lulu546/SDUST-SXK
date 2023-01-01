@@ -537,9 +537,6 @@
                 week_ordinal
               })
               
-              console.log(res.data)
-              
-            console.log(this.data.table1)
             },
             fail: (res) => {
               //清楚登录状态
