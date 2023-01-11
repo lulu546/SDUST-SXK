@@ -40,9 +40,23 @@ Page({
             backgroundcolor: '#FF574D;',
             shadow:'0px 10px 20px rgba(255, 101, 91, 0.2);'
           }
-
-        
       ],
+      [
+        {
+          src:'/image/jishiben.jpg',
+          name:'备忘录',
+          id:2,
+          backgroundcolor: '#00C67E;',
+          shadow:'0px 10px 20px rgba(36, 209, 147, 0.2);'
+        },
+        {
+          src:'/image/jishiben.jpg',
+          name:'部门业务',
+          id:3,
+          backgroundcolor: '#FF574D;',
+          shadow:'0px 10px 20px rgba(255, 101, 91, 0.2);'
+        }
+    ],
     
     ]
   },

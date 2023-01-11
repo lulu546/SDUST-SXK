@@ -160,11 +160,8 @@ Page({
               course = that.data.table_schedule[weeknumber][coursetime_i]
               break;
             } else if (coursetime_i <= 5) coursetime_i++
-            
           }
         }
-
-        
    }
 
       that.setData({
