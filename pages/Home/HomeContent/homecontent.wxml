@@ -12,7 +12,8 @@
   <text class="cssdata">{{nowtimes.month}}月{{nowtimes.day}}日</text>
   <text class="csstime">{{nowtimes.hour}}:{{nowtimes.minutes}}</text>
 </view>
-  <view wx:if="{{requestflag&&courseflag&&set_schedule.islogin}}" class="lookcourselist">
+  <!-- 课程正常 -->
+  <view wx:if="{{requestflag==3&&courseflag&&set_schedule.islogin}}" class="lookcourselist">
     <view class="line"></view>
     <view class="crousetime_begin">{{coursetime[coursetimei].timebegin}}</view>
     <view class="crousetime_end">{{coursetime[coursetimei].timeend}}</view>
@@ -20,6 +21,7 @@
     <view class="crouse_place">{{now_course[1]}}</view>
     <view class="crouse_teacher">{{now_course[2]}}</view>
   </view>
+  <!-- 课程结束 -->
   <view wx:if="{{!courseflag&&set_schedule.islogin}}" class="lookcourselist">
     <view class="line" style="position: absolute; left: 30rpx; top: 36rpx; width: 10rpx; height: 90rpx; display: block; box-sizing: border-box"></view>
     <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">今日的课程结束啦！</view>
@@ -27,6 +29,7 @@
       (//▽//)
       </view>
   </view>
+  <!-- 未绑定账号 -->
   <view wx:if="{{!set_schedule.islogin}}" class="lookcourselist" catchtap="turn_bind">
     <view class="line" style="position: absolute; left: 30rpx; top: 36rpx; width: 10rpx; height: 90rpx; display: block; box-sizing: border-box"></view>
     <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">
@@ -35,7 +38,8 @@
       点击即可绑定(//▽//)
       </view>
   </view>
-  <view wx:if="{{!requestflag&&set_schedule.islogin}}" class="lookcourselist" catchtap="turn_bind">
+  <!-- 请求失败 -->
+  <view wx:if="{{requestflag!=3&&set_schedule.islogin}}" class="lookcourselist" catchtap="turn_bind">
     <view class="line" style="position: absolute; left: 30rpx; top: 36rpx; width: 10rpx; height: 90rpx; display: block; box-sizing: border-box"></view>
     <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">
     请求失败了....</view>

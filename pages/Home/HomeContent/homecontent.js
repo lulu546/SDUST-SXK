@@ -19,7 +19,7 @@ Page({
     now_course: {},
     courseover_onesencontent: "(//▽//)",
     coursetimei: 2,
-    requestflag:null,
+    requestflag:0,
     coursetime: [{
         timebegin: "08:00",
         timeend: "09:50"
@@ -71,138 +71,25 @@ Page({
       that.setData({
         week_ordinal,
         requestflag,
-        table_schedule,
-        requestflag:true
+        table_schedule
       })
     
     }
     else{
-    //数据的基本读取，如果app中没有读取的话会激活这里。已经登录但是请求失败的情况
-    if (wx.getStorageSync('islogin') == true && app.globalData.class_info == null) {
-      app.globalData.set_all_data = {
-        isshareshow: wx.getStorageSync('isshareshow'), //是否显示分享
-        islogin: wx.getStorageSync('islogin') //是否绑定课表
-      }
-      wx.request({
-        url: 'http://192.168.21.128:8000/qz/get_login_info/',
-        method: 'POST',
-        data: {
-          account: wx.getStorageSync('useraccount'),
-          password: wx.getStorageSync('userpws'),
-        },
+      var read=setInterval(function(){
 
-        header: {
-          'content-type': 'application/json'
-          //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
-        },
-        success: (res) => {
-          // 将用户的cookie存入至本地
-          if (res.data["code"] == 2002) {
-            wx.setStorageSync('islogin', false);
-            
-          } else {  
-            wx.setStorageSync('cookiesstr', res.data);
-          }
-          if (wx.getStorageSync('islogin') == true) {
-            //请求课程
-            wx.request({
-              url: 'http://192.168.21.128:8000/qz/get_class_info/',
-              method: 'POST',
-              data: {
-                account: wx.getStorageSync('useraccount'),
-                password: wx.getStorageSync('userpws'),
-                cookiesstr: wx.getStorageSync('cookiesstr')
-              },
-    
-              header: {
-                'content-type': 'application/json'
-                //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
-              },
-              success: (res) => {
-                // 将课表传输到schedule_table
-                if (res.data["token"] == "-1") {
-                  wx.setStorageSync('islogin', false);
-                }
-                app.globalData.class_info = res.data
-                var table_schedule = app.globalData.class_info;
-                that.setData({
-                  table_schedule
-                })
-              },
-    
-            })
-            //请求学生信息
-            wx.request({
-              url: 'http://192.168.21.128:8000/qz/get_student_info/',
-              method: 'POST',
-              data: {
-                account: wx.getStorageSync('useraccount'),
-                password: wx.getStorageSync('userpws'),
-                cookiesstr: wx.getStorageSync('cookiesstr')
-              },
-    
-              header: {
-                'content-type': 'application/json'
-              },
-              success: (res) => {
-                if (res.data["token"] == "-1") {
-                  wx.setStorageSync('islogin', false);
-                }
-                app.globalData.student_info = res.data
-                
-                
-              }
-    
-            })
-            //请求时间信息
-            wx.request({
-              url: 'http://192.168.21.128:8000/qz/get_current_time/',
-              method: 'POST',
-              data: {
-                account: wx.getStorageSync('useraccount'),
-                password: wx.getStorageSync('userpws'),
-                cookiesstr: wx.getStorageSync('cookiesstr')
-              },
-              header: {
-                'content-type': 'application/json'
-              },
-              success: (res) => {
-                app.globalData.current_time = res.data
-                app.globalData.week_time = res.data["zc"]
-                wx.setStorageSync('zc',app.globalData.week_time);
-                var week_ordinal = app.globalData.week_time;
-                var requestflag=app.globalData.requestflag;
-
-                that.setData({
-                  week_ordinal,
-                  requestflag
-                })
-                
-              }
-         
-    
-            })
-    
-          }
-
-        },
-        fail: (res) =>{
+        if(app.globalData.requestflag==3){
+          var table_schedule = app.globalData.class_info;
+          var week_ordinal = app.globalData.week_time;
+          var requestflag=app.globalData.requestflag;
             that.setData({
-              requestflag:false
-              })
+              week_ordinal,
+              table_schedule,
+              requestflag
+            })
+            clearTimeout(read);
         }
-      })
-    }
-    else{
-      var table_schedule = app.globalData.class_info;
-      var week_ordinal = app.globalData.week_time;
-      var requestflag=app.globalData.requestflag;
-      that.setData({
-        week_ordinal,
-        table_schedule,
-        requestflag
-      })
-    }
+      }, 100);
     }
 
 
@@ -212,14 +99,12 @@ Page({
     var week = weekArray[weeknumber] //判断今天周几
     var set_schedule = app.globalData.set_all_data;
     
-    
     if (weeknumber == 0) {
       weeknumber = 7
     }
     weeknumber--;
-    this.setData({
+    that.setData({
       weekwhat: week,
-      
       nowtimes: {
         month: new Date().getMonth() + 1 < 10 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1,
         day: new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate(),
@@ -227,15 +112,13 @@ Page({
         minutes: new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes(),
       },
       set_schedule
-
     })
-
-    
 
     var coursetime_i = 0; //显示的时间点
     var nowhour = parseInt(that.data.nowtimes.hour);
     var nowminutes = parseInt(that.data.nowtimes.minutes); //数字后时间
     var course = {}; //显示的课程
+// --------------------------计时器函数--------------------------
     //进行couse赋值，显示课程的函数
     let Once_Couse = () => {
       if ((nowhour < 9 || (nowhour == 9 && nowminutes < 50))) {
@@ -251,26 +134,38 @@ Page({
 
       } else if (((nowhour == 21 && nowminutes < 50) || (nowhour >= 18 && nowhour < 21))) {
         coursetime_i = 4;
-
-
       }
       if (nowhour > 21) {
         coursetime_i = 5;
         //结束今天课
       }
-      if(that.data.table_schedule!=undefined){
-      while (1) {
-        if (coursetime_i == 5) {
+      if(that.data.requestflag==3){
+        // 如果课表返回的是[null]那就会执行[0]==null，如果返回的是一个多重数组其不会执行，因为其[0]！=null。
+        // 然后这个放到这里面执行的原因是，需要等他从app中请求数据完毕后才能执行。
+        if(that.data.table_schedule[0]==null){
+          if (that.data.courseflag==true){
           that.setData({
             courseflag: false
-          });
-          break;
+          });}
         }
-        if (that.data.table_schedule[weeknumber][coursetime_i][0].length > 0) {
-          course = that.data.table_schedule[weeknumber][coursetime_i]
-          break;
-        } else if (coursetime_i <= 5) coursetime_i++
-      }}
+        else{
+          while (1) {
+            if (coursetime_i == 5) {
+              that.setData({
+                courseflag: false
+              });
+              break;
+            }
+            if (that.data.table_schedule[weeknumber][coursetime_i][0].length!=0) {
+              course = that.data.table_schedule[weeknumber][coursetime_i]
+              break;
+            } else if (coursetime_i <= 5) coursetime_i++
+            
+          }
+        }
+
+        
+   }
 
       that.setData({
         nowtimes: {
@@ -286,16 +181,14 @@ Page({
       });
 
     }
+// --------------------------计时器函数--------------------------
     Once_Couse()
-    if(that.data.table_schedule==undefined){//等课表读出来后再进行ONCE_COUSE函数。
-      setInterval(function(){
-
+    if(that.data.table_schedule==undefined){//等课表读出来后再进行ONCE_COUSE函数。 
+      var test =setInterval(function(){
         Once_Couse()
-  
       }, 10);
     }
-    // 启动计时器
-    else setInterval(function(){
+    else var test =setInterval(function(){
 
       Once_Couse()
 
@@ -328,7 +221,119 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
+    const app = getApp()
+    var that=this
+    app.globalData.requestflag=0;
+    
+    if (wx.getStorageSync('islogin') == true) {
+      //get_login_info
+      wx.request({
+        url: 'http://192.168.21.128:8000/qz/get_login_info/',
+        method: 'POST',
+        data: {
+          account: wx.getStorageSync('useraccount'),
+          password: wx.getStorageSync('userpws'),
+        },
+        header: {
+          'content-type': 'application/json'
+          //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
+        },
+        success: (res) => {
+          if (res.data["code"] == 4000) {
+            wx.showToast({
+              title: '密码错误请重新登录QAQ',
+              icon: "error"
+            });
+            wx.setStorageSync('islogin', false);
 
+          } else {
+            app.globalData.requestflag++;
+          wx.setStorageSync('cookiesstr', res.data);
+          //请求时间信息
+          wx.request({
+            url: 'http://192.168.21.128:8000/qz/get_current_time/',
+            method: 'POST',
+            data: {
+              account: wx.getStorageSync('useraccount'),
+              password: wx.getStorageSync('userpws'),
+              cookiesstr: wx.getStorageSync('cookiesstr')
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: (res) => {
+              app.globalData.current_time = res.data
+              app.globalData.requestflag++;
+              if (app.globalData.current_time["zc"] == null) {
+
+                app.globalData.week_time = 1
+                wx.setStorageSync('zc', app.globalData.week_time);
+              }
+              else{
+
+                app.globalData.week_time = res.data["zc"]
+                wx.setStorageSync('zc', app.globalData.week_time);
+              }
+
+            }
+          })
+          //请求课表数据
+          wx.request({
+            url: 'http://192.168.21.128:8000/qz/get_class_info/',
+            method: 'POST',
+            data: {
+              account: wx.getStorageSync('useraccount'),
+              password: wx.getStorageSync('userpws'),
+              cookiesstr: wx.getStorageSync('cookiesstr'),
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: (res) => {
+              // 将课表传输到schedule_table
+              if (res.data["code"] >= 4000) {
+
+              }
+              else{
+                app.globalData.requestflag++;
+                app.globalData.class_info = res.data
+              }
+            }
+          })
+          //请求学生信息
+          wx.request({
+            url: 'http://192.168.21.128:8000/qz/get_student_info/',
+            method: 'POST',
+            data: {
+              account: wx.getStorageSync('useraccount'),
+              password: wx.getStorageSync('userpws'),
+              cookiesstr: wx.getStorageSync('cookiesstr')
+            },
+
+            header: {
+              'content-type': 'application/json'
+            },
+            success: (res) => {
+              if (res.data["token"] == "-1") {
+                wx.setStorageSync('islogin', false);
+              }
+              
+              app.globalData.student_info = res.data
+            }
+          })
+        }
+        },
+        fail: (res) => {
+          app.globalData.requestflag = 0
+        }
+      })
+    }
+    else{
+      wx.navigateTo({
+        url: "../../Login/LoginContent/logincontent"
+        //登录
+      })
+    }
   },
 
   /**

@@ -48,7 +48,7 @@
   position: relative;
   top: 294rpx;
   margin-left: 580rpx;
-  background-color: white;
+
   height: 72rpx;
   width: 72rpx;
   border-bottom-right-radius: 10px;

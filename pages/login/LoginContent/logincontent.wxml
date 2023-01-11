@@ -7,7 +7,7 @@
       <view>
         <input password="{{!isshow}}" placeholder="请输入密码" id="_input2" value="{{userpws}}" bindinput="getpassword" />
         <view catchtap="changeshow" class="eyestyle">
-          <image src="{{_src}}" style="height: 37rpx;width: 37rpx;margin-top:16rpx;margin-left:10rpx"></image>
+          <image src="{{_src}}" style="height: 40rpx;width: 40rpx;"></image>
         </view>
       </view>
       <view id="_button"><button bindtap="loginTo">登录</button></view>

@@ -1,6 +1,6 @@
 /* pages/message/message.wxss */
 page {
-  background: #FFC785;
+  
 }
 
 #_all {
