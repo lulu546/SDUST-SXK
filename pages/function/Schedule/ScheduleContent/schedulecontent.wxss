@@ -1,7 +1,7 @@
 .inner {
   position: relative;
   width: 710rpx;
-  background: #F6F5F5;
+  background: #ffffff;
   height: auto;
   left: 10rpx;
   
@@ -252,11 +252,11 @@
   height: 100%;
   margin: 5rpx 3.5rpx;
   word-break: break-all;
-  color: #fff;
+  color: rgb(255, 255, 255);
   padding: 3px;
   
   font-size: 13px;
-  border-radius: 4px;
+  border-radius: 10px;
   flex:1;
   
 }
