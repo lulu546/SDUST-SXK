@@ -4,8 +4,12 @@
 ✔请求+渲染时间感知性太强
   1.将数据缓存在本地。
   已解决：有bug所以导致其时间缓慢
-
-?按键的动画效果
+？共享课表
+  1.目前采取的串行请求方式等会改成并行+定时器检测；
+  2.共享课表渲染问题，会有两个人都没课的渲染和一个人没课的渲染不一样；
+  3.add与刷新在共享课表的不同
+  4.一打开共享课表就会自动请求当前课程
+  ?按键的动画效果
 ✖新加课表功能
 ✖绑定共享课表功能
 ✔共享课表功能
@@ -374,29 +378,22 @@
   onShareAppMessage() {
 
   },
-   /**
-   * 点击函数
-   */
-  turn_crouselist(e){
-
-    wx.navigateTo({
-      url: "../../pages/Schedule/schedule"
-    })
-  
-
-
-
-  },
-
+  //打开共享课表模式
   switchShare(e){
     var that=this
+    //就是说这个这是一个switch每按一次就会执行一次内容，所以！shareflag就相当于我每按一次
+    // 就得把这个开关的开始和结束重置。所以我们只需要在shareflag=true的时候进行请求数据就欧克
+
     var newshareflag=!that.data.shareflag
-    var bindshareflag=that.data.set_schedule.isbindshareflag
+    //这个newshareflag是指的我是否打开共享课表
+    var bindshareflag=that.data.set_schedule.CBindState
+    //这个bindshareflag是指的我共享课表是否被绑定
     var value=!that.data.checked_value
     that.setData({
       checked_value:value
     })
-    if(bindshareflag!=true&&value==true){
+    //未绑定的情况
+    if(bindshareflag!=3&&value==true){
       
       console.log(e.detail.value)
       this.setData({
@@ -404,14 +401,80 @@
       })
       wx.navigateTo({
  
-        url: '../bind_shareschedule/bind_shareschedule',
+        url: '../BindSchedule/bindschedule',
       
        })
       
      
     }
-    else if(bindshareflag==true){
-      this.setData({
+    // 如果已经绑定的话，就会对shareflag进行赋值换句话说就会有资格展示共享课表信息与否；
+    if(bindshareflag==3){
+      console.log(newshareflag)
+      if(!newshareflag){
+        var new_table1,new_table2
+        //--------并行线
+        wx.request({
+          url: 'http://192.168.21.128:8000/qz/get_share_info/',
+          method: 'POST',
+          data: {
+            account: wx.getStorageSync('useraccount'),
+            password: wx.getStorageSync('userpws'),
+            cont: 0,
+            content:that.data.week_ordinal
+          },
+          header: {
+            'content-type': 'application/json'
+          },
+          success: (res) => {
+            
+            // 将课表传输到schedule_table
+            if (res.data["code"] >= 4000) {
+              console.log("请求错误")
+            }
+            else{
+              new_table2=res.data
+            // 请求我课表数据
+        wx.request({
+          url: 'http://192.168.21.128:8000/qz/get_class_info/',
+          method:'POST',
+          data:{
+            account:wx.getStorageSync('useraccount'),
+            cookiesstr:wx.getStorageSync('cookiesstr'),
+            cont:that.data.week_ordinal
+          },
+          header:{
+            'content-type':'application/json'      
+          },
+          success: (res) => {
+            // 将课表传输到schedule_table
+            if (res.data["code"] >= 4000) {
+              console.log("请求错误")
+            }
+            else{
+              new_table1=res.data
+              that.setData({
+                table1:new_table1,
+                table2:new_table2
+              })
+            }
+
+
+          },
+          fail: (res) => {
+            //清楚登录状态
+            wx.showToast({
+              title: '请求失败',
+              icon: 'error'
+            })
+          }
+  
+        })
+            }
+          }
+        })
+        //--------并行线
+      }
+      that.setData({
       shareflag:newshareflag
     })}
    
@@ -423,8 +486,6 @@
     console.log(week_ordinal)
     const app = getApp()
     var utils = require('../../../../utils/util');
-    
-
       if(e.target.dataset.change=="pre"){
        
       if(week_ordinal>0)week_ordinal=week_ordinal-1;
@@ -435,25 +496,70 @@
          weekday:count_weekdaywhat
        })
       if(that.data.checked_value==true){
-        //  wx.request({
-      //    url: 'url',
-      //    data: data,
-      //    dataType: dataType,
-      //    enableCache: true,
-      //    enableHttp2: true,
-      //    enableQuic: true,
-      //    header: header,
-      //    method: method,
-      //    responseType: responseType,
-      //    timeout: 0,
-      //    success: (result) => {},
-      //    fail: (res) => {},
-      //    complete: (res) => {},
-      //  })
-        this.setData({
-          table1:new_table1,
-          table2:new_table2
+        //请求共享课表数据；串行
+        // 等会改成并行的
+        wx.request({
+          url: 'http://192.168.21.128:8000/qz/get_share_info/',
+          method: 'POST',
+          data: {
+            account: wx.getStorageSync('useraccount'),
+            password: wx.getStorageSync('userpws'),
+            cont: 0,
+            content:that.data.week_ordinal
+          },
+          header: {
+            'content-type': 'application/json'
+          },
+          success: (res) => {
+            
+            // 将课表传输到schedule_table
+            if (res.data["code"] >= 4000) {
+              console.log("请求错误")
+            }
+            else{
+              new_table2=res.data
+            // 请求我课表数据
+        wx.request({
+          url: 'http://192.168.21.128:8000/qz/get_class_info/',
+          method:'POST',
+          data:{
+            account:wx.getStorageSync('useraccount'),
+            cookiesstr:wx.getStorageSync('cookiesstr'),
+            cont:week_ordinal
+          },
+          header:{
+            'content-type':'application/json'      
+          },
+          success: (res) => {
+            // 将课表传输到schedule_table
+            if (res.data["code"] >= 4000) {
+              console.log("请求错误")
+            }
+            else{
+              new_table1=res.data
+              that.setData({
+                table1:new_table1,
+                table2:new_table2,
+                week_ordinal:week_ordinal
+              })
+            }
+
+
+          },
+          fail: (res) => {
+            //清楚登录状态
+            wx.showToast({
+              title: '请求失败',
+              icon: 'error'
+            })
+          }
+  
         })
+            }
+          }
+        })
+        
+        
       }
       else{
         wx.request({
@@ -500,11 +606,68 @@
        this.setData({
          weekday:count_weekdaywhat
        })
+ 
         if(that.data.checked_value==true){
-       
-          this.setData({
-            table1:new_table1,
-            table2:new_table2
+          //请求共享课表数据
+          wx.request({
+            url: 'http://192.168.21.128:8000/qz/get_share_info/',
+            method: 'POST',
+            data: {
+              account: wx.getStorageSync('useraccount'),
+              password: wx.getStorageSync('userpws'),
+              cont: 0,
+              content:that.data.week_ordinal
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: (res) => {
+              
+              // 将课表传输到schedule_table
+              if (res.data["code"] >= 4000) {
+                console.log("请求错误")
+              }
+              else{
+                new_table2=res.data
+              // 请求我课表数据
+          wx.request({
+            url: 'http://192.168.21.128:8000/qz/get_class_info/',
+            method:'POST',
+            data:{
+              account:wx.getStorageSync('useraccount'),
+              cookiesstr:wx.getStorageSync('cookiesstr'),
+              cont:week_ordinal
+            },
+            header:{
+              'content-type':'application/json'      
+            },
+            success: (res) => {
+              // 将课表传输到schedule_table
+              if (res.data["code"] >= 4000) {
+                console.log("请求错误")
+              }
+              else{
+                new_table1=res.data
+                that.setData({
+                  table1:new_table1,
+                  table2:new_table2,
+                  week_ordinal:week_ordinal
+                })
+              }
+  
+  
+            },
+            fail: (res) => {
+              //清楚登录状态
+              wx.showToast({
+                title: '请求失败',
+                icon: 'error'
+              })
+            }
+    
+          })
+              }
+            }
           })
         }
         else{

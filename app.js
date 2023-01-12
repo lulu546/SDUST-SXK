@@ -125,6 +125,31 @@ App({
               that.globalData.requestflag++;
             }
           })
+          //请求共享信息
+          wx.request({
+            url: 'http://192.168.21.128:8000/qz/get_share_state/',
+            method: 'POST',
+            data: {
+              account: wx.getStorageSync('useraccount'),
+              password: wx.getStorageSync('userpws')
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: (res) => {
+              if(res.data["code"] >= 4000){}
+              else{
+               
+                that.globalData.set_all_data.CBindState= res.data["CBindState"]
+                that.globalData.set_all_data.CBindNumber= res.data["CBindNumber"]
+                that.globalData.set_all_data.GBindState = res.data["GBindState"]
+                that.globalData.set_all_data.GBindNumber = res.data["GBindNumber"]
+
+              }
+
+
+            }
+          })
         }
         },
         fail: (res) => {
@@ -153,10 +178,12 @@ App({
     current_time: null, //时间信息
     week_time: 0, //第几周
     set_all_data: {
-      isbindshareflag: true, //是否绑定分享
       isshareshow: wx.getStorageSync('isshareshow'), //是否显示分享
-      islogin: wx.getStorageSync('islogin'), //是否绑定课表
-      
+      islogin: wx.getStorageSync('islogin'), //是否登录
+      CBindState: 0,
+      CBindNumber: -1,
+      GBindState: 0,
+      GBindNumber: -1
     }, 
     requestflag: 0,//判断请求状态
     xiaoguotest:false//小郭测试

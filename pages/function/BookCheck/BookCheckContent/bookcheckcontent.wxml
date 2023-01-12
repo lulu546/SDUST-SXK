@@ -1,2 +1,4 @@
-<!--pages/Function/BookCheck/BookCheckContent/bookcheckcontent.wxml-->
-<text>pages/Function/BookCheck/BookCheckContent/bookcheckcontent.wxml</text>
+
+    <text class="icon-open-new icon"></text>
+ 
+  

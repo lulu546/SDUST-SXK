@@ -91,6 +91,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Function/BookCheck/BookCheckContent/bookcheckcontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
