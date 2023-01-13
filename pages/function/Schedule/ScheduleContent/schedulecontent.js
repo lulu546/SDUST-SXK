@@ -26,7 +26,7 @@
       hour:new Date().getHours()< 10 ? '0' +new Date().getHours() :new Date().getHours(),
       minutes:new Date().getMinutes()< 10 ? '0' +new Date().getMinutes() :new Date().getMinutes()
    },
-   week_ordinal:0,//当前第几周
+   week_ordinal:1,//当前第几周
    shareflag:true,//这个是用于页面判断的默认项
    weekday:[],//一周的日期
    checked_value:false,//控制共享课表按钮是否打开
@@ -484,6 +484,7 @@
     var that=this;
     var week_ordinal=that.data.week_ordinal;
     console.log(week_ordinal)
+    console.log(e.target.dataset.change)
     const app = getApp()
     var utils = require('../../../../utils/util');
       if(e.target.dataset.change=="pre"){
@@ -599,7 +600,11 @@
 
       }
       else if(e.target.dataset.change=="next"){
-        week_ordinal=week_ordinal+1;
+        
+        if(week_ordinal<=19)week_ordinal=week_ordinal+1;
+        else{
+          console.log("课表超过20")
+          return ;}
         var new_table1,new_table2
         var count_weekdaywhat=utils.count_weekday(week_ordinal-app.globalData.week_time);
        

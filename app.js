@@ -176,7 +176,7 @@ App({
     class_info: null, //课程信息
     student_info: null, //学生信息
     current_time: null, //时间信息
-    week_time: 0, //第几周
+    week_time: 1, //第几周
     set_all_data: {
       isshareshow: wx.getStorageSync('isshareshow'), //是否显示分享
       islogin: wx.getStorageSync('islogin'), //是否登录

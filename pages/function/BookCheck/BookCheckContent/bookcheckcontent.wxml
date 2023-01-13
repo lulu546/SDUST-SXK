@@ -1,4 +1,1 @@
-
-    <text class="icon-open-new icon"></text>
- 
-  
+<image mode="aspectFit" style="width: 80px;margin: 10px 0 10px 0; position: relative;  " src="http://192.168.21.128:8000/static/ScheduleContents/1.png"></image>

@@ -20,7 +20,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/Login/login",
+          "pathName": "pages/Function/Schedule/ScheduleContent/schedulecontent",
           "query": "",
           "launchMode": "default",
           "scene": null

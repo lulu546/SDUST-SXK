@@ -1,14 +1,12 @@
 .inner {
   position: relative;
-  width: 710rpx;
+  width:100%;
   background: #ffffff;
   height: auto;
-  left: 10rpx;
-  
   display: block;
   box-sizing: border-box;
-  border: 1rpx solid rgba(0, 0, 0, 0.25);
-  border-radius: 20rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.25);
+  border-radius: 0rpx;
  
 }
 
@@ -23,14 +21,10 @@
  
 }
 .buttonshare {
-  position: absolute;
-  width: 80.9rpx;
-  height: 50rpx;
-  top: 89rpx;
-  background: #D9D9D9;
-  border-radius: 10rpx;
-  left: 470rpx;
- 
+
+  text-align: left;
+  font-size: 20px;
+  line-height: 24px;
 }
 .buttonleft {
   position: absolute;
@@ -180,7 +174,7 @@
 }
 .timetablehr {
   margin: 10rpx 0 10rpx 0;
-  background-color: rgb(226, 226, 226) !important;
+  background-color: rgba(255, 255, 248, 0.993) !important;
   height: 3px;
   border: none;
   width:100%;
