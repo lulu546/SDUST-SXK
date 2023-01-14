@@ -22,9 +22,10 @@
         <image bindtap="buttonadd" mode="widthFix"style="width:170rpx"  src="http://192.168.21.128:8000/static/ScheduleContents/{{week_ordinal}}.png"></image>
     </view>
     <view wx:if="{{set_schedule.isshareshow}}" class="buttonshare" style="position: absolute; top:10%; left: 35%; height: 35%;border-radius: 10px; color: #3730A3;width: 60%;background: #E0E7FF;align-items:center;display:flex;justify-content: space-evenly;">
-    <view bindtap="turnshareset" style="position: absolute;left: 10%;">
+    <view bindtap="turnshareset" style="position: absolute;font-size:44rpx; left: 8%; letter-spacing:1rpx;  ">
       共享课表
     </view>
+    <image  bindtap="turnshareset" mode="widthFix" style=" position: absolute;width: 44rpx;  display: block; left: 48%;box-sizing: border-box"  src="../../../../static/icon/Schedule/setting.png"></image>
       <switch checked="{{checked_value}}" style="position: absolute; left: 70%; " bindchange="switchShare"></switch>
     </view>
 

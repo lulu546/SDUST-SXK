@@ -10,14 +10,14 @@ Page({
       [
           {
             src:'/image/jishiben.jpg',
-            name:'课表',
+            name:'小科课表',
             id:0,
             backgroundcolor: '#FFA31A;',
             shadow:'0px 10px 20px rgba(255, 163, 25, 0.2);'
           },
           {
             src:'/image/jishiben.jpg',
-            name:'食物库',
+            name:'小科食物库',
             id:1,
             backgroundcolor: '#03A4FF;',
             shadow:'0px 10px 20px rgba(3, 164, 255, 0.2);'
@@ -28,14 +28,14 @@ Page({
       [
           {
             src:'/image/jishiben.jpg',
-            name:'备忘录',
+            name:'小科备忘录',
             id:2,
             backgroundcolor: '#00C67E;',
             shadow:'0px 10px 20px rgba(36, 209, 147, 0.2);'
           },
           {
             src:'/image/jishiben.jpg',
-            name:'部门业务',
+            name:'合作业务',
             id:3,
             backgroundcolor: '#FF574D;',
             shadow:'0px 10px 20px rgba(255, 101, 91, 0.2);'
@@ -44,17 +44,17 @@ Page({
       [
         {
           src:'/image/jishiben.jpg',
-          name:'备忘录',
-          id:2,
-          backgroundcolor: '#00C67E;',
-          shadow:'0px 10px 20px rgba(36, 209, 147, 0.2);'
+          name:'小科经验包',
+          id:4,
+          backgroundcolor: '#D458FF;',
+          shadow:'0px 10px 20px rgba(212, 88, 255, 0.2);'
         },
         {
           src:'/image/jishiben.jpg',
-          name:'部门业务',
-          id:3,
-          backgroundcolor: '#FF574D;',
-          shadow:'0px 10px 20px rgba(255, 101, 91, 0.2);'
+          name:'小科通讯录',
+          id:5,
+          backgroundcolor: '#5374A5;',
+          shadow:'0px 10px 20px rgba(102, 125, 159, 0.2);'
         }
     ],
     
@@ -100,8 +100,6 @@ Page({
         url: "/pages/Function/DepartmentWork/DepartmentWorkContent/departmentworkcontent"
       })
     }
-
-
   },
 
  
