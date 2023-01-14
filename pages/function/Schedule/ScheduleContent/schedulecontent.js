@@ -316,14 +316,14 @@ var moveFlag = true;// 判断执行滑动事件
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() { 
-
+  var that=this
     // 请求一周日期 begin
   var utils = require('../../../../utils/util');
   
   var count_weekdaywhat=utils.count_weekday(0);
   
 
-  this.setData({
+  that.setData({
     weekday:count_weekdaywhat
   })
   // 请求一周日期 end
@@ -333,7 +333,7 @@ var moveFlag = true;// 判断执行滑动事件
   var set_schedule=app.globalData.set_all_data;
   var table_schedule=app.globalData.class_info;
   var week_ordinal = app.globalData.week_time;
-  this.setData({
+  that.setData({
     set_schedule,
     table1:table_schedule,
     week_ordinal
@@ -1215,6 +1215,13 @@ var moveFlag = true;// 判断执行滑动事件
         }  
       
   },
+  turnshareset(){
+    wx.navigateTo({
+ 
+      url: '../BindSchedule/bindschedule',
+    
+     })
+  }
 
 
   

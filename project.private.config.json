@@ -20,7 +20,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/Function/Schedule/ScheduleContent/schedulecontent",
+          "pathName": "pages/Function/Schedule/BindSchedule/bindschedule",
           "query": "",
           "launchMode": "default",
           "scene": null
