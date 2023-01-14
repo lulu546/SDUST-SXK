@@ -158,7 +158,7 @@
   word-break: break-all;
   color: #fff;
   padding: 3px;
-  background: #F6F5F5;
+  background: #ffffff;
   font-size: 14px;
   border-radius: 4px;
   flex:1;
@@ -174,7 +174,7 @@
 }
 .timetablehr {
   margin: 10rpx 0 10rpx 0;
-  background-color: rgba(255, 255, 248, 0.993) !important;
+  background-color: rgb(247, 247, 247) !important;
   height: 3px;
   border: none;
   width:100%;
@@ -185,7 +185,7 @@
 }
 .timetablehrshare {
   margin: 5rpx 0 5rpx 0;
-  background-color: rgb(226, 226, 226) !important;
+  background-color: rgb(247, 247, 247) !important;
   height: 3px;
   border: none;
   width:100%;
@@ -205,10 +205,10 @@
 }
 
 .timetableHideBot {
-  min-height: 130px;
+  min-height: 150px;
   text-align: center;
   word-break: break-all;
-  color: #fff;
+  color: rgb(255, 255, 255);
   padding: 1px;
   
   font-size: 13px;
@@ -216,15 +216,13 @@
   border-top-right-radius: 4px;
 }
 .timetableHideTop {
-  min-height: 130px;
+  min-height: 150px;
   text-align: center;
   word-break: break-all;
-  color: #fff;
+  color: rgb(255, 255, 255);
   padding: 1px;
- 
   font-size: 13px;
-  border-bottom: 1px solid #eee;
-  
+  border-bottom: 1px solid rgb(255, 255, 255);
   border-bottom-left-radius	: 4px;
   border-bottom-right-radius: 4px;
 }

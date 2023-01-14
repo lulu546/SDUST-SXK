@@ -123,12 +123,11 @@
                 <view style="flex:1;margin: 0rpx 3.5rpx;">
                   <block wx:if="{{table1[inner][item][0].length!=0||table2[inner][item][0].length!=0}}">
                     <view class="tableUnitCon">
-                      <block wx:if="{{table1[inner][item][0].length!=0}}">
+                      <block wx:if="{{table1[inner][item][0].length!=0&&table1[0]!=null}}">
                         <view class="timetableHideBot" style="background:rgb(100, 149, 237);">
                           <view>{{table1[inner][item][0]}}</view>
                           <view>{{table1[inner][item][1]}}</view>
                           <view>{{table1[inner][item][2]}}</view>
-
                         </view>
                       </block>
                       <block wx:else>
@@ -136,8 +135,7 @@
                           <view class="timetableHideBot"></view>
                         </view>
                       </block>
-
-                      <block wx:if="{{table2[inner][item][0].length!=0}}">
+                      <block wx:if="{{table2[inner][item][0].length!=0&&table2[0]!=null}}">
                         <view class="timetableHideTop" style="background:rgb(234, 167, 140);">
                           <view>{{table2[inner][item][0]}}</view>
                           <view>{{table2[inner][item][1]}}</view>               
