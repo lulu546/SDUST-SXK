@@ -78,7 +78,7 @@
 
     <!-- 课表 -->
     <view wx:if="{{shareflag}}">
-      <view>
+      <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" >
       <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
         <!-- index是下标变量名,0,1,2,3，item是数组当前项的变量名（a[1]） -->
         <!-- 横着渲染，竖着渲染会对不起 -->
@@ -114,7 +114,7 @@
   </view>
 
     <view wx:else>
-      <view style=" position:relative;top:4rpx;">
+      <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style=" position:relative;top:4rpx;">
         <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
           <view>
             <view class="dayschedule">
