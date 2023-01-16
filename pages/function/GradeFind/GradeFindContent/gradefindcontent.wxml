@@ -48,13 +48,15 @@
 
           <view style="position:relative;display: flex;border-radius:18px;height:200rpx;align-items: center;width: 100%;border: 1px solid #DFDFDF;">
           <view style="width: 75%;height: 100%;position:relative;">
-            <view style="font-size: 16px;position: relative;width: 100%;padding-left: 5%;top:10%;padding-top: 2%;">
-              {{item.kcmc}} 
+            <view style="font-size: 16px; position: relative; width: 90%; padding-left: 5%; top: 7%; padding-top: 2%;height:30px;display: flex;flex-direction:column;justify-content:flex-end;display:inline-flex;">
+              <view style="display: flex;flex-direction:column;justify-content: center;align-items: left;">
+                {{item.kcmc}} 
+              </view>
             </view>
-            <view style="font-size: 16px;position: relative;width: 100%;padding-left: 5%;top:10%;padding-top: 1%;color:#4d4d4dc7;">
+            <view style="font-size: 16px;position: relative;width: 100%;padding-left: 5%;top: 7%;padding-top: 1%;color:#4d4d4dc7;">
               {{item.kclbmc}} 
             </view>
-            <view style="font-size: 16px;position: relative;width: 100%;padding-left: 5%;top:10%;padding-top: 1%;color:#4d4d4dc7;">
+            <view style="font-size: 16px;position: relative;width: 100%;padding-left: 5%;top: 7%;padding-top: 1%;color:#4d4d4dc7;">
               {{item.ksxzmc}} 
             </view>
             <view>
