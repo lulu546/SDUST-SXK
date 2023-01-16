@@ -114,7 +114,6 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: center;
- 
   position: relative;
   color: #FFFFFF;
   font-size: 14px;

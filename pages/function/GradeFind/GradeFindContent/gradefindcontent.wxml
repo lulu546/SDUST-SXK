@@ -66,7 +66,7 @@
           <view style="position:relative;width: 25%;height: 100%;border-radius:0px 18px 18px 0px;background: #6667AB;">
 
          
-            <view style="position:relative;color:rgb(255, 255, 255);text-align:center;width:100%;font-size:26px;top: 25%;">
+            <view style="position:relative;color:rgb(255, 255, 255);text-align:center;width:100%;font-size:26px;top: 28%;">
               <text>{{item.zcj}}</text>
             </view>
             <view style="position:relative;color:rgb(255, 255, 255);text-align:center;width:100%;font-size:14px;top: 35%;">
@@ -83,8 +83,15 @@
       </view>
 
 
-      <view wx:if="{{totalnum==0}}" class="style1" style="display: flex;height: 120rpx;align-items: center;">
-        <view style="margin-left: 35%;">暂无成绩数据</view>
+    
+      <view  wx:if="{{totalnum==0}}"style="width: 100%;">
+        <view class="style_one" data-tar="none" bindtap="turnpage"  style="background:#FFFFFF;box-shadow:0px 10px 20px rgba(76, 93, 105, 0.1);border: 1px solid #E6E8EE;width: 100%;  height: 250rpx;border-radius: 15px;">
+         <view style="top:10%;height:80%;position: relative;width: 100%;display: flex;flex-direction: row;">
+
+         <view  bindtap="Eggs" style="display: flex;flex-direction: column;justify-content: center;position: relative;font-size: 24px;font-family:宋体;line-height: 21px;flex: 1;color: #2A2D32;opacity: 0.6;align-items: center;">暂无成绩捏！</view></view>
+          
+        </view>
+        
       </view>
     </view>
 

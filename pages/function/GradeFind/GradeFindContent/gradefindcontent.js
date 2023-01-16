@@ -100,6 +100,8 @@ Page({
           (this.data.firstyear-3)+"-"+(this.data.lastyear-3)+"-1",
           (this.data.firstyear-4)+"-"+(this.data.lastyear-4)+"-2",
           (this.data.firstyear-4)+"-"+(this.data.lastyear-4)+"-1",
+          (this.data.firstyear-5)+"-"+(this.data.lastyear-5)+"-2",
+          (this.data.firstyear-5)+"-"+(this.data.lastyear-5)+"-1"
         ]
       })
     }
@@ -116,6 +118,8 @@ Page({
           (this.data.firstyear-3)+"-"+(this.data.lastyear-3)+"-1",
           (this.data.firstyear-4)+"-"+(this.data.lastyear-4)+"-2",
           (this.data.firstyear-4)+"-"+(this.data.lastyear-4)+"-1",
+          (this.data.firstyear-5)+"-"+(this.data.lastyear-4)+"-2",
+          (this.data.firstyear-5)+"-"+(this.data.lastyear-4)+"-1"
         ]
       })
     }
@@ -350,4 +354,11 @@ Page({
     })}
    
   },
+  Eggs(){
+    wx.showToast({
+      title: '祝你门门满分！',
+      icon:'none'
+    })
+
+  }
 })
