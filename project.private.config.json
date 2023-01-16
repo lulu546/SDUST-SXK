@@ -27,7 +27,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/text",
+          "pathName": "pages/Function/GradeFind/GradeFindContent/gradefindcontent",
           "query": "",
           "launchMode": "default",
           "scene": null

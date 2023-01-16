@@ -1,16 +1,17 @@
 {
   "tabBar": {
-    "color": "#aaaaaa", 
-    "selectedColor": "#000000", 
+    "color": "#aaaaaa",
+    "selectedColor": "#000000",
     "list": [
-      { "iconPath": "./static/icon/Tarbar/home_before.png",
+      {
+        "iconPath": "./static/icon/Tarbar/home_before.png",
         "selectedIconPath": "./static/icon/Tarbar/home_after.png",
         "pagePath": "pages/Home/HomeContent/homecontent",
         "text": "首页"
       },
       {
-         "iconPath": "./static/icon/Tarbar/function_after.png",
-          "selectedIconPath": "./static/icon/Tarbar/funtion_before.png",
+        "iconPath": "./static/icon/Tarbar/function_after.png",
+        "selectedIconPath": "./static/icon/Tarbar/funtion_before.png",
         "pagePath": "pages/Function/FunctionContent/functioncontent",
         "text": "功能"
       },
@@ -41,7 +42,8 @@
     "pages/Function/PCourseComment/PCourseCommentContent/pcoursecommentcontent",
     "pages/Function/FunctionContent/functioncontent",
     "pages/User/UserContent/usercontent",
-    "pages/User/UserSetContent/usersetcontent"
+    "pages/User/UserSetContent/usersetcontent",
+    "pages/Function/GradeFind/BindGrade/bindgrade"
   ],
   "window": {
     "backgroundTextStyle": "light",

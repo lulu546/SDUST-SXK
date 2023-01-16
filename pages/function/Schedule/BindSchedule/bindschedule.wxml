@@ -39,7 +39,7 @@
       <view style="position: relative;top: 35%;height: 10%;display: flex;align-items: center;justify-content: center;">
       <input  placeholder="请输入学号"style="position: relative;height: 80rpx; display: block; padding-left:8px;box-sizing: border-box; background-color: white;  width: 80%;border-radius: 13px; border: 1rpx solid rgb(193, 204, 198);"  value="{{postnum}}" bindinput="getaccount" />
       </view>
-      <view style="position: relative;width: 100%;top:40%;display: flex;align-items: center;justify-content: center;"><button style="background: #88b04b;color: #FFFFFF;" bindtap="PostTo">发起请求</button></view>
+      <view style="position: relative;width: 100%;top:40%;display: flex;align-items: center;justify-content: center;"><button style="background: #88b04b;box-shadow:0px 7px 15px rgba(156, 202, 88, 0.3);color: #FFFFFF;" bindtap="PostTo">发起契约</button></view>
 
         </view>
       
@@ -47,37 +47,42 @@
     <!-- 发送等待回应 -->
     <block wx:elif="{{set_all_data.CBindState===1}}">
       <view style="width: 100%;height: 100%;">
-      <view style="position: relative;top: 20%;height: 20%;display: flex;align-items: center;justify-content: center;">
-      <view style="position: relative;height: 200rpx; display: block; padding-left:8px;box-sizing: border-box; background-color: #6667AB;  width: 80%;border-radius: 5px; border: 1rpx solid rgb(193, 204, 198);font-family: 'Noto Sans CJK SC';font-weight: 550;font-size: 17px;text-align:left;display: flex;align-items: center;justify-content: center; color: #FFFFFF; ">
-        <text>已向\n{{postnum}}\n申请共享辣~</text>
+
+      <view style="position: relative;top: 0%;width:100%;height: 35%;display: flex;align-items: center;justify-content: center;border-radius: 17px 17px 0px 0px;">
+        <view style="position: relative;height: 100%; display: block; padding-left:8px;box-sizing: border-box; background-color: #DDB219;box-shadow:0px 7px 15px rgba(221, 178, 25, 0.25);  width: 100%;border-radius: 17px 17px 0px 0px; border: 1rpx solid rgb(193, 204, 198);font-family: 'Microsoft YaHei ';font-weight:bolder;font-size: 23px;letter-spacing:3rpx;text-align:left;display: flex; color: #FFFFFF; ">
+        <view style="position: absolute;top:10%;left:50%;width: 170px;height: 80%;background: linear-gradient(69.52deg, #d87d2d98 17.1%, rgba(107, 32, 241, 0) 62.03%);background-blend-mode: overlay;border-radius: 100px 100px 100px 336.5px;transform: matrix(-0.99, -0.11, 0.16, -0.99, 0, 0);"></view>
+        <text style="position: relative;left:5%;display:flex;align-items: center;justify-content: center;">已向\n{{postnum}}\n发送契约辣~</text>
         
       </view>
       </view>
-      <view style="position: relative;width: 100%;top:30%;display: flex;align-items: center;justify-content: center;"><button style="background: #BB2649;color: #FFFFFF;" bindtap="CancelPostTo">撤销请求</button></view>
+      <view style="position: relative;width: 100%;top:25%;display: flex;align-items: center;justify-content: center;"><button style="background: #BB2649;box-shadow:0px 7px 15px rgba(192, 111, 130, 0.3);color: #FFFFFF;" bindtap="CancelPostTo">撤销契约</button></view>
         </view>
     </block>
     <block wx:elif="{{set_all_data.CBindState===2}}">
       <view style="width: 100%;height: 100%;">
-      <view style="position: relative;top: 20%;height: 20%;display: flex;align-items: center;justify-content: center;">
-      <view style="position: relative;height: 200rpx; display: block; padding-left:8px;box-sizing: border-box; background-color: #6667AB;  width: 80%;border-radius: 5px; border: 1rpx solid rgb(193, 204, 198);font-family: 'Noto Sans CJK SC';font-weight: 550;font-size: 17px;text-align:left;display: flex;align-items: center;justify-content: center; color: #FFFFFF; ">
-        <text>收到\n{{postnum}}\n的共享请求辣~</text>
+      <view style="position: relative;top: 0%;width:100%;height: 35%;display: flex;align-items: center;justify-content: center;border-radius: 17px 17px 0px 0px;">
+        <view style="position: relative;height: 100%; display: block; padding-left:8px;box-sizing: border-box; background-color: #DDB219;box-shadow:0px 7px 15px rgba(221, 178, 25, 0.25);  width: 100%;border-radius: 17px 17px 0px 0px; border: 1rpx solid rgb(193, 204, 198);font-family: 'Microsoft YaHei ';font-weight:bolder;font-size: 23px;letter-spacing:3rpx;text-align:left;display: flex; color: #FFFFFF; ">
+        <view style="position: absolute;top:10%;left:50%;width: 170px;height: 80%;background: linear-gradient(69.52deg, #d87d2d98 17.1%, rgba(107, 32, 241, 0) 62.03%);background-blend-mode: overlay;border-radius: 100px 100px 100px 336.5px;transform: matrix(-0.99, -0.11, 0.16, -0.99, 0, 0);"></view>
+        <text style="position: relative;left:5%;display:flex;align-items: center;justify-content: center;">要和\n{{postnum}}\n签订共享契约吗！</text>
         
       </view>
       </view>
-      <view style="position: relative;width: 100%;top:30%;display: flex;align-items: center;justify-content: center;"><button style="background: #88b04b;color: #FFFFFF;" bindtap="ReplyPostTo">同意请求</button></view>
-      <view style="position: relative;width: 100%;top:35%;display: flex;align-items: center;justify-content: center;"><button style="background: #BB2649;color: #FFFFFF;" bindtap="CancelPostTo">拒绝请求</button></view>
+      <view style="position: relative;width: 100%;top:20%;display: flex;align-items: center;justify-content: center;"><button style="background: #88b04b;box-shadow:0px 7px 15px rgba(156, 202, 88, 0.3);color: #FFFFFF;" bindtap="ReplyPostTo">签订契约</button></view>
+      <view style="position: relative;width: 100%;top:30%;display: flex;align-items: center;justify-content: center;"><button style="background: #BB2649;box-shadow:0px 7px 15px rgba(192, 111, 130, 0.3);color: #FFFFFF;" bindtap="CancelPostTo">拒绝签订</button></view>
         </view>
     </block>
     <block wx:elif="{{set_all_data.CBindState===3}}">
       <view style="width: 100%;height: 100%;">
-      <view style="position: relative;top: 20%;height: 20%;display: flex;align-items: center;justify-content: center;">
-      <view style="position: relative;height: 200rpx; display: block; padding-left:8px;box-sizing: border-box; background-color: #6667AB;  width: 80%;border-radius: 5px; border: 1rpx solid rgb(193, 204, 198);font-family: 'Noto Sans CJK SC';font-weight: 550;font-size: 17px;text-align:left;display: flex;align-items: center;justify-content: center; color: #FFFFFF; ">
-        <text>已与\n{{postnum}}\n绑定课表辣~</text>
+      <view style="position: relative;top: 0%;width:100%;height: 35%;display: flex;align-items: center;justify-content: center;border-radius: 17px 17px 0px 0px;">
+      <view style="position: relative;height: 100%; display: block; padding-left:8px;box-sizing: border-box; background-color: #DDB219;box-shadow:0px 7px 15px rgba(221, 178, 25, 0.25);  width: 100%;border-radius: 17px 17px 0px 0px; border: 1rpx solid rgb(193, 204, 198);font-family: 'Microsoft YaHei ';font-weight:bolder;font-size: 23px;letter-spacing:3rpx;text-align:left;display: flex; color: #FFFFFF; ">
+        <view style="position: absolute;top:10%;left:50%;width: 170px;height: 80%;background: linear-gradient(69.52deg, #d87d2d98 17.1%, rgba(107, 32, 241, 0) 62.03%);background-blend-mode: overlay;border-radius: 100px 100px 100px 336.5px;transform: matrix(-0.99, -0.11, 0.16, -0.99, 0, 0);"></view>
+        <text style="position: relative;left:5%;display:flex;align-items: center;justify-content: center;">已与\n{{postnum}}\n签订共享契约辣~</text>
         
       </view>
       </view>
-      <view style="position: relative;width: 100%;top:30%;display: flex;align-items: center;justify-content: center;"><button style="background: #88b04b;color: #FFFFFF;"bindtap="Eggs"><text>(ᕑᗢᓫ∗)˒</text></button></view>
-      <view style="position: relative;width: 100%;top:35%;display: flex;align-items: center;justify-content: center;"><button style="background: #BB2649;color: #FFFFFF;" bindtap="CancelPostTo">取消绑定</button></view>
+      <view style="position: relative;width: 100%;top:20%;display: flex;align-items: center;justify-content: center;"><button style="height:100%;background: #88b04b;box-shadow:0px 7px 15px rgba(156, 202, 88, 0.3);color: #FFFFFF;display: flex;align-items: center;justify-content: center;"bindtap="Eggs"><text>(ᕑᗢᓫ∗)˒</text></button></view>
+      <view style="position: relative;width: 100%;top:30%;display: flex;align-items: center;justify-content: center;"><button style="background: #BB2649;height:100%;box-shadow:0px 7px 15px rgba(192, 111, 130, 0.3);color: #FFFFFF;display: flex;align-items: center;justify-content: center;" bindtap="CancelPostTo">撤销契约</button></view>
+
         </view>
     </block>
     <!-- <block wx:if="{{data.status!==0}}">
