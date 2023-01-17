@@ -7,7 +7,7 @@
 
 
 
-  <view class="unitInfo"    >
+  <view class="unitInfo">
     <view style="display:flex;">
       <view class="titleCon">
         <view>共享课表</view>
@@ -15,8 +15,21 @@
     </view>
 
     <view>
-      <switch checked="{{checkedflag}}"  bindchange="isshareshow"></switch>
+      <switch checked="{{checkedflag1}}"  bindchange="isshareshow1"></switch>
     </view>
+    
+  </view>
+  <view class="unitInfo"    >
+    <view style="display:flex;">
+      <view class="titleCon">
+        <view>共享成绩</view>
+      </view>
+    </view>
+
+    <view>
+      <switch checked="{{checkedflag2}}"  bindchange="isshareshow2"></switch>
+    </view>
+    
   </view>
 
 </view>

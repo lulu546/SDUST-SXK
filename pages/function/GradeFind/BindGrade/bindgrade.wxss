@@ -1,1 +1,181 @@
-/* pages/Function/GradeFind/BindGrade/bindgrade.wxss */
+.top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center
+}
+
+.a-input {
+  -webkit-align-self: center;
+  align-self: center;
+  border: 1px solid #eee;
+  width: 200px;
+  border-radius: 3px
+}
+
+.a-hr {
+  margin-bottom: 3px
+}
+
+.line {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex
+}
+
+.info {
+  margin-left: 7px
+}
+
+.a-hr {
+  margin-bottom: 3px
+}
+
+.timetableHide {
+  min-height: 230px;
+  border-radius: 3px;
+  margin-left: 3px;
+  text-align: center;
+  word-break: break-all;
+  color: #fff;
+  padding: 1px;
+  background: #eee;
+  font-size: 13px
+}
+
+.timetablehr {
+  margin-top: 3px
+}
+
+.a-hr {
+  background-color: #eee !important;
+  height: 1px;
+  border: none
+}
+
+.tableUnitCon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  height: 100%
+}
+
+.timetableHideTop {
+  min-height: 115px;
+  text-align: center;
+  word-break: break-all;
+  color: #fff;
+  padding: 1px;
+  background: #eee;
+  font-size: 13px;
+  border-bottom: 1px solid #eee
+}
+
+.timetableHideBot {
+  min-height: 115px;
+  text-align: center;
+  word-break: break-all;
+  color: #fff;
+  padding: 1px;
+  background: #eee;
+  font-size: 13px
+}
+
+.card,
+.cardTips {
+  padding: 10px;
+  line-height: 23px
+}
+
+.info1 {
+  margin-top: 3px
+}
+/* pages/login/login.wxss */
+#_type3{
+  position: relative;
+  /* top: 380rpx;   */
+  height: 150rpx;
+  width: 466rpx;
+  box-shadow : -5 px 0 5 px #ccc , /*左边阴影*/
+               0 -5 px 5 px #ccc , /*顶部阴影*/
+               0 5 px 5 px #ccc , /*底部阴影*/
+               5 px 0 5 px #ccc ; /*右边阴影*/
+}
+#_input1{
+  position: relative;
+  height: 76rpx; 
+  display: block; 
+  box-sizing: border-box; 
+
+  margin-left: 88rpx;
+
+  background-color: white;
+  top: 380rpx;  
+  width: 566rpx;
+  border-top-right-radius: 10px; 
+  border-top-left-radius: 10px;
+  border: 1rpx solid rgb(193, 204, 198);
+
+}
+#_input2{
+  position: relative;
+  height: 73rpx; 
+  display: block; 
+  box-sizing: border-box; 
+  margin-left: 89rpx;
+  background-color: white;
+  top: 367rpx;
+  margin-top: 15rpx;
+  /* border-top: 1rpx solid rgb(247, 250, 239);   */
+  width: 495rpx;
+  border-bottom-left-radius: 10px;
+  /* box-shadow: 0 5px 5px rgb(193, 204, 198),-5px 0 2px rgb(193, 204, 198); */
+  border-left: 1rpx solid rgb(193, 204, 198);
+  border-bottom: 1rpx solid rgb(193, 204, 198);
+}
+.eyestyle{
+  position: relative;
+  top: 294rpx;
+  margin-left: 580rpx;
+
+  height: 72rpx;
+  width: 72rpx;
+  border-bottom-right-radius: 10px;
+  border-bottom: 1rpx solid rgb(193, 204, 198);
+  border-right: 1rpx solid rgb(193, 204, 198);
+  /* border-top: 1rpx solid rgb(193, 204, 198); */
+}
+#_button{
+  position: relative;
+  top: 353rpx;
+  width: 50%;
+  height: 70rpx;
+  font-size: medium;
+  left: 140rpx;
+  background-color:rgb(204, 223, 186);
+  display: inline;
+}
+#_checkbox{
+  font-size: small;
+  position: relative;
+  top: 303rpx;
+  left: 89rpx;
+  height: 40rpx;
+}
+.wx-checkbox-input{
+  width: 20rpx !important;
+  height: 20rpx !important;
+}
+#_navigate{
+  font-size: small;
+  position: relative;
+  top: 309rpx;
+  left: 395rpx;
+  color: blue;
+}

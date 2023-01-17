@@ -41,14 +41,14 @@
         },
         {
           "name": "",
-          "pathName": "pages/Departmentwork/Departmentwork",
+          "pathName": "pages/Function/DepartmentWork/DepartmentWorkContent/departmentworkcontent",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/Departmentwork/FuntionWork/SixMovie/SixMovie",
+          "pathName": "pages/test",
           "query": "",
           "launchMode": "default",
           "scene": null

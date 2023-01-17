@@ -1,4 +1,5 @@
 // pages/Function/GradeFind/GradeFindContent/gradefindcontent.js
+const app = getApp();
 Page({
 
   /**
@@ -20,28 +21,50 @@ Page({
     totalcredit:0,//每一学期的总学分
     totalGPA:0,//每学期的总绩点
     weighting_GPA:0,//每学期的加权绩点
-    GPA:0
+    GPA:0,
+    set_schedule:{}
   },
   //计算加权绩点，放入getdate和bindPickerChange中,前者用于初始，后者用于更改学期后的计算
   Calculate_grades(){
     var i;
     var a=0;//记录课程数
-    var b=0;//记录总学分
-    var c=0;//绩点*学分的和
+    var b=0;//记录非公选总学分
+    var c=0;//非公选绩点*学分的和
+    var d=0;//记录总学分
+    var f=0;//绩点*学分的和
+    
     for(i=0;this.data.datalist[i];i++){
       if(this.data.datalist[i].xqmc==this.data.nowdate){
         // 课程数计算
         a++;
         //总学分的计算
-        if(this.data.datalist[i].kclbmc=='必修')b+=this.data.datalist[i].xf;
+        if(this.data.datalist[i].kclbmc!='公选')b+=this.data.datalist[i].xf;
         //绩点的计算
         //暂时只考虑了优良中三种情况，不及格的之后进行更新
-        if(this.data.datalist[i].kclbmc=='必修'){
+        if(this.data.datalist[i].kclbmc!='公选'){
           if(this.data.datalist[i].zcj=='优')c+=4.5*this.data.datalist[i].xf;
           else if(this.data.datalist[i].zcj=='良')c+=3.5*this.data.datalist[i].xf;
           else if(this.data.datalist[i].zcj=='中')c+=2.5*this.data.datalist[i].xf;
           else{
             c+=((this.data.datalist[i].zcj/10)-5).toFixed(2)*this.data.datalist[i].xf;
+          }
+        }
+        
+      }
+    }
+    for(i=0;this.data.datalist[i];i++){
+      if(this.data.datalist[i].xqmc==this.data.nowdate){
+
+        //总学分的计算
+        d+=this.data.datalist[i].xf;
+        //绩点的计算
+        //暂时只考虑了优良中三种情况，不及格的之后进行更新
+        if(this.data.datalist[i].kclbmc!='公选'){
+          if(this.data.datalist[i].zcj=='优')f+=4.5*this.data.datalist[i].xf;
+          else if(this.data.datalist[i].zcj=='良')f+=3.5*this.data.datalist[i].xf;
+          else if(this.data.datalist[i].zcj=='中')f+=2.5*this.data.datalist[i].xf;
+          else{
+            f+=((this.data.datalist[i].zcj/10)-5).toFixed(2)*this.data.datalist[i].xf;
           }
         }
         
@@ -165,6 +188,7 @@ Page({
         })
       },
     })
+    // 计算成绩
     that.Calculate_grades()
   },
   
@@ -172,12 +196,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    var that=this
     setTimeout(() => {
       this.setData({
         islogin:wx.getStorageSync('islogin'),
         // datalist:wx.getStorageSync('datalist')
       })
     }, 10);
+    // 读取设置
+    var set_schedule=app.globalData.set_all_data;
+    that.setData({
+      set_schedule,
+    })
   },
 
   /**
@@ -360,5 +390,123 @@ Page({
       icon:'none'
     })
 
-  }
+  },
+  switchShare(e){
+    var that=this
+    //就是说这个这是一个switch每按一次就会执行一次内容，所以！shareflag就相当于我每按一次
+    // 就得把这个开关的开始和结束重置。所以我们只需要在shareflag=true的时候进行请求数据就欧克
+    var newshareflag=!that.data.shareflag
+    //这个newshareflag是指的我是否打开共享课表
+    var bindshareflag=that.data.set_schedule.CBindState
+    //这个bindshareflag是指的我共享课表是否被绑定
+    var value=!that.data.checked_value
+    that.setData({
+      checked_value:value
+    })
+    //未绑定的情况
+    if(bindshareflag!=3&&value==true){
+      
+      console.log(e.detail.value)
+      this.setData({
+        checked_value:false
+      })
+      wx.navigateTo({
+ 
+        url: '../BindSchedule/bindschedule',
+      
+       })
+    }
+    // 如果已经绑定的话，就会对shareflag进行赋值换句话说就会有资格展示共享课表信息与否；
+    if(bindshareflag==3){
+      console.log(newshareflag)
+      if(!newshareflag){
+        var new_table1,new_table2
+        var requestflag=0
+        //--------并行线
+                //请求共享课表数据；串行
+        // 等会改成并行的
+        // 请求他课表数据
+        wx.request({
+          url: 'http://192.168.21.128:8000/qz/get_share_info/',
+          method: 'POST',
+          data: {
+            account: wx.getStorageSync('useraccount'),
+            password: wx.getStorageSync('userpws'),
+            cont: 0,
+            content:that.data.week_ordinal
+          },
+          header: {
+            'content-type': 'application/json'
+          },
+          success: (res) => {
+            
+            // 将课表传输到schedule_table
+            if (res.data["code"] >= 4000) {
+              console.log("请求错误")
+            }
+            else{
+              new_table2=res.data
+              requestflag++;
+            }
+          }
+        })
+        // 请求我课表数据
+        wx.request({
+          url: 'http://192.168.21.128:8000/qz/get_class_info/',
+          method:'POST',
+          data:{
+            account:wx.getStorageSync('useraccount'),
+            cookiesstr:wx.getStorageSync('cookiesstr'),
+            cont:that.data.week_ordinal
+          },
+          header:{
+            'content-type':'application/json'      
+          },
+          success: (res) => {
+            // 将课表传输到schedule_table
+            if (res.data["code"] >= 4000) {
+              console.log("请求错误")
+            }
+            else{
+              new_table1=res.data
+              requestflag++;
+            }
+
+
+          },
+          fail: (res) => {
+            //清楚登录状态
+            wx.showToast({
+              title: '请求失败',
+              icon: 'error'
+            })
+          }
+  
+        })
+        let RequestFlag = () => {
+          if(requestflag==2){
+            that.setData({
+              table1:new_table1,
+              table2:new_table2,
+            })
+            clearTimeout(request);
+          }
+          
+       }
+ 
+        var request =setInterval(function(){
+
+          RequestFlag()
+    
+        }, 100);
+
+      
+        //--------并行线
+      }
+      that.setData({
+      shareflag:newshareflag
+    })}
+   
+  },
+
 })

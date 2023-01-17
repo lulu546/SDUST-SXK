@@ -1,25 +1,18 @@
-// pages/Menu/StudentinfoFunction/UserSet.js
-const app = getApp()
+// pages/test.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    checkedflag1:false, //是否显示分享
-    checkedflag2:false, //是否显示分享
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    var that=this
-    
-    this.setData({
-      checkedflag1:wx.getStorageSync('isshareshowclass'),
-      checkedflag2:wx.getStorageSync('isshareshowgrade')
-    })
+
   },
 
   /**
@@ -69,15 +62,5 @@ Page({
    */
   onShareAppMessage() {
 
-  },
-  isshareshow1(e){
-
-    wx.setStorageSync('isshareshowclass', e.detail.value);
-    app.globalData.set_all_data.isshareshowclass=e.detail.value;
-  },
-  isshareshow2(e){
-
-    wx.setStorageSync('isshareshowgrade', e.detail.value);
-    app.globalData.set_all_data.isshareshowgrade=e.detail.value;
   }
 })

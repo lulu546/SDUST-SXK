@@ -21,7 +21,7 @@
       <view style="position: absolute;height:100%; width: 30%;align-items:center;display:flex;justify-content:center;">
         <image bindtap="buttonadd" mode="widthFix"style="width:170rpx"  src="http://192.168.21.128:8000/static/ScheduleContents/{{week_ordinal}}.png"></image>
     </view>
-    <view wx:if="{{set_schedule.isshareshow}}" class="buttonshare" style="position: absolute; top:10%; left: 35%; height: 35%;border-radius: 10px; color: #3730A3;width: 60%;background: #E0E7FF;align-items:center;display:flex;justify-content: space-evenly;">
+    <view wx:if="{{set_schedule.isshareshowclass}}" class="buttonshare" style="position: absolute; top:10%; left: 35%; height: 35%;border-radius: 10px; color: #3730A3;width: 60%;background: #E0E7FF;align-items:center;display:flex;justify-content: space-evenly;">
     <view bindtap="turnshareset" style="position: absolute;font-size:44rpx; left: 8%; letter-spacing:1rpx;  ">
       共享课表
     </view>
