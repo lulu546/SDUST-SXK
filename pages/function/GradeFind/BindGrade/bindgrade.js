@@ -158,7 +158,7 @@ Page({
       data: {
         account: wx.getStorageSync('useraccount'),
         password: wx.getStorageSync('userpws'),
-        cont:0,
+        cont:1,
         cancel:false,
         postnum:postnum
       },
@@ -219,7 +219,7 @@ Page({
       data: {
         account: wx.getStorageSync('useraccount'),
         password: wx.getStorageSync('userpws'),
-        cont:0,
+        cont:1,
         cancel:true,
         postnum:postnum
       },
@@ -279,7 +279,7 @@ Page({
       data: {
         account: wx.getStorageSync('useraccount'),
         password: wx.getStorageSync('userpws'),
-        cont:0,
+        cont:1,
         reply:true,
         postnum:postnum
       },

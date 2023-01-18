@@ -21,7 +21,7 @@
         有未回应的请求喵~
       </view>
       <view wx:elif="{{set_all_data.GBindState===3}}">
-        已成功绑定共享课表啦~
+        已成功绑定共享成绩啦~
       </view>
     </view>
   
