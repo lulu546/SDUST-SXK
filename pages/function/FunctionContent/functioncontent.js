@@ -77,14 +77,14 @@ Page({
     {
       src:'/image/jishiben.jpg',
       name:'小科考试',
-      id:7,
+      id:8,
       backgroundcolor: '#192DDD;',
       shadow:'0px 10px 20px rgba(93, 107, 239, 0.2);'
     },
     {
       src:'/image/jishiben.jpg',
-      name:'小科成绩单',
-      id:7,
+      name:'小科课程库',
+      id:9,
       backgroundcolor: '#6667AB;',
       shadow:'0px 10px 20px rgba(139, 140, 210, 0.2);'
     }
@@ -135,6 +135,11 @@ Page({
     else if(e.currentTarget.dataset.tar=="7"){
       wx.navigateTo({
         url: "/pages/Function/GradeFind/GradeFindContent/gradefindcontent"
+      })
+    }
+    else if(e.currentTarget.dataset.tar=="9"){
+      wx.navigateTo({
+        url: "/pages/Function/CourseLib/CourseLibContent/courselibcontent"
       })
     }
   },

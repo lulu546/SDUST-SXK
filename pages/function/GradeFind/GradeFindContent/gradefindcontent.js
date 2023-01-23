@@ -51,24 +51,29 @@ Page({
             f++;
             //总学分的计算
             b+=that.data.datalist1[i].xf;
-            
             if(that.data.datalist1[i].zcj=='优')c+=4.5*that.data.datalist1[i].xf;
             else if(that.data.datalist1[i].zcj=='良')c+=3.5*that.data.datalist1[i].xf;
             else if(that.data.datalist1[i].zcj=='中')c+=2.5*that.data.datalist1[i].xf;
+            else if(that.data.datalist1[i].zcj=='及格')d+=1.5*that.data.datalist1[i].xf;
+            else if(that.data.datalist1[i].zcj=='不及格')d+=0*that.data.datalist1[i].xf;
             else{
-              c+=((that.data.datalist1[i].zcj/10)-5).toFixed(2)*that.data.datalist1[i].xf;
+              if(that.data.datalist1[i].zcj>=60)c+=((that.data.datalist1[i].zcj/10)-5).toFixed(2)*that.data.datalist1[i].xf;
             }
             //平均绩点的计算
             if(that.data.datalist1[i].zcj=='优')d+=4.5;
             else if(that.data.datalist1[i].zcj=='良')d+=3.5;
             else if(that.data.datalist1[i].zcj=='中')d+=2.5;
+            else if(that.data.datalist1[i].zcj=='及格')d+=1.5;
+            else if(that.data.datalist1[i].zcj=='不及格')d+=0;
             else{
-              d+=((that.data.datalist1[i].zcj/10)-5).toFixed(2)*1;
+              if(that.data.datalist1[i].zcj>=60)d+=((that.data.datalist1[i].zcj/10)-5).toFixed(2)*1;
+              }
+
             }
           }
         }
       }
-    }
+    
     else{
       
       for(i=0;that.data.datalist2[i];i++){
@@ -233,9 +238,9 @@ Page({
     setTimeout(() => {
       this.setData({
         islogin:wx.getStorageSync('islogin'),
-        // datalist1:wx.getStorageSync('datalist1')
       })
     }, 10);
+    
     // 读取设置
     var set_schedule=app.globalData.set_all_data;
     that.setData({

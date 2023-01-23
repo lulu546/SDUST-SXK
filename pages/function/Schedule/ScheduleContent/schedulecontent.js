@@ -248,8 +248,15 @@ var moveFlag = true;// 判断执行滑动事件
     var week_ordinal=that.data.week_ordinal;
     var utils = require('../../../../utils/util');
       if(e.target.dataset.change=="pre"){
-       
-      if(week_ordinal>0)week_ordinal=week_ordinal-1;
+       console.log(week_ordinal)
+      if(week_ordinal>1){week_ordinal--;}
+      else{
+        wx.showToast({
+          title: '前面的道路以后再来探索吧！',
+          icon:'none'
+        })
+        return ;}
+      console.log(week_ordinal)
        var new_table1,new_table2
        var count_weekdaywhat=utils.count_weekday(week_ordinal-app.globalData.week_time);
        

@@ -45,7 +45,10 @@
     "pages/User/UserSetContent/usersetcontent",
     "pages/Function/GradeFind/BindGrade/bindgrade",
     "pages/test",
-    "pages/Function/ExamList/ExamListContent/examlistcontent"
+    "pages/Function/ExamList/ExamListContent/examlistcontent",
+    "pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent",
+    "pages/Function/CourseLib/CourseLibContent/courselibcontent",
+    "pages/Function/CourseLib/CourseLibDetail/courselibdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

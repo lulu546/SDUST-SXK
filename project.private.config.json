@@ -9,14 +9,10 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/Function/FunctionContent/functioncontent",
+          "pathName": "pages/Function/CourseLib/CourseLibContent/courselibcontent",
           "query": "",
           "launchMode": "default",
-          "scene": null,
-          "partialCompile": {
-            "enabled": true,
-            "pages": []
-          }
+          "scene": null
         },
         {
           "name": "",
