@@ -16,13 +16,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const app = getApp()
-    var that = this;
-    var week_ordinal  = app.globalData.week_time;
 
-    that.setData({
-      toweek:week_ordinal
-    })
+    var that = this;
+
     wx.request({
       url: 'http://192.168.21.128:8000/qz/get_courselib/',
       method: 'POST',
@@ -38,10 +34,7 @@ Page({
         'content-type': 'application/json'
       },
       success: (res) => {
-
         that.data.coursedata = res.data
-
-     
         that.setData({
           coursedata : res.data
         })
@@ -214,10 +207,13 @@ Page({
   turndetil(e){
     var that=this;
     var index=e.currentTarget.dataset.index;
-    var id=that.data.coursedata[index].id
-    let idStr = JSON.stringify(id)
+    var course=that.data.coursedata[index]
+    console.log(course)
+    let courseStr = JSON.stringify(course)
     wx.navigateTo({
-      url: '/pages/Function/CourseLib/CourseLibDetail/courselibdetail?id='+idStr,
+      url: '/pages/Function/CourseLib/CourseLibDetail/courselibdetail?course='+courseStr,
     })
+
+
   }
 })

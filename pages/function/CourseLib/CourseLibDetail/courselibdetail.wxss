@@ -1,1 +1,263 @@
-/* pages/Function/CourseLib/CourseLibDetail/courselibdetail.wxss */
+.inner {
+  position: relative;
+  width:100%;
+  background: #ffffff;
+  height: auto;
+  display: block;
+  box-sizing: border-box;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.25);
+  border-radius: 0rpx;
+ 
+}
+
+.buttonre {
+  position: absolute;
+  width: 80.9rpx;
+  height: 50rpx;
+  top: 89rpx;
+  background: #D9D9D9;
+  border-radius: 10rpx;
+  left: 470rpx;
+ 
+}
+.buttonshare {
+
+  text-align: left;
+  font-size: 20px;
+  line-height: 24px;
+}
+.buttonleft {
+  position: absolute;
+  width: 80.9rpx;
+  height: 50rpx;
+  top: 89rpx;
+  background: #D9D9D9;
+  border-radius: 10rpx;
+  left: 550rpx;
+  
+}
+
+.buttonright {
+  position: absolute;
+  width: 80.9rpx;
+  height: 50rpx;
+  top: 89rpx;
+  background: #D9D9D9;
+  border-radius: 10rpx;
+  left: 631rpx;
+  
+}
+
+.buttonadd {
+  position: absolute;
+  width: 80.9rpx;
+  height: 50rpx;
+  top: 89rpx;
+  background: #D9D9D9;
+  border-radius: 10rpx;
+  left: 389rpx;
+ 
+  
+}
+
+.weeknumber {
+  position: relative;
+  width: 237rpx;
+  background: #AB545A;
+  height: 90rpx;
+  left: 10rpx;
+  top: 90rpx;
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  letter-spacing: -0.24rpx;
+  line-height: 70rpx;
+  font-size: 50rpx;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: unset;
+  font-weight: 400;
+  color: #FFFFFF;
+  border-radius: 20rpx;
+
+}
+
+.outer {
+  width: 730rpx;
+  background: #FFFFFF;
+  
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  left: 10rpx;
+  top: 10rpx;
+  border-radius: 30rpx;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+
+}
+
+.tableheader {
+  position: relative;
+  width: 100%;
+  height: auto;
+  left: 5rpx;
+  top: 20rpx;
+  display: flex;
+  box-sizing: border-box;
+  
+ 
+}
+
+.week1 {
+  position: relative;
+  height: 115rpx;
+  flex:1;
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30rpx;
+  line-height: 14px;
+  text-align: center;
+
+  display: block;
+  box-sizing: border-box;
+  left: 0rpx;
+  top: 1rpx
+}
+
+
+.line {
+
+  background: #CCCCCC;
+
+  width: 90rpx;
+  height: 10rpx;
+  display: block;
+  box-sizing: border-box;
+  left: 5rpx;
+  top: 75rpx;
+  position: absolute;
+  border-radius: 15rpx
+}
+
+.weekday {
+  position: relative;
+  left: 5rpx;
+  top: 10rpx;
+  width: 89rpx;
+  height: 33rpx;
+  display: block;
+  box-sizing: border-box;
+  font-size: 25rpx
+}
+.timetableHideshare {
+  
+  min-height: 130px;
+
+  height: 100%;
+  margin: 3rpx 3.5rpx;
+  word-break: break-all;
+  color: #fff;
+  padding: 3px;
+  background: #ffffff;
+  font-size: 14px;
+  border-radius: 4px;
+  flex:1;
+}
+
+.timetableHideshare>view {
+  margin-bottom: 3px
+}
+
+
+.timetableHide>view {
+  margin-bottom: 3px
+}
+.timetablehr {
+  margin: 10rpx 0 10rpx 0;
+  background-color: rgb(247, 247, 247) !important;
+  height: 3px;
+  border: none;
+  width:100%;
+  position: relative; 
+  
+  
+
+}
+.timetablehrshare {
+  margin: 5rpx 0 5rpx 0;
+  background-color: rgb(247, 247, 247) !important;
+  height: 3px;
+  border: none;
+  width:100%;
+  position: relative; 
+  
+  
+
+}
+.dayschedule{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+ 
+
+  
+
+}
+
+.timetableHideBot {
+  min-height: 150px;
+  text-align: center;
+  word-break: break-all;
+  color: rgb(255, 255, 255);
+  padding: 1px;
+  
+  font-size: 13px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.timetableHideTop {
+  min-height: 150px;
+  text-align: center;
+  word-break: break-all;
+  color: rgb(255, 255, 255);
+  padding: 1px;
+  font-size: 13px;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  border-bottom-left-radius	: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.timetableHideshare {
+  min-height: 260px;
+  border-radius: 4px;
+  margin: 5rpx 3.5rpx;
+  text-align: center;
+  word-break: break-all;
+  color: #fff;
+  padding: 1px;
+  font-size: 13px;
+  flex:1;
+}
+.timetableHide {
+  text-align: center;
+  min-height: 130px;
+  height: 100%;
+  margin: 5rpx 3.5rpx;
+  word-break: break-all;
+  color: rgb(255, 255, 255);
+  padding: 3px;
+  
+  font-size: 13px;
+  border-radius: 10px;
+  flex:1;
+  
+}
+.tableUnitCon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  height: 100%;
+  line-height:35rpx;
+}

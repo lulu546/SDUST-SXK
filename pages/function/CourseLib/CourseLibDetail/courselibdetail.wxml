@@ -1,2 +1,55 @@
-<!--pages/Function/CourseLib/CourseLibDetail/courselibdetail.wxml-->
-<text>pages/Function/CourseLib/CourseLibDetail/courselibdetail.wxml</text>
+<view style="min-height: 300rpx;margin-top: 5%;position: relative;width: 90%;left:5%;border-radius: 17px;background: #444791;border: 1px solid #444791;">
+
+  <view  style="position: absolute; width: 90%; left:5%;height: 26%; top: 16%;  align-items:center;font-size:25px;text-align:left;display: flex;color: cornsilk;font-weight: bold;" >
+    {{course.CourseName}}
+  </view>
+  <!-- <view style="position: absolute;height: 26%;top: 16%; left:65%;background: rgba(255, 255, 255, 0.5);border-radius: 15px; color: #3730A3;width: 30%;background: #E0E7FF;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;flex-direction:column;display:inline-flex;font-weight:bold; ">
+    查询
+  </view> -->
+  <view style="position: absolute;width:39%;height: 26%;top: 50%; left:5%;border-radius: 15px;align-items:center;font-size:23px;text-align:left;display: flex;color: cornsilk;font-weight: bold;">
+    {{course.CourseTeacher}}
+  </view>
+  <view style="position: absolute;width:30%;height: 26%;top: 50%; left:35%;border-radius: 15px;align-items:center;font-size:23px;text-align:left;display: flex;color: cornsilk;font-weight: bold;">
+    第{{toweek}}周
+  </view>
+  <view style="position: absolute;height: 26%;top: 51%; left:65%;background: rgba(255, 255, 255, 0.5);border-radius: 15px; color: #3730A3;width: 30%;background: #E0E7FF;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;">
+    <image data-change="pre" bindtap="weekchange" mode="widthFix" style="width: 65rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/left-square.png"></image>
+    <image data-change="next" bindtap="weekchange" mode="widthFix" style="width: 65rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/right-square.png"></image>
+  </view>
+
+
+
+</view>
+<view style="position: absolute;background:#FFFF;width: 90%;left: 5%;border-radius:15px;top:27%;">
+  <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+        <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <!-- index是下标变量名,0,1,2,3，item是数组当前项的变量名（a[1]） -->
+          <!-- 横着渲染，竖着渲染会对不起 -->
+          <view>
+            <view class="dayschedule" style="height:100%;">
+
+              <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:for-item="inner" wx:for-index="innerIndex" wx:key="innerIndex">
+                <view style="width:100%;">
+                  <view style="height:100%;">
+                    <block wx:if="{{coursedetildata[inner][item][0].length!=0}}">
+                    <view class="timetableHide" style="background: rgb(49, 70, 185);">
+                        <view>{{coursedetildata[inner][item][0]}}</view>
+                        <view>{{coursedetildata[inner][item][1]}}</view>
+                        <view >{{coursedetildata[inner][item][2]}}</view>
+                        <view >{{coursedetildata[inner][item][3]}}</view>
+                      </view>
+                    </block>
+                    <block wx:else>
+                      <view class="timetableHide"></view>
+
+                    </block>
+                  </view>
+                </view>
+              </block>
+            </view>
+            <view wx:if="{{item!=4}}" class="timetablehr" style="position: relative; left: 0rpx; top: 9rpx"></view>
+          </view>
+        </block>
+
+      </view>
+</view>

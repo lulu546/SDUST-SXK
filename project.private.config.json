@@ -12,7 +12,13 @@
           "pathName": "pages/Function/CourseLib/CourseLibContent/courselibcontent",
           "query": "",
           "launchMode": "default",
-          "scene": null
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": [
+              "pages/Function/CourseLib/CourseLibDetail/courselibdetail"
+            ]
+          }
         },
         {
           "name": "",

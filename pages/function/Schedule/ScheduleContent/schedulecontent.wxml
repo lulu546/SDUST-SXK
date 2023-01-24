@@ -16,27 +16,27 @@
 2.ADD添加课表，刷新课表，上一周数据，下一周数据
  -->
 
- <view class="outer">
+<view class="outer">
   <view style="position: relative;width: 100%; height: 250rpx; display: block; box-sizing: border-box">
-      <view style="position: absolute;height:100%; width: 30%;align-items:center;display:flex;justify-content:center;">
-        <image bindtap="buttonadd" mode="widthFix"style="width:170rpx"  src="http://192.168.21.128:8000/static/ScheduleContents/{{week_ordinal}}.png"></image>
+    <view style="position: absolute;height:100%; width: 30%;align-items:center;display:flex;justify-content:center;">
+      <image bindtap="buttonadd" mode="widthFix" style="width:170rpx" src="http://192.168.21.128:8000/static/ScheduleContents/{{week_ordinal}}.png"></image>
     </view>
     <view wx:if="{{set_schedule.isshareshowclass}}" class="buttonshare" style="position: absolute; top:10%; left: 35%; height: 35%;border-radius: 10px; color: #3730A3;width: 60%;background: #E0E7FF;align-items:center;display:flex;justify-content: space-evenly;">
-    <view bindtap="turnshareset" style="position: absolute;font-size:44rpx; left: 8%; letter-spacing:1rpx;  ">
-      共享课表
-    </view>
-    <image  bindtap="turnshareset" mode="widthFix" style=" position: absolute;width: 44rpx;  display: block; left: 48%;box-sizing: border-box"  src="../../../../static/icon/Schedule/setting.png"></image>
+      <view bindtap="turnshareset" style="position: absolute;font-size:44rpx; left: 8%; letter-spacing:1rpx;  ">
+        共享课表
+      </view>
+      <image bindtap="turnshareset" mode="widthFix" style=" position: absolute;width: 44rpx;  display: block; left: 48%;box-sizing: border-box" src="../../../../static/icon/Schedule/setting.png"></image>
       <switch checked="{{checked_value}}" style="position: absolute; left: 70%; " bindchange="switchShare"></switch>
     </view>
 
-      <view style="position: absolute; top:55%; left: 35%; height: 35%;border-radius: 10px; width: 60%;background: #E0E7FF;align-items:center;display:flex;justify-content: space-evenly;">
-        
-      <image bindtap="buttonadd" mode="widthFix"style="  width: 60rpx;  display: block; box-sizing: border-box"  src="../../../../static/icon/Schedule/add.png"></image>
+    <view style="position: absolute; top:55%; left: 35%; height: 35%;border-radius: 10px; width: 60%;background: #E0E7FF;align-items:center;display:flex;justify-content: space-evenly;">
 
-      <image bindtap="rechange" mode="widthFix"style=" width: 60rpx; display: block; box-sizing: border-box"  src="../../../../static/icon/Schedule/refresh.png"></image>
+      <image bindtap="buttonadd" mode="widthFix" style="  width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/add.png"></image>
 
-      <image data-change="pre" bindtap="weekchange" mode="widthFix" style="width: 60rpx;  display: block; box-sizing: border-box"  src="../../../../static/icon/Schedule/left-square.png"></image>
-      <image data-change="next" bindtap="weekchange" mode="widthFix" style=" width: 60rpx;  display: block; box-sizing: border-box"  src="../../../../static/icon/Schedule/right-square.png"></image>
+      <image bindtap="rechange" mode="widthFix" style=" width: 60rpx; display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/refresh.png"></image>
+
+      <image data-change="pre" bindtap="weekchange" mode="widthFix" style="width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/left-square.png"></image>
+      <image data-change="next" bindtap="weekchange" mode="widthFix" style=" width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/right-square.png"></image>
     </view>
 
 
@@ -52,67 +52,67 @@
         <view class="week1">Tue
           <view class="weekday">{{weekday[1].thismonth+'/'+weekday[1].thisday}}</view>
           <view class="line" style="{{'background-color:'+((nowtimes.month==weekday[1].thismonth)&&(nowtimes.day==weekday[1].thisday)?'coral':'#CCCCCC'+';')}}"></view>
-     </view>
+        </view>
         <view class="week1">Wed
           <view class="weekday">{{weekday[2].thismonth+'/'+weekday[2].thisday}}</view>
           <view class="line" style="{{'background-color:'+((nowtimes.month==weekday[2].thismonth)&&(nowtimes.day==weekday[2].thisday)?'coral':'#CCCCCC'+';')}}"></view>
-    </view>
+        </view>
         <view class="week1">Thur
           <view class="weekday">{{weekday[3].thismonth+'/'+weekday[3].thisday}}</view>
           <view class="line" style="{{'background-color:'+((nowtimes.month==weekday[3].thismonth)&&(nowtimes.day==weekday[3].thisday)?'coral':'#CCCCCC'+';')}}"></view>
-   </view>
+        </view>
         <view class="week1">Fri
           <view class="weekday">{{weekday[4].thismonth+'/'+weekday[4].thisday}}</view>
           <view class="line" style="{{'background-color:'+((nowtimes.month==weekday[4].thismonth)&&(nowtimes.day==weekday[4].thisday)?'coral':'#CCCCCC'+';')}}"></view>
-  </view>
+        </view>
         <view class="week1">Sat
           <view class="weekday">{{weekday[5].thismonth+'/'+weekday[5].thisday}}</view>
           <view class="line" style="{{'background-color:'+((nowtimes.month==weekday[5].thismonth)&&(nowtimes.day==weekday[5].thisday)?'coral':'#CCCCCC'+';')}}"></view>
- </view>
+        </view>
         <view class="week1">Sun
           <view class="weekday">{{weekday[6].thismonth+'/'+weekday[6].thisday}}</view>
-              <view class="line" style="{{'background-color:'+((nowtimes.month==weekday[6].thismonth)&&(nowtimes.day==weekday[6].thisday)?'coral':'#CCCCCC'+';')}}"></view>
-   </view>
+          <view class="line" style="{{'background-color:'+((nowtimes.month==weekday[6].thismonth)&&(nowtimes.day==weekday[6].thisday)?'coral':'#CCCCCC'+';')}}"></view>
+        </view>
 
       </view>
     </view>
 
     <!-- 课表 -->
     <view wx:if="{{shareflag}}">
-      <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" >
-      <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-        <!-- index是下标变量名,0,1,2,3，item是数组当前项的变量名（a[1]） -->
-        <!-- 横着渲染，竖着渲染会对不起 -->
-        <view>
-        <view class="dayschedule" style="height:100%;">
+      <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+        <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <!-- index是下标变量名,0,1,2,3，item是数组当前项的变量名（a[1]） -->
+          <!-- 横着渲染，竖着渲染会对不起 -->
+          <view>
+            <view class="dayschedule" style="height:100%;">
 
-          <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:for-item="inner" wx:for-index="innerIndex" wx:key="innerIndex">
-            <view style="width:100%;">
-              <view style="height:100%;">
-                <block wx:if="{{table1[inner][item][0].length!=0}}">
-                  <view class="timetableHide" style="{{'background:'+(table1[inner][item][3])+';'}}">
-                    <view style="{{'color:'+(table[inner][item][4])+';'}}">{{table1[inner][item][0]}}</view>
-                    <!-- 2=课程，4=教室，3=名字，5=课表的背景颜色=苹果日历颜色,6是课程文字颜色 -->
-                    <!-- table[inner][item]，inner是天数，item是课程 -->
-                    <view style="{{'color:'+(table[inner][item][4])+';'}}">{{table1[inner][item][1]}}</view>
-                    <view style="{{'color:'+(table[inner][item][4])+';'}}">{{table1[inner][item][2]}}</view>
+              <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:for-item="inner" wx:for-index="innerIndex" wx:key="innerIndex">
+                <view style="width:100%;">
+                  <view style="height:100%;">
+                    <block wx:if="{{table1[inner][item][0].length!=0}}">
+                      <view class="timetableHide" style="{{'background:'+(table1[inner][item][3])+';'}}">
+                        <view style="{{'color:'+(table[inner][item][4])+';'}}">{{table1[inner][item][0]}}</view>
+                        <!-- 2=课程，4=教室，3=名字，5=课表的背景颜色=苹果日历颜色,6是课程文字颜色 -->
+                        <!-- table[inner][item]，inner是天数，item是课程 -->
+                        <view style="{{'color:'+(table[inner][item][4])+';'}}">{{table1[inner][item][1]}}</view>
+                        <view style="{{'color:'+(table[inner][item][4])+';'}}">{{table1[inner][item][2]}}</view>
+                      </view>
+
+                    </block>
+                    <block wx:else>
+                      <view class="timetableHide"></view>
+
+                    </block>
                   </view>
-
-                </block>
-                <block wx:else>
-                  <view class="timetableHide"></view>
-
-                </block>
-              </view>
+                </view>
+              </block>
             </view>
-          </block>
-        </view>
-        <view wx:if="{{item!=4}}" class="timetablehr" style="position: relative; left: 0rpx; top: 9rpx"></view>
+            <view wx:if="{{item!=4}}" class="timetablehr" style="position: relative; left: 0rpx; top: 9rpx"></view>
+          </view>
+        </block>
+
       </view>
-      </block>
-      
     </view>
-  </view>
 
     <view wx:else>
       <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style=" position:relative;top:4rpx;">
@@ -120,7 +120,7 @@
           <view>
             <view class="dayschedule">
               <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:for-item="inner" wx:for-index="innerIndex" wx:key="innerIndex">
-                 <!-- 填充 -->
+                <!-- 填充 -->
                 <view style="flex:1;margin: 0rpx 3.5rpx;">
                   <block wx:if="{{table1[inner][item][0].length!=0||table2[inner][item][0].length!=0}}">
                     <view class="tableUnitCon">
@@ -139,7 +139,7 @@
                       <block wx:if="{{table2[inner][item][0].length!=0&&table2[0]!=null}}">
                         <view class="timetableHideTop" style="background:rgb(234, 167, 140);">
                           <view>{{table2[inner][item][0]}}</view>
-                          <view>{{table2[inner][item][1]}}</view>               
+                          <view>{{table2[inner][item][1]}}</view>
                           <view>{{table2[inner][item][2]}}</view>
                         </view>
                       </block>
