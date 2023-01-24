@@ -112,6 +112,7 @@
         </block>
 
       </view>
+      <view  class="timetablehr" style="position: relative; left: 0rpx; background-color: rgb(255, 255, 255) !important;  height: 1rpx;"></view>
     </view>
 
     <view wx:else>

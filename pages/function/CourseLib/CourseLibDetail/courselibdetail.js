@@ -120,7 +120,7 @@ Page({
         // coursename:that.data.coursename,
         // teachername:that.data.teachername,
         // page:_page,
-        toweek:7,
+        toweek:week_ordinal,
         id: that.data.course.id,
         cont:1
       },

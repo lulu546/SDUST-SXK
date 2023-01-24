@@ -6,13 +6,13 @@
   <!-- <view style="position: absolute;height: 26%;top: 16%; left:65%;background: rgba(255, 255, 255, 0.5);border-radius: 15px; color: #3730A3;width: 30%;background: #E0E7FF;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;flex-direction:column;display:inline-flex;font-weight:bold; ">
     查询
   </view> -->
-  <view style="position: absolute;width:39%;height: 26%;top: 50%; left:5%;border-radius: 15px;align-items:center;font-size:23px;text-align:left;display: flex;color: cornsilk;font-weight: bold;">
+  <view style="position: absolute;width:39%;height: 26%;top: 53%; left:5%;border-radius: 15px;align-items:center;font-size:23px;text-align:left;display: flex;color: cornsilk;font-weight: bold;">
     {{course.CourseTeacher}}
   </view>
-  <view style="position: absolute;width:30%;height: 26%;top: 50%; left:35%;border-radius: 15px;align-items:center;font-size:23px;text-align:left;display: flex;color: cornsilk;font-weight: bold;">
+  <view style="position: absolute;width:30%;height: 26%;top: 53%; left:35%;border-radius: 15px;align-items:center;font-size:23px;text-align:left;display: flex;color: cornsilk;font-weight: bold;">
     第{{toweek}}周
   </view>
-  <view style="position: absolute;height: 26%;top: 51%; left:65%;background: rgba(255, 255, 255, 0.5);border-radius: 15px; color: #3730A3;width: 30%;background: #E0E7FF;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;">
+  <view style="position: absolute;height: 26%;top: 54%; left:65%;background: rgba(255, 255, 255, 0.5);border-radius: 15px; color: #3730A3;width: 30%;background: #E0E7FF;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;">
     <image data-change="pre" bindtap="weekchange" mode="widthFix" style="width: 65rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/left-square.png"></image>
     <image data-change="next" bindtap="weekchange" mode="widthFix" style="width: 65rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/right-square.png"></image>
   </view>
@@ -20,7 +20,7 @@
 
 
 </view>
-<view style="position: absolute;background:#FFFF;width: 90%;left: 5%;border-radius:15px;top:27%;">
+<view style="position: absolute;background:#FFFF;width: 90%;left: 5%;border-radius:15px;top:27%;border: 1px solid #e6e8eea9;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.055);">
   <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
         <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
           <!-- index是下标变量名,0,1,2,3，item是数组当前项的变量名（a[1]） -->
@@ -49,7 +49,10 @@
             </view>
             <view wx:if="{{item!=4}}" class="timetablehr" style="position: relative; left: 0rpx; top: 9rpx"></view>
           </view>
+          
         </block>
 
+
       </view>
+      <view  class="timetablehr" style="position: relative; left: 0rpx; background-color: rgb(255, 255, 255) !important;  height: 0.1rpx;"></view>
 </view>

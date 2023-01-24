@@ -159,14 +159,12 @@
   color: #fff;
   padding: 3px;
   background: #ffffff;
-  font-size: 14px;
+  font-size: 10px;
   border-radius: 4px;
   flex:1;
 }
 
-.timetableHideshare>view {
-  margin-bottom: 3px
-}
+
 
 
 .timetableHide>view {
@@ -174,14 +172,11 @@
 }
 .timetablehr {
   margin: 10rpx 0 10rpx 0;
-  background-color: rgb(247, 247, 247) !important;
+  background-color: rgb(250, 250, 250) !important;
   height: 3px;
   border: none;
   width:100%;
   position: relative; 
-  
-  
-
 }
 .timetablehrshare {
   margin: 5rpx 0 5rpx 0;
@@ -246,7 +241,6 @@
   word-break: break-all;
   color: rgb(255, 255, 255);
   padding: 3px;
-  
   font-size: 13px;
   border-radius: 10px;
   flex:1;
