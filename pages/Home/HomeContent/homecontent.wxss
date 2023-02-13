@@ -174,7 +174,7 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
 
 .crouse_name {
   position: absolute;
-  width: 224rpx;
+  width: 110px;
   height: 24px;
   left: 91px;
   top: 8px;
@@ -206,7 +206,7 @@ top: 261px;269 */
   font-family: 'ABeeZee';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 19px;
   /* identical to box height */
 
@@ -218,7 +218,7 @@ top: 261px;269 */
 
 .crouse_teacher {
   position: absolute;
-  width: 48px;
+  width: 90px;
   height: 19px;
   left: 91px;
   top: 59px;
@@ -227,7 +227,7 @@ top: 261px;269 */
   font-family: 'ABeeZee';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 19px;
   /* identical to box height */
 

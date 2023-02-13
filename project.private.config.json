@@ -9,14 +9,16 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/Function/CourseLib/CourseLibContent/courselibcontent",
+          "pathName": "pages/Function/PhoneBook/LikeMinded/LikeMindedContent/LikeMindedContent",
           "query": "",
           "launchMode": "default",
           "scene": null,
           "partialCompile": {
             "enabled": true,
             "pages": [
-              "pages/Function/CourseLib/CourseLibDetail/courselibdetail"
+              "pages/Function/PhoneBook/phonebook",
+              "pages/Function/PhoneBook/ScienceBase/ScienceBaseContent/ScienceBaseContent",
+              "pages/Function/PhoneBook/LikeMinded/LikeMindedContent/LikeMindedContent"
             ]
           }
         },

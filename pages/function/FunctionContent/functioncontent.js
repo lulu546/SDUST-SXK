@@ -132,6 +132,11 @@ Page({
         url: "/pages/Function/DepartmentWork/DepartmentWorkContent/departmentworkcontent"
       })
     }
+    else if(e.currentTarget.dataset.tar=="5"){
+      wx.navigateTo({
+        url: "/pages/Function/PhoneBook/PhoneBookContent/phonebookcontent"
+      })
+    }
     else if(e.currentTarget.dataset.tar=="7"){
       wx.navigateTo({
         url: "/pages/Function/GradeFind/GradeFindContent/gradefindcontent"

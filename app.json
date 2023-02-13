@@ -48,7 +48,11 @@
     "pages/Function/ExamList/ExamListContent/examlistcontent",
     "pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent",
     "pages/Function/CourseLib/CourseLibContent/courselibcontent",
-    "pages/Function/CourseLib/CourseLibDetail/courselibdetail"
+    "pages/Function/CourseLib/CourseLibDetail/courselibdetail",
+    "pages/Function/PhoneBook/phonebook",
+    "pages/Function/PhoneBook/PhoneBookContent/phonebookcontent",
+    "pages/Function/PhoneBook/ScienceBase/ScienceBaseContent/ScienceBaseContent",
+    "pages/Function/PhoneBook/LikeMinded/LikeMindedContent/LikeMindedContent"
   ],
   "window": {
     "backgroundTextStyle": "light",
