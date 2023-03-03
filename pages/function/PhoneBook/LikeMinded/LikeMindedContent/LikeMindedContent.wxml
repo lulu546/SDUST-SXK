@@ -3,13 +3,13 @@
 <view>
 
 <view style="min-height: 350rpx;margin-top: 5%;position: relative;width: 90%;left:5%;border-radius: 17px;background: #444791;border: 1px solid #444791;">
-  <input placeholder="请输入社团名捏 ！" value="{{coursename}}" bindinput="getcoursename" type="text" style="position: absolute; width: 55%; height: 26%; top: 16%; left: 5%; background: rgba(255, 255, 255, 0.9); border-radius: 15px;padding-left: 3%;"/>
+  <input placeholder="请输入社团名捏 ！" value="{{likename}}" bindinput="getlikename" type="text" style="position: absolute; width: 55%; height: 26%; top: 16%; left: 5%; background: rgba(255, 255, 255, 0.9); border-radius: 15px;padding-left: 3%;"/>
   <view  bindtap="find" style="position: absolute;height: 26%;top: 16%; left:65%;background: rgba(255, 255, 255, 0.5);border-radius: 15px; color: #3730A3;width: 30%;background: #E0E7FF;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;flex-direction:column;display:inline-flex;font-weight:bold; ">
     查询
   </view>
 
   <view style="position: absolute;width:100%;height: 26%;top: 78%; left:6%;border-radius: 15px;align-items:center;font-size:12px;text-align:left;display: flex;color: rgba(255, 255, 255, 0.39);">
-    长按社团的卡片可以复制群号哦~
+    点按社团的卡片可以复制QQ群号哦~
   </view>
 
   <view style="position: absolute;height: 26%;top: 56%; left:33%;background: rgba(255, 255, 255, 0.5);border-radius: 15px; color: #3730A3;width: 30%;background: #E0E7FF;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;font-weight:bold;">第{{page}}页
@@ -29,11 +29,11 @@
 <view style="min-height: 300rpx; margin-top: 5%; position: relative; width: 90%; left: 40rpx; top: 0rpx">
   <!-- border-radius: 17px;background: #FFFFFF;border: 1px solid #E6E8EE;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1); -->
   <view  wx:for="{{likedata}}" wx:key="index" >
-  <view style="position:relative;display: flex;border-radius:18px;height:300rpx;align-items: center;width: 100%;border-radius: 15px;background: #FFFFFF;border: 1px solid #E6E8EE;flex: none;order: 1;align-self: stretch;flex-grow: 0;margin:10px 0;"  data-index="{{index}}" bindtap="copyText" data-key="{{item.fields.QQGroupNumber}}">
+  <view style="position:relative;display: flex;border-radius:18px;height:300rpx;align-items: center;width: 100%;border-radius: 15px;background: #FFFFFF;border: 1px solid #E6E8EE;flex: none;order: 1;align-self: stretch;flex-grow: 0;margin:10px 0;"  data-index="{{index}}" bindtap="copyText" data-key="{{item.QQGroupNumber}}">
 
-    <text style="position: absolute; left: 34rpx; top: 0%; width:90%;height:45%;font-weight: bold; font-size: 27px;line-height: 22px; color: #000000; text-align: left; display: inline-flex; flex-direction: column; align-items: left; justify-content: space-evenly;">{{item.fields.Groupname}}</text>
-    <text style="position: absolute;left:5%;top: 32%;width:90%;font-family:宋体;height:30%;font-weight: bold;font-size: 20px;line-height: 23px;color: #000000;text-align:left; display: flex; flex-direction: column; align-items: left; justify-content: space-evenly;" selectable="true">QQ:{{item.fields.QQGroupNumber}}</text>
-    <text style="position: absolute;left:5%;font-family:宋体;top: 60%;width:90%;height:30%;font-size: 20px;line-height: 20px;color: #616161;text-align:left; display: flex; flex-direction: column; align-items: left; ">{{item.fields.InfoContent}}</text>
+    <text style="position: absolute; left: 34rpx; top: 0%; width:90%;height:45%;font-weight: bold; font-size: 27px;line-height: 22px; color: #000000; text-align: left; display: inline-flex; flex-direction: column; align-items: left; justify-content: space-evenly;">{{item.Groupname}}</text>
+    <text style="position: absolute;left:5%;top: 32%;width:90%;font-family:宋体;height:30%;font-weight: bold;font-size: 20px;line-height: 23px;color: #000000;text-align:left; display: flex; flex-direction: column; align-items: left; justify-content: space-evenly;" selectable="true">{{item.QQGroupNumber}}</text>
+    <text style="position: absolute;left:5%;font-family:宋体;top: 60%;width:90%;height:30%;font-size: 20px;line-height: 20px;color: #616161;text-align:left; display: flex; flex-direction: column; align-items: left; ">{{item.InfoContent}}</text>
 
   </view>
 

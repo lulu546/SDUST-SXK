@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    coursename:"",
+    likename:"",
     page:1,
     toweek:NaN,
     likedata:[
@@ -53,11 +53,9 @@ Page({
       url: 'http://192.168.21.128:8000/qz/get_phonebook_info/',
       method: 'POST',
       data: {
-        coursename:"",
+        likename:"",
         page:1,
-        // toweek:7,
-        // id:39,
-        cont:0
+ 
       },
       header: {
         'content-type': 'application/json'
@@ -138,11 +136,9 @@ Page({
           url: 'http://192.168.21.128:8000/qz/get_phonebook_info/',
           method: 'POST',
           data: {
-            coursename:that.data.coursename,
+            likename:that.data.likename,
             page:_page,
-            // toweek:7,
-            // id:39,
-            cont:0
+      
           },
           header: {
             'content-type': 'application/json'
@@ -172,11 +168,9 @@ Page({
             url: 'http://192.168.21.128:8000/qz/get_phonebook_info/',
             method: 'POST',
             data: {
-              coursename:that.data.coursename,
+              likename:that.data.likename,
               page:_page,
-              // toweek:7,
-              // id:39,
-              cont:0
+    
             },
             header: {
               'content-type': 'application/json'
@@ -194,9 +188,9 @@ Page({
       }
 
   },
-  getcoursename(e) {
+  getlikename(e) {
     this.setData({
-      coursename: e.detail.value
+      likename: e.detail.value
     })
   },
 
@@ -207,11 +201,9 @@ Page({
       url: 'http://192.168.21.128:8000/qz/get_phonebook_info/',
       method: 'POST',
       data: {
-        coursename:that.data.coursename,
+        likename:that.data.likename,
         page:1,
-        // toweek:7,
-        // id:39,
-        cont:0
+
       },
       header: {
         'content-type': 'application/json'
@@ -236,7 +228,7 @@ copyText(e) {
       wx.getClipboardData({ // 获取系统剪贴板的内容
         success(res) {
           wx.showToast({
-            title: '复制成功',
+            title: '到达粘贴板！',
           })
         }
       })
