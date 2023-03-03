@@ -48,7 +48,7 @@ Page({
     }
     else if(e.currentTarget.dataset.tar=="0"){
       wx.navigateTo({
-        url: "/pages/Function/DepartmentWork/SaturdayMovie/SaturdayMovieContent/saturdaymoviecontent"
+        url: "/pages/Function/PhoneBook/LikeMinded/LikeMindedContent/LikeMindedContent"
       })
 
     }
