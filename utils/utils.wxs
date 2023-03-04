@@ -5,7 +5,7 @@
  */
 var substring = function (val,start,end) {
   if (val.length == 0 || val == undefined) {
-    return;
+    return undefined;
   }
     return val.substring(start,end);
 }

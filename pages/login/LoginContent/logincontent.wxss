@@ -1,13 +1,7 @@
 /* pages/login/login.wxss */
+
 #_type3{
-  position: relative;
-  /* top: 380rpx;   */
-  height: 150rpx;
-  width: 466rpx;
-  box-shadow : -5 px 0 5 px #ccc , /*左边阴影*/
-               0 -5 px 5 px #ccc , /*顶部阴影*/
-               0 5 px 5 px #ccc , /*底部阴影*/
-               5 px 0 5 px #ccc ; /*右边阴影*/
+
 }
 #_input1{
   position: relative;
@@ -23,49 +17,14 @@
   border-top-right-radius: 10px; 
   border-top-left-radius: 10px;
   border: 1rpx solid rgb(193, 204, 198);
-  /* border-top: 1rpx solid rgb(193, 204, 198);
-  border-left: 1rpx solid rgb(193, 204, 198);
-  border-right: 1rpx solid rgb(193, 204, 198);
-  border-bottom: 1rpx solid rgb(193, 204, 198); */
-}
-#_input2{
-  position: relative;
-  height: 73rpx; 
-  display: block; 
-  box-sizing: border-box; 
-  margin-left: 89rpx;
-  background-color: white;
-  top: 367rpx;
-  margin-top: 15rpx;
-  /* border-top: 1rpx solid rgb(247, 250, 239);   */
-  width: 495rpx;
-  border-bottom-left-radius: 10px;
-  /* box-shadow: 0 5px 5px rgb(193, 204, 198),-5px 0 2px rgb(193, 204, 198); */
-  border-left: 1rpx solid rgb(193, 204, 198);
-  border-bottom: 1rpx solid rgb(193, 204, 198);
-}
-.eyestyle{
-  position: relative;
-  top: 294rpx;
-  margin-left: 580rpx;
 
-  height: 72rpx;
-  width: 72rpx;
-  border-bottom-right-radius: 10px;
-  border-bottom: 1rpx solid rgb(193, 204, 198);
-  border-right: 1rpx solid rgb(193, 204, 198);
+}
+
+.eyestyle{
+
   /* border-top: 1rpx solid rgb(193, 204, 198); */
 }
-#_button{
-  position: relative;
-  top: 353rpx;
-  width: 50%;
-  height: 70rpx;
-  font-size: medium;
-  left: 140rpx;
-  background-color:rgb(204, 223, 186);
-  display: inline;
-}
+
 #_checkbox{
   font-size: small;
   position: relative;

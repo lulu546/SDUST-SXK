@@ -9,16 +9,14 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/Function/PhoneBook/LikeMinded/LikeMindedContent/LikeMindedContent",
+          "pathName": "pages/Function/FunctionContent/functioncontent",
           "query": "",
           "launchMode": "default",
           "scene": null,
           "partialCompile": {
             "enabled": true,
             "pages": [
-              "pages/Function/PhoneBook/phonebook",
-              "pages/Function/PhoneBook/ScienceBase/ScienceBaseContent/ScienceBaseContent",
-              "pages/Function/PhoneBook/LikeMinded/LikeMindedContent/LikeMindedContent"
+              "pages/Function/FunctionContent/functioncontent"
             ]
           }
         },

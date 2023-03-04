@@ -1,19 +1,36 @@
 <!--pages/login/login.wxml-->
-<view style="background-color: rgb(255, 255, 255);width: 100%;height: 750px;">
-  <form style="margin-top: 11px;">
-    <text style="position: relative; left: 205rpx; top: 234rpx; text-align: -webkit-center; font-size: -webkit-xxx-large">山小科</text>
-    <view id="_type3">
-      <input type="text" placeholder="请输入学号" id="_input1" value="{{useraccount}}" bindinput="getaccount" />
-      <view>
-        <input password="{{!isshow}}" placeholder="请输入密码" id="_input2" value="{{userpws}}" bindinput="getpassword" />
-        <view catchtap="changeshow" class="eyestyle">
-          <image src="{{_src}}" style="height: 40rpx;width: 40rpx;"></image>
-        </view>
+
+<view style="background: rgba(255, 255, 255, 1); width: 90%; height: 80%; left: 38rpx; position: absolute; top: 125rpx; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 8px 16px rgba(0, 0, 0, 0.14);border-radius: 14px;">
+  
+    <!-- <text style="position: relative; left: 205rpx; top: 234rpx; text-align: -webkit-center; font-size: -webkit-xxx-large;color: white;">山小科</text> -->
+    <view style="position: absolute; height: 80%; width: 100%; top: 116rpx; left: 0rpx">
+      <view style="position: absolute;width: 80%;left: 10%; top: 0%; height: 30%;border-radius: 3px;background-color:#5B5FC7; display: flex;justify-content: center;align-items: center;">
+        <text style="position: absolute;color: white;font-size: 70px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">山小科</text>
       </view>
-      <view id="_button"><button bindtap="loginTo">登录</button></view>
-      <view id="_button"><button ></button></view>
-      <view id="_button"><button bindtap="XiaoGuologinTo">小郭专属登录按钮</button></view>
+
+      <view style="position: absolute;font-weight:bold;font-size:14px;display: block; box-sizing: border-box;  top: 36%;  background-color: white;border-radius: 3px; left: 10%;color: #484644;">
+        Student ID
+      </view>
+      <view style="position: absolute;font-weight:bold;font-size:14px;display: block; box-sizing: border-box;  top: 51%;  background-color: white;border-radius: 3px; left: 10%;color: #484644;">
+        Password QZ 
+      </view>
+      <view style="position: absolute; height: 90rpx; display: block; box-sizing: border-box; background-color: #F3F2F1; top: 40%; width: 80%; border-radius: 3px; left: 10%;">
+        <input placeholder="请输入学号" value="{{useraccount}}" bindinput="getaccount" style="color:#484644;position: absolute;height: 95%; display: block; box-sizing: border-box;width: 90%;border-radius: 15px;left: 5%;" />
+        <view style="position: absolute;top: 95%;height: 5%;width:100%;background: #5B5FC7;"></view>
+      </view>
+
+
+      <view style="position: absolute; height: 90rpx; display: block; box-sizing: border-box; background-color: #F3F2F1; top: 55%; width: 80%; border-radius: 3px; left: 10%">
+        <view bindtap="changeshow" style="position: absolute;height: 95%;width: 15%;left: 85%;display: flex;justify-content: center;align-items: center;">
+          <image src="{{_src}}" style="height: 50rpx;width: 50rpx;"></image>
+        </view>
+        <input password="{{!isshow}}" placeholder="请输入密码" style="color:#484644;position: absolute;height: 95%; display: block; box-sizing: border-box;width: 80%;border-radius: 15px;left: 5%;" value="{{userpws}}" bindinput="getpassword" />
+
+        <view style="position: absolute;top:95%;height: 5%;width:100%;background: #5B5FC7;"></view>
+      </view>
+      <view style="position: relative;top: 80%;height: 80rpx;"><button bindtap="loginTo" style="background-color:#5B5FC7;color: white;">登录</button></view>
+  
     </view>
-    <view>{{isSuccess}}</view>
-  </form>
+    
+  
 </view>

@@ -29,8 +29,9 @@
     useraccount: '', //用户账户
     userpws: '', //用户密码
     isshow: false, //是否显示密码
-    _src: '/static/image/hidepws.png', //隐藏的图片，初始均为不可见
+    _src: '/static/image/hidepws.png/', //隐藏的图片，初始均为不可见
     islogin: true, //是否登录
+    
 
   },
   XiaoGuologinTo(){
@@ -382,16 +383,20 @@
         //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
       },
       success: (res) => {
-        if (res.data["code"] == 2002) {
+        if (res.data["code"] == 4000) {
           wx.setStorageSync('islogin', false);
-          console.log("请求失败了~")
+          console.log("内部参数不全")
+        }
+        if (res.data["code"] == 4001) {
+          wx.setStorageSync('islogin', false);
+          wx.showToast({
+            title: '无法从强智读取信息（可能密码错误）',
+            icon: "error"
+          });
         }
         else if (!res.data["JSESSIONID"]) {
           wx.setStorageSync('islogin', false);
-          wx.showToast({
-            title: '账号或密码错误',
-            icon: "error"
-          });
+
         }
         // 将用户的cookie存入至本地
         else {
@@ -429,13 +434,15 @@
 
   // 改变密码状态
   changeshow() {
-    if (this.data.isshow) {
-      this.setData({
+    var that=this;
+    console.log("41241")
+    if (that.data.isshow) {
+      that.setData({
         _src: '/static/image/hidepws.png',
         isshow: false
       })
     } else {
-      this.setData({
+      that.setData({
         _src: '/static/image/showpws.png',
         isshow: true
       })

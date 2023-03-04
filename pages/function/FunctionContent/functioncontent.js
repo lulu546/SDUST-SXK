@@ -142,6 +142,11 @@ Page({
         url: "/pages/Function/GradeFind/GradeFindContent/gradefindcontent"
       })
     }
+    else if(e.currentTarget.dataset.tar=="8"){
+      wx.navigateTo({
+        url: "/pages/Function/ExamList/ExamListContent/examlistcontent"
+      })
+    }
     else if(e.currentTarget.dataset.tar=="9"){
       wx.navigateTo({
         url: "/pages/Function/CourseLib/CourseLibContent/courselibcontent"

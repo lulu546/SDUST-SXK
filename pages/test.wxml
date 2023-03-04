@@ -1,5 +1,15 @@
-<view class='bg_contain'>
-
-<view class='blur_demo'></view>
-
+<!-- index.wxml -->
+<view class="container">
+  <view class="title">欢迎登录</view>
+  <form class="form" bindsubmit="formSubmit">
+    <view class="form-group">
+      <input class="input" type="text" name="username" placeholder="请输入用户名" bindinput="inputChange" />
+    </view>
+    <view class="form-group">
+      <input class="input" type="password" name="password" placeholder="请输入密码" bindinput="inputChange" />
+    </view>
+    <view class="button-group">
+      <button class="button" type="primary" form-type="submit" disabled="{{!isSubmitEnabled}}">登录</button>
+    </view>
+  </form>
 </view>

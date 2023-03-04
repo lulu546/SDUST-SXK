@@ -1,11 +1,11 @@
 <!--pages/function/function.wxml-->
 
-<view id="_all">
+<view  style="width: 100%;background-color: #fafafa;position: absolute;height: 2600rpx;top: 300rpx;background: #FFFFFF;border-radius: 20px 20px 0px 0px;flex-direction: column;display: flex;border: 1px solid #E6E8EE;">
   <view id="_head">
     <view id="_headtest">山小科</view>
     <view id="_headtestlast">全心全意为同学服务！</view>
   </view>
-  <view class="_content">
+  <view style="display: flex;flex-direction: column;align-items: flex-start;padding: 0px;gap: 30px;position: relative;width: 84%;left: 8%;top: 100rpx;">
     <view class="_contentflex" wx:for="{{functions}}" wx:key="index">
       <!-- 具体各个功能 -->
       <view style="width: 100%;display:flex">
@@ -15,14 +15,14 @@
          <view class="_text">{{item[0].name}}</view></view>
           
         </view>
-        <view wx:if="{{item[1].id!=NULL}}" style="width: 100%;display:flex">
-        <view style="height: 100%;width: 60rpx;"></view>
-        <view class="style_one" data-tar="{{item[1].id}}" bindtap="turnpage" style="{{'background:'+(item[1].backgroundcolor)+'box-shadow:'+(item[1].shadow)}}">
+        <!-- <view wx:if="{{item[1].id!=NULL}}" style="width: 100%;display:flex"> -->
+        <view style="height: 100%;width: 10%;height: 100%;"></view>
+        <view class="style_one"  data-tar="{{item[1].id}}" bindtap="turnpage" style="{{'background:'+(item[1].backgroundcolor)+'box-shadow:'+(item[1].shadow)}}">
           <view style="left:14%;top:10%;height:80%;position: relative;width: 72%;">
          <image style="position: absolute;width: 100%;height:70%;"></image>
          <view class="_text">{{item[1].name}}</view></view>
         </view>
-      </view>
+      <!-- </view> -->
       </view>
     </view>
     <view class="_contentflex" wx:key="index">
@@ -40,5 +40,5 @@
       </view>
     </view>
   </view>
-  <div style="clear:both;height:0px;font-size: 1px;line-height: 0px;"></div>
+
 </view>

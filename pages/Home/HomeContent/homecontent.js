@@ -15,7 +15,7 @@ Page({
     },
     weekwhat: "几",
     week_ordinal: 0,
-    courseflag: true,//这个只区分上完课了没有，如果时间上上玩了课，这个就是flase，没有课是默认上万
+    courseflag: false,//这个只区分上完课了没有，如果时间上上玩了课，这个就是flase，没有课是默认上万
     now_course: {},
     courseover_onesencontent: "(//▽//)",
     coursetimei: 2,
@@ -158,8 +158,13 @@ Page({
             }
             if (that.data.table_schedule[weeknumber][coursetime_i][0].length!=0) {
               course = that.data.table_schedule[weeknumber][coursetime_i]
+              that.setData({
+                courseflag: true
+              });
               break;
-            } else if (coursetime_i <= 5) coursetime_i++
+            } else if (coursetime_i <= 5){ coursetime_i++;
+            
+            }
           }
         }
    }
@@ -197,7 +202,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    var that=this;
+    const app = getApp();
+    var islogin=wx.getStorageSync('islogin');
+    if(islogin != that.data.set_schedule[islogin]){
+      app.globalData.set_all_data.islogin=islogin;
+      that.setData({
+        ['set_schedule.islogin']:islogin
+      })
+    }
+    
   },
 
   /**
