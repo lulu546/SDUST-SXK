@@ -60,7 +60,7 @@ Page({
     [
       {
         src:'/image/jishiben.jpg',
-        name:'小科图书馆',
+        name:'小科空教室',
         id:6,
         backgroundcolor: '#192DDD;',
         shadow:'0px 10px 20px rgba(93, 107, 239, 0.2);'
@@ -135,6 +135,11 @@ Page({
     else if(e.currentTarget.dataset.tar=="5"){
       wx.navigateTo({
         url: "/pages/Function/PhoneBook/PhoneBookContent/phonebookcontent"
+      })
+    }
+    else if(e.currentTarget.dataset.tar=="6"){
+      wx.navigateTo({
+        url: "/pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent"
       })
     }
     else if(e.currentTarget.dataset.tar=="7"){

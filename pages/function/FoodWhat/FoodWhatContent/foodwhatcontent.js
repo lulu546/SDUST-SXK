@@ -175,7 +175,8 @@ Page({
   },
   subeat(e){
 
-
+    var that=this
+    
     that.setData({
       isselect:true,
     })

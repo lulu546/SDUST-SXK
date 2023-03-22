@@ -1,67 +1,82 @@
-/* index.wxss */
+/* 全局样式 */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #F0F0F0;
+  height: 100%;
+  padding: 10px;
+}
+
+/* 标题栏样式 */
+.header {
+  width: 100%;
+  padding: 20px 0;
+  background-color: #0078D4;
+  display: flex;
   justify-content: center;
-  height: 100vh;
-  background-color: #f5f5f5;
 }
 
 .title {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 30px;
+  color: #FFFFFF;
 }
 
-.form {
+/* 搜索区域样式 */
+.search-section {
   width: 100%;
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
-.input {
-  display: block;
-  width: 100%;
+.search-input {
+  flex: 1;
   height: 40px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
+  border: 1px solid #C4C4C4;
+  border-radius: 4px;
+  padding-left: 10px;
   font-size: 16px;
 }
 
-.button-group {
+.search-button {
+  width: 80px;
+  height: 40px;
+  background-color: #0078D4;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-left: 10px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.button {
-  display: inline-block;
+/* 考试列表样式 */
+.exam-list {
   width: 100%;
-  max-width: 200px;
-  height: 40px;
-  line-height: 40px;
-  margin: 0 10px;
-  padding: 0 20px;
-  border: none;
-  border-radius: 20px;
-  background-color: #00bfff;
-  color: #fff;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
+  margin-top: 20px;
 }
 
-.button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.exam-item {
+  background-color: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.exam-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.exam-time,
+.exam-location,
+.exam-subject {
+  font-size: 16px;
+  margin-bottom: 5px;
 }
