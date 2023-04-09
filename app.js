@@ -34,7 +34,7 @@ App({
     if (wx.getStorageSync('islogin') == true) {
       //get_login_info
       wx.request({
-        url: 'http://192.168.21.128:8000/qz/get_login_info/',
+        url: that.globalData.TotalUrl+'/qz/get_login_info/',
         method: 'POST',
         data: {
           account: wx.getStorageSync('useraccount'),
@@ -56,7 +56,7 @@ App({
           wx.setStorageSync('cookiesstr', res.data);
           //请求时间信息
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_current_time/',
+            url: that.globalData.TotalUrl+'/qz/get_current_time/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),
@@ -83,7 +83,7 @@ App({
           })
           //请求课表数据
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_class_info/',
+            url: that.globalData.TotalUrl+'/qz/get_class_info/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),
@@ -106,7 +106,7 @@ App({
           })
           //请求学生信息
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_student_info/',
+            url: that.globalData.TotalUrl+'/qz/get_student_info/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),
@@ -127,7 +127,7 @@ App({
           })
           //请求共享信息
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_share_state/',
+            url: that.globalData.TotalUrl+'/qz/get_share_state/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),
@@ -156,6 +156,7 @@ App({
           that.globalData.requestflag = 0
         }
       })
+      
     }
   },
   onShow() {
@@ -187,7 +188,8 @@ App({
       GBindNumber: -1
     }, 
     requestflag: 0,//判断请求状态
-    xiaoguotest:false//小郭测试
+    xiaoguotest:false,//小郭测试
+    TotalUrl:"http://192.168.21.128:8000"
   }
 
 })

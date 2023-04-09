@@ -372,7 +372,7 @@
     //后端鉴权有个核心问题，你没办法保证你的你在规定时间里获得request里的信息。
     //request的函数是回调函数
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/get_login_info/',
+      url: app.globalData.TotalUrl+'/qz/get_login_info/',
       method: 'POST',
       data: {
         account: that.data.useraccount,

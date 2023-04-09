@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #F0F0F0;
+  background-color: #EDEDED;
   height: 100%;
   padding: 10px;
 }
@@ -12,9 +12,10 @@
 .header {
   width: 100%;
   padding: 20px 0;
-  background-color: #0078D4;
+  background-color: #6B5ECD;
   display: flex;
   justify-content: center;
+  backdrop-filter: blur(10px);
 }
 
 .title {
@@ -39,12 +40,14 @@
   border-radius: 4px;
   padding-left: 10px;
   font-size: 16px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .search-button {
   width: 80px;
   height: 40px;
-  background-color: #0078D4;
+  background-color: #6B5ECD;
   color: #FFFFFF;
   border: none;
   border-radius: 4px;
@@ -62,11 +65,12 @@
 }
 
 .exam-item {
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid #C4C4C4;
   border-radius: 4px;
   padding: 15px;
   margin-bottom: 10px;
+  backdrop-filter: blur(10px);
 }
 
 .exam-info {

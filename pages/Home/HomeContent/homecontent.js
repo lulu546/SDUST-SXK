@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
   /**
    * BUG
@@ -6,44 +7,30 @@ Page({
   /**
    * 页面的初始数据
    */
+  
   data: {
     nowtimes: {
-      month: new Date().getMonth() + 1 < 10 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1,
-      day: new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate(),
-      hour: new Date().getHours() < 10 ? '0' + new Date().getHours() : new Date().getHours(),
-      minutes: new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes(),
+      month: '',
+      day: '',
+      hour: '',
+      minutes: ''
     },
-    weekwhat: "几",
+    weekwhat: '',
     week_ordinal: 0,
-    courseflag: false,//这个只区分上完课了没有，如果时间上上玩了课，这个就是flase，没有课是默认上万
+    courseflag: false,
     now_course: {},
     courseover_onesencontent: "(//▽//)",
     coursetimei: 2,
-    requestflag:0,
-    coursetime: [{
-        timebegin: "08:00",
-        timeend: "09:50"
-      },
-      {
-        timebegin: "10:10",
-        timeend: "12:00"
-      },
-      {
-        timebegin: "14:00",
-        timeend: "15:50"
-      },
-      {
-        timebegin: "16:10",
-        timeend: "18:00"
-      },
-      {
-        timebegin: "19:00",
-        timeend: "21:00"
-      },
-      {}
-
+    requestflag: 0,
+    timeTable: [
+      { timebegin: "08:00", timeend: "09:50" },
+      { timebegin: "10:10", timeend: "12:00" },
+      { timebegin: "14:00", timeend: "15:50" },
+      { timebegin: "16:10", timeend: "18:00" },
+      { timebegin: "19:00", timeend: "21:00" }
     ],
-    set_schedule: {}
+    schedule: {}
+  
   },
 
 
@@ -60,7 +47,7 @@ Page({
    */
   onLoad(options) {
 
-    const app = getApp()
+    
     var that = this;
     //计划表的读取
     //如果全局变量其
@@ -73,11 +60,9 @@ Page({
         requestflag,
         table_schedule
       })
-    
     }
     else{
       var read=setInterval(function(){
-
         if(app.globalData.requestflag==3){
           var table_schedule = app.globalData.class_info;
           var week_ordinal = app.globalData.week_time;
@@ -203,7 +188,6 @@ Page({
    */
   onShow() {
     var that=this;
-    const app = getApp();
     var islogin=wx.getStorageSync('islogin');
     if(islogin != that.data.set_schedule[islogin]){
       app.globalData.set_all_data.islogin=islogin;
@@ -232,14 +216,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-    const app = getApp()
+    
     var that=this
     app.globalData.requestflag=0;
     
     if (wx.getStorageSync('islogin') == true) {
       //get_login_info
       wx.request({
-        url: 'http://192.168.21.128:8000/qz/get_login_info/',
+        url: app.globalData.TotalUrl+'/qz/get_login_info/',
         method: 'POST',
         data: {
           account: wx.getStorageSync('useraccount'),
@@ -262,7 +246,7 @@ Page({
           wx.setStorageSync('cookiesstr', res.data);
           //请求时间信息
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_current_time/',
+            url: app.globalData.TotalUrl+'/qz/get_current_time/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),
@@ -290,7 +274,7 @@ Page({
           })
           //请求课表数据
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_class_info/',
+            url: app.globalData.TotalUrl+'/qz/get_class_info/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),
@@ -313,7 +297,7 @@ Page({
           })
           //请求学生信息
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_student_info/',
+            url: app.globalData.TotalUrl+'/qz/get_student_info/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),

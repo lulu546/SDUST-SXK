@@ -29,7 +29,7 @@ Page({
         })
         console.log(that.data.toweek)
         wx.request({
-          url: 'http://192.168.21.128:8000/qz/get_courselib/',
+          url: app.globalData.TotalUrl+'/qz/get_courselib/',
           method: 'POST',
           data: {
             // coursename:that.data.coursename,
@@ -68,7 +68,7 @@ Page({
           toweek,
         })
         wx.request({
-          url: 'http://192.168.21.128:8000/qz/get_courselib/',
+          url: app.globalData.TotalUrl+'/qz/get_courselib/',
           method: 'POST',
           data: {
             // coursename:that.data.coursename,
@@ -114,7 +114,7 @@ Page({
     console.log(parseInt(that.data.course.id))
     console.log(parseInt(that.data.course['id']))
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/get_courselib/',
+      url: app.globalData.TotalUrl+'/qz/get_courselib/',
       method: 'POST',
       data: {
         // coursename:that.data.coursename,
@@ -231,7 +231,7 @@ Page({
             toweek,
           })
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_courselib/',
+            url: app.globalData.TotalUrl+'/qz/get_courselib/',
             method: 'POST',
             data: {
               // coursename:that.data.coursename,
@@ -272,7 +272,7 @@ Page({
         })
         console.log(that.data.toweek)
         wx.request({
-          url: 'http://192.168.21.128:8000/qz/get_courselib/',
+          url: app.globalData.TotalUrl+'/qz/get_courselib/',
           method: 'POST',
           data: {
             // coursename:that.data.coursename,

@@ -50,7 +50,7 @@ Page({
     var that = this;
 
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/get_phonebook_info/',
+      url:app.globalData.TotalUrl+ '/qz/get_phonebook_info/',
       method: 'POST',
       data: {
         likename:"",
@@ -133,7 +133,7 @@ Page({
         return ;}
         
         wx.request({
-          url: 'http://192.168.21.128:8000/qz/get_phonebook_info/',
+          url: app.globalData.TotalUrl+'/qz/get_phonebook_info/',
           method: 'POST',
           data: {
             likename:that.data.likename,
@@ -165,7 +165,7 @@ Page({
         _page=_page+1;
  
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_phonebook_info/',
+            url:app.globalData.TotalUrl+ '/qz/get_phonebook_info/',
             method: 'POST',
             data: {
               likename:that.data.likename,
@@ -198,7 +198,7 @@ Page({
     var that=this
     console.log("SDSA")
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/get_phonebook_info/',
+      url: app.globalData.TotalUrl+'/qz/get_phonebook_info/',
       method: 'POST',
       data: {
         likename:that.data.likename,

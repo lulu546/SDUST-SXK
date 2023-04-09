@@ -20,7 +20,7 @@ Page({
     var that = this;
 
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/get_courselib/',
+      url: app.globalData.TotalUrl+'/qz/get_courselib/',
       method: 'POST',
       data: {
         coursename:"",
