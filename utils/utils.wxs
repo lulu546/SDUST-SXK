@@ -4,9 +4,9 @@
  * 参数3: 结束截取的index
  */
 var substring = function (val,start,end) {
-  if (val.length == 0 || val == undefined) {
-    return undefined;
+  if (!val || val.length == 0) {
+  return undefined;
   }
-    return val.substring(start,end);
-}
+  return val.substring(start,end);
+  }
 module.exports.substring = substring;

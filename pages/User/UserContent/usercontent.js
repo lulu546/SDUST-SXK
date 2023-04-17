@@ -85,7 +85,7 @@ Page({
 
   },
   logout(e) {
-    wx.removeStorageSync("cookiesstr");
+    wx.removeStorageSync("token");
     wx.removeStorageSync("useraccount");
     wx.removeStorageSync("userpws");
     wx.setStorageSync("islogin",false);

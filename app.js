@@ -1,162 +1,173 @@
 // app.js
 
 App({
+
+
   onLaunch() {
     var that = this;
-    // //自定义导航栏
-    // //自定义导航栏 获取设备顶部窗口的高度（不同设备窗口高度不一样，根据这个来设置自定义导航栏的高度）
-    // wx.getSystemInfo({
-    //   success: (res) => {
-    //     // 基础库 2.1.0 开始支持wx.getMenuButtonBoundingClientRect()，低版本需要适配
-    //     let custom = wx.getMenuButtonBoundingClientRect()
-    //     // console.log('状态栏高度',res.statusBarHeight)
-    //     // console.log('右上角胶囊按钮的高度', custom.height)
-    //     // console.log('右上角胶囊按钮的上边界坐标', custom.top)
-    //     // console.log('右上角胶囊按钮的下边界坐标', custom.bottom)
-    //     that.globalData.statusBarHeight = res.statusBarHeight
-    //     that.globalData.navBarHeight = custom.height + (custom.top - res.statusBarHeight) * 2
-    //   }
-    // })
-
-    // 展示本地存储能力
-    // const logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-
-    // // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //   }
-    // })
-    
-    //上来请求数据
+    //请求基础数据-app.js不好封装
     if (wx.getStorageSync('islogin') == true) {
-      //get_login_info
-      wx.request({
-        url: that.globalData.TotalUrl+'/qz/get_login_info/',
-        method: 'POST',
-        data: {
-          account: wx.getStorageSync('useraccount'),
-          password: wx.getStorageSync('userpws'),
-        },
-        header: {
-          'content-type': 'application/json'
-          //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
-        },
-        success: (res) => {
-          if (res.data["code"] == 4000) {
-            wx.showToast({
-              title: '密码错误请重新登录QAQ',
-              icon: "error"
-            });
-            wx.setStorageSync('islogin', false);
 
-          } else {
-          wx.setStorageSync('cookiesstr', res.data);
-          //请求时间信息
-          wx.request({
-            url: that.globalData.TotalUrl+'/qz/get_current_time/',
-            method: 'POST',
-            data: {
-              account: wx.getStorageSync('useraccount'),
-              password: wx.getStorageSync('userpws'),
-              cookiesstr: wx.getStorageSync('cookiesstr')
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-              that.globalData.current_time = res.data
-              that.globalData.requestflag++;
-              if (that.globalData.current_time["zc"] == null) {
-                that.globalData.week_time = 1
-                wx.setStorageSync('zc', that.globalData.week_time);
-                
-              }
-              else{
-                that.globalData.week_time = res.data["zc"]
-                wx.setStorageSync('zc', that.globalData.week_time);
-              }
+      var account=wx.getStorageSync('useraccount')
+      var pwd=wx.getStorageSync('userpws');
 
-            }
-          })
-          //请求课表数据
-          wx.request({
-            url: that.globalData.TotalUrl+'/qz/get_class_info/',
-            method: 'POST',
-            data: {
-              account: wx.getStorageSync('useraccount'),
-              password: wx.getStorageSync('userpws'),
-              cookiesstr: wx.getStorageSync('cookiesstr'),
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-              
-              // 将课表传输到schedule_table
-              if (res.data["code"] >= 4000) {
-              }
-              else{
-                that.globalData.requestflag++;
-                that.globalData.class_info = res.data
-              }
-            }
-          })
-          //请求学生信息
-          wx.request({
-            url: that.globalData.TotalUrl+'/qz/get_student_info/',
-            method: 'POST',
-            data: {
-              account: wx.getStorageSync('useraccount'),
-              password: wx.getStorageSync('userpws'),
-              cookiesstr: wx.getStorageSync('cookiesstr')
-            },
-
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-              if (res.data["token"] == "-1") {
-                wx.setStorageSync('islogin', false);
-              }
-              that.globalData.student_info = res.data
-              that.globalData.requestflag++;
-            }
-          })
-          //请求共享信息
-          wx.request({
-            url: that.globalData.TotalUrl+'/qz/get_share_state/',
-            method: 'POST',
-            data: {
-              account: wx.getStorageSync('useraccount'),
-              password: wx.getStorageSync('userpws')
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-              if(res.data["code"] >= 4000){}
-              else{
-               
-                that.globalData.set_all_data.CBindState= res.data["CBindState"]
-                that.globalData.set_all_data.CBindNumber= res.data["CBindNumber"]
-                that.globalData.set_all_data.GBindState = res.data["GBindState"]
-                that.globalData.set_all_data.GBindNumber = res.data["GBindNumber"]
-
-              }
-
-
-            }
-          })
-        }
-        },
-        fail: (res) => {
-          that.globalData.requestflag = 0
-        }
-      })
+      //客户端登录
+        wx.request({
+          url: 'http://jwgl.sdust.edu.cn/app.do',
+          method: 'GET',
+          data: {
+            "method": "authUser",
+            "xh": account,
+            "pwd": pwd
+          },
+          header: {
       
+            "Referer": "http://www.baidu.com",
+            "Accept-encoding": "gzip, deflate, br",
+            "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+            "Cache-control": "max-age=0",
+            token: wx.getStorageSync('token')
+          },
+          success: (res) => {
+            if (res.data["flag"] != "1") {
+              wx.showToast({
+                title: '登录失败',
+                icon: "error"
+              });
+              wx.setStorageSync('islogin', false);
+            } else {
+      
+              wx.setStorageSync('token', res.data["token"]);
+              //请求时间信息
+              wx.request({
+                url: 'http://jwgl.sdust.edu.cn/app.do',
+                method: 'get',
+                data: {
+                  method: "getCurrentTime",
+                  currDate: new Date().toISOString().slice(0, 10)
+                },
+                header: {
+      
+                  "Referer": "http://www.baidu.com",
+                  "Accept-encoding": "gzip, deflate, br",
+                  "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+                  "Cache-control": "max-age=0",
+                  token: wx.getStorageSync('token')
+                },
+                success: (res) => {
+                  that.globalData.current_time = res.data
+
+                  if (that.globalData.current_time["zc"] == null) {
+                    that.globalData.week_time = 1
+                  }
+                  else {
+                    that.globalData.week_time = res.data["zc"]
+                  }
+                
+            
+                  // 请求课表数据
+                  wx.request({
+                    url: 'http://jwgl.sdust.edu.cn/app.do',
+                    method: 'GET',
+                    data: {
+                      method: "getKbcxAzc",
+                      xnxqid: res.data["xnxqh"],
+                      zc: res.data["zc"],
+                      xh: account
+                    },
+                    header: {
+      
+                      "Referer": "http://www.baidu.com",
+                      "Accept-encoding": "gzip, deflate, br",
+                      "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+                      "Cache-control": "max-age=0",
+                      token: wx.getStorageSync('token')
+                    },
+                    success: (res) => {
+      
+                      // 将课表传输到schedule_table
+                        that.globalData.requestflag++;
+                        var resjson=res.data;
+                        const tableformat = require('./utils/table');
+                        that.globalData.class_info = tableformat.processTableOrd(resjson);
+                      
+                    }
+                  })
+                }
+              })
+              //请求学生信息
+              wx.request({
+                url: "http://jwgl.sdust.edu.cn/app.do",
+                method: 'GET',
+                data: {
+                  method: "getUserInfo",
+                  xh: account
+                },
+      
+                header: {
+                  "Referer": "http://www.baidu.com",
+                  "Accept-encoding": "gzip, deflate, br",
+                  "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+                  "Cache-control": "max-age=0",
+                  token: wx.getStorageSync('token')
+                },
+                success: (res) => {
+                  if (res.data["token"] == "-1") {
+                    wx.setStorageSync('islogin', false);
+                  }
+                  that.globalData.student_info = res.data
+                  
+                  var content=res.data
+                  wx.login({
+                    success: function(res) {
+                      if (res.code) {  //wx.login获取code。
+                        console.log(res.code);
+                        //发起网络请求
+                        wx.request({
+                          url: that.globalData.TotalUrl+'/qz/login-info/',
+                          method:'POST',
+                          //向后端发送的数据
+                          data: {
+                            code: res.code,    //将code发送到后台服务器。
+                            snumber: content["xh"],  //替换为实际的账号值
+                            name: content["xm"],        //替换为实际的姓名值
+                            classname: content["bj"], //替换为实际的班级名值
+                            majorname: content["zymc"], //替换为实际的专业名值
+                            collegename: content["yxmc"], //替换为实际的学院名值
+                            enteryear: content["rxnf"], //替换为实际的入学年份值
+                            gradenumber: content["usertype"], //替换为实际的年级号值
+                          },
+                          header: { 
+                            "Referer": "http://www.baidu.com",
+                            "Accept-encoding": "gzip, deflate, br",
+                            "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+                            "Cache-control": "max-age=0",
+                        }, success: (res) => {
+                          that.globalData.requestflag++;
+                          if(res.data['status']=="success"){
+                            wx.setStorageSync('tokentoset', res.data["token"]);
+                          }}
+                        })
+                      } else {
+                        console.log('获取用户登录态失败！' + res.errMsg)
+                      }
+                    }
+                    
+                  });
+                }
+               
+              })
+      
+            }
+          },
+          fail: (res) => {
+            that.globalData.requestflag = 0
+          }
+        })
+        
+
+
+
     }
   },
   onShow() {
@@ -179,8 +190,8 @@ App({
     current_time: null, //时间信息
     week_time: 1, //第几周
     set_all_data: {
-      isshareshowclass: wx.getStorageSync('isshareshowclass'), //是否显示分享
-      isshareshowgrade:wx.getStorageSync('isshareshowgrade'),
+      isshareshowclass: wx.getStorageSync('isshareshowclass')==undefined?true:wx.getStorageSync('isshareshowclass'), //是否显示分享
+      isshareshowgrade:wx.getStorageSync('isshareshowclass')==undefined?true:wx.getStorageSync('isshareshowclass'),
       islogin: wx.getStorageSync('islogin'), //是否登录
       CBindState: 0,
       CBindNumber: -1,
@@ -188,8 +199,7 @@ App({
       GBindNumber: -1
     }, 
     requestflag: 0,//判断请求状态
-    xiaoguotest:false,//小郭测试
-    TotalUrl:"http://192.168.21.128:8000"
+    TotalUrl:"http://127.0.0.1:8000"
   }
 
 })

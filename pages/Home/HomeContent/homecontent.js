@@ -1,4 +1,5 @@
 const app = getApp()
+const api = require('../../../API/qzapi');
 Page({
   /**
    * BUG
@@ -51,34 +52,7 @@ Page({
     var that = this;
     //计划表的读取
     //如果全局变量其
-    if(app.globalData.xiaoguotest == true){
-      var week_ordinal   = app.globalData.week_time;
-      var requestflag    = app.globalData.requestflag;
-      var table_schedule = app.globalData.class_info;
-      that.setData({
-        week_ordinal,
-        requestflag,
-        table_schedule
-      })
-    }
-    else{
-      var read=setInterval(function(){
-        if(app.globalData.requestflag==3){
-          var table_schedule = app.globalData.class_info;
-          var week_ordinal = app.globalData.week_time;
-          var requestflag=app.globalData.requestflag;
-            that.setData({
-              week_ordinal,
-              table_schedule,
-              requestflag
-            })
-            clearTimeout(read);
-        }
-      }, 100);
-    }
-
-
-    //渲染周几
+    //渲染星期
     var weekArray = new Array("日", "一", "二", "三", "四", "五", "六")
     var weeknumber = new Date().getDay();
     var week = weekArray[weeknumber] //判断今天周几
@@ -104,7 +78,7 @@ Page({
     var nowminutes = parseInt(that.data.nowtimes.minutes); //数字后时间
     var course = {}; //显示的课程
 // --------------------------计时器函数--------------------------
-    //进行couse赋值，显示课程的函数
+    //Once_Couse即进行couse赋值，显示下节课的课程
     let Once_Couse = () => {
       if ((nowhour < 9 || (nowhour == 9 && nowminutes < 50))) {
         coursetime_i = 0;
@@ -124,34 +98,37 @@ Page({
         coursetime_i = 5;
         //结束今天课
       }
-      if(that.data.requestflag==3){
+      if(that.data.requestflag==2){
         // 如果课表返回的是[null]那就会执行[0]==null，如果返回的是一个多重数组其不会执行，因为其[0]！=null。
         // 然后这个放到这里面执行的原因是，需要等他从app中请求数据完毕后才能执行。
-        if(that.data.table_schedule[0]==null){
-          if (that.data.courseflag==true){
-          that.setData({
-            courseflag: false
-          });}
-        }
-        else{
-          while (1) {
-            if (coursetime_i == 5) {
-              that.setData({
-                courseflag: false
-              });
-              break;
-            }
-            if (that.data.table_schedule[weeknumber][coursetime_i][0].length!=0) {
-              course = that.data.table_schedule[weeknumber][coursetime_i]
-              that.setData({
-                courseflag: true
-              });
-              break;
-            } else if (coursetime_i <= 5){ coursetime_i++;
-            
+        if(that.data.table_schedule!=null){
+          if(that.data.table_schedule[0]==null){
+            if (that.data.courseflag==true){
+            that.setData({
+              courseflag: false
+            });}
+          }
+          else{
+            while (1) {
+              if (coursetime_i == 5) {
+                that.setData({
+                  courseflag: false
+                });
+                break;
+              }
+              if (that.data.table_schedule[weeknumber][coursetime_i][0].length!=0) {
+                course = that.data.table_schedule[weeknumber][coursetime_i]
+                that.setData({
+                  courseflag: true
+                });
+                break;
+              } else if (coursetime_i <= 5){ coursetime_i++;
+              
+              }
             }
           }
         }
+
    }
 
       that.setData({
@@ -170,12 +147,13 @@ Page({
     }
 // --------------------------计时器函数--------------------------
     Once_Couse()
-    if(that.data.table_schedule==undefined){//等课表读出来后再进行ONCE_COUSE函数。 
-      var test =setInterval(function(){
+    //等课表读取成功后再进行ONCE_COUSE函数。 
+    if(that.data.table_schedule==undefined){
+      setInterval(function(){
         Once_Couse()
       }, 10);
     }
-    else var test =setInterval(function(){
+    else setInterval(function(){
 
       Once_Couse()
 
@@ -195,6 +173,21 @@ Page({
         ['set_schedule.islogin']:islogin
       })
     }
+
+    //TODO 计时器，检测是否请求成功；
+    var read=setInterval(function(){
+      if(app.globalData.requestflag==2){
+        var table_schedule = app.globalData.class_info;
+        var week_ordinal = app.globalData.week_time;
+        var requestflag=app.globalData.requestflag;
+          that.setData({
+            week_ordinal,
+            table_schedule,
+            requestflag
+          })
+          clearTimeout(read);
+      }
+    }, 100);
     
   },
 
@@ -216,112 +209,22 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-    
-    var that=this
-    app.globalData.requestflag=0;
-    
+
+    // 下拉刷新请求
     if (wx.getStorageSync('islogin') == true) {
-      //get_login_info
-      wx.request({
-        url: app.globalData.TotalUrl+'/qz/get_login_info/',
-        method: 'POST',
-        data: {
-          account: wx.getStorageSync('useraccount'),
-          password: wx.getStorageSync('userpws'),
-        },
-        header: {
-          'content-type': 'application/json'
-          //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
-        },
-        success: (res) => {
-          if (res.data["code"] == 4000) {
-            wx.showToast({
-              title: '密码错误请重新登录QAQ',
-              icon: "error"
-            });
-            wx.setStorageSync('islogin', false);
+      if(app.globalData.requestflag>0&&app.globalData.requestflag<2){
+        api.only_data(wx.getStorageSync('useraccount'))
+      }
+    else{     
+       api.init_data(wx.getStorageSync('useraccount'),wx.getStorageSync('userpws'))
 
-          } else {
-            app.globalData.requestflag++;
-          wx.setStorageSync('cookiesstr', res.data);
-          //请求时间信息
-          wx.request({
-            url: app.globalData.TotalUrl+'/qz/get_current_time/',
-            method: 'POST',
-            data: {
-              account: wx.getStorageSync('useraccount'),
-              password: wx.getStorageSync('userpws'),
-              cookiesstr: wx.getStorageSync('cookiesstr')
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-              app.globalData.current_time = res.data
-              app.globalData.requestflag++;
-              if (app.globalData.current_time["zc"] == null) {
 
-                app.globalData.week_time = 1
-                wx.setStorageSync('zc', app.globalData.week_time);
-              }
-              else{
-
-                app.globalData.week_time = res.data["zc"]
-                wx.setStorageSync('zc', app.globalData.week_time);
-              }
-
-            }
-          })
-          //请求课表数据
-          wx.request({
-            url: app.globalData.TotalUrl+'/qz/get_class_info/',
-            method: 'POST',
-            data: {
-              account: wx.getStorageSync('useraccount'),
-              password: wx.getStorageSync('userpws'),
-              cookiesstr: wx.getStorageSync('cookiesstr'),
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-              // 将课表传输到schedule_table
-              if (res.data["code"] >= 4000) {
-
-              }
-              else{
-                app.globalData.requestflag++;
-                app.globalData.class_info = res.data
-              }
-            }
-          })
-          //请求学生信息
-          wx.request({
-            url: app.globalData.TotalUrl+'/qz/get_student_info/',
-            method: 'POST',
-            data: {
-              account: wx.getStorageSync('useraccount'),
-              password: wx.getStorageSync('userpws'),
-              cookiesstr: wx.getStorageSync('cookiesstr')
-            },
-
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-              if (res.data["token"] == "-1") {
-                wx.setStorageSync('islogin', false);
-              }
-              
-              app.globalData.student_info = res.data
-            }
-          })
-        }
-        },
-        fail: (res) => {
-          app.globalData.requestflag = 0
-        }
-      })
+    }
+     
+                
+      
+     
+      
     }
     else{
       wx.navigateTo({
@@ -360,9 +263,8 @@ Page({
       url: "../../Login/LoginContent/logincontent"
       //登录
     })
-  }
+  },
 
-  // 时间函数
 
 
 

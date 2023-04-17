@@ -20,6 +20,8 @@
 血的教训
 请求失败是前端请求失败！就算我返回404他也是属于请求成功的。
   */
+
+
  Page({
 
   /**
@@ -34,303 +36,7 @@
     
 
   },
-  XiaoGuologinTo(){
-    var that =this;
-    const app = getApp()
-    app.globalData.xiaoguotest = true//小郭测试
-    app.globalData.class_info= [
-      [
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      "数字逻辑",
-      "J7-104室",
-      "李智恒",
-      "#849B91",
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ]
-      ],
-      [
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      "物联网技术概论",
-      "J7-213室",
-      "杨玉婷",
-      "#B4746B",
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ]
-      ],
-      [
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      "数字逻辑实验",
-      "J13-232室",
-      "申晨",
-      "#99857E",
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ]
-      ],
-      [
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      "劳动教育",
-      "J1-226室",
-      "杨治宽",
-      "#91A0A5",
-      []
-      ],
-      [
-      "劳动教育",
-      "JZ",
-      "杨治宽",
-      "#91A0A5",
-      []
-      ]
-      ],
-      [
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      "物联网技术概论",
-      "J7-213室",
-      "杨玉婷",
-      "#B4746B",
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ]
-      ],
-      [
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ]
-      ],
-      [
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ],
-      [
-      [],
-      [],
-      [],
-      [],
-      []
-      ]
-      ]
-      ]
-    app.globalData.student_info= {
-      "bj": "物联网工程2021-1",
-      "dh": null,
-      "dqszj": "2021",
-      "email": null,
-      "fxzy": "无",
-      "ksh": "20370116100989",
-      "nj": "2021",
-      "qq": null,
-      "rxnf": "2020",
-      "usertype": "2",
-      "xb": "男",
-      "xh": "202001041412",
-      "xm": "鹿诚龙",
-      "xz": 4,
-      "yxmc": "计算机科学与工程学院",
-      "zymc": "物联网工程"
-  }
-    app.globalData.current_time= {e_time: "2022-12-18", s_time: "2022-12-12", xnxqh: "2022-2023-1", zc: 16}
-    app.globalData.week_time= 16
-    console.log(app.globalData.xiaoguotest)
-    that.setData({
-      islogin: true
-    })
-    console.log(wx.getStorageSync('islogin'))
-    wx.reLaunch({//重定向
-      url: '../../Home/HomeContent/homecontent',
-    })
-    wx.setStorageSync('islogin', true);
 
-
-  },
 
   //将账号和密码进行传参到后端，返回值为ispermit,判断是否允许
   getdatalist() {
@@ -372,41 +78,38 @@
     //后端鉴权有个核心问题，你没办法保证你的你在规定时间里获得request里的信息。
     //request的函数是回调函数
     wx.request({
-      url: app.globalData.TotalUrl+'/qz/get_login_info/',
-      method: 'POST',
-      data: {
-        account: that.data.useraccount,
-        password: that.data.userpws
-      },
-      header: {
-        'content-type': 'application/json'
-        //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
-      },
+      url: 'http://jwgl.sdust.edu.cn/app.do',
+        method: 'GET',
+        data: {
+          "method": "authUser",
+          "xh": useraccount,
+          "pwd": userpws
+        },
+        header: {
+
+          "Referer": "http://www.baidu.com",
+          "Accept-encoding": "gzip, deflate, br",
+          "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+          "Cache-control": "max-age=0"
+        },
       success: (res) => {
-        if (res.data["code"] == 4000) {
-          wx.setStorageSync('islogin', false);
-          console.log("内部参数不全")
-        }
-        if (res.data["code"] == 4001) {
+        console.log(res.data["flag"])
+        if (res.data["flag"] == "0") {
           wx.setStorageSync('islogin', false);
           wx.showToast({
-            title: '无法从强智读取信息（可能密码错误）',
+            title: '密码错误',
             icon: "error"
           });
+
         }
-        else if (!res.data["JSESSIONID"]) {
+        else if (!res.data["flag"]) {
           wx.setStorageSync('islogin', false);
 
         }
-        // 将用户的cookie存入至本地
+       
         else {
-          wx.setStorageSync('cookiesstr', res.data);
+          wx.setStorageSync('token', res.data["token"]);
           wx.setStorageSync('islogin', true);
-        }
-        var status = wx.getStorageSync('islogin');
-        console.log("请求了~")
-        //登录成功
-        if (status) {
           wx.showToast({
             title: '登录成功',
             icon: "success"
@@ -416,11 +119,17 @@
           })
           wx.setStorageSync('useraccount', that.data.useraccount);
           wx.setStorageSync('userpws', that.data.userpws);
+
+          const api = require('../../../API/qzapi');
           console.log(wx.getStorageSync('islogin'))
+          api.only_data(wx.getStorageSync('useraccount'))
           wx.reLaunch({//重定向
             url: '../../Home/HomeContent/homecontent',
           })
         }
+
+
+
         
       },
       fail: (res) => {
@@ -435,7 +144,6 @@
   // 改变密码状态
   changeshow() {
     var that=this;
-    console.log("41241")
     if (that.data.isshow) {
       that.setData({
         _src: '/static/image/hidepws.png',
@@ -450,13 +158,16 @@
   },
   //获取账号名
   getaccount(e) {
+    
+    var that=this
     this.setData({
       useraccount: e.detail.value
     })
   },
   //获取密码
   getpassword(e) {
-    this.setData({
+    var that=this
+    that.setData({
       userpws: e.detail.value
     })
   },

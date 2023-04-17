@@ -20,7 +20,7 @@ Page({
     var that = this;
 
     wx.request({
-      url: app.globalData.TotalUrl+'/qz/get_courselib/',
+      url: app.globalData.TotalUrl+'/qz/course-lib/',
       method: 'POST',
       data: {
         coursename:"",
@@ -106,7 +106,7 @@ Page({
         return ;}
         
         wx.request({
-          url: 'http://192.168.21.128:8000/qz/get_courselib/',
+          url: app.globalData.TotalUrl+'/qz/course-lib/',
           method: 'POST',
           data: {
             coursename:that.data.coursename,
@@ -141,7 +141,7 @@ Page({
         _page=_page+1;
  
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_courselib/',
+            url: app.globalData.TotalUrl+'/qz/course-lib/',
             method: 'POST',
             data: {
               coursename:that.data.coursename,
@@ -181,7 +181,7 @@ Page({
     var that=this
     console.log("SDSA")
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/get_courselib/',
+      url: app.globalData.TotalUrl+'/qz/course-lib/',
       method: 'POST',
       data: {
         coursename:that.data.coursename,

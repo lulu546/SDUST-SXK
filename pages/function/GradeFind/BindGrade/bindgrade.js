@@ -17,7 +17,7 @@ Page({
    */
   onLoad(options) {
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/get_share_state/',
+      url: app.globalData.TotalUrl+'/qz/share-state/',
       method: 'POST',
       data: {
         account: wx.getStorageSync('useraccount'),
@@ -95,7 +95,7 @@ Page({
    */
   onPullDownRefresh() {
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/get_share_state/',
+      url: app.globalData.TotalUrl+'/qz/share-state/',
       method: 'POST',
       data: {
         account: wx.getStorageSync('useraccount'),
@@ -153,7 +153,7 @@ Page({
       return;
     }
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/post_share_info/',
+      url: app.globalData.TotalUrl+'/qz/share-state/post/',
       method: 'POST',
       data: {
         account: wx.getStorageSync('useraccount'),
@@ -177,7 +177,7 @@ Page({
         else if (res.data["code"] == 2000) {
           // 再次请求
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_share_state/',
+            url: app.globalData.TotalUrl+'/qz/share-state/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),
@@ -214,7 +214,7 @@ Page({
     var that = this;
     var postnum=that.data.postnum;
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/post_share_info/',
+      url: app.globalData.TotalUrl+'/qz/share-state/post/',
       method: 'POST',
       data: {
         account: wx.getStorageSync('useraccount'),
@@ -237,7 +237,7 @@ Page({
         else if (res.data["code"] == 2000) {
           wx.setStorageSync('postnum', "");
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_share_state/',
+            url: app.globalData.TotalUrl+'/qz/share-state/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),
@@ -274,7 +274,7 @@ Page({
     var that = this;
     var postnum=that.data.postnum;
     wx.request({
-      url: 'http://192.168.21.128:8000/qz/reply_share_info/',
+      url: app.globalData.TotalUrl+'/qz/share-state/reply/',
       method: 'POST',
       data: {
         account: wx.getStorageSync('useraccount'),
@@ -297,7 +297,7 @@ Page({
         else if (res.data["code"] == 2000) {
           wx.setStorageSync('postnum', postnum);
           wx.request({
-            url: 'http://192.168.21.128:8000/qz/get_share_state/',
+            url: app.globalData.TotalUrl+'/qz/share-state/',
             method: 'POST',
             data: {
               account: wx.getStorageSync('useraccount'),

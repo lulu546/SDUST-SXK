@@ -123,7 +123,7 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
   width: 4px;
   height: 23px;
   left: 50rpx;
-  top: 33px;
+  top: 20%;
 
   background: #4E11D1;
   border-radius: 30rpx;
@@ -134,7 +134,7 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
   width: 54px;
   height: 24px;
   left: 40rpx;
-  top: 11px;
+  top: 10%;
 
   font-family: 'ABeeZee';
   font-style: normal;
@@ -155,7 +155,7 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
   width: 54px;
   height: 24px;
   left: 40rpx;
-  top: 56px;
+  top: 70%;
 
   font-family: 'ABeeZee';
   font-style: normal;
@@ -174,10 +174,10 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
 
 .crouse_name {
   position: absolute;
-  width: 110px;
+  width: 60%;
   height: 24px;
   left: 91px;
-  top: 8px;
+  top: 10%;
   /* left: 22px;122
 top: 261px;269 */
   font-family: 'ABeeZee';
@@ -197,10 +197,10 @@ top: 261px;269 */
 
 .crouse_place {
   position: absolute;
-  width: 79px;
+  width: 50%;
   height: 19px;
   left: 91px;
-  top: 36px;
+  top: 40%;
   /* left: 22px;122
 top: 261px;269 */
   font-family: 'ABeeZee';
@@ -221,7 +221,7 @@ top: 261px;269 */
   width: 90px;
   height: 19px;
   left: 91px;
-  top: 59px;
+  top: 64%;
   /* left: 22px;122
 top: 261px;269 */
   font-family: 'ABeeZee';

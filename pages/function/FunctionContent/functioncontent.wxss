@@ -64,14 +64,16 @@ page {
   border-bottom: 1rpx solid #d8d0d0;
 }
 ._text{
+  position: absolute;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
+ 
   color: #FFFFFF;
   top:78%;
-  font-size: 42rpx;
+  font-size: 41rpx;
   font-weight: bold;
 }
 ._image {}

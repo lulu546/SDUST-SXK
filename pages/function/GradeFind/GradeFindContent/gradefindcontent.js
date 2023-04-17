@@ -1,5 +1,6 @@
 // pages/Function/GradeFind/GradeFindContent/gradefindcontent.js
 const app = getApp();
+const api = require('../../../../API/qzapi');
 Page({
 
   /**
@@ -125,61 +126,61 @@ Page({
     //进行学期时间的处理,将日期转化为学期
     //本年9到12月为本年到下一年的第一个学期
     if(that.data.nowmonth>=9)that.setData({
-      // nowdate:this.data.nowyear+"-"+(this.data.nowyear+1)+"-1",
+      // nowdate:that.data.nowyear+"-"+(that.data.nowyear+1)+"-1",
       nowdate:"2021-2022-2",
       num:1,
-      firstyear:this.data.nowyear,
-      lastyear:this.data.nowyear+1
+      firstyear:that.data.nowyear,
+      lastyear:that.data.nowyear+1
     })
     //本年0月到1月末是上一年到本年的第一个学期
     else if(that.data.nowmonth<2)that.setData({
-      nowdate:(this.data.nowyear-1)+"-"+(this.data.nowyear)+"-1",
+      nowdate:(that.data.nowyear-1)+"-"+(that.data.nowyear)+"-1",
       num:1,
-      firstyear:this.data.nowyear-1,
-      lastyear:this.data.nowyear
+      firstyear:that.data.nowyear-1,
+      lastyear:that.data.nowyear
     })
     //本年2到8月末是上一年到本年的第二学期
     else {
-      this.setData({
-        nowdate:(this.data.nowyear-1)+"-"+(this.data.nowyear)+"-2",
+      that.setData({
+        nowdate:(that.data.nowyear-1)+"-"+(that.data.nowyear)+"-2",
         num:2,
-        firstyear:this.data.nowyear-1,
-        lastyear:this.data.nowyear
+        firstyear:that.data.nowyear-1,
+        lastyear:that.data.nowyear
       })
     }
     //定义学期列表
     if(that.data.num==1){
-      this.setData({
+      that.setData({
         timelist:[
-          (this.data.firstyear)+"-"+(this.data.lastyear)+"-1",
-          (this.data.firstyear-1)+"-"+(this.data.lastyear-1)+"-2",
-          (this.data.firstyear-1)+"-"+(this.data.lastyear-1)+"-1",
-          (this.data.firstyear-2)+"-"+(this.data.lastyear-2)+"-2",
-          (this.data.firstyear-2)+"-"+(this.data.lastyear-2)+"-1",
-          (this.data.firstyear-3)+"-"+(this.data.lastyear-3)+"-2",
-          (this.data.firstyear-3)+"-"+(this.data.lastyear-3)+"-1",
-          (this.data.firstyear-4)+"-"+(this.data.lastyear-4)+"-2",
-          (this.data.firstyear-4)+"-"+(this.data.lastyear-4)+"-1",
-          (this.data.firstyear-5)+"-"+(this.data.lastyear-5)+"-2",
-          (this.data.firstyear-5)+"-"+(this.data.lastyear-5)+"-1"
+          (that.data.firstyear)+"-"+(that.data.lastyear)+"-1",
+          (that.data.firstyear-1)+"-"+(that.data.lastyear-1)+"-2",
+          (that.data.firstyear-1)+"-"+(that.data.lastyear-1)+"-1",
+          (that.data.firstyear-2)+"-"+(that.data.lastyear-2)+"-2",
+          (that.data.firstyear-2)+"-"+(that.data.lastyear-2)+"-1",
+          (that.data.firstyear-3)+"-"+(that.data.lastyear-3)+"-2",
+          (that.data.firstyear-3)+"-"+(that.data.lastyear-3)+"-1",
+          (that.data.firstyear-4)+"-"+(that.data.lastyear-4)+"-2",
+          (that.data.firstyear-4)+"-"+(that.data.lastyear-4)+"-1",
+          (that.data.firstyear-5)+"-"+(that.data.lastyear-5)+"-2",
+          (that.data.firstyear-5)+"-"+(that.data.lastyear-5)+"-1"
         ]
       })
     }
     else{
       that.setData({
         timelist:[
-          (this.data.firstyear)+"-"+(this.data.lastyear)+"-2",
-          (this.data.firstyear)+"-"+(this.data.lastyear)+"-1",
-          (this.data.firstyear-1)+"-"+(this.data.lastyear-1)+"-2",
-          (this.data.firstyear-1)+"-"+(this.data.lastyear-1)+"-1",
-          (this.data.firstyear-2)+"-"+(this.data.lastyear-2)+"-2",
-          (this.data.firstyear-2)+"-"+(this.data.lastyear-2)+"-1",
-          (this.data.firstyear-3)+"-"+(this.data.lastyear-3)+"-2",
-          (this.data.firstyear-3)+"-"+(this.data.lastyear-3)+"-1",
-          (this.data.firstyear-4)+"-"+(this.data.lastyear-4)+"-2",
-          (this.data.firstyear-4)+"-"+(this.data.lastyear-4)+"-1",
-          (this.data.firstyear-5)+"-"+(this.data.lastyear-4)+"-2",
-          (this.data.firstyear-5)+"-"+(this.data.lastyear-4)+"-1"
+          (that.data.firstyear)+"-"+(that.data.lastyear)+"-2",
+          (that.data.firstyear)+"-"+(that.data.lastyear)+"-1",
+          (that.data.firstyear-1)+"-"+(that.data.lastyear-1)+"-2",
+          (that.data.firstyear-1)+"-"+(that.data.lastyear-1)+"-1",
+          (that.data.firstyear-2)+"-"+(that.data.lastyear-2)+"-2",
+          (that.data.firstyear-2)+"-"+(that.data.lastyear-2)+"-1",
+          (that.data.firstyear-3)+"-"+(that.data.lastyear-3)+"-2",
+          (that.data.firstyear-3)+"-"+(that.data.lastyear-3)+"-1",
+          (that.data.firstyear-4)+"-"+(that.data.lastyear-4)+"-2",
+          (that.data.firstyear-4)+"-"+(that.data.lastyear-4)+"-1",
+          (that.data.firstyear-5)+"-"+(that.data.lastyear-4)+"-2",
+          (that.data.firstyear-5)+"-"+(that.data.lastyear-4)+"-1"
         ]
       })
     }
@@ -199,34 +200,23 @@ Page({
   //用于获取成绩信息，放于Onready函数中，加载前读取，直接显示
   getgrades(){
     let that=this;
-    wx.request({
-      url: 'http://192.168.21.128:8000/qz/get_grade_info/',
-      method:'POST',
-      data:{
-        account: wx.getStorageSync('useraccount'),
-        password: wx.getStorageSync('userpws'),
-        cookiesstr:wx.getStorageSync('cookiesstr'),
-      },
-      header:{
-        'content-type':'application/json'      
-      },
-      success: (res) => {
-        that.setData({
-          datalist1:res.data
-        })
-        console.log(res.data)
-        that.getdate();
-      // 计算成绩
-      that.Calculate_grades()
-      },
-      fail: (res) => {
-        //清楚登录状态
-        wx.showToast({
-          title: '请求失败',
-          icon: 'error'
-        })
-      },
-    })
+    api.getGradeInfo(wx.getStorageSync('useraccount'),).then(res => {
+      that.setData({
+        datalist1:res
+      })
+      console.log(res)
+      that.getdate();
+    // 计算成绩
+    that.Calculate_grades()
+
+    }).catch(err => {
+      // 获取课程表信息失败，处理错误
+      wx.showToast({
+        title: '请求失败',
+        icon: 'error'
+      })
+    });
+
 
   },
   
@@ -236,7 +226,7 @@ Page({
   onLoad(options) {
     var that=this
     setTimeout(() => {
-      this.setData({
+      that.setData({
         islogin:wx.getStorageSync('islogin'),
       })
     }, 10);
@@ -246,7 +236,7 @@ Page({
     that.setData({
       set_schedule,
     })
-    this.getgrades();
+    that.getgrades();
   },
 
   /**
@@ -325,7 +315,7 @@ Page({
     if(bindshareflag!=3&&value==true){
       
       console.log(e.detail.value)
-      this.setData({
+      that.setData({
         checked_value:false
       })
       wx.navigateTo({
@@ -344,7 +334,7 @@ Page({
         // 等会改成并行的
         // 请求他课表数据
         wx.request({
-          url: 'http://192.168.21.128:8000/qz/get_share_info/',
+          url: app.globalData.TotalUrl+'/qz/share-info/get/',
           method: 'POST',
           data: {
             account: wx.getStorageSync('useraccount'),

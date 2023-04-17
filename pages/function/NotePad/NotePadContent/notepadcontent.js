@@ -196,8 +196,8 @@ Page({
   //获取学期信息
   getdatalist(){
     wx.request({
-      url: app.globalData.TotalUrl+'/get_current_time',
-      method:'GET',
+      url: app.globalData.TotalUrl+'/current-time/',
+      method:'POST',
       header:{
         'content-type':'application/json'
       },

@@ -18,13 +18,11 @@
         <input placeholder="请输入学号" value="{{useraccount}}" bindinput="getaccount" style="color:#484644;position: absolute;height: 95%; display: block; box-sizing: border-box;width: 90%;border-radius: 15px;left: 5%;" />
         <view style="position: absolute;top: 95%;height: 5%;width:100%;background: #5B5FC7;"></view>
       </view>
-
-
       <view style="position: absolute; height: 90rpx; display: block; box-sizing: border-box; background-color: #F3F2F1; top: 55%; width: 80%; border-radius: 3px; left: 10%">
         <view bindtap="changeshow" style="position: absolute;height: 95%;width: 15%;left: 85%;display: flex;justify-content: center;align-items: center;">
           <image src="{{_src}}" style="height: 50rpx;width: 50rpx;"></image>
         </view>
-        <input password="{{!isshow}}" placeholder="请输入密码" style="color:#484644;position: absolute;height: 95%; display: block; box-sizing: border-box;width: 80%;border-radius: 15px;left: 5%;" value="{{userpws}}" bindinput="getpassword" />
+        <input password="{{!isshow}}" bindinput="getpassword" placeholder="请输入密码" style="color:#484644;position: absolute;height: 95%; display: block; box-sizing: border-box;width: 80%;border-radius: 15px;left: 5%;" value="{{userpws}}"  />
 
         <view style="position: absolute;top:95%;height: 5%;width:100%;background: #5B5FC7;"></view>
       </view>
