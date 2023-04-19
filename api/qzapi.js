@@ -113,8 +113,10 @@ function getExamInfo(account) {
 }
 // 初始化数据，登录并请求getCurrentTime，getStudentInfo，getClassInfo
 function init_data(account, pwd) {
+  
   if (wx.getStorageSync('islogin') == true) {
-
+    app.globalData.todatabasesflag=0;
+    app.globalData.requestflag=0;
     var account=wx.getStorageSync('useraccount')
     var pwd=wx.getStorageSync('userpws');
 
@@ -151,6 +153,7 @@ function init_data(account, pwd) {
         },
         fail: (res) => {
           app.globalData.requestflag = 0
+          app.globalData.todatabasesflag = 0
         }
       })
       
@@ -158,12 +161,18 @@ function init_data(account, pwd) {
 
 
   }
+  else{
+    wx.navigateTo({
+      url: "../pages/Login/LoginContent/logincontent"
+      //登录
+    })
+  }
   
  
 
 }
 function only_data(account) {
-  
+
       //请求时间信息
       wx.request({
         url: 'http://jwgl.sdust.edu.cn/app.do',
@@ -216,7 +225,8 @@ function only_data(account) {
                 var resjson=res.data;
                 const tableformat = require('../utils/table');
                 app.globalData.class_info = tableformat.processTableOrd(resjson);
-              
+                app.globalData.table_ord=resjson;
+       
             }
           })
         }
@@ -242,7 +252,7 @@ function only_data(account) {
             wx.setStorageSync('islogin', false);
           }
           app.globalData.student_info = res.data
-          
+          app.globalData.requestflag++;
           var content=res.data
           wx.login({
             success: function(res) {
@@ -269,10 +279,15 @@ function only_data(account) {
                     "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
                     "Cache-control": "max-age=0",
                 }, success: (res) => {
-                  app.globalData.requestflag++;
+                  
+                  
                   if(res.data['status']=="success"){
+                    app.globalData.todatabasesflag++;
                     wx.setStorageSync('tokentoset', res.data["token"]);
-                  }}
+                  }
+               
+                
+                }
                 })
               } else {
                 console.log('获取用户登录态失败！' + res.errMsg)
@@ -286,7 +301,30 @@ function only_data(account) {
 
   }
 
-
+function postclass(week_ordinal=app.globalData.week_time) {
+  
+  wx.request({
+    url: app.globalData.TotalUrl+'/qz/class-info/',
+    method:'POST',
+    //向后端发送的数据
+    data: {
+      table_ord : app.globalData.table_ord,
+      token :  wx.getStorageSync('tokentoset'),
+      snumber: wx.getStorageSync('useraccount'),
+      week:week_ordinal
+    },
+    header: { 
+      "Referer": "http://www.baidu.com",
+      "Accept-encoding": "gzip, deflate, br",
+      "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+      "Cache-control": "max-age=0",
+  }, success: (res) => {
+    if(res.data['status']=="success")app.globalData.todatabasesflag++;
+    
+  
+  }
+  })
+}
 
 
 
@@ -299,5 +337,6 @@ module.exports = {
   getGradeInfo,
   getExamInfo,
   init_data,
-  only_data
+  only_data,
+  postclass
 };

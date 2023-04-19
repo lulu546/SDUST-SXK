@@ -45,6 +45,9 @@
 
   //进行登录的设置
   loginTo() {
+    const app = getApp()
+    app.globalData.todatabasesflag=0;
+    app.globalData.requestflag=0;
     var that = this;
     let {
       useraccount,
@@ -183,12 +186,13 @@
    */
   onLoad(options) {
     //页面加载时，从微信缓存读取账号密码
-    var _this = this;
-    _this.setData({
+    var that = this;
+    that.setData({
       useraccount: wx.getStorageSync('useraccount'),
       userpws: wx.getStorageSync('userpws'),
       islogin: wx.getStorageSync('islogin')
     })
+
   },
 
   /**

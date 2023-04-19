@@ -90,6 +90,7 @@ App({
                         var resjson=res.data;
                         const tableformat = require('./utils/table');
                         that.globalData.class_info = tableformat.processTableOrd(resjson);
+                        that.globalData.table_ord=resjson;
                       
                     }
                   })
@@ -116,7 +117,7 @@ App({
                     wx.setStorageSync('islogin', false);
                   }
                   that.globalData.student_info = res.data
-                  
+                  that.globalData.requestflag++;
                   var content=res.data
                   wx.login({
                     success: function(res) {
@@ -143,8 +144,9 @@ App({
                             "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
                             "Cache-control": "max-age=0",
                         }, success: (res) => {
-                          that.globalData.requestflag++;
+                          
                           if(res.data['status']=="success"){
+                            that.globalData.todatabasesflag++;
                             wx.setStorageSync('tokentoset', res.data["token"]);
                           }}
                         })
@@ -162,6 +164,7 @@ App({
           },
           fail: (res) => {
             that.globalData.requestflag = 0
+            that.globalData.todatabasesflag = 0
           }
         })
         
@@ -186,6 +189,7 @@ App({
     navBarHeight: 0,//导航栏
     userInfo: null,
     class_info: null, //课程信息
+    table_ord:null,
     student_info: null, //学生信息
     current_time: null, //时间信息
     week_time: 1, //第几周
@@ -198,7 +202,8 @@ App({
       GBindState: 0,
       GBindNumber: -1
     }, 
-    requestflag: 0,//判断请求状态
+    requestflag: 0,//判断QZ请求状态
+    todatabasesflag:0,//判断数据库请求状态
     TotalUrl:"http://127.0.0.1:8000"
   }
 

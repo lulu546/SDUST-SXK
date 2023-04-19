@@ -49,6 +49,7 @@ Page({
   onLoad(options) {
 
     
+    
     var that = this;
     //计划表的读取
     //如果全局变量其
@@ -159,6 +160,7 @@ Page({
 
     }, 1000);
 
+
   },
   
   /**
@@ -173,10 +175,10 @@ Page({
         ['set_schedule.islogin']:islogin
       })
     }
-
+    var postclassflag=false
     //TODO 计时器，检测是否请求成功；
     var read=setInterval(function(){
-      if(app.globalData.requestflag==2){
+      if(app.globalData.requestflag==2&&app.globalData.todatabasesflag==2){
         var table_schedule = app.globalData.class_info;
         var week_ordinal = app.globalData.week_time;
         var requestflag=app.globalData.requestflag;
@@ -185,7 +187,12 @@ Page({
             table_schedule,
             requestflag
           })
+           console.log("2111")
           clearTimeout(read);
+      }
+      if(app.globalData.requestflag==2&&app.globalData.todatabasesflag==1&&postclassflag==false){
+        api.postclass()
+        postclassflag=true
       }
     }, 100);
     
@@ -204,27 +211,42 @@ Page({
   onUnload() {
 
   },
-
+// TODO
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
-    // 下拉刷新请求
+    
+    var that=this
+    // 下拉刷新请求,带请i去判断
     if (wx.getStorageSync('islogin') == true) {
       if(app.globalData.requestflag>0&&app.globalData.requestflag<2){
         api.only_data(wx.getStorageSync('useraccount'))
       }
-    else{     
+      else if(app.globalData.requestflag==0){     
        api.init_data(wx.getStorageSync('useraccount'),wx.getStorageSync('userpws'))
-
-
     }
+    var postclassflag=false
+    //TODO 计时器，检测是否请求成功；
+    var read=setInterval(function(){
+      if(app.globalData.requestflag==2&&app.globalData.todatabasesflag==2){
+        var table_schedule = app.globalData.class_info;
+        var week_ordinal = app.globalData.week_time;
+        var requestflag=app.globalData.requestflag;
+          that.setData({
+            week_ordinal,
+            table_schedule,
+            requestflag
+          })
+          clearTimeout(read);
+      }
+      if(app.globalData.requestflag==2&&app.globalData.todatabasesflag==1&&postclassflag==false){
+        api.postclass()
+        postclassflag=true
+      }
+    }, 100);
      
-                
-      
-     
-      
+    
     }
     else{
       wx.navigateTo({

@@ -1,4 +1,5 @@
 // pages/studentinfo/studentinfo.js
+const app=getApp();
 Page({
 
   /**
@@ -89,7 +90,9 @@ Page({
     wx.removeStorageSync("useraccount");
     wx.removeStorageSync("userpws");
     wx.setStorageSync("islogin",false);
-    wx.reLaunch({//重定向
+
+
+    wx.redirectTo({//重定向
       url: '../../Login/LoginContent/logincontent',
     })
   
