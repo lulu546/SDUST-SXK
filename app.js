@@ -197,11 +197,8 @@ App({
       isshareshowclass: wx.getStorageSync('isshareshowclass')==undefined?true:wx.getStorageSync('isshareshowclass'), //是否显示分享
       isshareshowgrade:wx.getStorageSync('isshareshowclass')==undefined?true:wx.getStorageSync('isshareshowclass'),
       islogin: wx.getStorageSync('islogin'), //是否登录
-      CBindState: 0,
-      CBindNumber: -1,
-      GBindState: 0,
-      GBindNumber: -1
     }, 
+    sharedata:{},
     requestflag: 0,//判断QZ请求状态
     todatabasesflag:0,//判断数据库请求状态
     TotalUrl:"http://127.0.0.1:8000"

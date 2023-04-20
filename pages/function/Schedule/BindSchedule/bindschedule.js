@@ -1,61 +1,45 @@
 // pages/reshareschedule/resharesch.js
 const app = getApp();
-
+const shareapi=require("../../../../API/shareapi");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    set_all_data:null,
+    sharedata:null,
     student_info:null,
     postnum: '', //用户账户
+    currentIndex: 0  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    wx.request({
-      url: app.globalData.TotalUrl+'/qz/share-state/',
-      method: 'POST',
-      data: {
-        account: wx.getStorageSync('useraccount'),
-        password: wx.getStorageSync('userpws')
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: (res) => {
-        if(res.data["code"] >= 4000){}
-        else{
-          app.globalData.set_all_data.CBindState= res.data["CBindState"]
-          app.globalData.set_all_data.CBindNumber= res.data["CBindNumber"]
-          if(res.data["CBindNumber"]!=-1){
-            that.setData({
-              set_all_data:app.globalData.set_all_data,
-              postnum:res.data["CBindNumber"]
-            })
-          }
-          else{
-            that.setData({
-              set_all_data:app.globalData.set_all_data,
-              postnum:''
-            })
-          }
+   
 
-        }
-      }
-    })
   //上来先读数
   var that =this;
-  var set_all_data=app.globalData.set_all_data;
+  var sharedata=app.globalData.sharedata;
   var student_info=app.globalData.student_info
   that.setData({
-    set_all_data,
+    sharedata,
     student_info
   })
+    shareapi.sharestate().then(res => {
 
+      
+      that.setData({
+        sharedata:app.globalData.sharedata
+      })
+  
+  }).catch(err => {
+    wx.showToast({
+      title: '请求失败喵~',
+      icon: "error"
+    });
+  })
 
   },
 
@@ -94,30 +78,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-    wx.request({
-      url: app.globalData.TotalUrl+'/qz/share-state/',
-      method: 'POST',
-      data: {
-        account: wx.getStorageSync('useraccount'),
-        password: wx.getStorageSync('userpws')
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: (res) => {
-        if(res.data["code"] >= 4000){}
-        else{
-          app.globalData.set_all_data.CBindState= res.data["CBindState"]
-          app.globalData.set_all_data.CBindNumber= res.data["CBindNumber"]
-          app.globalData.set_all_data.GBindState = res.data["GBindState"]
-          app.globalData.set_all_data.GBindNumber = res.data["GBindNumber"]
-          that.setData({
-            set_all_data:app.globalData.set_all_data,
-            postnum:wx.getStorageSync('postnum')
-          })
-        }
-      }
-    })
+
   },
 
   /**
@@ -133,8 +94,14 @@ Page({
   onShareAppMessage() {
 
   },
-  PostTo() {
+  swiperChange(e) {
+    this.setData({
+      currentIndex: e.detail.current
+    })  
+  },
+  PostTo(e) {
     var that = this;
+    var cont= e.currentTarget.dataset.cont;
     let {
       postnum
     } = that.data;
@@ -154,184 +121,67 @@ Page({
       })
       return;
     }
-    wx.request({
-      url: app.globalData.TotalUrl+'/qz/share-state/post/',
-      method: 'POST',
-      data: {
-        account: wx.getStorageSync('useraccount'),
-        password: wx.getStorageSync('userpws'),
-        cont:0,
-        cancel:false,
-        postnum:postnum
-      },
-      header: {
-        'content-type': 'application/json'
-        //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
-      },
-      success: (res) => {
-        if (res.data["code"] >= 4000) {
-
-          wx.showToast({
-            title: '请求失败喵~',
-            icon: "error"
-          });
-        }
-        else if (res.data["code"] == 2000) {
-          // 再次请求
-          wx.request({
-            url: app.globalData.TotalUrl+'/qz/share-state/',
-            method: 'POST',
-            data: {
-              account: wx.getStorageSync('useraccount'),
-              password: wx.getStorageSync('userpws')
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-              if(res.data["code"] >= 4000){}
-              else{
-                app.globalData.set_all_data.CBindState= res.data["CBindState"]
-                app.globalData.set_all_data.CBindNumber= res.data["CBindNumber"]
-                app.globalData.set_all_data.GBindState = res.data["GBindState"]
-                app.globalData.set_all_data.GBindNumber = res.data["GBindNumber"]
-                that.setData({
-                  set_all_data:app.globalData.set_all_data,
-                  postnum:wx.getStorageSync('postnum')
-                })
-              }
-            }
-          })
-          wx.setStorageSync('postnum', postnum);
-
-        }
-      },
-      fail: (res) => {
-        wx.showToast({
-          title: '请求失败喵~',
-          icon: 'error'
-        })
-      }
+    shareapi.postsharestate(postnum,cont,false).then(res => {
+      that.setData({
+        sharedata:app.globalData.sharedata,
+        postnum:wx.getStorageSync('postnum')
+      })
+      wx.setStorageSync('postnum', postnum);
+      wx.showToast({
+        title: '请求成功喵~',
+        icon: "success"
+      });
+    }).catch(err => {
+      wx.showToast({
+        title: '请求失败喵~',
+        icon: "error"
+      });
     })
+
   },
   CancelPostTo(){
     var that = this;
     var postnum=that.data.postnum;
-    wx.request({
-      url: app.globalData.TotalUrl+'/qz/share-state/post/',
-      method: 'POST',
-      data: {
-        account: wx.getStorageSync('useraccount'),
-        password: wx.getStorageSync('userpws'),
-        cont:0,
-        cancel:true,
-        postnum:postnum
-      },
-      header: {
-        'content-type': 'application/json'
-        //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
-      },
-      success: (res) => {
-        if (res.data["code"] >= 4000) {
-          wx.showToast({
-            title: '请求失败喵~',
-            icon: "error"
-          });
-        }
-        else if (res.data["code"] == 2000) {
-          wx.setStorageSync('postnum', "");
-          wx.request({
-            url: app.globalData.TotalUrl+'/qz/share-state/',
-            method: 'POST',
-            data: {
-              account: wx.getStorageSync('useraccount'),
-              password: wx.getStorageSync('userpws')
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-              if(res.data["code"] >= 4000){}
-              else{
-                app.globalData.set_all_data.CBindState= res.data["CBindState"]
-                app.globalData.set_all_data.CBindNumber= res.data["CBindNumber"]
-                that.setData({
-                  set_all_data:app.globalData.set_all_data,
-                  postnum:wx.getStorageSync('postnum')
-                })
-              }
-            }
-          })
-          
-
-        }
-      },
-      fail: (res) => {
-        wx.showToast({
-          title: '请求失败喵~',
-          icon: 'error'
-        })
-      }
+    var cont=that.data.cont;
+    shareapi.postsharestate(postnum,cont,true).then(res => {
+      wx.setStorageSync('postnum', "");
+      that.setData({
+        sharedata:app.globalData.sharedata,
+        postnum:wx.getStorageSync('postnum')
+      })
+      wx.showToast({
+        title: '请求成功喵~',
+        icon: "success"
+      });
+    }).catch(err => {
+      wx.showToast({
+        title: '请求失败喵~',
+        icon: "error"
+      });
     })
+
   },
   ReplyPostTo(){
     var that = this;
     var postnum=that.data.postnum;
-    wx.request({
-      url: app.globalData.TotalUrl+'/qz/share-state/reply/',
-      method: 'POST',
-      data: {
-        account: wx.getStorageSync('useraccount'),
-        password: wx.getStorageSync('userpws'),
-        cont:0,
-        reply:true,
-        postnum:postnum
-      },
-      header: {
-        'content-type': 'application/json'
-        //后端生成cookie然后请求的时候把cookie发过去，然后我们进行加工。
-      },
-      success: (res) => {
-        if (res.data["code"] >= 4000) {
-          wx.showToast({
-            title: '请求失败喵~',
-            icon: "error"
-          });
-        }
-        else if (res.data["code"] == 2000) {
-          wx.setStorageSync('postnum', postnum);
-          wx.request({
-            url: app.globalData.TotalUrl+'/qz/share-state/',
-            method: 'POST',
-            data: {
-              account: wx.getStorageSync('useraccount'),
-              password: wx.getStorageSync('userpws')
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-              if(res.data["code"] >= 4000){}
-              else{
-                app.globalData.set_all_data.CBindState= res.data["CBindState"]
-                app.globalData.set_all_data.CBindNumber= res.data["CBindNumber"]
-                that.setData({
-                  set_all_data:app.globalData.set_all_data,
-                })
-              }
-            }
-          })
-          
-
-        }
-      },
-      fail: (res) => {
-        wx.showToast({
-          title: '请求失败喵~',
-          icon: 'error'
-        })
-      }
+    var cont=that.data.cont;
+    shareapi.replysharestate(postnum,cont,true).then(res => {
+      wx.setStorageSync('postnum', "");
+      that.setData({
+        sharedata:app.globalData.sharedata,
+        postnum:wx.getStorageSync('postnum')
+      })
+      wx.showToast({
+        title: '请求成功喵~',
+        icon: "success"
+      });
+    }).catch(err => {
+      wx.showToast({
+        title: '请求失败喵~',
+        icon: "error"
+      });
     })
+
   },
   getaccount(e) {
     var that=this
