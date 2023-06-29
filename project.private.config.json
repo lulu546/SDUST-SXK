@@ -9,7 +9,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent",
+          "pathName": "pages/Function/DepartmentWork/SKYC/SKYCContent/SKYCContent",
           "query": "",
           "launchMode": "default",
           "scene": null,
@@ -104,6 +104,13 @@
         {
           "name": "",
           "pathName": "pages/Function/Schedule/BindSchedule/bindschedule",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Function/DeptClass/DeptClassContent/DeptClassContent",
           "query": "",
           "launchMode": "default",
           "scene": null

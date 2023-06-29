@@ -1,245 +1,884 @@
 // pages/home/home.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    //获取的学期状态，用于测试
-    datalist:{
-      zc:'',
-      xnxqh:'',
-    },
-    flag:false,//是否隐藏新建事件页面
-    starttime:'',//开始时间
-    endtime:'',//结束时间
-    isrepeat:false,//是否事件名重复
-    // ishavedata:0,//是否之前有
-    // isstart:0,//是否渲染
-    isshow:0,//是否显示添加事件的界面
-    isdelete:false,//长按后是否显示删除元素界面，true时显示删除界面
-    event:'',//添加的事件名
-    time:'',//日期，用于计算差多少天
-    other:'',//备注
-    num:0,//事件列表的元素
-    //颜色列表
-    colorlist:[
-      {color:'#4E11D1'},
-      {color:'#FFD60A'},
-      {color:'#32D748'},
-      {color:'#64D2FF'},
-      {color:'#FF2D55'},
-      {color:'#5E5CE6'},
-    ],
-    //暂存一个事件对象
-    _class:{
-      _event:'',
-      _data:'',
-      color:''
-    },
-    //事件列表
-    classlist:[
+    page_num:0,//初始页面
+    is_have_shade:0,//是否由设置掩膜，用于区分添加页面和初始页面
+    time_selection:"（可选）",//添加事件时，时间选择部分的内容，初始设置为（可选），点击可实现数据切换
+    event_content:"",//添加时事项内容
+    is_have_select_time:0,//是否选择过时间，0为没有
+    //用于对选择时间时picker选择的组成部分
+    multiArray:[],//实际picker的内容选择
+    multiIndex:[],//当前选择年，月，日，时，分
+    nowtime:[],//当前时间
+    //设置几种事项的分类数组
+    not_selected_time_event_datalist:[],//没有选择时间的待办,三个参数：1、时间；2、事件内容；3、是否被选中
+    selected_time_event_datalist:[],//已经选择时间的待办
+    overtime_event_datalist:[],//超时未完成的事件
+    finished_event_datalist:[],//已经完成的事件
+
+    //设置事项的具体展开
+    open_status01:1,//未完成的展开与不展开判定
+    open_status02:1,//已过期的展开与不展开判定
+    open_status03:1,//已完成的展开与不展开判定
+
+    //输入文本的个数
+    area_num:0,
+
+    //是否进入删除页面
+    is_to_delete:0,
+
+    //获取屏幕高度
+    screen_height:0,
+
+    //删除时是否全选了
+    is_all_selected:0,
+
+    //删除时选择的个数
+    selected_to_delete_num:0,
+  },
+
+//00 全局函数声明
+  //00_1 获取当前时间
+  getnowtime(){
+    var myDate=new Date()
+    var list=[
+      myDate.getFullYear(),
+      (myDate.getMonth()+1),
+      myDate.getDate(),
+      myDate.getHours(),
+      myDate.getMinutes(),
+      myDate.getSeconds(),
     ]
-  },
-  // //确认删除该事件
-  // confirm_delete(){
-    // this.setData({
-    //   isdelete:false,
-    //   event:'',//使event为空，防止新建时读取对应的event
-    // })
-  // },
-  // //取消删除该事件
-  // nodelete(){
-  //   this.setData({
-  //     isdelete:false,
-  //     event:'',//使event为空，防止新建时读取对应的event
-  //   })
-  // },
-  //修改事件
-  changeitem(){
     this.setData({
-      isdelete:false,
-      event:'',//使event为空，防止新建时读取对应的event
-      //显示新增事件页面进行修改
+      nowtime:list,
+    })
+
+  },
+  //00_2 自定义range函数，可用于制作日期选择列表
+  range(a,b){
+    var list=[]
+    for(var i=a;i<=b;i++){
+      list=[...list,i]
+    }
+    return list
+  },
+  //00_3 获取当前时间数组
+  gettimelist(){
+    //首先定义好各个集合的数组
+    var yearlist=this.range(this.data.nowtime[0],100+this.data.nowtime[0])
+    var monthlist=this.range(1,12)
+    var daylist1=this.range(1,28)
+    var daylist2=this.range(1,29)
+    var daylist3=this.range(1,30)
+    var daylist4=this.range(1,31)
+    var hourlist=this.range(0,23)
+    var minutelist=this.range(0,59)
+
+    //将我自己定义的各种情况的数组放入timelist集合中储存
+    var list=[yearlist,monthlist,daylist1,daylist2,daylist3,daylist4,hourlist,minutelist]
+    this.setData({
+      timelist:list,
+    })
+
+    // 根据各种情况判断daylist的取值，主要时考虑到大月和小月以及二月的情况，然后将更改后的数据统一到list2中作为multiarray的成员
+    var daylist
+    switch (this.data.nowtime[1]) {
+      case 2:
+        daylist=daylist1
+        break;
+      case 1,3,5,7,8,10,12:
+        daylist=daylist3
+        break;
+      default:
+        daylist=daylist4
+        break;
+    }
+    if(this.data.nowtime[0]%100!=0&&this.data.nowtime[0]%4==0)daylist=daylist2
+    var list2=[
+      yearlist,monthlist,daylist,hourlist,minutelist
+    ]
+    this.setData({
+      multiArray:list2
+    })
+
+    //获取对应初始元素对应的位置，也就是multiIndex
+    var list1=[0,this.data.nowtime[1]-1,this.data.nowtime[2]-1,this.data.nowtime[3],this.data.nowtime[4]]
+    this.setData({
+      multiIndex:list1
     })
   },
-  //删除事件
-  deleteitem(){
-    this.setData({
-      isdelete:false,
-      event:'',//使event为空，防止新建时读取对应的event
-    })
-  },
-  //取消事件
-  refusedelete(){
-    this.setData({
-      isdelete:false,
-      event:'',//使event为空，防止新建时读取对应的event
-    })
-  },
-    //获取事件名
-    getevent(e){
-      this.setData({
-        event:e.detail.value,
-        isrepeat:false//初始都为不重复
-      })
-      for(var i in this.data.classlist){
-        if(e.detail.value==this.data.classlist[i]._event){
-          this.setData({
-            isrepeat:true
-          })
-        }
-        // console.log(this.data.classlist[i])
+  //00_4 比较两个数组的大小
+  list_compare(list1,list2){
+    //默认list1小于list2
+    var flag=true
+    for(var i=0;i<list2.length;i++){
+      if(list1[i]>list2[i]){
+        flag=false;
+        break;
       }
-    },
-    //获取时间
-    gettime(e){
-      this.setData({
-        time:e.detail.value
+      else if(list1[i]<list2[i]){
+        flag=true;
+        break;
+      }
+    }
+    return flag
+  },
+  //00_5 时间数组排序，用于添加有时间的数据时的筛选，时间距离近的在前
+  time_sort(){
+    var list=this.data.selected_time_event_datalist
+    var l=list.length
+    var j=0
+    var temp=[]
+    for(var i=1;i<l;i++){
+      if(this.list_compare(list[j][0],list[i][0]))break;
+      else{
+        temp=list[j]
+        list[j]=list[i]
+        list[i]=temp
+        j=i
+      }
+    }
+    this.setData({
+      selected_time_event_datalist:list
+    })
+    console.log(list)
+  },
+  //00_6 初始化数组状态,删除勾选状态
+  datalist_init(){
+    var list1=this.data.not_selected_time_event_datalist
+    var list2=this.data.selected_time_event_datalist
+    var list3=this.data.finished_event_datalist
+    var list4=this.data.overtime_event_datalist
+    this.setData({
+      not_selected_time_event_datalist:this.reset_to_0(list1),
+      selected_time_event_datalist:this.reset_to_0(list2),
+      finished_event_datalist:this.reset_to_0(list3),
+      overtime_event_datalist:this.reset_to_0(list4)
+    })
+
+  },
+  //00_7 给数组赋值为0
+  reset_to_0(list){
+    var l=0;
+    if(list!=[])l=list.length
+    for(var i=0;i<l;i++){
+      list[i][2]=0
+    }
+    return list
+  },
+
+
+
+//01 初始页面的函数设置
+  //01_1 点击加号添加事件,此时调用gettimelist获取事件列表
+  add_event(){
+    this.setData({
+      is_have_shade:1,
+    })
+    this.getnowtime()
+    this.gettimelist()
+  },
+  //01_2 点击箭头，进行事项的显示，此函数用于点击图标切换状态
+  change_open_status(e){
+    console.log(e)
+    var id=e.currentTarget.dataset.id
+    if(id==1){
+      if(this.data.open_status01==0)this.setData({
+        open_status01:1
       })
-    },
-    //获取备注
-    getother(e){
-      this.setData({
-        other:e.detail.value
+      else this.setData({
+        open_status01:0
       })
-    },
-    //获取长按开始时间，用于进行删除操作的判定
-    getstarttime(e){
-      this.setData({
-        starttime:e.timeStamp
+    }
+    if(id==2){
+      if(this.data.open_status02==0)this.setData({
+        open_status02:1
       })
-      // console.log(this.data.starttime)
-    },
-    //获取长按结束时间
-    getendtime(e){
-      this.setData({
-        endtime:e.timeStamp
+      else this.setData({
+        open_status02:0
       })
-      console.log(this.data.endtime)
-      var touchtime=this.data.endtime-this.data.starttime
-      console.log(touchtime)
-      if(touchtime>300){
+    }
+    if(id==3){
+      if(this.data.open_status03==0)this.setData({
+        open_status03:1
+      })
+      else this.setData({
+        open_status03:0
+      })
+    }
+  },
+  //01_3 对未完成的进行监听，当过期时转化为过期的，进行定时器处理
+  check_selected_time_event_datalist(){
+    //调取方法获取当前时间，用于比较是否过期了
+    this.getnowtime()
+    // var list=[]
+    //存放获取的信息
+    var list1=this.data.selected_time_event_datalist
+    var list2=this.data.nowtime
+    var list5=this.data.overtime_event_datalist
+    //用于存放超时的部分
+    var list3=[]
+    //用于存放未完成部分，已超时的id，用于去除
+    var list4=[]
+    //用于存放处理后的未完成数组,这个之后要进行去除过期数据的步骤
+    var _list1=this.data.selected_time_event_datalist
+    //用于存放处理后的过期数组
+    var _list2=[]
+
+    //防止list1为空时，length函数报错
+    var len=0
+    var flag
+    if(list1!=[])len=list1.length
+    for(var i=0;i<len;i++){
+      flag=!this.list_compare(list2,list1[i][0])//当前时间，设置的时间
+      // flag=!this.list_compare([2022,1,2,2,2],[2022,1,3,3,3])//当前时间，设置的时间
+      // console.log(this.data.nowtime)
+      // console.log(list1[i][0])
+      // console.log(flag)
+      //如果超时
+      if(flag){
+        //存放刚过期的数据
+        list3=[list1[i],...list3]
+        //存放刚过期的数据在未完成中的id
+        list4=[...list4,i]
+      }
+    }
+    // 合并过期的数据
+    _list2=[...list3,...list5]
+    // 去除未完成中已过期的部分,考虑splice函数的特点，进行id倒叙进行
+    var len1=0
+    if(list4!=[])len1=list4.length
+    if(len1>0)this.setData({
+      open_status02:1
+    })
+    for(var i=len1-1;i>=0;i--){
+      _list1.splice(list4[i],1)
+    }
+    //赋值给未完成和已过期的数组
+    this.setData({
+      selected_time_event_datalist:_list1,
+      overtime_event_datalist:_list2,
+    })
+    
+
+    //存入微信缓存
+    // wx.setStorageSync('selected_time_event_datalist', _list1)
+    // wx.setStorageSync('overtime_event_datalist', _list2)
+
+    const app=getApp()
+    app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist
+    app.globalData.not_selected_time_event_datalist=this.data.not_selected_time_event_datalist
+  },
+  //01_4 点击各部分前面的选择框进行改变
+  transfer_to_finished(e){
+    //当处于非删除状态时
+    if(this.data.is_to_delete==0){
+      console.log(e)
+      //哪一个分类
+      var id=e.currentTarget.dataset.id
+      //分类中的第几个
+      var num=e.currentTarget.dataset.num
+      //对每一类进行处理
+      var list=this.data.finished_event_datalist//已完成的数据
+      var list1=this.data.selected_time_event_datalist//设置时间的未完成事件
+      var list2=this.data.not_selected_time_event_datalist//未设置时间的未完成事件
+      var list3=this.data.overtime_event_datalist//已过期的事件
+      // 设置时间的转为完成的
+      if(id==1){
+        list=[this.data.selected_time_event_datalist[num],...list]
+        list1.splice(num,1)
         this.setData({
-          isdelete:true,
-          event:e.target.dataset.event
+          open_status03:1
+        })
+        //如果转换后成空
+        if(this.data.selected_time_event_datalist.length+this.data.not_selected_time_event_datalist.length==0)this.setData({
+          open_status01:0
         })
       }
-      
-    },
-    // 点击新建事件按钮
-    addlist(){
+      //未设置时间的转为完成的
+      else if(id==2){
+        list=[this.data.not_selected_time_event_datalist[num],...list]
+        list2.splice(num,1)
+        this.setData({
+          open_status03:1
+        })
+        //如果转换后为空
+        if(this.data.selected_time_event_datalist.length+this.data.not_selected_time_event_datalist.length==0)this.setData({
+          open_status01:0
+        })
+      }
+      //超时的转为已完成
+      else if(id==3){
+        list=[this.data.overtime_event_datalist[num],...list]
+        list3.splice(num,1)
+        this.setData({
+          open_status03:1
+        })
+        if(this.data.overtime_event_datalist.length==0)this.setData({
+          open_status02:0
+        })
+      }
+      //由已完成的变为非已完成的
+      else if(id==4){
+        var msg=list[num]
+        console.log(msg)
+        //该项没有设置时间，返回至对应的数组
+        if(msg[0].length==0){
+          list2=[msg,...list2],
+          //第一部分展开
+          this.setData({
+            open_status01:1
+          })
+        }
+        //设置时间了，分为超时和没有超时的
+        else{
+          var flag=this.list_compare(this.data.nowtime,msg[0])
+          //没有超时
+          if(flag){
+            list1=[msg,...list1],
+            this.setData({
+              selected_time_event_datalist:list1,
+              open_status01:1,
+            })
+            this.time_sort()
+            list1=this.data.selected_time_event_datalist
+          }
+          //超时
+          else {
+            list3=[msg,...list3]
+            this.setData({
+              open_status02:1
+            })
+          }
+        }
+        list.splice(num,1)
+        if(list.length==0)this.setData({
+          open_status03:0
+        })
+      }
+      //对data赋值
       this.setData({
-        flag:false,
-        isshow:1
+        not_selected_time_event_datalist:list2,
+        selected_time_event_datalist:list1,
+        overtime_event_datalist:list3,
+        finished_event_datalist:list
       })
-    },
-  // 新建页面的确定按钮
-  makesure(){
-    if(this.data.event=='')wx.showToast({
-      title: '事件名不可为空',
-      icon:'error'
+      // 对全局变量赋值
+      const app=getApp()
+
+      app.globalData.not_selected_time_event_datalist=this.data.not_selected_time_event_datalist
+      app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist
+      app.globalData.overtime_event_datalist=this.data.overtime_event_datalist
+      app.globalData.finished_event_datalist=this.data.finished_event_datalist
+      // // 储存至微信小程序
+      // wx.setStorageSync('selected_time_event_datalist', this.data.selected_time_event_datalist)
+      // wx.setStorageSync('not_selected_time_event_datalist',this.data.not_selected_time_event_datalist)
+      // wx.setStorageSync('overtime_event_datalist', this.data.overtime_event_datalist)
+      // wx.setStorageSync('finished_event_datalist', this.data.finished_event_datalist)
+    }
+
+
+    
+  },
+  //01_5 长按列表进入选中状态
+  delete_press(){
+    //准备删除，且所有分类都必须显示
+    this.setData({
+      //准备删除
+      is_to_delete:1,
+
+      //是否显示待办
+      open_status01:1,
+      open_status02:1,
+      open_status03:1
+
     })
-    else if(this.data.time=='')wx.showToast({
-      title: '请设置时间',
-      icon:'error'
+  },
+
+
+//02 添加记事本页面的函数设置
+  //02_1 点击非添加页面部分，关闭弹窗
+  close_shade(){
+    if(this.data.is_have_shade==1)this.setData({
+      is_have_shade:0,
+      event_content:[],
+      is_have_select_time:0
     })
-    else if(this.data.isrepeat){
+  },
+  //02_2 选择日期后点击确认完成日期的更改
+  bindMultiPickerChange(e){
+    //更改了所选的序列以及是否选择过时间
+    this.getnowtime()
+    var flag=true
+    for(var i=0;i<5;i++){
+      if(this.data.nowtime[i]>this.data.multiArray[i][e.detail.value[i]]){
+        flag=false;
+        break;
+      }
+      if(this.data.nowtime[i]<this.data.multiArray[i][e.detail.value[i]]){
+        flag=true;
+        break;
+      }
+    }
+    //如果时间没问题
+    if(flag){
+      var list=this.data.whichone
+      // list[2]=true
+      this.setData({
+        multiIndex:e.detail.value,
+        ischoosedate:true,
+        // whichone:list
+        is_have_select_time:1
+      })
+    }
+    //如果时间有问题
+    else{
       wx.showToast({
-        title: '事件名重复',
+        title: '时间选择错误',
         icon:'error'
       })
     }
+
+    //将时间读入event_time中
+    var _timelist=[]
+    for(var i=0;i<5;i++){
+      _timelist[i]=this.data.multiArray[i][this.data.multiIndex[i]]
+    }
+    this.setData({
+      event_time:_timelist,
+    })
+
+  },
+
+  //02_3 在弹出时间选择器时，所滑动绑定的事件
+  bindMultiPickerColumnChange(e){
+    //当拨动年份时，记录年份，一边二月时间的更改
+    if(e.detail.column==0){
+      var list=this.data.nowtime
+      list[0]=this.data.multiArray[0][e.detail.value]
+      //更改multiIndex的值
+      var _list=this.data.multiIndex
+      _list[0]=e.detail.value
+      //闰年的2月29日进行更改
+      if(this.data.multiIndex[1]==1&&!(this.data.multiArray[0][this.data.multiIndex[0]]%4==0&&this.data.multiArray[0][this.data.multiIndex[0]]%100!=0)){
+        if(this.data.multiIndex[2]==28){
+          _list[2]=0
+        }
+      }
+      this.setData({
+        nowtime:list,
+        multiIndex:_list,
+      })
+    }
+    //对月份进行判断
+    if(e.detail.column==1){
+      //将MultiIndex更新
+      var num=e.detail.value
+      switch (true) {
+        //大月
+        case num%2==0&&num!=1:
+          var list=[
+            this.data.timelist[0],
+            this.data.timelist[1],
+            this.data.timelist[5],
+            this.data.timelist[6],
+            this.data.timelist[7],
+          ]
+          var _list=this.data.multiIndex
+          _list[1]=e.detail.value
+          this.setData({
+            multiArray:list,
+            multiIndex:_list
+          })
+          break;
+        //小月
+        case num%2==1&&num!=1:
+          var list=[
+            this.data.timelist[0],
+            this.data.timelist[1],
+            this.data.timelist[4],
+            this.data.timelist[6],
+            this.data.timelist[7],
+          ]
+          var _list=this.data.multiIndex
+          _list[1]=e.detail.value
+          if(this.data.multiIndex[2]>29)_list[2]=0
+          this.setData({
+            multiArray:list,
+            multiIndex:_list,
+          })
+          break;
+        // 对二月进行判断
+        case num==1:
+          var _year=this.data.nowtime[0]
+          if(_year%100!=0&&_year%4==0){
+            var list=[
+              this.data.timelist[0],
+              this.data.timelist[1],
+              this.data.timelist[3],
+              this.data.timelist[6],
+              this.data.timelist[7],
+            ]
+            var _list=this.data.multiIndex
+            _list[1]=e.detail.value
+            if(this.data.multiIndex[2]>27)_list[2]=0
+            this.setData({
+              multiArray:list,
+              multiIndex:_list,
+            })
+          }
+          else{
+            var list=[
+              this.data.timelist[0],
+              this.data.timelist[1],
+              this.data.timelist[2],
+              this.data.timelist[6],
+              this.data.timelist[7],
+            ]
+            var _list=this.data.multiIndex
+            _list[1]=e.detail.value
+            if(this.data.multiIndex[2]>26)_list[2]=0
+            this.setData({
+              multiArray:list,
+              multiIndex:_list,
+            })
+          }
+          break;
+      }
+    }
+    //对天数进行关联更新，比如每个月的天数不同
+    if(e.detail.column==2){
+      var list=this.data.multiIndex
+      list[2]=e.detail.value
+      this.setData({
+        multiIndex:list
+      })
+    }
+  },
+
+  //02_4 获取事项内容
+  getevent_content(e){
+    var len=(e.detail.value.length<=15)?e.detail.value.length:15
+    this.setData({
+      event_content:e.detail.value,
+      area_num:len,
+    })
+    console.log(e.detail.value)
+  },
+
+  //02_5 确定添加事件
+  confirm_add_event(){
+    var _event_length=this.data.event_content.length
+    console.log(this.data.event_content)
+    //首先判断事项内容是否为空，若为空，则提示错误
+    if(_event_length==[]){
+      wx.showToast({
+        title: '您还没有输入待办事项呢~',
+        icon:'none'
+      })
+    }
+    //事项不为空，进行有没有选择时间的判断
     else {
-      this.setData({
-        flag:true,
-        //添加所写内容到列表中
-        _class:{
-          _event:this.data.event,
-          _data:this.data.time,
-          color:this.data.colorlist[this.data.num%6].color
-        },
-        num:this.data.num+1,
-        // 清空所写的东西
-        event:'',
-        time:'',
-        other:'',
-        // isstart:1
-      });
-      // 将内容添加到datalist中
-      this.setData({
-        classlist:[...this.data.classlist,this.data._class],
-      })
-      this.setData({
-        classlist:this.data.classlist.sort(function(a,b){
-          return a._data-b._data
+      //声明两个数组，用于存放两种情况下的数据
+      var _not_selected_time_event_datalist=[]
+      var _selected_time_event_datalist=[]
+      //判断有没有选择数据，划分为上面两类，并赋值
+      if(this.data.is_have_select_time==0){
+        _not_selected_time_event_datalist=[
+          [],//时间
+          this.data.event_content,//内容
+          0,//是否被选中
+        ]
+      }
+      else{
+        _selected_time_event_datalist=[
+          [this.data.multiArray[0][this.data.multiIndex[0]],
+          this.data.multiArray[1][this.data.multiIndex[1]],
+          this.data.multiArray[2][this.data.multiIndex[2]],
+          this.data.multiArray[3][this.data.multiIndex[3]],
+          this.data.multiArray[4][this.data.multiIndex[4]],0],//时间
+          this.data.event_content,//事件内容
+          0,//是否被选中
+        ]
+      }
+      //对是否选择时间，对data中的数据进行赋值
+      if(this.data.is_have_select_time==0){
+        this.setData({
+          not_selected_time_event_datalist:[_not_selected_time_event_datalist,...this.data.not_selected_time_event_datalist],
         })
+      }
+      if(this.data.is_have_select_time==1)this.setData({
+        selected_time_event_datalist:[_selected_time_event_datalist,...this.data.selected_time_event_datalist],
       })
-      wx.setStorageSync('classlist', this.data.classlist),
-      wx.setStorageSync('num', this.data.num)
+      //更改相应的数值，open_status01为1，表明未完成部分有数据，此时直接展开；is_have_select_time、is_have_shade、event_content为初始化表单选项
+      this.setData({
+        open_status01:1,
+        is_have_select_time:0,
+        is_have_shade:0,
+        event_content:[]
+      })
+      //对选择时间的部分进行时间从近到远的排序，便于显示
+      this.time_sort()
+      //将数据赋值给全局变量
+      const app=getApp()
+      app.globalData.not_selected_time_event_datalist=this.data.not_selected_time_event_datalist
+      app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist
+      //将数值存储至微信小程序中
+      // wx.setStorageSync('selected_time_event_datalist', this.data.selected_time_event_datalist)
+      // wx.setStorageSync('not_selected_time_event_datalist', this.data.not_selected_time_event_datalist)
+      console.log("dsaddfsa")
+      console.log(app.globalData.selected_time_event_datalist)
+      
     }
 
-    // console.log(this.data.classlist)
   },
-  //新建页面的取消按钮
-  notsure(){
-    // wx.setStorageSync('classlist', []),
-    //   wx.setStorageSync('num', 0)
+
+  //02_6 配合掩膜使用
+  show_shade(){},
+
+
+//03 删除页面的函数设定
+  //03_1 点击取消返回初始界面
+  cancel_to_delete(){
     this.setData({
-      flag:true,
-      //清空所写的东西
-      event:'',
-      time:'',
-      other:''
+      is_to_delete:0,
+      is_all_selected:0,
     })
+    this.datalist_init()
   },
-  //获取学期信息
-  getdatalist(){
-    wx.request({
-      url: app.globalData.TotalUrl+'/current-time/',
-      method:'POST',
-      header:{
-        'content-type':'application/json'
-      },
-      success:(res)=>{
-        this.setData({
-          datalist:{
-            zc:res.data["zc"],
-            xnxqh:res.data["xnxqh"]
-          }
-        })
-        // console.log(res.data)
-      }
-    })
+  //03_2 删除时，前面单选框的点击事件
+  select_to_delete(e){
+    console.log(e)
+    var id=e.currentTarget.dataset.id//哪一类数据
+    var num=e.currentTarget.dataset.num//对应类中的第几个
+    var status=e.currentTarget.dataset.status//此时是未勾选（0）还是已经勾选了（1）
+    this.change_data_status(id,num,status)
+    //判断是否全选了
+    this.check_is_all_selected()
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-    // this.getdatalist()
+  //03_3 处理勾选的结果
+  change_data_status(id,num,status){
+    if(id==1){
+      var list=this.data.selected_time_event_datalist
+      if(status==0)list[num][2]=1;
+      else list[num][2]=0;
+      this.setData({
+        selected_time_event_datalist:list
+      })
+    }
+    else if(id==2){
+      var list1=this.data.not_selected_time_event_datalist
+      if(status==0)list1[num][2]=1;
+      else list1[num][2]=0;
+      this.setData({
+        not_selected_time_event_datalist:list1
+      })
+    }
+    else if(id==3){
+      var list2=this.data.overtime_event_datalist
+      if(status==0)list2[num][2]=1;
+      else list2[num][2]=0;
+      this.setData({
+        overtime_event_datalist:list2
+      })
+    }
+    else if(id==4){
+      var list3=this.data.finished_event_datalist
+      if(status==0)list3[num][2]=1;
+      else list3[num][2]=0;
+      this.setData({
+        finished_event_datalist:list3
+      })
+    }
+    //判断是否全选了
+    this.check_is_all_selected()
+  },
+  //03_4 点击删除键，进行删除
+  confirm_delete(){
+    var list1=this.data.not_selected_time_event_datalist
+    var list2=this.data.selected_time_event_datalist
+    var list3=this.data.finished_event_datalist
+    var list4=this.data.overtime_event_datalist
     this.setData({
-      flag:true,
+      not_selected_time_event_datalist:this.datalist_delete(list1),
+      selected_time_event_datalist:this.datalist_delete(list2),
+      finished_event_datalist:this.datalist_delete(list3),
+      overtime_event_datalist:this.datalist_delete(list4),
     })
+    //将数据赋值给全局变量
+    const app=getApp()
+    app.globalData.not_selected_time_event_datalist=this.data.not_selected_time_event_datalist
+    app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist
+    app.globalData.overtime_event_datalist=this.data.overtime_event_datalist
+    app.globalData.finished_event_datalist=this.data.finished_event_datalist
+    //将数值存储至微信小程序中
+    // wx.setStorageSync('selected_time_event_datalist', this.data.selected_time_event_datalist)
+    // wx.setStorageSync('not_selected_time_event_datalist', this.data.not_selected_time_event_datalist)
+    // wx.setStorageSync('overtime_event_datalist', this.data.overtime_event_datalist)
+    // wx.setStorageSync('finished_event_datalist', this.data.finished_event_datalist)
     this.setData({
-      classlist:[...this.data.classlist,...wx.getStorageSync('classlist')],
-      num:wx.getStorageSync('num')
+      is_to_delete:0,
+      is_all_selected:0,
     })
 
   },
+  //03_5 对数组进行删除
+  datalist_delete(list){
+    var l=0;
+    if(list!=[])l=list.length
+    for(var i=l-1;i>=0;i--){
+      if(list[i][2]==1)list.splice(i,1)
+    }
+    return list
+  },
+  //03_5 全选按钮，点击全选和全部不选
+  all_select_to_delete(){
+    if(this.data.is_all_selected==0){
+      this.change_datalist_number(1)
+      this.setData({
+        is_all_selected:1,
+      })
+    }
+    else{
+      this.change_datalist_number(0)
+      this.setData({
+        is_all_selected:0
+      })
+    }
+    //判断是否全选了
+    this.check_is_all_selected()
+    // console.log("是否全选："+this.data.is_all_selected)
+  },
+  //03_6 对数组进行赋值
+  change_datalist_number(num){
+    var list1=this.data.not_selected_time_event_datalist
+    var list2=this.data.selected_time_event_datalist
+    var list3=this.data.finished_event_datalist
+    var list4=this.data.overtime_event_datalist
+    this.setData({
+      not_selected_time_event_datalist:this.change_datalist_num(list1,num),
+      selected_time_event_datalist:this.change_datalist_num(list2,num),
+      finished_event_datalist:this.change_datalist_num(list3,num),
+      overtime_event_datalist:this.change_datalist_num(list4,num),
+    })
+  },
+  //03_7 更改数据对应参数
+  change_datalist_num(list,num){
+    var l=0;
+    if(list!=[])l=list.length
+    for(var i=l-1;i>=0;i--){
+      list[i][2]=num
+    }
+    return list
+  },
+  //03_8 对选项个数进行监听
+  check_is_all_selected(){
+    var list1=this.data.not_selected_time_event_datalist
+    var list2=this.data.selected_time_event_datalist
+    var list3=this.data.finished_event_datalist
+    var list4=this.data.overtime_event_datalist
+    var len=this.get_datalist_delete_num(list1)+this.get_datalist_delete_num(list2)+this.get_datalist_delete_num(list3)+this.get_datalist_delete_num(list4)
+    this.setData({
+      selected_to_delete_num:len
+    })
+    // 当选项都选了时，标记为全选
+    if(len==list1.length+list2.length+list3.length+list4.length){
+      this.setData({
+        is_all_selected:1
+      })
+    }
+  },
+  //03_9 获取数组中删除选项的个数
+  get_datalist_delete_num(list){
+    var l=0;
+    var sum=0;
+    if(list!=[])l=list.length
+    for(var i=l-1;i>=0;i--){
+      if(list[i][2]==1)sum++
+    }
+    return sum
+  },
 
+
+
+  onShareAppMessage() {
+    return {};
+  },
+  onLoad(){
+    var that=this
+    setInterval(function(){
+      that.check_selected_time_event_datalist()
+    },1000)
+    this.setData({
+      screen_height:wx.getSystemInfoSync().screenHeight
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
+    //01 用于清空数据，进行测试
+    // const app=getApp()
+    // wx.setStorageSync('selected_time_event_datalist', [])
+    // wx.setStorageSync('not_selected_time_event_datalist', [])
+    // wx.setStorageSync('overtime_event_datalist', [])
+    // wx.setStorageSync('finished_event_datalist', [])
+    // app.globalData.not_selected_time_event_datalist=[]
+    // app.globalData.selected_time_event_datalist=[]
+    // app.globalData.overtime_event_datalist=[]
+    // app.globalData.finished_event_datalist=[]
+    // this.setData({
+    //   not_selected_time_event_datalist:[],
+    //   selected_time_event_datalist:[],
+    //   overtime_event_datalist:[],
+    //   open_status01:0,
+    // })
+
+    //02 初始化页面
+    this.datalist_init()
+    const app=getApp()
     this.setData({
-      flag:true
+      not_selected_time_event_datalist:wx.getStorageSync('not_selected_time_event_datalist'),
+      selected_time_event_datalist:wx.getStorageSync('selected_time_event_datalist'),
+      overtime_event_datalist:wx.getStorageSync('overtime_event_datalist'),
+      finished_event_datalist:wx.getStorageSync('finished_event_datalist'),
+      // not_selected_time_event_datalist:app.globalData.not_selected_time_event_datalist,
+      // selected_time_event_datalist:app.globalData.selected_time_event_datalist,
+      // finished_event_datalist:app.globalData.finished_event_datalist,
+      // overtime_event_datalist:app.globalData.overtime_event_datalist,
+      is_all_selected:0,
     })
+    var num1=this.data.not_selected_time_event_datalist.length+this.data.selected_time_event_datalist.length
+    var num2=this.data.overtime_event_datalist.length
+    var num3=this.data.finished_event_datalist.length
+    this.setData({
+      open_status01:1,
+      open_status02:1,
+      open_status03:1
+    })
+
+
+    //03 此部分为输出测试，用于显示各数组部分结构
+    console.log(this.data.selected_time_event_datalist)
+    console.log(this.data.not_selected_time_event_datalist)
+    console.log(this.data.overtime_event_datalist)
+    console.log(this.data.finished_event_datalist)
+
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    const app=getApp()
+    this.setData({
+      not_selected_time_event_datalist:app.globalData.not_selected_time_event_datalist,
+      selected_time_event_datalist:app.globalData.selected_time_event_datalist,
+      overtime_event_datalist:app.globalData.overtime_event_datalist,
+      finished_event_datalist:app.globalData.finished_event_datalist,
+      is_all_selected:0,
+    })
   },
 
   /**
@@ -253,7 +892,18 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
+    // 对全局变量赋值
+    const app=getApp()
 
+    app.globalData.not_selected_time_event_datalist=this.data.not_selected_time_event_datalist
+    app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist
+    app.globalData.overtime_event_datalist=this.data.overtime_event_datalist
+    app.globalData.finished_event_datalist=this.data.finished_event_datalist
+    // 储存至微信小程序
+    wx.setStorageSync('selected_time_event_datalist', this.data.selected_time_event_datalist)
+    wx.setStorageSync('not_selected_time_event_datalist',this.data.not_selected_time_event_datalist)
+    wx.setStorageSync('overtime_event_datalist', this.data.overtime_event_datalist)
+    wx.setStorageSync('finished_event_datalist', this.data.finished_event_datalist)
   },
 
   /**
@@ -275,5 +925,6 @@ Page({
    */
   onShareAppMessage() {
 
-  }
-})
+  },
+
+});

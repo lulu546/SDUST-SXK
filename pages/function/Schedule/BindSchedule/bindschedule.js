@@ -10,7 +10,14 @@ Page({
     sharedata:null,
     student_info:null,
     postnum: '', //用户账户
-    currentIndex: 0  
+    postnumA: '', 
+    postnumB: '', 
+    postnumC: '', 
+    postnumD: '', 
+    postnumE: '', 
+    currentIndex: 0,
+    pressStatus : false,//按钮颜色
+    chanceshare:""
   },
 
   /**
@@ -18,22 +25,32 @@ Page({
    */
   onLoad(options) {
    
+    var that =this;
 
-  //上来先读数
-  var that =this;
-  var sharedata=app.globalData.sharedata;
-  var student_info=app.globalData.student_info
-  that.setData({
-    sharedata,
-    student_info
-  })
-    shareapi.sharestate().then(res => {
-
-      
+    shareapi.getsharestate().then(res => {
       that.setData({
         sharedata:app.globalData.sharedata
       })
-  
+
+      var sharedata=app.globalData.sharedata;
+      var student_info=app.globalData.student_info
+
+      that.setData({
+        student_info,
+        chanceshare:wx.getStorageSync('chanceshare'),
+        postnumA: sharedata["CBindANumber"]!=-1?sharedata["CBindANumber"]:"", 
+        postnumB: sharedata["CBindBNumber"]!=-1?sharedata["CBindBNumber"]:"", 
+        postnumC: sharedata["CBindCNumber"]!=-1?sharedata["CBindCNumber"]:"", 
+        postnumD: sharedata["CBindDNumber"]!=-1?sharedata["CBindDNumber"]:"", 
+        postnumE: sharedata["CBindENumber"]!=-1?sharedata["CBindENumber"]:""
+      })
+      // 将数据存储到本地缓存
+      wx.setStorageSync('postnumA', that.data.postnumA);
+      wx.setStorageSync('postnumB', that.data.postnumB);
+      wx.setStorageSync('postnumC', that.data.postnumC);
+      wx.setStorageSync('postnumD', that.data.postnumD);
+      wx.setStorageSync('postnumE', that.data.postnumE);
+
   }).catch(err => {
     wx.showToast({
       title: '请求失败喵~',
@@ -103,12 +120,57 @@ Page({
     var that = this;
     var cont= e.currentTarget.dataset.cont;
     let {
+      postnumA,
+      postnumB,
+      postnumC,
+      postnumD,
+      postnumE,
+    } = that.data;
+    switch (cont) {
+      case "A":
+        that.setData({
+          postnum : postnumA
+        })
+        break;
+      case "B":  
+        that.setData({  
+          postnum : postnumB,  
+        })  
+        break;  
+      case "C":   
+         that.setData({  
+          postnum : postnumC,  
+        })  
+        break;  
+      case "D":   
+        that.setData({  
+          postnum : postnumD,  
+        })  
+        break;  
+      case "E":
+        that.setData({  
+          postnum : postnumE,  
+        }) 
+        break;
+      default:
+        break;
+    }
+    let {
       postnum
+
     } = that.data;
     // 前端验证
     if (!postnum) {
       wx.showToast({
         title: '学号不能为空',
+        icon: 'error'
+      })
+      return;
+    }
+
+    if (postnum==wx.getStorageSync('useraccount')) {
+      wx.showToast({
+        title: '不准调皮！',
         icon: 'error'
       })
       return;
@@ -121,12 +183,47 @@ Page({
       })
       return;
     }
+    that.setData({
+      postnum:postnum
+    })
     shareapi.postsharestate(postnum,cont,false).then(res => {
-      that.setData({
-        sharedata:app.globalData.sharedata,
-        postnum:wx.getStorageSync('postnum')
-      })
-      wx.setStorageSync('postnum', postnum);
+      // 读取页面本地缓存的数据
+      switch (cont) {
+        case "A":
+          that.setData({
+            sharedata: app.globalData.sharedata, 
+            postnumA: wx.getStorageSync('postnumA'),
+    
+          })
+          break;
+        case "B":
+          that.setData({
+            sharedata: app.globalData.sharedata,
+            postnumB: wx.getStorageSync('postnumB'),
+
+          })
+          break;
+        case "C":
+          that.setData({
+            sharedata: app.globalData.sharedata,
+            postnumC: wx.getStorageSync('postnumC'),  
+          })
+          break;
+        case "D":
+          that.setData({
+            sharedata: app.globalData.sharedata,  
+            postnumD: wx.getStorageSync('postnumD'),
+          }) 
+          break;
+        case "E":
+          that.setData({
+            sharedata: app.globalData.sharedata,  
+            postnumE: wx.getStorageSync('postnumE'),
+          }) 
+          break;
+        default: 
+          break;  
+      }
       wx.showToast({
         title: '请求成功喵~',
         icon: "success"
@@ -139,16 +236,88 @@ Page({
     })
 
   },
-  CancelPostTo(){
+  CancelPostTo(e){
     var that = this;
-    var postnum=that.data.postnum;
-    var cont=that.data.cont;
+    let {
+      postnumA,
+      postnumB,
+      postnumC,
+      postnumD,
+      postnumE,
+    } = that.data;
+    var cont= e.currentTarget.dataset.cont;
+    //将postman至为输入的数
+    switch (cont) {
+      case "A":
+        that.setData({
+          postnum : postnumA
+        })
+        break;
+        case "B":  
+        that.setData({  
+          postnum : postnumB,  
+        })  
+        break;  
+      case "C":   
+         that.setData({  
+          postnum : postnumC,  
+        })  
+        break;  
+      case "D":   
+        that.setData({  
+          postnum : postnumD,  
+        })  
+        break;  
+      case "E":
+        that.setData({  
+          postnum : postnumE,  
+        }) 
+        break;
+      default:
+        break;
+    }
+    let {
+      postnum
+    } = that.data;
+    
     shareapi.postsharestate(postnum,cont,true).then(res => {
-      wx.setStorageSync('postnum', "");
-      that.setData({
-        sharedata:app.globalData.sharedata,
-        postnum:wx.getStorageSync('postnum')
-      })
+      // 读取页面本地缓存的数据
+      switch (cont) {
+        case "A":
+          that.setData({
+            sharedata: app.globalData.sharedata, 
+            postnumA: wx.getStorageSync('postnumA'),
+    
+          })
+          break;
+        case "B":
+          that.setData({
+            sharedata: app.globalData.sharedata,
+            postnumB: wx.getStorageSync('postnumB'),
+
+          })
+          break;
+        case "C":
+          that.setData({
+            sharedata: app.globalData.sharedata,
+            postnumC: wx.getStorageSync('postnumC'),  
+          })
+          break;
+        case "D":
+          that.setData({
+            sharedata: app.globalData.sharedata,  
+            postnumD: wx.getStorageSync('postnumD'),
+          }) 
+          break;
+        case "E":
+          that.setData({
+            sharedata: app.globalData.sharedata,  
+            postnumE: wx.getStorageSync('postnumE'),
+          }) 
+          break;
+        default: 
+          break;  
+      }
       wx.showToast({
         title: '请求成功喵~',
         icon: "success"
@@ -159,18 +328,91 @@ Page({
         icon: "error"
       });
     })
-
+    var postnumstring='postnum'+cont
+    wx.setStorageSync(postnumstring, "");
+    if(wx.getStorageSync("chanceshare")==cont)wx.setStorageSync("chanceshare", "");
   },
-  ReplyPostTo(){
+  ReplyPostTo(e){
     var that = this;
-    var postnum=that.data.postnum;
-    var cont=that.data.cont;
+
+    var cont= e.currentTarget.dataset.cont;
+    let {
+      postnumA,
+      postnumB,
+      postnumC,
+      postnumD,
+      postnumE,
+    } = that.data;
+    switch (cont) {
+      case "A":
+        that.setData({
+          postnum : postnumA
+        })
+        break;
+        case "B":  
+        that.setData({  
+          postnum : postnumB,  
+        })  
+        break;  
+      case "C":   
+         that.setData({  
+          postnum : postnumC,  
+        })  
+        break;  
+      case "D":   
+        that.setData({  
+          postnum : postnumD,  
+        })  
+        break;  
+      case "E":
+        that.setData({  
+          postnum : postnumE,  
+        }) 
+        break;
+      default:
+        break;
+    }
+    let {
+      postnum
+    } = that.data;
     shareapi.replysharestate(postnum,cont,true).then(res => {
-      wx.setStorageSync('postnum', "");
-      that.setData({
-        sharedata:app.globalData.sharedata,
-        postnum:wx.getStorageSync('postnum')
-      })
+       // 读取页面本地缓存的数据
+       switch (cont) {
+        case "A":
+          that.setData({
+            sharedata: app.globalData.sharedata, 
+            postnumA: wx.getStorageSync('postnumA'),
+    
+          })
+          break;
+        case "B":
+          that.setData({
+            sharedata: app.globalData.sharedata,
+            postnumB: wx.getStorageSync('postnumB'),
+
+          })
+          break;
+        case "C":
+          that.setData({
+            sharedata: app.globalData.sharedata,
+            postnumC: wx.getStorageSync('postnumC'),  
+          })
+          break;
+        case "D":
+          that.setData({
+            sharedata: app.globalData.sharedata,  
+            postnumD: wx.getStorageSync('postnumD'),
+          }) 
+          break;
+        case "E":
+          that.setData({
+            sharedata: app.globalData.sharedata,  
+            postnumE: wx.getStorageSync('postnumE'),
+          }) 
+          break;
+        default: 
+          break;  
+      }
       wx.showToast({
         title: '请求成功喵~',
         icon: "success"
@@ -185,11 +427,77 @@ Page({
   },
   getaccount(e) {
     var that=this
-    that.setData({
-      postnum: e.detail.value
-    })
+    var cont= e.currentTarget.dataset.cont;
+    switch (cont) {
+      case "A":
+        that.setData({
+          postnumA: e.detail.value
+        })
+        break;
+      case "B":
+        that.setData({
+          postnumB: e.detail.value
+        })
+        break;
+      case "C":
+        that.setData({
+          postnumC: e.detail.value
+        })
+        break;
+      case "D":
+        that.setData({
+          postnumD: e.detail.value
+        })
+        break;
+      case "E":
+        that.setData({
+          postnumE: e.detail.value
+        })
+        break;
+      default:
+        break;
+    }
+
   },
-  Eggs(){
+  chanceonly(e){
+    var that=this
+    var cont= e.currentTarget.dataset.cont;
+    switch (cont) {
+      case "A":
+        that.setData({
+          chanceshare : "A"
+        })
+        wx.setStorageSync("chanceshare", "A");
+        break;
+        case "B":  
+        that.setData({  
+          chanceshare : "B"  
+        })  
+        wx.setStorageSync("chanceshare", "B");
+        break;  
+      case "C":   
+         that.setData({  
+          chanceshare : "C"
+        })  
+        
+        wx.setStorageSync("chanceshare", "C");
+        break;  
+      case "D":   
+        that.setData({  
+          chanceshare : "D"
+        })  
+        
+        wx.setStorageSync("chanceshare", "D");
+        break;  
+      case "E":
+        that.setData({  
+          chanceshare : "E"
+        })       
+        wx.setStorageSync("chanceshare", "E");
+        break;
+      default:
+        break;
+    }
     wx.showToast({
       title: '( ´◔︎ ‸◔︎`)点我干嘛！',
       icon:'none'

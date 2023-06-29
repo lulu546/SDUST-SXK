@@ -1,60 +1,321 @@
-<!--pages/home/home.wxml-->
-<view class="wrap">
-<view class="outnotepadall">
-  <scroll-view class="notepadall" scroll-y>
-    <view class="style2" wx:for="{{classlist}}" wx:key="index" bindtouchstart="getstarttime" bindtouchend="getendtime" data-event="{{item._event}}" >
-      <!-- 竖线 -->
-      <view class="style3" style="background-color: {{item.color}};"></view>
-        <!-- 事件名 -->
-        <view class="style4">{{item._event}}</view>
-        <!-- 时间距离 -->
-        <view class="style5">还剩{{item._data}}天</view>
-        <!-- 底部横线 -->
-        <view class="style6"></view>
-      <!-- 右侧空格
-      <view></view> -->
+<!-- 01 初始界面 -->
+<view class="flex-col flex-auto group_3 space-y-6" wx:if="{{page_num==0}}" >
+  <!-- 01_1 待办行 -->
+  <view style="display: flex;align-items: center;position: fixed;width: 95%;background-color: #fafafa;top: 0%;height: 120rpx;justify-content: center;" >
+        <!-- 图标与“待办”的整体 -->
+        <view class="flex-row items-center space-x-8" style="align-items: center;display: flex;width: 60%;" wx:if="{{is_to_delete==0}}">
+          <image
+            class="shrink-0 image_7"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262936444418584.png" 
+          />
+          <view class="text" style="width: 60%;">待办</view>
+        </view>
+        <!-- 加号，用于添加记事本 -->
+        <view style="margin-left: 45%;width: 14%;;align-items: center;height: 100%;align-items: center;display: flex;" bindtap="add_event" wx:if="{{is_to_delete==0}}">
+          <image
+            class="image_8"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/3620b05b4c11939fc7e5ee79da8e51ae.png" 
+          />
+        </view>
+        <!-- 统计已选择的个数 -->
+        <view wx:if="{{is_to_delete==1}}">
+          已选择{{selected_to_delete_num}}项
+        </view>
+        
+  </view>
+  <view style="margin-top: 12%;">
+      
+    <!-- 01_2 “未完成”的导航栏 -->
+    <view class="flex-row items-center list-item space-x-6" style="margin-top: 3%;display: flex;align-items: center;">
+      <text class="font_1">未完成</text>
+      <view style=" height: 100%; width: 100rpx;" catchtap="change_open_status" data-id="1">
+        <!-- 向右的指向，即未展开事项的状态 -->
+        <image style="width: 16rpx;height: 20rpx;"
+          class="image_9"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262937789484920.png" wx:if="{{open_status01==0}}" 
+        />
+        <!-- 向下的指向，即展开事项的状态 -->
+        <image style="width: 22rpx;height: 14rpx;"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873299204120923474.png" wx:if="{{open_status01==1}}" 
+        />
+      </view>
     </view>
- 
-  </scroll-view>
-  <view id="_add" catchtap="addlist">
-      <view id="_event">新增事件</view>
+    <!-- 01_3 未完成设置时间的部分初始的事项列表 -->
+    <view wx:for="{{selected_time_event_datalist}}" wx:key="index" wx:if="{{open_status01==1&&is_to_delete==0}}" bindlongpress="delete_press" >
+      <view class="flex-row items-center list-item_2 space-x-14" style="display: flex;align-items: center;height: 70rpx;margin-top: 2%;border-radius: 25rpx;">
+        <!-- 选择框 -->
+        <image
+          class="image_10"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" bindtap="transfer_to_finished" data-id="1" data-num="{{index}}"
+        />
+        <!-- 文字加日期 -->
+        <view class="flex-col items-start flex-auto space-y-8" style="display: inline;height: 80rpx;width: 80%;">
+          <!-- 标题 -->
+          <view class="font_2 text_2" style="height: 40%;width: 100%;">{{(item[1].length<10)?item[1]:(item[1][0]+item[1][1]+item[1][2]+item[1][3]+item[1][4]+item[1][5]+item[1][6]+item[1][7]+item[1][8]+item[1][9]+"...")}}</view>
+          <!-- 日期 -->
+          <view class="font_3" style="height: 40%;width: 100%;margin-top: 7%;">截止至 {{item[0][0]}}.{{item[0][1]}}.{{item[0][2]}}  {{item[0][3]}}:{{(item[0][4]>9)?item[0][4]:('0'+item[0][4])}}</view>
+        </view>
+      </view>
     </view>
-</view>
-
-
-<!-- 添加事件时设置弹出 -->
-<!-- <view style="position: absolute;">flag:{{flag}}</view> -->
-  <view class="shade" wx:if="{{isshow>0}}" hidden="{{flag}}" style="display: {{flag?none:flex}};flex-direction: row;">  
-        <view class="_form">
-          <scroll-view  class="_scroll">
-            <input type="text" placeholder="请输入事件名" class="_input1" bindinput="getevent" value="{{event}}"/>
-            <input type="text" placeholder="请输入时间" class="_input1"  bindinput="gettime"  value="{{time}}"/>
-            <!-- <input type="text" placeholder="请输入备注（可选）" id="_text" value="{{other}}" bindinput="getother"/> -->
-            <textarea type="text" placeholder="请输入备注（可选）" id="_text" value="{{other}}" bindinput="getother"></textarea>
-          </scroll-view>
-          <view class="_submit">
-            <view style="height: 60rpx;display: flex;flex-direction:row;margin-bottom: 10rpx;">
-              <button catchtap="makesure">确定</button>
-              <button catchtap="notsure">取消</button>
-            </view>
+    <!-- 01_4 删除时未完成设置时间的部分的事项列表 -->
+    <view wx:for="{{selected_time_event_datalist}}" wx:key="index" wx:if="{{open_status01==1&&is_to_delete==1}}" >
+      <view style="height: 170rpx;width: 100%;align-items: center;display: flex;border-radius: 25rpx;">
+        <!-- 选择框 id用于区分哪一个数据分类，num表示分类中的哪一个，status表示是勾选删除还是取消勾选删除，此处为勾选删除 -->
+        <view style="height: 100%;width: 11%;align-items: center;justify-content: center;text-align: center;display: flex;" data-id="1" data-num="{{index}}" wx:if="{{item[2]==0}}" catchtap="select_to_delete" data-status="0">
+          <image
+              class="image_10"
+              src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" 
+          />
+        </view>
+          <!-- 选择框 id用于区分哪一个数据分类，num表示分类中的哪一个，status表示是勾选删除还是取消勾选删除，此处为取消勾选删除 -->
+        <view style="height: 100%;width: 11%;align-items: center;justify-content: center;text-align: center;display: flex;" data-id="1" data-num="{{index}}" wx:if="{{item[2]==1}}" bindtap="select_to_delete" data-status="1">
+          <image
+              class="image_10"
+              src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" 
+          />
+        </view>
+        <view class="flex-row items-center list-item_2 space-x-14" style="display: flex;align-items: center;height: 70rpx;width: 80%;margin-left: 2%;">
+          <!-- 文字加日期 -->
+          <view class="flex-col items-start flex-auto space-y-8" style="display: inline;height: 80rpx;width: 80%;" data-id="1" data-num="{{index}}">
+            <!-- 标题 -->
+            <view class="font_2 text_2" style="height: 40%;width: 100%;">{{(item[1].length<10)?item[1]:(item[1][0]+item[1][1]+item[1][2]+item[1][3]+item[1][4]+item[1][5]+item[1][6]+item[1][7]+item[1][8]+item[1][9]+"...")}}</view>
+            <!-- 日期 -->
+            <view class="font_3" style="height: 40%;width: 100%;margin-top: 7%;">截止至 {{item[0][0]}}.{{item[0][1]}}.{{item[0][2]}}  {{item[0][3]}}:{{(item[0][4]>9)?item[0][4]:('0'+item[0][4])}}</view>
           </view>
         </view>
-  </view> 
-  <view class="shade" hidden="{{!isdelete}}" style="display: {{flag?none:flex}};flex-direction: row;">  
-    <!-- <view class="_delete">
-      <view id="_delete_font">确定删除<text style="font-size: 40rpx;">{{event}}</text>吗？</view>
-      <view id="_delete_button_view">
-        <button class="_delete_button" bindtap="confirm_delete">确认</button>
-        <button class="_delete_button" bindtap="nodelete">取消</button>
       </view>
-    </view> -->
-    <view class="_select">
-    <view style="width: 100%;height: 100rpx;text-align: center;font-size: larger;">{{event}}</view>
-      <button class="_select_button" style="margin-top: 0rpx;" bindtap="changeitem">修改</button>
-      <button class="_select_button" style="margin-top: 0rpx;" bindtap="deleteitem">删除</button>
-      <button class="_select_button" style="margin-top: 10rpx;" bindtap="refusedelete">取消</button>
+    </view>
+
+    <!-- 01_5 无日期的 -->
+    <view wx:for="{{not_selected_time_event_datalist}}" wx:key="index" wx:if="{{open_status01==1&&is_to_delete==0}}" bindlongpress="delete_press" data-id="2" data-num="{{index}}">
+      <view class="flex-row items-center list-item_2 space-x-14" style="display: flex;align-items: center;height: 70rpx;margin-top: 2%;border-radius: 25rpx;">
+        <image
+          class="image_10"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" bindtap="transfer_to_finished" data-id="2" data-num="{{index}}"
+        />
+        <view class="flex-col items-start flex-auto space-y-8" style="display: inline;height: 80rpx;width: 80%;">
+          <view class="font_2 text_2" style="height: 40%;width: 100%;">{{(item[1].length<10)?item[1]:(item[1][0]+item[1][1]+item[1][2]+item[1][3]+item[1][4]+item[1][5]+item[1][6]+item[1][7]+item[1][8]+item[1][9]+"...")}}</view>
+          <view class="font_3" style="height: 40%;width: 100%;margin-top: 7%;">未设置时间</view>
+        </view>
+      </view>
+    </view>
+    <!-- 01_6 删除时无日期的显示方式 -->
+    <view wx:for="{{not_selected_time_event_datalist}}" wx:key="index" wx:if="{{open_status01==1&&is_to_delete==1}}" >
+      <view style="height: 170rpx;width: 100%;align-items: center;display: flex;border-radius: 25rpx;">
+        <!-- 选择框，没有勾选删除时-->
+        <view style="height: 100%;width: 11%;align-items: center;justify-content: center;text-align: center;display: flex;" data-id="2" data-num="{{index}}" bindtap="select_to_delete" data-status="0" wx:if="{{item[2]==0}}">
+          <image
+            class="image_10"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" 
+          />
+        </view>
+        
+        <!-- 选择框，勾选删除时 -->
+        <view style="height: 100%;width: 11%;align-items: center;justify-content: center;text-align: center;display: flex;" data-id="2" data-num="{{index}}" bindtap="select_to_delete" data-status="1" wx:if="{{item[2]==1}}">
+          <image
+            class="image_10"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" 
+          />
+        </view>
+        
+        <view class="flex-row items-center list-item_2 space-x-14" style="display: flex;align-items: center;height: 70rpx;width: 80%;margin-left: 2%;">
+          <!-- 文字加日期 -->
+          <view class="flex-col items-start flex-auto space-y-8" style="display: inline;height: 80rpx;width: 80%;" data-id="1" data-num="{{index}}">
+            <!-- 标题 -->
+            <view class="font_2 text_2" style="height: 40%;width: 100%;">{{(item[1].length<10)?item[1]:(item[1][0]+item[1][1]+item[1][2]+item[1][3]+item[1][4]+item[1][5]+item[1][6]+item[1][7]+item[1][8]+item[1][9]+"...")}}</view>
+            <!-- 日期 -->
+            <view class="font_3" style="height: 40%;width: 100%;margin-top: 7%;">未设置时间</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 01_7 “已过期”的导航栏 -->
+    <view class="flex-row items-center list-item space-x-6" style="display: flex;align-items: center;">
+      <text class="font_1">已过期</text>
+      <view style=" height: 40rpx; width: 100rpx;display: flex;align-items: center;" catchtap="change_open_status" data-id="2">
+        <image style="width: 16rpx;height: 20rpx;"
+          class="image_9"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262937789484920.png" wx:if="{{open_status02==0}}" 
+        />
+        <image style="width: 22rpx;height: 14rpx;"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873299204120923474.png" wx:if="{{open_status02!=0}}"
+        />
+      </view>
+    </view>
+    <!-- 01_8 已过期的内容 -->
+    <view wx:for="{{overtime_event_datalist}}" wx:key="index" wx:if="{{open_status02==1&&is_to_delete==0}}" bindlongpress="delete_press" data-id="3" data-num="{{index}}">
+        <view class="flex-row items-center list-item_2 space-x-14" style="display: flex;align-items: center;height: 70rpx;margin-top: 2%;border-radius: 25rpx;">
+          <!-- 选择框 -->
+          <image
+            class="image_10"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" bindtap="transfer_to_finished" data-id="3" data-num="{{index}}"
+          />
+          <!-- 文字加日期 -->
+          <view class="flex-col items-start flex-auto space-y-8" style="display: inline;height: 80rpx;width: 80%;">
+            <!-- 标题 -->
+            <view class="font_2 text_2" style="height: 40%;width: 100%;">{{(item[1].length<10)?item[1]:(item[1][0]+item[1][1]+item[1][2]+item[1][3]+item[1][4]+item[1][5]+item[1][6]+item[1][7]+item[1][8]+item[1][9]+"...")}}</view>
+            <!-- 日期 -->
+            <view class="font_3" style="height: 40%;width: 100%;margin-top: 7%;">于 {{item[0][0]}}.{{item[0][1]}}.{{item[0][2]}}  {{item[0][3]}}:{{(item[0][4]>9)?item[0][4]:('0'+item[0][4])}}截止</view>
+          </view>
+        </view>
+    </view>
+    <!-- 01_9 删除时 已过期的内容 -->
+    <view wx:for="{{overtime_event_datalist}}" wx:key="index" wx:if="{{open_status02==1&&is_to_delete==1}}" >
+      <view style="height: 170rpx;width: 100%;align-items: center;display: flex;border-radius: 25rpx;">
+        <!-- 选择框，没有勾选时 -->
+        <view style="height: 100%;width: 11%;align-items: center;justify-content: center;text-align: center;display: flex;" bindtap="select_to_delete" data-status="0" data-id="3" data-num="{{index}}" wx:if="{{item[2]==0}}">
+          <image
+            class="image_10"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" 
+          />
+        </view>
+        
+        <!-- 选择框，勾选删除时 -->
+        <view style="height: 100%;width: 11%;align-items: center;justify-content: center;text-align: center;display: flex;" bindtap="select_to_delete" data-status="1" data-id="3" data-num="{{index}}" wx:if="{{item[2]==1}}">
+          <image
+            class="image_10"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" 
+          />
+        </view>
+        
+        <view class="flex-row items-center list-item_2 space-x-14" style="display: flex;align-items: center;height: 70rpx;width: 80%;margin-left: 2%;">
+          <!-- 文字加日期 -->
+          <view class="flex-col items-start flex-auto space-y-8" style="display: inline;height: 80rpx;width: 80%;" data-id="1" data-num="{{index}}">
+            <!-- 标题 -->
+            <view class="font_2 text_2" style="height: 40%;width: 100%;">{{(item[1].length<10)?item[1]:(item[1][0]+item[1][1]+item[1][2]+item[1][3]+item[1][4]+item[1][5]+item[1][6]+item[1][7]+item[1][8]+item[1][9]+"...")}}</view>
+            <!-- 日期 -->
+            <view class="font_3" style="height: 40%;width: 100%;margin-top: 7%;">于 {{item[0][0]}}.{{item[0][1]}}.{{item[0][2]}}  {{item[0][3]}}:{{(item[0][4]>9)?item[0][4]:('0'+item[0][4])}}截止</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 01_10 “已完成”的导航栏 -->
+    <view class="flex-row items-center list-item space-x-6" style="display: flex;align-items: center;">
+      <text class="font_1">已完成</text>
+      <view style=" height: 40rpx; width: 100rpx; display: flex;align-items: center;" catchtap="change_open_status" data-id="3" >
+        <image
+          class="image_9" style="width: 16rpx;height: 20rpx;"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262937789484920.png" wx:if="{{open_status03==0}}" 
+        />
+        <image style="width: 22rpx;height: 14rpx;"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873299204120923474.png" wx:if="{{open_status03!=0}}" 
+        />
+      </view>
+    </view>
+    <!-- 01_11 已完成的主题内容列表 -->
+    <view wx:for="{{finished_event_datalist}}" wx:key="index" wx:if="{{open_status03==1&&is_to_delete==0}}" bindlongpress="delete_press" data-id="4" data-num="{{index}}">
+      <view class="flex-row items-center list-item_2 space-x-14" style="display: flex;align-items: center;height: 70rpx;margin-top: 2%;border-radius: 25rpx;">
+        <!-- 选择框 -->
+        <image
+          class="image_10"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" bindtap="transfer_to_finished" data-id="4" data-num="{{index}}"
+        />
+        <!-- 文字加日期 -->
+        <view class="flex-col items-start flex-auto space-y-8" style="display: inline;height: 80rpx;width: 80%;">
+          <!-- 标题 -->
+          <view class="font_2 text_2" style="height: 40%;width: 100%;">{{(item[1].length<10)?item[1]:(item[1][0]+item[1][1]+item[1][2]+item[1][3]+item[1][4]+item[1][5]+item[1][6]+item[1][7]+item[1][8]+item[1][9]+"...")}}</view>
+          <!-- 日期 -->
+          <view class="font_3" style="height: 40%;width: 100%;margin-top: 7%;">已完成</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 01_12 删除时已完成的内容 -->
+    <view wx:for="{{finished_event_datalist}}" wx:key="index" wx:if="{{open_status03==1&&is_to_delete==1}}" >
+      <view style="height: 170rpx;width: 100%;align-items: center;display: flex;border-radius: 25rpx;">
+        <!-- 选择框，没有勾选删除时 -->
+        <view style="height: 100%;width: 11%;align-items: center;justify-content: center;text-align: center;display: flex;" bindtap="select_to_delete" data-status="0" data-id="4" data-num="{{index}}" wx:if="{{item[2]==0}}">
+          <image
+            class="image_10"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" 
+          />
+        </view>
+        
+        <!-- 选择框，勾选删除时 -->
+        <view style="height: 100%;width: 11%;align-items: center;justify-content: center;text-align: center;display: flex;" bindtap="select_to_delete" data-status="1" data-id="4" data-num="{{index}}" wx:if="{{item[2]==1}}">
+          <image
+            class="image_10"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" 
+          />
+        </view>
+        
+        <view class="flex-row items-center list-item_2 space-x-14" style="display: flex;align-items: center;height: 70rpx;width: 80%;margin-left: 2%;">
+          <!-- 文字加日期 -->
+          <view class="flex-col items-start flex-auto space-y-8" style="display: inline;height: 80rpx;width: 80%;" data-id="4" data-num="{{index}}">
+            <!-- 标题 -->
+          <view class="font_2 text_2" style="height: 40%;width: 100%;">{{(item[1].length<10)?item[1]:(item[1][0]+item[1][1]+item[1][2]+item[1][3]+item[1][4]+item[1][5]+item[1][6]+item[1][7]+item[1][8]+item[1][9]+"...")}}</view>
+          <!-- 日期 -->
+          <view class="font_3" style="height: 40%;width: 100%;margin-top: 7%;">已完成</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 01_13 删除时的底部弹窗 -->
+  <view style="height: 180rpx;bottom: 0;background-color: #fafafa;position: fixed;left: 0%; z-index: 1;display: flex;justify-content: center;right: 0%;width: auto;" wx:if="{{is_to_delete==1&&page_num==0}}">
+    <view  class="_total_style" style="background-color: #ffffff;border-radius: 10rpx;box-shadow: 0px 4rpx 8rpx #0000001a;margin-top: 5%;" >
+      <view class="_style1 " style="align-items: center;display: inline;" bindtap="cancel_to_delete">
+        <image
+          class="image_9"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928549223591.png" 
+        />
+        <view class="_font_1" style="width: 100%;">取消</view>
+      </view>
+      <view class="_style1" catchtap="confirm_delete" style="align-items: center;display: inline;">
+          <image
+            class="image_9"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928552622892.png" 
+          />
+        <view class="_font_1" >删除</view>
+      </view>
+      <view class="_style1" catchtap="all_select_to_delete">
+        <image
+          class="image_9"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/7db8083a4cbcef9309da4121e8acdcf0.png" 
+        />
+        <view class="_font_1" wx:if="{{is_all_selected==0}}">全选</view>
+        <view class="_font_1" wx:if="{{is_all_selected==1}}">全不选</view>
+      </view>
     </view>
   </view>
 </view>
 
-<!-- <view style="position: absolute;">flag:{{flag}}</view> -->
+<!-- 02 添加页面 -->
+<view class="flex-col justify-start items-center section_3 pos" style="border: 1rpx solid black;justify-content: center;position: absolute;"  wx:if="{{is_have_shade==1}}" catchtap="close_shade">
+  <view class="flex-col section_5 space-y-38" style="border: 1rpx solid black;margin:auto;height: 550rpx;" catchtap="show_shade">
+    <!-- 除了“确认”外的其他部分 -->
+    <view class="flex-col">
+      <!-- “时间选择”文字部分 -->
+      <view class="self-start font_3" >时间选择</view>
+      <!-- 时间选择部分，点击可更换时间 -->
+      <view class="flex-col justify-start items-center self-start text-wrapper"  style="width: 90%;margin-left: 5%;">
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+          <!-- 01 没有选择过的 -->
+          <view wx:if="{{is_have_select_time==0}}" class=".font4">
+            <view style="margin-left: 4%;color: #8a8a8a;font-size: 32rpx;font-family: SourceHanSansCN;line-height: 28rpx;">请选择时间（可选）</view>
+          </view>
+          <!-- 02 选择过的 -->
+          <view class="picker" wx:if="{{is_have_select_time==1}}">
+          <!--3列的默认值 multiArray[0][0],multiArray[1][0],multiArray[1][0]  -->
+              <view style="margin-left: 4%;">
+                {{multiArray[0][multiIndex[0]]}}.{{multiArray[1][multiIndex[1]]}}.{{multiArray[2][multiIndex[2]]>9?multiArray[2][multiIndex[2]]:('0'+multiArray[2][multiIndex[2]])}}    {{multiArray[3][multiIndex[3]]}}:{{multiArray[4][multiIndex[4]]>9?multiArray[4][multiIndex[4]]:('0'+multiArray[4][multiIndex[4]])}}
+              </view>
+          </view>
+        
+        </picker> 
+      </view>
+      <!-- “事项内容”文字部分 -->
+      <view class="self-start font_3 text_4" style="margin-top: 6%;">事项内容</view>
+      <!-- 事件主题内容 -->
+      <view class="flex-col items-center section_6 space-y-4" style="margin-left: 5%;width: 90%;height: 200rpx;position: static;display: flex;">
+        <textarea type="text" placeholder="请输入内容" value="{{event_content}}" catchinput="getevent_content" style="margin-left: 5%;width: 90%;height: 150rpx;" maxlength="{{15}}"></textarea>
+        <view style="width: 20%;margin-left: 44%;height: 25px;color: rgba(136, 136, 136, 1);font-size: 14px;margin-top: 175rpx;text-align: left;font-family: PingFangSC-regular;position: absolute;" >{{area_num}}/15</view>
+      </view>
+    </view>
+    <view class="self-end font_3 text_5" style="margin-top: 9%;width: 100%;text-align: center;justify-content: center;" bindtap="confirm_add_event">确认</view>
+  </view>
+</view>
+

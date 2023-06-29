@@ -42,7 +42,8 @@
       "outputPath": ""
     },
     "disableUseStrict": false,
-    "useCompilerPlugins": false
+    "useCompilerPlugins": false,
+    "condition": false
   },
   "compileType": "miniprogram",
   "condition": {},

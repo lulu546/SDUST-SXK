@@ -288,88 +288,8 @@ Page({
   onShareAppMessage() {
 
   },
-// 切换共享设置
-  turnshareset(){
-    wx.navigateTo({
- 
-      url: '../BindGrade/bindgrade',
-    
-     })
-  },
-  // 切换共享
-  switchShare(e){
-    var that=this
-    //就是说这个这是一个switch每按一次就会执行一次内容，所以！shareflag就相当于我每按一次
-    // 就得把这个开关的开始和结束重置。所以我们只需要在shareflag=true的时候进行请求数据就欧克
-    var newshareflag=!that.data.shareflag
-    //这个newshareflag是指的我是否打开共享课表
-    var bindshareflag=that.data.set_schedule.GBindState
-    var postnum=that.data.set_schedule.GBindNumber
-    //这个bindshareflag是指的我共享课表是否被绑定
-    var value=!that.data.checked_value
-    that.setData({
-      checked_value:value,
-      postnum
-    })
-    //未绑定的情况
-    if(bindshareflag!=3&&value==true){
-      
-      console.log(e.detail.value)
-      that.setData({
-        checked_value:false
-      })
-      wx.navigateTo({
- 
-        url: '../BindSchedule/bindschedule',
-      
-       })
-    }
-    // 如果已经绑定的话，就会对shareflag进行赋值换句话说就会有资格展示共享课表信息与否；
-    if(bindshareflag==3){
-      console.log(newshareflag)
-      if(!newshareflag){
-        var new_datalist2
-        //--------并行线
-                //请求共享课表数据；串行
-        // 等会改成并行的
-        // 请求他课表数据
-        wx.request({
-          url: app.globalData.TotalUrl+'/qz/share-info/get/',
-          method: 'POST',
-          data: {
-            account: wx.getStorageSync('useraccount'),
-            password: wx.getStorageSync('userpws'),
-            cont: 1
-          },
-          header: {
-            'content-type': 'application/json'
-          },
-          success: (res) => {
-            
-            // 将课表传输到schedule_table
-            if (res.data["code"] >= 4000) {
-              console.log("请求错误")
-            }
-            else{
-              new_datalist2=res.data
-              that.setData({
-                datalist2:new_datalist2,
-              })
-              if(that.data.checked_value==true)that.Calculate_grades(1);
-            }
-          }
-        })
-      
-        //--------并行线
-      }
-      that.setData({
-      shareflag:newshareflag
-    })
 
-  
-  }
-   
-  },
+
   // 彩蛋
   Eggs(){
     wx.showToast({

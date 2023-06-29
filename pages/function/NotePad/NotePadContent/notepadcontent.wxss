@@ -1,219 +1,201 @@
-/* pages/home/home.wxss */
-  /* 事件功能部分的整体布局 */
-  .outnotepadall{
-    border: 1px solid #E6E8EE;
-    position: absolute;
-    width: 90%;
-    height: 330px;
-    border-radius: 17px;
-    background: #ffffff;
-    left: 5%;
-    top: 130rpx;
-    box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
-  
-  }
-  .notepadall{
-    position: absolute;
-    width: 100%;
-    height: 80%;
-    border-radius: 17px 17px 0px 0px;
-    background: #ffffff9a;
-  }
-    /* 每个事件整体模块的设置 */
-  .style2{
-      position: static;
-      width: 90%;
-      height: 120rpx;
-      margin-left: 5%;
-      margin-top: 30rpx;
-      /* border: 1rpx solid antiquewhite; */
-  }
-    /* 每个事件左边的竖线的设置 */
-  .style3{
-    position: absolute;
-    width: 4px;
-    height: 100rpx;
-    margin-top: 15rpx;
-    background: #4E11D1;
-    border-radius: 2px;
-  }
-    /* 事件名的设置 */
-  .style4{
-    position: absolute;
-    margin-left: 8%;
-    margin-top: 23rpx;
-  
-    /* font-family: 'Advent Pro'; */
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 18px;
-  
-    color: #000000;
-  
-  }
-    /* 距离结束的时间的设置 */
-  .style5{
-    position: absolute;
-    margin-left: 8%;
-    margin-top: 75rpx;
-    font-family: 'ABeeZee';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 14px;
-  
-    color: rgba(0, 0, 0, 0.5);
-  }
-    /* 每一个事件下面的横线 */
-  .style6{
-    position: absolute;
-    margin-top: 120rpx;
-    margin-left: 9%;
-    width: 80%;
-    height: 2rpx;
-    background-color: #DCDCDC;
-    font-family: 'ABeeZee';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    color: rgba(0, 0, 0, 0.5);
-  }
-  
-    /* “新增部分”字体的设置 */
-  #_event{
-    position: absolute;
-    margin-top: 40rpx;
-    margin-left: 35%;
-    display: inline;
-  
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 18px;
-  
-    color: #ad9090;
-  }
-    /* 新建事件的显示窗口，白色部分 */
-  #_add{
-    position: relative;
-    
-    border-top: 1rpx solid rgb(205, 212, 218);
-    width: 100%;
-    top: 80%;
-    height: 110rpx;
-    
-  }
-    /* 阴影部分 */
-  .shade{
-    width:100%;   
-    height:100%;   
-    top:0;   
-    background:rgba(0,0,0,0.5);   
-    overflow: hidden;   
-    /*要显示在wrap的上面 */   
-    z-index: 1;   
-    position: absolute;  
-  }
-    /* 确定和取消按钮 */
-  button{
-    width: 25%;
-    height: 60rpx;
-    font-size: small;
-    margin-top: 3%;
-    padding-bottom: 1rpx;
-    text-align: center;
-  }
-    /* 所有可以输入的部分 */
-  ._form{
-    position: absolute;
-    width: 80%;
-    height: 500rpx;
-  
-    /* border: 1rpx solid aqua; */
-    margin-top: 300rpx;
-    border-radius: 20rpx;
-    margin-left: 10%;
-  
-    background-color: white;
-  }
-  .wrap{    
-    width: 750rpx;  
-    height: auto;    
-    font-size: 34rpx;    
-  }  
-  /* 确定和取消部分设置 */
-  ._submit{
-    position: static;
-    width: 100%;
-    height: 100rpx; 
-    margin-top: 0%;
-  
-    background-color: rgb(248, 248, 247);
-    /* border: 1rpx solid black; */
-    border-bottom-left-radius: 20rpx;
-    border-bottom-right-radius: 20rpx;
-  
-  }
-  /* 文本框的设置 */
-  #_text{
-    width: 80%;
-    height:154rpx;
-    border: 1rpx solid black;
-    margin-top: 8%;
-    margin-left: 10%;
-    word-break: break-all;
-  }
-  ._delete{
-    height: 240rpx;width: 100%;
-    background-color: white;
-  }
-  #_delete_font{
-    width: 100%;
-    height: 20rpx;
-    text-align: center;
-  }
-  #_delete_button_view{
-    position: absolute;
-    display: flex;
-    margin-top: 100rpx;
-    /* border: 1rpx solid wheat; */
-    margin-left: 10%;
-  
-    width: 80%;
-    height: 80rpx;
-  }
-  ._delete_button{
-    width: 30%;
-    height: 60rpx;
-  }
-  /* 输入事件名和事件的输入框 */
-  ._input1{
-    border-bottom: 1rpx solid black;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 40rpx;
-  }
-  ._scroll{
-    height: 400rpx;
-    width: 100%;
-    border-top-left-radius: 20rpx; 
-    border-top-right-radius: 20rpx;
-    border: 1rpx solid wheat;
-  }
-  ._select{
-    position: absolute;
-    /* height: 270rpx; */
-    height: 370rpx;
-    width: 100%;
-    background-color: white;
-    margin-top: 740rpx;
-    /* border: 1rpx solid antiquewhite; */
-  }
-  ._select_button{
-    position: relative;
-    width: 100%;
-    height: 90rpx;
-  }
-  
+/* 初始页面的设置，不做解释，从codefun中copy，我自己的部分修改，直接写在wxml中了 */
+.group_3 {
+  padding: 30rpx 36rpx 1100rpx;
+  overflow-y: auto;
+}
+.space-y-6 > view:not(:first-child),
+.space-y-6 > text:not(:first-child),
+.space-y-6 > image:not(:first-child) {
+  margin-top: 12rpx;
+}
+.group_4 {
+  padding-left: 6rpx;
+}
+/* 待办图标和“待办”字体的整体部分 */
+.space-x-8 > view:not(:first-child),
+.space-x-8 > text:not(:first-child),
+.space-x-8 > image:not(:first-child) {
+  margin-left: 16rpx;
+}
+/* 待办图标样式 */
+.image_7 {
+  width: 76rpx;
+  height: 78rpx;
+}
+/* “待办”的字体图样 */
+.text {
+  color: #232426;
+  font-size: 48rpx;
+  font-family: PangMenZhengDao;
+  line-height: 35rpx;
+}
+/* 加号图标 */
+.image_8 {
+  width: 56rpx;
+  height: 56rpx;
+}
+.list-item {
+  padding: 32rpx 0 20rpx;
+}
+.space-x-6 > view:not(:first-child),
+.space-x-6 > text:not(:first-child),
+.space-x-6 > image:not(:first-child) {
+  margin-left: 12rpx;
+}
+.font_1 {
+  font-size: 28rpx;
+  font-family: SourceHanSansCN;
+  line-height: 26rpx;
+  color: #808080;
+}
+.image_9 {
+  width: 14rpx;
+  height: 22rpx;
+}
+
+/* 02 添加记事本的页面 */
+.font_2 {
+  font-size: 32rpx;
+  font-family: SourceHanSansCN;
+  line-height: 38rpx;
+  color: #000000;
+}
+.font_4 {
+  font-size: 28rpx;
+  font-family: SourceHanSansCN;
+  line-height: 21rpx;
+  color: #0000001a;
+}
+.section_3 {
+  padding: 350rpx 0 554rpx;
+  background-color: #a6a6a61a;
+  backdrop-filter: blur(4rpx);
+}
+.pos {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.section_5 {
+  padding: 60rpx 22rpx 36rpx;
+  background-color: #fbfaff;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+  width: 476rpx;
+}
+.space-y-38 > view:not(:first-child),
+.space-y-38 > text:not(:first-child),
+.space-y-38 > image:not(:first-child) {
+  margin-top: 76rpx;
+}
+.font_3 {
+  font-size: 28rpx;
+  font-family: SourceHanSansCN;
+  line-height: 26rpx;
+  color: #000000;
+}
+.text-wrapper {
+  margin-top: 20rpx;
+  padding: 28rpx 0;
+  background-color: #f0eff3;
+  border-radius: 12rpx;
+  width: 350rpx;
+}
+.text_4 {
+  margin-top: 36rpx;
+}
+.section_6 {
+  margin-right: 12rpx;
+  margin-top: 28rpx;
+  padding: 32rpx 0 28rpx;
+  background-color: #f0eff3;
+  border-radius: 12rpx;
+}
+.space-y-4 > view:not(:first-child),
+.space-y-4 > text:not(:first-child),
+.space-y-4 > image:not(:first-child) {
+  margin-top: 8rpx;
+}
+.text_5 {
+  margin-right: 4rpx;
+}
+
+
+/* 03 未完成部分的列表格式 */
+.space-y-8 > view:not(:first-child),
+.space-y-8 > text:not(:first-child),
+.space-y-8 > image:not(:first-child) {
+  margin-top: 16rpx;
+}
+.list-item_2 {
+  margin-left: 36rpx;
+  margin-right: 46rpx;
+  padding: 40rpx 32rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+}
+.space-x-14 > view:not(:first-child),
+.space-x-14 > text:not(:first-child),
+.space-x-14 > image:not(:first-child) {
+  margin-left: 28rpx;
+}
+.image_10 {
+  width: 46rpx;
+  height: 44rpx;
+}
+.font_2 {
+  font-size: 32rpx;
+  font-family: SourceHanSansCN;
+  line-height: 22rpx;
+  color: #000000;
+}
+.text_2 {
+  line-height: 23rpx;
+}
+.font_3 {
+  font-size: 24rpx;
+  font-family: SourceHanSansCN;
+  line-height: 22rpx;
+  color: #808080;
+}
+
+/* 04 删除时弹出框 */
+/* 删除时底部弹出框图标样式 */
+.image_9 {
+  width: 48rpx;
+  height: 48rpx;
+}
+/* 删除时底部弹出框图标加文字的整体部分 */
+._style1{
+  width: 20%;
+  margin-left: 6%;
+  margin-right: 6%;
+  height: 80%;
+  align-items: center;
+  display: inline;
+  text-align: center;
+  /* border: 1rpx solid black; */
+}
+/* 字体样式 */
+._font_1{
+  font-size: 28rpx;
+  font-family: SourceHanSansCN;
+  line-height: 26rpx;
+  color: #000000;
+}
+/* 整体弹窗格式 */
+._total_style{
+  /* border: 1rpx solid black; */
+  height:100rpx;
+  width: 80%;
+  /* position: absolute; */
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  top: 1200rpx;
+}
+

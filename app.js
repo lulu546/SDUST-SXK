@@ -180,6 +180,8 @@ App({
     return val !== '' && val !== null & val !== undefined
    }
    if(isset('isshareshowclass')){wx.setStorageSync('isshareshowclass',true);}
+  
+    
 
   },
 
@@ -201,7 +203,17 @@ App({
     sharedata:{},
     requestflag: 0,//判断QZ请求状态
     todatabasesflag:0,//判断数据库请求状态
-    TotalUrl:"http://127.0.0.1:8000"
+    examlist:[],
+    TotalUrl:"http://127.0.0.1:8000",
+    //备忘录部分全局变量声明
+      //01 未设置时间的事件
+      not_selected_time_event_datalist:[],
+      //02 设置时间的事件
+      selected_time_event_datalist:[],
+      //03 超时的事件
+      overtime_event_datalist:[],
+      //04 完成的事件
+      finished_event_datalist:[],
   }
 
 })

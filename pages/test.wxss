@@ -1,86 +1,304 @@
-/* 全局样式 */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #EDEDED;
+.page {
+  background-color: #faf9ff;
+  overflow: hidden;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 100%;
-  padding: 10px;
 }
-
-/* 标题栏样式 */
-.header {
-  width: 100%;
-  padding: 20px 0;
-  background-color: #6B5ECD;
-  display: flex;
-  justify-content: center;
-  backdrop-filter: blur(10px);
+.group_3 {
+  padding: 7.2vw 5.867vw 16vw;
+  overflow-y: auto;
 }
-
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #FFFFFF;
+.space-y-30 > view:not(:first-child),
+.space-y-30 > text:not(:first-child),
+.space-y-30 > image:not(:first-child) {
+  margin-top: 8vw;
 }
-
-/* 搜索区域样式 */
-.search-section {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
+.section_3 {
+  padding: 3.733vw 5.333vw;
+  background-image: url('https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6471e04a5a7e3f03105feb4b/6472e69b54fe00001164f405/16876744464166033050.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
-
-.search-input {
-  flex: 1;
-  height: 40px;
-  border: 1px solid #C4C4C4;
-  border-radius: 4px;
-  padding-left: 10px;
-  font-size: 16px;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.8);
+.image_8 {
+  width: 0.8vw;
+  height: 4vw;
 }
-
-.search-button {
-  width: 80px;
-  height: 40px;
-  background-color: #6B5ECD;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  margin-left: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.image_11 {
+  margin-right: 1.6vw;
+  margin-top: 12.267vw;
+  width: 36vw;
+  height: 35.2vw;
 }
-
-/* 考试列表样式 */
-.exam-list {
-  width: 100%;
-  margin-top: 20px;
+.image_7 {
+  opacity: 0.3;
+  border-radius: 3.733vw;
+  mix-blend-mode: OVERLAY;
+  width: 88.533vw;
+  height: 59.2vw;
 }
-
-.exam-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid #C4C4C4;
-  border-radius: 4px;
-  padding: 15px;
-  margin-bottom: 10px;
-  backdrop-filter: blur(10px);
+.pos {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
-
-.exam-info {
-  display: flex;
-  flex-direction: column;
+.font_3 {
+  font-size: 3.2vw;
+  font-family: SourceHanSansCN;
+  line-height: 2.933vw;
+  color: #ffffff;
 }
-
-.exam-time,
-.exam-location,
-.exam-subject {
-  font-size: 16px;
-  margin-bottom: 5px;
+.pos_7 {
+  position: absolute;
+  left: 29.067vw;
+  top: 25.733vw;
+}
+.image-wrapper_3 {
+  padding: 2.667vw 0;
+  background-color: #ffffff;
+  border-radius: 3.2vw;
+  filter: drop-shadow(0px 0.533vw 2.133vw #e4e9ef99);
+  width: 14.933vw;
+}
+.pos_3 {
+  position: absolute;
+  left: 26.133vw;
+  top: 8.8vw;
+}
+.image_10 {
+  width: 9.333vw;
+  height: 9.333vw;
+}
+.pos_11 {
+  position: absolute;
+  left: 27.867vw;
+  bottom: 6.933vw;
+}
+.pos_9 {
+  position: absolute;
+  left: 26.133vw;
+  top: 32.267vw;
+}
+.pos_10 {
+  position: absolute;
+  left: 6.8vw;
+  bottom: 6.933vw;
+}
+.pos_8 {
+  position: absolute;
+  left: 5.6vw;
+  top: 32.267vw;
+}
+.pos_6 {
+  position: absolute;
+  left: 10vw;
+  top: 25.867vw;
+}
+.image-wrapper_2 {
+  padding: 3.2vw 0;
+  background-color: #ffffff;
+  border-radius: 3.2vw;
+  filter: drop-shadow(0px 0.533vw 2.133vw #e4e9ef99);
+  width: 14.933vw;
+}
+.pos_2 {
+  position: absolute;
+  left: 5.6vw;
+  top: 8.8vw;
+}
+.image_9 {
+  width: 9.867vw;
+  height: 8.533vw;
+}
+.font_2 {
+  font-size: 3.2vw;
+  font-family: 等线;
+  line-height: 3.333vw;
+  color: #949ba5;
+}
+.text {
+  font-size: 3.467vw;
+}
+.pos_5 {
+  position: absolute;
+  right: 3.867vw;
+  top: 14.8vw;
+}
+.font_1 {
+  font-size: 4.8vw;
+  font-family: IdeaFonts MeiLingTi;
+  line-height: 4.4vw;
+  color: #212226;
+}
+.pos_4 {
+  position: absolute;
+  right: 24.667vw;
+  top: 8.533vw;
+}
+.section_4 {
+  padding: 3.733vw 5.333vw 0.533vw;
+  background-image: url('https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6471e04a5a7e3f03105feb4b/6472e69b54fe00001164f405/16876744476468672402.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.image_13 {
+  margin-right: 5.333vw;
+  margin-top: 11.733vw;
+  width: 30.4vw;
+  height: 39.467vw;
+}
+.image_12 {
+  opacity: 0.3;
+  border-radius: 3.733vw;
+  mix-blend-mode: OVERLAY;
+  width: 87.733vw;
+  height: 59.2vw;
+}
+.pos_12 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.pos_18 {
+  position: absolute;
+  left: 27.067vw;
+  top: 24.133vw;
+}
+.pos_14 {
+  position: absolute;
+  left: 25.867vw;
+  top: 7.733vw;
+}
+.pos_22 {
+  position: absolute;
+  left: 28.667vw;
+  bottom: 8.267vw;
+}
+.pos_20 {
+  position: absolute;
+  left: 25.867vw;
+  top: 30.933vw;
+}
+.pos_21 {
+  position: absolute;
+  left: 7.333vw;
+  bottom: 8.267vw;
+}
+.pos_19 {
+  position: absolute;
+  left: 4.533vw;
+  top: 30.933vw;
+}
+.pos_17 {
+  position: absolute;
+  left: 5.733vw;
+  top: 24.267vw;
+}
+.pos_13 {
+  position: absolute;
+  left: 4.533vw;
+  top: 7.733vw;
+}
+.text_2 {
+  font-size: 3.467vw;
+}
+.pos_16 {
+  position: absolute;
+  right: 7.067vw;
+  top: 14.8vw;
+}
+.pos_15 {
+  position: absolute;
+  right: 19.467vw;
+  top: 8.533vw;
+}
+.section_5 {
+  padding: 3.2vw 4.533vw;
+  background-image: url('https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6471e04a5a7e3f03105feb4b/6472e69b54fe00001164f405/16876744468951140005.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 59.2vw;
+}
+.pos_24 {
+  position: absolute;
+  right: 5.467vw;
+  top: 3.733vw;
+}
+.pos_27 {
+  position: absolute;
+  right: 19.2vw;
+  top: 8.533vw;
+}
+.text_3 {
+  font-size: 3.467vw;
+}
+.pos_28 {
+  position: absolute;
+  right: 5.2vw;
+  top: 14.8vw;
+}
+.pos_31 {
+  position: absolute;
+  left: 27.067vw;
+  top: 24.267vw;
+}
+.pos_26 {
+  position: absolute;
+  left: 25.867vw;
+  top: 7.733vw;
+}
+.pos_35 {
+  position: absolute;
+  left: 28.667vw;
+  bottom: 8.267vw;
+}
+.pos_33 {
+  position: absolute;
+  left: 25.867vw;
+  top: 30.933vw;
+}
+.pos_34 {
+  position: absolute;
+  left: 7.333vw;
+  bottom: 8.267vw;
+}
+.pos_32 {
+  position: absolute;
+  left: 4.533vw;
+  top: 30.933vw;
+}
+.pos_30 {
+  position: absolute;
+  left: 7.333vw;
+  top: 24.267vw;
+}
+.pos_25 {
+  position: absolute;
+  left: 4.533vw;
+  top: 7.733vw;
+}
+.image_14 {
+  width: 26.667vw;
+  height: 34.4vw;
+}
+.pos_29 {
+  position: absolute;
+  right: 13.867vw;
+  bottom: 3.2vw;
+}
+.pos_23 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.tab-bar {
+  width: 100vw;
+  height: 21.6vw;
 }

@@ -89,6 +89,22 @@ Page({
       shadow:'0px 10px 20px rgba(139, 140, 210, 0.2);'
     }
 ],
+[
+  {
+    src:'/image/jishiben.jpg',
+    name:'部门课表',
+    id:10,
+    backgroundcolor: '#192DDD;',
+    shadow:'0px 10px 20px rgba(93, 107, 239, 0.2);'
+  },
+  {
+    src:'/image/jishiben.jpg',
+    name:'小科课程库',
+    id:11,
+    backgroundcolor: '#6667AB;',
+    shadow:'0px 10px 20px rgba(139, 140, 210, 0.2);'
+  }
+],
     
     ]
   },
@@ -119,42 +135,57 @@ Page({
     }
     else if(e.currentTarget.dataset.tar=="1"){
       wx.navigateTo({
-        url: "/pages/Function/FoodWhat/FoodWhatContent/foodwhatcontent"
+        url: "/pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent"
       })
     }
     else if(e.currentTarget.dataset.tar=="2"){
       wx.navigateTo({
-        url: "/pages/Function/NotePad/NotePadContent/notepadcontent"
+        url: "/pages/Function/ExamList/ExamListContent/examlistcontent"
       })
     }
     else if(e.currentTarget.dataset.tar=="3"){
       wx.navigateTo({
-        url: "/pages/Function/DepartmentWork/DepartmentWorkContent/departmentworkcontent"
+        url: "/pages/Function/GradeFind/GradeFindContent/gradefindcontent"
+      })
+    }
+    else if(e.currentTarget.dataset.tar=="4"){
+      wx.navigateTo({
+        url: "/pages/Function/"
       })
     }
     else if(e.currentTarget.dataset.tar=="5"){
       wx.navigateTo({
-        url: "/pages/Function/PhoneBook/PhoneBookContent/phonebookcontent"
+        url: "/pages/Function/NotePad/NotePadContent/notepadcontent"
       })
     }
     else if(e.currentTarget.dataset.tar=="6"){
       wx.navigateTo({
-        url: "/pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent"
+        url: "/pages/Function/CourseLib/CourseLibContent/courselibcontent"
       })
     }
     else if(e.currentTarget.dataset.tar=="7"){
       wx.navigateTo({
-        url: "/pages/Function/GradeFind/GradeFindContent/gradefindcontent"
+        url: "/pages/Function/DeptClass/DeptClassContent/DeptClassContent"
       })
     }
     else if(e.currentTarget.dataset.tar=="8"){
       wx.navigateTo({
-        url: "/pages/Function/ExamList/ExamListContent/examlistcontent"
+        url: "/pages/Function/DepartmentWork/DepartmentWorkContent/departmentworkcontent"
       })
     }
     else if(e.currentTarget.dataset.tar=="9"){
       wx.navigateTo({
-        url: "/pages/Function/CourseLib/CourseLibContent/courselibcontent"
+        url: "/pages/Function/PhoneBook/PhoneBookContent/phonebookcontent"
+      })
+    }
+    else if(e.currentTarget.dataset.tar=="10"){
+      wx.navigateTo({
+        url: "/pages/Function/"
+      })
+    }
+    else if(e.currentTarget.dataset.tar=="11"){
+      wx.navigateTo({
+        url: "/pages/Function/FoodWhat/FoodWhatContent/foodwhatcontent"
       })
     }
   },

@@ -2,9 +2,9 @@
 .homegraph{
   position: absolute;
   width: 90%;
-  height: 380rpx;
+  height: 29.5vh;
   left: 5%;
-  top: 30rpx;
+  top: 2.5vh;
   
   background: #ffffff;
   border-radius: 17px;
@@ -99,9 +99,9 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
 .curriculum {
   position: relative;
   width: 90%;
-  height: 230rpx;
+  height: 19vh;
   left: 5%;
-  top: 440rpx;
+  top: 36vh;
   background: #ffffff;
   border-radius: 17px;
   border: 1px solid #E6E8EE;
@@ -319,6 +319,220 @@ top: 261px;269 */
     line-height: 14px;
  
   }
+
+
+  /* 显示今日待办事项的样式 */
+.section_7 {
   
-  
+  width: 90%;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+}
+.space-y-13 > view:not(:first-child),
+.space-y-13 > text:not(:first-child),
+.space-y-13 > image:not(:first-child) {
+  margin-top: 26rpx;
+}
+.image_7 {
+  width: 10%;
+}
+.divider {
+  margin-right: 6rpx;
+  background-color: #cccccc40;
+  border-radius: 30rpx;
+  height: 2rpx;
+}
+.section_8 {
+  margin-right: 8rpx;
+  padding: 44rpx 30rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+}
+.space-x-18 > view:not(:first-child),
+.space-x-18 > text:not(:first-child),
+.space-x-18 > image:not(:first-child) {
+  margin-left: 36rpx;
+}
+.image_8 {
+  width: 46rpx;
+  height: 44rpx;
+}
+.text {
+  margin-right: 44rpx;
+  color: #a6a6a6;
+  font-size: 24rpx;
+  font-family: SourceHanSansCN;
+  line-height: 28rpx;
+  width: 420rpx;
+}
+.image-wrapper_2 {
+  padding: 44rpx 0;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+}
+.view {
+  margin-right: 10rpx;
+  margin-top: 26rpx;
+}
+.image_8 {
+  margin-left: 30rpx;
+  width: 46rpx;
+  height: 44rpx;
+}
+.space-y-8 > view:not(:first-child),
+.space-y-8 > text:not(:first-child),
+.space-y-8 > image:not(:first-child) {
+  margin-top: 16rpx;
+}
+.list-item_2 {
+  margin-left: 0.8%;
+  margin-right: 0.8%;
+  padding: 9.5% 5%;
+  background-color: #ffffff;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+}
+.space-x-14 > view:not(:first-child),
+.space-x-14 > text:not(:first-child),
+.space-x-14 > image:not(:first-child) {
+  margin-left: 3.8vw;
+}
+.image_10 {
+  width: 46rpx;
+  height: 44rpx;
+}
+.font_2 {
+  font-size: 32rpx;
+  font-family: SourceHanSansCN;
+  line-height: 22rpx;
+  color: #000000;
+}
+.text_2 {
+  line-height: 23rpx;
+}
+.font_3 {
+  font-size: 24rpx;
+  font-family: SourceHanSansCN;
+  line-height: 22rpx;
+  color: #808080;
+}
+view,
+image,
+text {
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-baseline {
+  align-items: baseline;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.self-center {
+  align-self: center;
+}
+
+.self-baseline {
+  align-self: baseline;
+}
+
+.self-stretch {
+  align-self: stretch;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.grow-0 {
+  flex-grow: 0;
+}
+
+.shrink {
+  flex-shrink: 1;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.relative {
+  position: relative;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
   

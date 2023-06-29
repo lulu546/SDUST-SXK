@@ -1,4 +1,5 @@
 // pages/Function/CourseLib/CourseLibContent/courselibcontent.js
+const api = require('../../../../API/funtionapi');
 Page({
 
   /**
@@ -18,28 +19,18 @@ Page({
   onLoad(options) {
 
     var that = this;
-
-    wx.request({
-      url: app.globalData.TotalUrl+'/qz/course-lib/',
-      method: 'POST',
-      data: {
-        coursename:"",
-        teachername:"",
-        page:1,
-        // toweek:7,
-        // id:39,
-        cont:0
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: (res) => {
-        that.data.coursedata = res.data
-        that.setData({
-          coursedata : res.data
-        })
-      }
-    })
+    api.courselibcontent(that.data.coursename,that.data.teachername,that.data.page).then(res => {
+      that.setData({
+        coursedata : res.data
+      })
+      console.log(res)
+    }).catch(err => {
+      // 获取课程表信息失败，处理错误
+      wx.showToast({
+        title: '请求失败',
+        icon: 'error'
+      })
+    });
   },
 
   /**
@@ -105,31 +96,26 @@ Page({
         })
         return ;}
         
-        wx.request({
-          url: app.globalData.TotalUrl+'/qz/course-lib/',
-          method: 'POST',
-          data: {
-            coursename:that.data.coursename,
-            teachername:that.data.teachername,
+
+        api.courselibcontent(that.data.coursename,that.data.teachername,_page).then(res => {
+          that.setData({
             page:_page,
-            // toweek:7,
-            // id:39,
-            cont:0
-          },
-          header: {
-            'content-type': 'application/json'
-          },
-          success: (res) => {
-            that.setData({
-              coursedata : res.data,
-              page:_page
-            })
-          }
-        })
+            coursedata : res.data
+          })
+          console.log(res)
+        }).catch(err => {
+          // 获取课程表信息失败，处理错误
+          wx.showToast({
+            title: '请求失败',
+            icon: 'error'
+          })
+        });
+   
 
       }
       else if(e.target.dataset.change=="next"){
-        if(that.data.coursedata[0].length==0){
+
+        if(that.data.coursedata.length==0){
           wx.showToast({
             title: '到达世界最高峰！',
             icon:'none'
@@ -137,32 +123,20 @@ Page({
           return ;
 
         }
-        
         _page=_page+1;
- 
-          wx.request({
-            url: app.globalData.TotalUrl+'/qz/course-lib/',
-            method: 'POST',
-            data: {
-              coursename:that.data.coursename,
-              teachername:that.data.teachername,
-              page:_page,
-              // toweek:7,
-              // id:39,
-              cont:0
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-      
-              that.setData({
-                coursedata : res.data,
-                page:_page
-              })
-            }
+        api.courselibcontent(that.data.coursename,that.data.teachername,_page).then(res => {
+          that.setData({
+            page:_page,
+            coursedata : res.data
           })
-  
+          console.log(res)
+        }).catch(err => {
+          // 获取课程表信息失败，处理错误
+          wx.showToast({
+            title: '请求失败',
+            icon: 'error'
+          })
+        });
         
       }
 
@@ -177,31 +151,20 @@ Page({
       teachername: e.detail.value
     })
   },
-  find(){
+  find(e){
     var that=this
-    console.log("SDSA")
-    wx.request({
-      url: app.globalData.TotalUrl+'/qz/course-lib/',
-      method: 'POST',
-      data: {
-        coursename:that.data.coursename,
-        teachername:that.data.teachername,
-        page:1,
-        // toweek:7,
-        // id:39,
-        cont:0
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: (res) => {
-
-        that.setData({
-          coursedata : res.data,
-
-        })
-      }
-    })
+    api.courselibcontent(that.data.coursename,that.data.teachername,1).then(res => {
+      that.setData({
+        coursedata : res.data
+      })
+      console.log(res)
+    }).catch(err => {
+      // 获取课程表信息失败，处理错误
+      wx.showToast({
+        title: '请求失败',
+        icon: 'error'
+      })
+    });
 
   },
   turndetil(e){

@@ -1,0 +1,4 @@
+/* pages/Function/DepartmentWork/SKYC/SKYCContent/SKYCContent.wxss */
+page{
+  background-color: rgba(250, 249, 255, 1);
+}

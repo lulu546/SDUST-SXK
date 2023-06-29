@@ -1,5 +1,6 @@
 
 const apiUrl = "https://jwgl.sdust.edu.cn/app.do";
+// 基础强智API
 const app = getApp()
 function login(account, password) {
   return new Promise((resolve, reject) => {
@@ -111,7 +112,8 @@ function getExamInfo(account) {
   };
   return getHandle(params);
 }
-// 初始化数据，登录并请求getCurrentTime，getStudentInfo，getClassInfo
+
+// 从强智系统登录
 function init_data(account, pwd) {
   
   if (wx.getStorageSync('islogin') == true) {
@@ -171,9 +173,10 @@ function init_data(account, pwd) {
  
 
 }
+// 从强智系统获取时间信息，学生信息，课表信息并在后端登录并发送学生信息至后端
 function only_data(account) {
 
-      //请求时间信息
+      //请求时间信息然后请求课表信息
       wx.request({
         url: 'http://jwgl.sdust.edu.cn/app.do',
         method: 'get',
@@ -211,7 +214,6 @@ function only_data(account) {
               xh: account
             },
             header: {
-
               "Referer": "http://www.baidu.com",
               "Accept-encoding": "gzip, deflate, br",
               "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
@@ -226,7 +228,9 @@ function only_data(account) {
                 const tableformat = require('../utils/table');
                 app.globalData.class_info = tableformat.processTableOrd(resjson);
                 app.globalData.table_ord=resjson;
-       
+                      //  执行shareapi里的getsharecoursestate函数,并打印回调
+                const shareapi = require('../../../API/shareapi');
+                shareapi.getsharecoursestate();
             }
           })
         }
@@ -300,7 +304,7 @@ function only_data(account) {
       })
 
   }
-
+// 发送课程信息至后端
 function postclass(week_ordinal=app.globalData.week_time) {
   
   wx.request({
@@ -326,6 +330,69 @@ function postclass(week_ordinal=app.globalData.week_time) {
   })
 }
 
+// 读取第n周课程信息并存储至后端
+function getpostclass(week_ordinal) {
+// 从强智系统读取第week_ordinal周课程信息
+  wx.request({
+    url: 'http://jwgl.sdust.edu.cn/app.do',
+    method: 'GET',
+    data: {
+      method: "getKbcxAzc",
+      xnxqid: app.globalData.current_time["xnxqh"],
+      zc: week_ordinal,
+      xh: wx.getStorageSync('useraccount')
+    },
+    header: {
+      "Referer": "http://www.baidu.com",
+      "Accept-encoding": "gzip, deflate, br",
+      "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+      "Cache-control": "max-age=0",
+      token: wx.getStorageSync('token')
+    },
+    success: (res) => {
+      if (res.statusCode == 200){
+      // 发送课程信息至后端
+      wx.request({
+        url: app.globalData.TotalUrl+'/qz/class-info/',
+        method:'POST',
+        //向后端发送的数据
+        data: {
+          table_ord : res.data,
+          token :  wx.getStorageSync('tokentoset'),
+          snumber: wx.getStorageSync('useraccount'),
+          week:week_ordinal
+        },
+        header: { 
+          "Referer": "http://www.baidu.com",
+          "Accept-encoding": "gzip, deflate, br",
+          "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+          "Cache-control": "max-age=0",
+      }, success: (res) => {
+       
+        
+      
+      }
+      })
+
+      }
+
+    }
+  })
+}
+
+// 从强智系统读取考试信息
+function getexam() {
+
+  return new Promise((resolve, reject) => {
+    getExamInfo(wx.getStorageSync('useraccount')).then(res => {
+      // 返回读取的考试数据
+     resolve(res);
+    }
+    )
+  });
+
+}
+
 
 
 module.exports = {
@@ -338,5 +405,7 @@ module.exports = {
   getExamInfo,
   init_data,
   only_data,
-  postclass
+  postclass,
+  getpostclass,
+  getexam
 };

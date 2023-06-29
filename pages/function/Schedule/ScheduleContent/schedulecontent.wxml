@@ -114,7 +114,6 @@
       </view>
       <view  class="timetablehr" style="position: relative; left: 0rpx; background-color: rgb(255, 255, 255) !important;  height: 1rpx;"></view>
     </view>
-
     <view wx:else>
       <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style=" position:relative;top:4rpx;">
         <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">

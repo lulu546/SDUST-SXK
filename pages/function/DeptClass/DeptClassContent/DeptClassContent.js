@@ -1,26 +1,17 @@
-// pages/Function/ExamList/ExamListContent/examlistcontent.js
+// pages/Function/DeptClass/DeptClassContent/DeptClassContent.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    examlist: null
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // 读取考试信息,调用shareapi的函数s
-    var that = this;
-    var qzapi= require('../../../../API/qzapi.js');
-    var app= getApp();
-    qzapi.getexam().then(res => {
-      // 读取页面本地缓存的数据
-      that.setData({
-        examlist:res
-      })})
 
   },
 

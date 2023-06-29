@@ -1,7 +1,7 @@
 // pages/Function/CourseLib/CourseLibDetail/courselibdetail.js
 var startX, endX;
 var moveFlag = true;// 判断执行滑动事件
-
+const api = require('../../../../API/funtionapi');
 Page({
 
   /**
@@ -28,28 +28,20 @@ Page({
           toweek,
         })
         console.log(that.data.toweek)
-        wx.request({
-          url: app.globalData.TotalUrl+'/qz/course-lib/',
-          method: 'POST',
-          data: {
-            // coursename:that.data.coursename,
-            // teachername:that.data.teachername,
-            // page:_page,
-            toweek:that.data.toweek,
-            id: that.data.course.id,
-            cont:1
-          },
-          header: {
-            'content-type': 'application/json'
-          },
-          success: (res) => {
-    
-            that.setData({
-              coursedetildata : res.data,
-              
-            })
-          }
-        })
+        
+        api.courselibdetail(that.data.toweek,that.data.course.id).then(res => {
+   
+          that.setData({
+            coursedetildata : res
+          })
+        }).catch(err => {
+          // 获取课程表信息失败，处理错误
+          wx.showToast({
+            title: '请求失败',
+            icon: 'error'
+          })
+        });
+
 
       }
       else if(e.target.dataset.change=="next"){
@@ -67,29 +59,20 @@ Page({
         that.setData({
           toweek,
         })
-        wx.request({
-          url: app.globalData.TotalUrl+'/qz/course-lib/',
-          method: 'POST',
-          data: {
-            // coursename:that.data.coursename,
-            // teachername:that.data.teachername,
-            // page:_page,
-            toweek:that.data.toweek,
-            id: that.data.course.id,
-            cont:1
-          },
-          header: {
-            'content-type': 'application/json'
-          },
-          success: (res) => {
-    
-            that.setData({
-              coursedetildata : res.data,
-              toweek
+        api.courselibdetail(that.data.toweek,that.data.course.id).then(res => {
+          console.log(res.data)
+          that.setData({
+            coursedetildata : res
+            
+          })
 
-            })
-          }
-        })
+        }).catch(err => {
+          // 获取课程表信息失败，处理错误
+          wx.showToast({
+            title: '请求失败',
+            icon: 'error'
+          })
+        });
   
         
       }
@@ -113,27 +96,20 @@ Page({
     console.log(parseInt(that.data.course))
     console.log(parseInt(that.data.course.id))
     console.log(parseInt(that.data.course['id']))
-    wx.request({
-      url: app.globalData.TotalUrl+'/qz/course-lib/',
-      method: 'POST',
-      data: {
-        // coursename:that.data.coursename,
-        // teachername:that.data.teachername,
-        // page:_page,
-        toweek:week_ordinal,
-        id: that.data.course.id,
-        cont:1
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: (res) => {
 
-        that.setData({
-          coursedetildata : res.data
-        })
-      }
-    })
+    api.courselibdetail(that.data.toweek,that.data.course.id).then(res => {
+      that.setData({
+        coursedetildata : res,
+        toweek:week_ordinal
+      })
+      console.log(res)
+    }).catch(err => {
+      // 获取课程表信息失败，处理错误
+      wx.showToast({
+        title: '请求失败',
+        icon: 'error'
+      })
+    });
     
   },
 
@@ -230,29 +206,18 @@ Page({
           that.setData({
             toweek,
           })
-          wx.request({
-            url: app.globalData.TotalUrl+'/qz/course-lib/',
-            method: 'POST',
-            data: {
-              // coursename:that.data.coursename,
-              // teachername:that.data.teachername,
-              // page:_page,
-              toweek:that.data.toweek,
-              id: that.data.course.id,
-              cont:1
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: (res) => {
-      
-              that.setData({
-                coursedetildata : res.data,
-                toweek
-  
-              })
-            }
-          })
+          api.courselibdetail(that.data.toweek,that.data.course.id).then(res => {
+            that.setData({
+              coursedetildata : res
+            })
+            console.log(res)
+          }).catch(err => {
+            // 获取课程表信息失败，处理错误
+            wx.showToast({
+              title: '请求失败',
+              icon: 'error'
+            })
+          });
     
           
         
@@ -271,28 +236,19 @@ Page({
           toweek,
         })
         console.log(that.data.toweek)
-        wx.request({
-          url: app.globalData.TotalUrl+'/qz/course-lib/',
-          method: 'POST',
-          data: {
-            // coursename:that.data.coursename,
-            // teachername:that.data.teachername,
-            // page:_page,
-            toweek:that.data.toweek,
-            id: that.data.course.id,
-            cont:1
-          },
-          header: {
-            'content-type': 'application/json'
-          },
-          success: (res) => {
-    
-            that.setData({
-              coursedetildata : res.data,
-              
-            })
-          }
-        })
+        api.courselibdetail(that.data.toweek,that.data.course.id).then(res => {
+          that.setData({
+            coursedetildata : res
+        
+          })
+          console.log(res)
+        }).catch(err => {
+          // 获取课程表信息失败，处理错误
+          wx.showToast({
+            title: '请求失败',
+            icon: 'error'
+          })
+        });
 
       
 

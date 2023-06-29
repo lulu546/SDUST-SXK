@@ -1,5 +1,5 @@
 <!--pages/Function/GradeFind/GradeFindContent/gradefindcontent.wxml-->
-
+<wxs src='../../../../utils/utils.wxs' module='tools'/>
 <view>
 
   <view style="min-height: 350rpx;margin-top: 5%;position: relative;width: 90%;left:5%;border-radius: 17px;background: #444791;border: 1px solid #444791;">
