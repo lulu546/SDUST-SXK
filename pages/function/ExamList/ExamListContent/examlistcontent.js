@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    examlist: null
+    examlist: null,
+    toweek:null
   },
 
   /**
@@ -19,8 +20,13 @@ Page({
     qzapi.getexam().then(res => {
       // 读取页面本地缓存的数据
       that.setData({
-        examlist:res
-      })})
+        examlist:res,
+        toweek:app.globalData.week_time
+      })
+      console.log(that.data.examlist)
+    })
+
+      
 
   },
 

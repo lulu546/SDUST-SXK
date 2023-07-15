@@ -1,3 +1,5 @@
+// token是强智的token，一般放在头文件里；tokentoset是后端的token，一般放在请求参数里
+
 
 const apiUrl = "https://jwgl.sdust.edu.cn/app.do";
 // 基础强智API
