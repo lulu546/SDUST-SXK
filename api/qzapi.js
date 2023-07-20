@@ -198,7 +198,7 @@ function only_data(account) {
           app.globalData.current_time = res.data
 
           if (app.globalData.current_time["zc"] == null) {
-            app.globalData.week_time = 1
+            app.globalData.week_time = 21
           }
           else {
             app.globalData.week_time = res.data["zc"]
@@ -307,14 +307,14 @@ function only_data(account) {
 
   }
 // 发送课程信息至后端
-function postclass(week_ordinal=app.globalData.week_time) {
+function postclass(week_ordinal=app.globalData.week_time,table_ord=app.globalData.table_ord) {
   
   wx.request({
     url: app.globalData.TotalUrl+'/qz/class-info/',
     method:'POST',
     //向后端发送的数据
     data: {
-      table_ord : app.globalData.table_ord,
+      table_ord : table_ord,
       token :  wx.getStorageSync('tokentoset'),
       snumber: wx.getStorageSync('useraccount'),
       week:week_ordinal

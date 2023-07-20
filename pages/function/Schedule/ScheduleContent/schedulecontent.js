@@ -304,9 +304,8 @@ Page({
     });
   
     // 请求课表数据
-    var new_table1, new_table2;
+    var new_table1;
     var getClassInfoPromise = api.getClassInfo(wx.getStorageSync('useraccount'), app.globalData.current_time['xnxqh'], week_ordinal);
-    var getShareClassInfoPromise = api.getClassInfo(wx.getStorageSync('useraccount'), app.globalData.current_time['xnxqh'], week_ordinal);
 
       // 请求双方课表数据
     if (that.data.checked_value == true) {
@@ -322,7 +321,7 @@ Page({
           table1: new_table1
         });
         app.globalData.todatabasesflag--;
-        api.postclass(week_ordinal)
+        api.postclass(week_ordinal,new_table1)
       }).catch((error) => {
         wx.showToast({
           title: '请求失败',
@@ -343,7 +342,7 @@ Page({
         table1: new_table1
       });
       app.globalData.todatabasesflag--;
-      api.postclass(week_ordinal)
+      api.postclass(week_ordinal,new_table1)
     }).catch((error) => {
       wx.showToast({
         title: '请求失败',
@@ -463,7 +462,7 @@ Page({
           table1: new_table1
         });
         app.globalData.todatabasesflag--;
-        api.postclass(week_ordinal)
+        api.postclass(week_ordinal,new_table1)
       }).catch((error) => {
         wx.showToast({
           title: '请求失败',

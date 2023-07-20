@@ -58,13 +58,11 @@ App({
                   that.globalData.current_time = res.data
 
                   if (that.globalData.current_time["zc"] == null) {
-                    that.globalData.week_time = 1
+                    that.globalData.week_time = 21
                   }
                   else {
                     that.globalData.week_time = res.data["zc"]
                   }
-                
-            
                   // 请求课表数据
                   wx.request({
                     url: 'http://jwgl.sdust.edu.cn/app.do',
@@ -72,7 +70,7 @@ App({
                     data: {
                       method: "getKbcxAzc",
                       xnxqid: res.data["xnxqh"],
-                      zc: res.data["zc"],
+                      zc: that.globalData.week_time,
                       xh: account
                     },
                     header: {
