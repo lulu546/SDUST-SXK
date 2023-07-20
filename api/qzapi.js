@@ -177,7 +177,6 @@ function init_data(account, pwd) {
 }
 // 从强智系统获取时间信息，学生信息，课表信息并在后端登录并发送学生信息至后端
 function only_data(account) {
-
       //请求时间信息然后请求课表信息
       wx.request({
         url: 'http://jwgl.sdust.edu.cn/app.do',
@@ -230,7 +229,7 @@ function only_data(account) {
                 const tableformat = require('../utils/table');
                 app.globalData.class_info = tableformat.processTableOrd(resjson);
                 app.globalData.table_ord=resjson;
-                      //  执行shareapi里的getsharecoursestate函数,并打印回调
+              //  执行shareapi里的getsharecoursestate函数,并打印回调
                 const shareapi = require('../../../API/shareapi');
                 shareapi.getsharecoursestate();
             }

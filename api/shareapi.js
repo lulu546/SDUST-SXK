@@ -376,6 +376,7 @@ function getsharecoursestate()  {
           if(res.data["weeks_not_exist"].length!=0){
             // 用for循环遍历数组
             for(var i=0;i<res.data["weeks_not_exist"].length;i++){
+              
               qzapi.getpostclass(res.data["weeks_not_exist"][i])
             }
         }

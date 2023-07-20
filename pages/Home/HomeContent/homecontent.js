@@ -353,7 +353,9 @@ Page({
       Once_Couse()
 
     }, 1000);
-
+    //  执行shareapi里的getsharecoursestate函数,并打印回调
+    const shareapi = require('../../../API/shareapi');
+    shareapi.getsharecoursestate();
 
   },
   
