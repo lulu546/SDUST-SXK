@@ -1,0 +1,18 @@
+/* Components/notepad-navigator/notepad-navigator.wxss */
+.list-item {
+  padding: 32rpx 0 20rpx;
+  margin-top: 3%;
+  display: flex;
+  align-items: center;
+}
+.list-item .font_1 {
+  font-size: 4.6vw;
+  font-family: SourceHanSansCN;
+  line-height: 26rpx;
+  color: #808080;
+}
+.space-x-6 > view:not(:first-child),
+.space-x-6 > text:not(:first-child),
+.space-x-6 > image:not(:first-child) {
+  margin-left: 12rpx;
+}

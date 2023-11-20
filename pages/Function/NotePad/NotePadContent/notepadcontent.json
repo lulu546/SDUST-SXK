@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "notepad-navigator":"/Components/notepad-navigator/notepad-navigator",
+    "notepad-content":"/Components/notepad-content/notepad-content"
+  },
+  "navigationBarTitleText": "记事本"
+}

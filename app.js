@@ -182,6 +182,13 @@ App({
     
 
   },
+  onHide(){
+    const app=getApp()
+    wx.setStorageSync('selected_time_event_datalist', app.globalData.selected_time_event_datalist)
+    wx.setStorageSync('not_selected_time_event_datalist',app.globalData.not_selected_time_event_datalist)
+    wx.setStorageSync('overtime_event_datalist', app.globalData.overtime_event_datalist)
+    wx.setStorageSync('finished_event_datalist', app.globalData.finished_event_datalist)
+  },
 
 
   globalData: {

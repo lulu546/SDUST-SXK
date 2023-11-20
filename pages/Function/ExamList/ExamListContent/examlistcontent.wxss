@@ -1,0 +1,162 @@
+/* pages/Function/ExamList/ExamListContent/examlistcontent.wxss */
+
+
+view,
+image,
+text {
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-baseline {
+  align-items: baseline;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.self-center {
+  align-self: center;
+}
+
+.self-baseline {
+  align-self: baseline;
+}
+
+.self-stretch {
+  align-self: stretch;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.grow-0 {
+  flex-grow: 0;
+}
+
+.shrink {
+  flex-shrink: 1;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.relative {
+  position: relative;
+}
+.page {
+  background-color: #faf9ff;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+.group_4 {
+  padding: 5.975vw 0 9.119vw;
+  overflow-y: auto;
+}
+.section_2 {
+  margin: 0 5.031vw;
+  padding: 4.56vw 2.83vw 62.421vw;
+  background-color: #ffffff;
+  border-radius: 3.774vw;
+  filter: drop-shadow(0px 0.314vw 0.314vw #00000040);
+  height: 94vh;
+}
+.group_5 {
+  padding-left: 0.943vw;
+}
+.space-x-6 > view:not(:first-child),
+.space-x-6 > text:not(:first-child),
+.space-x-6 > image:not(:first-child) {
+  margin-left: 0.943vw;
+}
+.image_7 {
+  width: 6.918vw;
+  height: 6.918vw;
+}
+.font_1 {
+  font-size: 3.774vw;
+  font-family: SourceHanSansCN;
+  line-height: 3.459vw;
+  color: #000000;
+}
+.text {
+  line-height: 3.538vw;
+}
+.divider {
+  background-color: #f2f2f2;
+  height: 0.2vw;
+}
+
+.group_6 {
+  margin-top: 5.73vw;
+  overflow: hidden;
+  height: 23.742vw;
+  position: relative;
+}

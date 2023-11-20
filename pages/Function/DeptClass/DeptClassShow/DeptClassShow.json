@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "department-page":"/Components/department-page/department-page"
+  }
+}

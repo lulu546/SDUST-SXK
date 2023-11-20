@@ -1,0 +1,112 @@
+/* Components/department-page/department-page.wxss */
+  /* 遮掩层 */
+  .section_3 {
+    padding: 436rpx 0 660rpx;
+    background-color: #a6a6a61a;
+    backdrop-filter: blur(6rpx);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+ /* 02_1 弹窗整体格式 */
+ ._notification_style{
+  width: 60vw;
+  height: 21vh;
+  position: absolute;
+  left: 10vw;
+  display: inline;
+  justify-content: center;
+  padding: 7vh 10vw 0;
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+}
+/* 输入框外部view格式 */
+._input_style{
+  /* border: 1rpx solid black; */
+  position: relative;
+  width: 90%;
+  height: 2vh;
+  left: 5%;
+  padding: 40rpx 0 32rpx;
+  background-color: #e5e5e5;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+}
+/* 输入框的内部格式 */
+.text_2 {
+  color: #808080;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN;
+  line-height: 30rpx;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+/* 遮掩层 */
+.section_3 {
+  padding: 436rpx 0 660rpx;
+  background-color: #a6a6a61a;
+  backdrop-filter: blur(6rpx);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+/* 底部确定及标记的部分 */
+.buttom_button_style{
+  position: absolute;
+  bottom: 8%;
+  width: 20%;
+  left: 40%;
+  height: 2%;
+  /* border: 1rpx solid black; */
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6vh 0;
+}
+/* 底部确定 */
+.buttom_button_text_style{
+  font-size: 3vh;
+  font-family: SourceHanSansCN;
+  line-height: 45rpx;
+  font-weight: 700;
+  color: #232426;
+  font-weight: unset;
+  /* border: 1rpx solid black; */
+}
+/* 底部标记 */
+.buttom_button_signal_style{
+  background-color: #ffcf41;
+  border-radius: 10rpx;
+  position: relative;
+  width: 70%;
+  left: 15%;
+  height: 0.6vh;
+  margin-top: 8%;
+  /* border: 1rpx solid black; */
+}
+
+
+/* 03 退出部门弹窗 */
+._quit_name{
+  position: absolute;
+  /* border: 1rpx solid red; */
+  height: 15vw;
+  width: 60vw;
+  top: 4vh;
+  display: flex;
+  justify-content: center;
+}
+.justufy_font{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5.3vw;
+}

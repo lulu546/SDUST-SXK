@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "myTab":"../../../../Components/tab/tab"
+  },
+  "navigationBarBackgroundColor": "#fffef9",
+  "navigationBarTitleText": "食物列表"
+}

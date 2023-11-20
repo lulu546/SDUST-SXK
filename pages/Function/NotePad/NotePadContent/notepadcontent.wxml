@@ -1,0 +1,108 @@
+<!-- 01 初始界面 -->
+<view class="flex-col flex-auto init_page space-y-6" wx:if="{{page_num==0}}">
+  <!-- 01_1 待办行 -->
+  <view class="head">
+        <!-- 图标与“待办”的整体 -->
+        <view class="flex-row items-center space-x-8 img1" wx:if="{{is_to_delete==0}}">
+          <image
+            class="shrink-0 image_7" style="width: 9vw;"mode="aspectFit"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262936444418584.png" 
+          />
+          <view class="text" style="width: 60%;">待办</view>
+        </view>
+        <!-- 加号，用于添加记事本 -->
+        <view class="add_img" bindtap="add_event" wx:if="{{is_to_delete==0}}">
+          <image
+            class="image_8"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/3620b05b4c11939fc7e5ee79da8e51ae.png" 
+          />
+        </view>
+        <!-- 统计已选择的个数 -->
+        <view wx:if="{{is_to_delete==1}}">
+          已选择{{selected_to_delete_num}}项
+        </view>
+        
+  </view>
+  <view class="other_part">
+    <view class="scroll-content">
+      <!-- 01_2 “未完成”的导航栏 -->
+      <notepad-navigator kind="1" open_status="{{open_status01}}" bind:click_to_change="change_open_status" ></notepad-navigator>
+      <!-- 01_3 未完成设置时间的部分初始及删除时的事项列表 -->
+      <notepad-content datalist="{{selected_time_event_datalist}}" open_status="{{open_status01}}" delete_status="{{is_to_delete}}" kind="1" bind:click_to_press="delete_press" bind:click_to_transfer="transfer_to_finished" bind:click_select_delete="select_to_delete"></notepad-content>
+      <!-- 01_5 无日期初始及删除时的 -->
+      <notepad-content datalist="{{not_selected_time_event_datalist}}" open_status="{{open_status01}}" delete_status="{{is_to_delete}}" kind="2" bind:click_to_press="delete_press" bind:click_to_transfer="transfer_to_finished" bind:click_select_delete="select_to_delete"></notepad-content>
+      <!-- 01_7 “已过期”的导航栏 -->
+      <notepad-navigator kind="2" open_status="{{open_status02}}" bind:click_to_change="change_open_status"></notepad-navigator>
+      <!-- 01_8 已过期初始及删除时的内容 -->
+      <notepad-content datalist="{{overtime_event_datalist}}" open_status="{{open_status02}}" delete_status="{{is_to_delete}}" kind="3" bind:click_to_press="delete_press" bind:click_to_transfer="transfer_to_finished" bind:click_select_delete="select_to_delete"></notepad-content>
+      <!-- 01_10 “已完成”的导航栏 -->
+      <notepad-navigator kind="3" open_status="{{open_status03}}" bind:click_to_change="change_open_status"></notepad-navigator>
+      <!-- 01_11 已完成初始及删除时的主题内容列表 -->
+      <notepad-content datalist="{{finished_event_datalist}}" open_status="{{open_status03}}" delete_status="{{is_to_delete}}" kind="4" bind:click_to_press="delete_press" bind:click_to_transfer="transfer_to_finished" bind:click_select_delete="select_to_delete"></notepad-content>
+    </view>
+
+  </view>
+  <!-- 01_13 删除时的底部弹窗 -->
+  <view wx:if="{{is_to_delete==1&&page_num==0}}" class="bottom_notification" >
+    <view  class="_total_style">
+      <view class="_style1 " style="align-items: center;display: inline;" bindtap="cancel_to_delete">
+        <image
+          class="image_9"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928549223591.png" 
+        />
+        <view class="_font_1" style="width: 100%;margin-left: 0.7vw;">取消</view>
+      </view>
+      <view class="_style1" catchtap="confirm_delete" style="align-items: center;display: inline;">
+          <image
+            class="image_9"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928552622892.png" 
+          />
+        <view class="_font_1" style="margin-left: 1.5vw;">删除</view>
+      </view>
+      <view class="_style1" catchtap="all_select_to_delete">
+        <image
+          class="image_9"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/7db8083a4cbcef9309da4121e8acdcf0.png" 
+        />
+        <view class="_font_1" wx:if="{{is_all_selected==0}}">全选</view>
+        <view class="_font_1" wx:if="{{is_all_selected==1}}">全不选</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 02 添加页面 -->
+<view class="flex-col justify-start items-center section_3 pos add"   wx:if="{{is_have_shade==1}}" catchtap="close_shade">
+  <view class="flex-col section_5 space-y-38 total_view" catchtap="show_shade">
+    <!-- 除了“确认”外的其他部分 -->
+    <view class="flex-col except_confirm">
+      <!-- “时间选择”文字部分 -->
+      <view class="self-start font_3" >时间选择:</view>
+      <!-- 时间选择部分，点击可更换时间 -->
+      <view class="flex-col justify-start items-center self-start text-wrapper select_time">
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" class="_Picker">
+          <!-- 01 没有选择过的 -->
+          <view wx:if="{{is_have_select_time==0}}" class="font4">
+            <view class="_time" style="margin-left: 2.5vw;">请选择时间（可选）</view>
+          </view>
+          <!-- 02 选择过的 -->
+          <view class="picker" wx:if="{{is_have_select_time==1}}">
+          <!--3列的默认值 multiArray[0][0],multiArray[1][0],multiArray[1][0]  -->
+              <view style="margin-left: 4%;">
+                {{multiArray[0][multiIndex[0]]}}.{{multiArray[1][multiIndex[1]]}}.{{multiArray[2][multiIndex[2]]>9?multiArray[2][multiIndex[2]]:('0'+multiArray[2][multiIndex[2]])}}    {{multiArray[3][multiIndex[3]]}}:{{multiArray[4][multiIndex[4]]>9?multiArray[4][multiIndex[4]]:('0'+multiArray[4][multiIndex[4]])}}
+              </view>
+          </view>
+        </picker> 
+      </view>
+      <!-- “事项内容”文字部分 -->
+      <view class="self-start font_3 text_4" style="margin-top: 6%;">事项内容:</view>
+      <!-- 事件主题内容 -->
+      <view class="flex-col items-center section_6 space-y-4 event_content">
+        <textarea type="text" placeholder="请输入内容" value="{{event_content}}" catchinput="getevent_content" maxlength="{{25}}" class="_textarea"></textarea>
+        <view class="_num">{{area_num}}/25</view>
+      </view>
+    </view>
+    <view class="self-end font_3 text_5 _confirm" bindtap="confirm_add_event">确认</view>
+  </view>
+</view>
+

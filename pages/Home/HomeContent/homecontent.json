@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "home-notepad":"/Components/home-notepad/home-notepad"
+  },
   "enablePullDownRefresh": true
 }

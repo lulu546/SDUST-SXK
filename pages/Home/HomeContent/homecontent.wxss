@@ -242,6 +242,38 @@ top: 261px;269 */
 
 /* 记事本 */
 /* pages/home/home.wxss */
+.notpad{
+  position: absolute;
+  top: 59vh;
+  width: 90%;
+  left: 5%;
+  border-radius: 17px;
+  border: 1px solid #E6E8EE;
+  padding: 5vw 5vw 5vw;
+  box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
+}
+.notpad ._text{
+  width: 70%;
+  display: flex;
+  align-items: center;
+  font-family: 'ABeeZee';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  margin-left: 2%;
+}
+.notpad .list .list-item_2 {
+  margin-left: 0.8%;
+  margin-right: 0.8%;
+  padding: 9.5% 5%;
+  background-color: #ffffff;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  margin-top: 2%;
+}
   /* 事件功能部分的整体布局 */
   .outnotepadall{
     border: 1px solid #E6E8EE;
@@ -387,13 +419,7 @@ top: 261px;269 */
 .space-y-8 > image:not(:first-child) {
   margin-top: 16rpx;
 }
-.list-item_2 {
-  margin-left: 0.8%;
-  margin-right: 0.8%;
-  padding: 9.5% 5%;
-  background-color: #ffffff;
-  box-shadow: 0px 4rpx 8rpx #0000001a;
-}
+
 .space-x-14 > view:not(:first-child),
 .space-x-14 > text:not(:first-child),
 .space-x-14 > image:not(:first-child) {

@@ -1,0 +1,18 @@
+<!--Components/department-view/department-view.wxml-->
+<view class="flex-row items-center class_part_style" catchtap="click_to_classpage" data-whichone='{{department_id}}' >
+      <!-- 左侧黄色标记 -->
+      <view class="section_2"></view>
+      <!-- “暂未加入”或部门名 -->
+      <view class="_font_1" wx:if="{{department_name==''}}">暂未加入部门</view>
+      <view class="_font_1" wx:if="{{department_name!=''}}">{{department_name}}</view>
+    <!-- 当未加入部门时，底部的新建/加入部门选择 -->
+    <view class="flex-row justify-end space-x-14-reverse _selection_style" wx:if="{{department_name==''}}" >
+      <view class="_font_2" bindtap="add_department" data-id="{{department_id}}" data-kind="1">新建部门</view>
+      <view class="_font_2" bindtap="add_department" data-id="{{department_id}}" data-kind="2">加入部门</view>
+    </view>
+    <!-- 当有部门时显示邀请码和退出部门的选项 -->
+    <view class="flex-row justify-end space-x-14-reverse _selection_style" wx:if="{{department_invitation.length>0}}" style="width: 83vw;margin-left: 0%;">
+      <text class="_font_3" selectable="true">邀请码：{{department_invitation}}</text>
+      <view class="_font_4" catchtap="quit_department" data-id="{{department_id}}">退出部门</view>
+    </view>
+</view>

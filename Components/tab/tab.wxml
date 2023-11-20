@@ -1,0 +1,24 @@
+<!--components/tab/tab.wxml-->
+<view style="height: 16vh; width: 90vw; margin-left: 5vw; margin-top: 2vh; background-color: white; border-radius: 2vh;display: flex;justify-content: center;align-items: center;box-shadow: -0.5px 0px 0.5px rgba(219, 219, 219, 0.75),0.5px 0px 0.5px rgba(219, 219, 219, 0.75),0px -0.5px 0.5px rgba(219, 219, 219, 0.75),0px 0.5px 0.5px rgba(219, 219, 219, 0.75);">
+  <view style="width: 78vw; height: 14vh;">
+    <scroll-view scroll-x style="white-space: nowrap; width: 100%; overflow: hidden;border-bottom: 1rpx solid #f3f3f3;height: 7vh;display: flex;align-items: center;">
+      <view style="display: flex;height: 5vh;margin-top: 1vh;padding-left: 1vw;">
+        <!-- 这里可以根据您的需求动态生成按钮 -->
+        <view wx:for="{{arrayList1}}" wx:key="index" style="margin-right: 12.5px;margin-left: 2.5px;" class="justify-position">
+          <button style="padding: 10px; font-size: 16px; border: none; border-radius: 4px;width: {{item.length*4+6}}vw;height: 80%;font-size: 3.4vw;font-weight: 350;box-shadow: -1.5px 0px 1.5px rgba(219, 219, 219, 0.75),1.5px 0px 1.5px rgba(219, 219, 219, 0.75),0px -1.5px 1.5px rgba(219, 219, 219, 0.75),0px 1.5px 1.5px rgba(219, 219, 219, 0.75);justify-content: center;" class="justify-position {{index==indexList.index1?'button-blue':'button-white'}}" data-index1="{{index}}" bind:tap="changeSelection1">{{item}}</button>
+        </view>
+      </view>
+    </scroll-view>
+    
+    <scroll-view scroll-x style="white-space: nowrap; width: 100%; overflow: hidden;height: 7vh;display: flex;align-items: center;" model:scroll-left="{{scrollX}}">
+      <view style="display: flex;height: 5vh;margin-top: 1vh;padding-left: 1vw;">
+        <!-- 这里可以根据您的需求动态生成按钮 -->
+        <view wx:for="{{arrayList2[indexList.index1]}}" wx:key="index" style="margin-right: 12.5px;margin-left: 2.5px;" class="justify-position">
+          <button style="padding: 10px; font-size: 16px; border: none; border-radius: 4px;width: {{item.length*4+6}}vw;height: 80%;font-size: 3.4vw;font-weight: 350;box-shadow: -1.5px 0px 1.5px rgba(219, 219, 219, 0.75),1.5px 0px 1.5px rgba(219, 219, 219, 0.75),0px -1.5px 1.5px rgba(219, 219, 219, 0.75),0px 1.5px 1.5px rgba(219, 219, 219, 0.75);justify-content: center;" class="justify-position {{indexList.index2[indexList.index1][index]==1?'button-blue':'button-white'}}" data-index2="{{index}}" bind:tap="changeSelection2">{{item}}</button>
+        </view>
+      </view>
+    </scroll-view>
+
+  </view>
+
+</view>

@@ -1,0 +1,19 @@
+<!--Components/department-page/department-page.wxml-->
+<view class="flex-col justify-start items-center section_3 " wx:if="{{which_status}}" catchtap="close_create_shade" data-page="{{which_page}}">
+  <!-- 中间的弹出模块 -->
+  <view class="_notification_style"  catchtap="show_create_shade">
+    <!-- 部门邀请码输入部分 -->
+    <view class="button _input_style" wx:if="{{which_page==1||which_page==2}}">
+      <input placeholder="{{placeholder}}" class="text_2" catchinput="get_created_department_msg" data-kind="{{which_kind}}"/>
+    </view>
+    <!-- 退出和解散部门时提示部分 -->
+    <view class="_quit_name" wx:if="{{which_page==3||which_page==4}}">
+      <view class="justufy_font">确定{{which_page==3?"退出":"解散"}}此部门？</view>
+    </view>
+    <!-- 确认部分 -->
+    <view class="flex-col items-center  buttom_button_style" catchtap="confirm_department">
+      <view class="buttom_button_text_style" >确定</view>
+      <view class="buttom_button_signal_style"></view>
+    </view>
+  </view>
+</view>

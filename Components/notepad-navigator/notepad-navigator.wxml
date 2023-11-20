@@ -1,0 +1,13 @@
+<!--Components/notepad-navigator/notepad-navigator.wxml-->
+<view class="flex-row items-center list-item space-x-6">
+      <text class="font_1">{{kind==1?"未完成":kind==2?"已过期":"已完成"}}</text>
+      <view style=" height: 40rpx; width: 100rpx;display: flex;align-items: center;" catchtap="change_open_status" data-id="{{kind}}">
+        <image style="width: 16rpx;height: 20rpx;"
+          class="image_9"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262937789484920.png" wx:if="{{open_status==0}}" 
+        />
+        <image style="width: 22rpx;height: 14rpx;"
+          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873299204120923474.png" wx:if="{{open_status!=0}}"
+        />
+      </view>
+</view>

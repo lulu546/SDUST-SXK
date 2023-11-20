@@ -1,5 +1,6 @@
 const app = getApp()
-const api = require('../../../API/qzapi');
+const qzapi = require('../../../API/qzapi');
+const shareapi = require('../../../API/shareapi');
 Page({
   /**
    * BUG
@@ -33,6 +34,8 @@ Page({
     schedule: {},
     selected_time_event_datalist:[],//选择时间的待办,三个参数：1、时间；2、事件内容；3、是否被选中
     overtime_event_datalist:[],//超时的事项
+    finished_event_datalist:[],//已完成事项
+    not_selected_time_event_datalist:[],//未设置时间的
     nowtime:[],//当前时间，重复函数，结构为[年、月、日、时、分、秒]
     event_num:0,//今天的事项数
   },
@@ -54,31 +57,11 @@ Page({
     })
 
   },
-  //02 获取今天的待办事项个数和已超时事项总和
-  get_today_event_num(){
-    var list=this.data.nowtime
-    var list1=this.data.selected_time_event_datalist
-    var list2=this.data.overtime_event_datalist
-    var l=0;
-    var sum=0;
-    if(list1!=[])l=list1.length
-    for(var i=0;i<l;i++){
-      if(list1[i][0][0]==list[0]&&list1[i][0][1]==list[1]&&list1[i][0][2]==list[2])sum++
-    }
-    if(list2!=[])l=list2.length
-    for(var i=0;i<l;i++){
-      if(list2[i][0][0]==list[0]&&list2[i][0][1]==list[1]&&list2[i][0][2]==list[2])sum++
-    }
-    this.setData({
-      event_num:sum
-    })
-    console.log(this.data.event_num)
-  },
   //03 监听待办事项自动超时
   check_selected_time_event_datalist(){
     //调取方法获取当前时间，用于比较是否过期了
+
     this.getnowtime()
-    // var list=[]
     //存放获取的信息
     var list1=this.data.selected_time_event_datalist
     var list2=this.data.nowtime
@@ -117,26 +100,20 @@ Page({
       for(var i=len1-1;i>=0;i--){
         _list1.splice(list4[i],1)
       }
-      // console.log("weqwewqeqwe")
-      // console.log(_list2)
       //赋值给未完成和已过期的数组
-        this.setData({
-          selected_time_event_datalist:_list1,
-          overtime_event_datalist:_list2,
-        })
-        //存入微信缓存
-        const app=getApp()
-        app.globalData.selected_time_event_datalist=_list1,
-        app.globalData.overtime_event_datalist=_list2
+      this.setData({
+        selected_time_event_datalist:_list1,
+        overtime_event_datalist:_list2,
+      })
+      // console.log("超时了")
+      // console.log(_list1)
+      // console.log(_list2)
+      const app=getApp()
+      app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist
+      app.globalData.overtime_event_datalist=this.data.overtime_event_datalist
     }
     
 
-    
-    
-
-    
-    // wx.setStorageSync('selected_time_event_datalist', _list1)
-    // wx.setStorageSync('overtime_event_datalist', _list2)
   },
   //04 点击事项跳转
   navigator_to_notpad(){
@@ -146,55 +123,48 @@ Page({
     const app=getApp()
     app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist,
     app.globalData.overtime_event_datalist=this.data.overtime_event_datalist,
-    wx.setStorageSync('selected_time_event_datalist',this.data.selected_time_event_datalist)
-    wx.setStorageSync('overtime_event_datalist',this.data.overtime_event_datalist)
+    this.setStorageSyncdata()
   },
   //05 点击事件前的单选框，将事件更改为完成
   transfer_to_finished(e){
-   
     //当处于非删除状态时
-      console.log(e)
-      const app=getApp()
       //哪一个分类
-      var id=e.currentTarget.dataset.id
+      var id=e.detail.id
       //分类中的第几个
-      var num=e.currentTarget.dataset.num
-      //对每一类进行处理
-      var list=app.globalData.finished_event_datalist//已完成的数据
-      var list1=this.data.selected_time_event_datalist//设置时间的未完成事件
-      var list3=this.data.overtime_event_datalist//已过期的事件
-      console.log("das")
-      console.log(list)
-      // 设置时间的转为完成的
+      var num=e.detail.num
+      //设置时间的
       if(id==1){
-        list=[this.data.selected_time_event_datalist[num],...list]
+        var list1=this.data.selected_time_event_datalist
+        var data=list1[num]
         list1.splice(num,1)
+        this.setData({
+          selected_time_event_datalist:list1,
+          finished_event_datalist:[data,...this.data.finished_event_datalist]
+        })
+        
       }
-      //超时的转为已完成
+      //未设置时间的
       else if(id==2){
-        list=[this.data.overtime_event_datalist[num],...list]
-        list3.splice(num,1)
+        var list=this.data.not_selected_time_event_datalist
+        var data=list[num]
+        list.splice(num,1)
+        this.setData({
+          not_selected_time_event_datalist:list,
+          finished_event_datalist:[data,...this.data.not_selected_time_event_datalist]
+        })
       }
-      //对data赋值
-      this.setData({
-        selected_time_event_datalist:list1,
-        overtime_event_datalist:list3,
-        finished_event_datalist:list
-      })
-      this.get_today_event_num()
-      console.log(list)
-      // 对全局变量赋值
-      app.globalData.selected_time_event_datalist=list1
-      app.globalData.overtime_event_datalist=list3
-      app.globalData.finished_event_datalist=list
-      // // 储存至微信小程序
-      wx.setStorageSync('selected_time_event_datalist', list1)
-      wx.setStorageSync('overtime_event_datalist', list3)
-      wx.setStorageSync('finished_event_datalist', list)
-    
-
-
-    
+      else{
+        var list=this.data.overtime_event_datalist
+        var data=list[num]
+        list.splice(num,1)
+        this.setData({
+          overtime_event_datalist:list,
+          finished_event_datalist:[data,...this.data.finished_event_datalist]
+        })
+      }
+      const app=getApp()
+      app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist
+      app.globalData.overtime_event_datalist=this.data.overtime_event_datalist
   },
   //06 比较两个数组的大小
   list_compare(list1,list2){
@@ -213,35 +183,55 @@ Page({
     return flag
   },
 
+  //09 
+  init_datalist(){
+    const app=getApp()
+    var list1=app.globalData.selected_time_event_datalist
+    var list2=app.globalData.overtime_event_datalist
+    var list3=app.globalData.finished_event_datalist
+    var list4=app.globalData.not_selected_time_event_datalist
+    this.setData({
+      selected_time_event_datalist:list1,
+      overtime_event_datalist:list2,
+      finished_event_datalist:list3,
+      not_selected_time_event_datalist:list4,
+    })
+    // console.log("das")
+    // console.log(list1)
+  },
+  //10 存储微信缓存
+  setStorageSyncdata(){
+    var user=wx.getStorageSync('useraccount')
+    var Storage1=user+"_not_selected_time_event_datalist"
+    var Storage2=user+"_selected_time_event_datalist"
+    var Storage3=user+"_overtime_event_datalist"
+    var Storage4=user+"_finished_event_datalist"
+    wx.setStorageSync(Storage2,this.data.selected_time_event_datalist)
+    wx.setStorageSync(Storage3,this.data.overtime_event_datalist)
+    wx.setStorageSync(Storage4, this.data.finished_event_datalist)
+    wx.setStorageSync(Storage1, this.data.not_selected_time_event_datalist)
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onReady() {
-    var list1=wx.getStorageSync('selected_time_event_datalist')
-    var list2=wx.getStorageSync('overtime_event_datalist')
-    this.setData({
-      selected_time_event_datalist:list1,
-      overtime_event_datalist:list2,
-    })
-    
-    console.log(this.data.selected_time_event_datalist)
-    console.log(this.data.overtime_event_datalist)
-    var that=this
-    setTimeout(function(){
-      that.get_today_event_num()
-    },1000)
-
-
+    const app=getApp()
+    var user=wx.getStorageSync('useraccount')
+    var Storage1=user+"_not_selected_time_event_datalist"
+    var Storage2=user+"_selected_time_event_datalist"
+    var Storage3=user+"_overtime_event_datalist"
+    var Storage4=user+"_finished_event_datalist"
+    app.globalData.selected_time_event_datalist=wx.getStorageSync(Storage2)
+    app.globalData.overtime_event_datalist=wx.getStorageSync(Storage3)
+    app.globalData.not_selected_time_event_datalist=wx.getStorageSync(Storage1)
+    app.globalData.finished_event_datalist=wx.getStorageSync(Storage4)
+    this.init_datalist()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onLoad(options) {
-    //不停获取当前时间,进行判断
-    var that=this
-    setInterval(function(){
-      that.check_selected_time_event_datalist()
-    },1000)
     
     
     var that = this;
@@ -343,19 +333,23 @@ Page({
 // --------------------------计时器函数--------------------------
     Once_Couse()
     //等课表读取成功后再进行ONCE_COUSE函数。 
+    var num=0
     if(that.data.table_schedule==undefined){
       setInterval(function(){
         Once_Couse()
+        num++
+        if(num==100){
+          that.check_selected_time_event_datalist()
+          num=0
+        }
       }, 10);
     }
     else setInterval(function(){
-
+      var that=this
       Once_Couse()
-
+      that.check_selected_time_event_datalist()
     }, 1000);
-    //  执行shareapi里的getsharecoursestate函数,并打印回调
-    const shareapi = require('../../../API/shareapi');
-    shareapi.getsharecoursestate();
+
 
   },
   
@@ -363,14 +357,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    const app=getApp()
-    //进入页面初始化
-    this.setData({
-      selected_time_event_datalist:app.globalData.selected_time_event_datalist,
-      overtime_event_datalist:app.globalData.overtime_event_datalist,
-    })
-    //对今日事件进行统计
-    this.get_today_event_num()
+    this.init_datalist()
 
     var that=this;
     var islogin=wx.getStorageSync('islogin');
@@ -384,6 +371,7 @@ Page({
     //TODO 计时器，检测是否请求成功；
     var read=setInterval(function(){
       if(app.globalData.requestflag==2&&app.globalData.todatabasesflag==2){
+        shareapi.getsharecoursestate();
         var table_schedule = app.globalData.class_info;
         var week_ordinal = app.globalData.week_time;
         var requestflag=app.globalData.requestflag;
@@ -396,7 +384,8 @@ Page({
           clearTimeout(read);
       }
       if(app.globalData.requestflag==2&&app.globalData.todatabasesflag==1&&postclassflag==false){
-        api.postclass()
+        
+        qzapi.postclass()
         postclassflag=true
       }
     }, 100);
@@ -407,8 +396,16 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    //存入微信缓存
+    const app=getApp()
+    app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist
+    app.globalData.overtime_event_datalist=this.data.overtime_event_datalist
+    app.globalData.finished_event_datalist=this.data.finished_event_datalist
+    this.setStorageSyncdata()
   },
+  onTabItemTap: function (item) {
+    this.init_datalist()
+  },  
 
   /**
    * 生命周期函数--监听页面卸载
@@ -416,10 +413,9 @@ Page({
   onUnload() {
     //存入微信缓存
     const app=getApp()
-    app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist,
-    app.globalData.overtime_event_datalist=this.data.overtime_event_datalist,
-    wx.setStorageSync('selected_time_event_datalist',this.data.selected_time_event_datalist)
-    wx.setStorageSync('overtime_event_datalist',this.data.overtime_event_datalist)
+    app.globalData.selected_time_event_datalist=this.data.selected_time_event_datalist
+    app.globalData.overtime_event_datalist=this.data.overtime_event_datalist
+    this.setStorageSyncdata()
   },
 // TODO
   /**
@@ -431,10 +427,10 @@ Page({
     // 下拉刷新请求,带请i去判断
     if (wx.getStorageSync('islogin') == true) {
       if(app.globalData.requestflag>0&&app.globalData.requestflag<2){
-        api.only_data(wx.getStorageSync('useraccount'))
+        qzapi.only_data(wx.getStorageSync('useraccount'))
       }
       else if(app.globalData.requestflag==0){     
-       api.init_data(wx.getStorageSync('useraccount'),wx.getStorageSync('userpws'))
+        qzapi.init_data(wx.getStorageSync('useraccount'),wx.getStorageSync('userpws'))
     }
     var postclassflag=false
     //TODO 计时器，检测是否请求成功；
@@ -448,10 +444,12 @@ Page({
             table_schedule,
             requestflag
           })
+          
+        shareapi.getsharecoursestate();
           clearTimeout(read);
       }
       if(app.globalData.requestflag==2&&app.globalData.todatabasesflag==1&&postclassflag==false){
-        api.postclass()
+        qzapi.postclass()
         postclassflag=true
       }
     }, 100);

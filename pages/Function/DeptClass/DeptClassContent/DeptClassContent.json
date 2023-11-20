@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "department-view":"/Components/department-view/department-view",
+    "department-page":"/Components/department-page/department-page"
+  }
+}

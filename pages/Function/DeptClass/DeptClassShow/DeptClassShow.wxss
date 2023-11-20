@@ -1,0 +1,407 @@
+/* pages/Function/DeptClass/DeptClassShow/DeptClassShow.wxss */
+/* 01 初始页面 */
+  /* 整体页面设置 */
+  ._page {
+    width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    /* background-color: #f2f2f2; */
+    background-color: #faf9ff;
+  }
+  /* “部门名称”字块的样式 */
+  ._page ._text-wrapper {
+    margin-left: 2vw;
+    padding: 2vw 0;
+    background-color: #ffff00;
+    border-radius: 10rpx;
+    margin-top: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+  }
+  ._page .class_status{
+    position: absolute;
+    background-color: #faf9ff;
+    top: 0vh;
+    right: 3vw;
+    width: 40vw;
+  }
+  ._page .other_part{
+    width: 96vw;
+    margin-left: 2vw;
+    padding: 1rpx;
+    box-shadow: 2rpx white; 
+    border-radius: 15rpx;
+  }
+  /* 第几周及符号的整体区域 */
+  ._page .other_part .group_1 {
+    width: 96vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vw;
+    background-color: white;
+    border-bottom: 1rpx thin #f2f2f2;
+    border-top-left-radius: 15rpx;
+    border-top-right-radius: 15rpx;
+  }
+  /* 第几周字体样式 */
+  ._page .other_part .group_1 ._font_style{
+    margin-left: 4%;
+    height: 100%;
+    width: 20%;
+    color: #232426;
+    font-size: 36rpx;
+    font-family: SourceHanSansCN;
+    line-height: 33rpx;
+    align-items: center;
+    display: flex;
+    font-size: 4vw;
+  }
+  /* 所有图标的整体外部区域样式 */
+  ._page .other_part .group_1 .all_img_style{
+      display: flex;
+      width: 40%;
+      margin-left: 36%;
+      /* border: 1rpx solid black; */
+    }
+  ._page .other_part .group_1 .all_img_style view:nth-of-type(1) {
+      flex-grow: 1;
+    }
+  ._page .other_part .group_1 .all_img_style view:nth-of-type(2) {
+      flex-grow: 1;
+    }
+  ._page .other_part .group_1 .all_img_style view:nth-of-type(3) {
+      flex-grow: 1;
+    }
+  /* 单个图标外侧整体区域样式 */
+  ._page .other_part .group_1 .all_img_style .image-wrapper {
+    width: 25%;
+    /* border: 1rpx solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ._page .other_part .week_time{
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+  }
+  ._page .other_part .week_time .week_time_list{
+    align-items: center;
+    text-align: center;
+    display: inline;
+  }
+  /* 整体字体外部区域 */
+  ._page .other_part .week_time .week_time_list .total_font_style{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    background-color: #ffffff;
+    /* border: 1rpx solid black; */
+    align-items: center;
+    justify-content: center;
+    font-size: 3vw;
+
+  }
+  ._page .other_part ._underline{
+    width: 100%;
+    height: 1vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+  }
+  ._page .other_part ._underline ._underline_list{
+    align-items: center;
+    text-align: center;
+    display: inline;
+  }
+  /* 课表整体的外部样式 */
+  ._page .other_part .class_total{
+    /* border: 1rpx solid black; */
+    height: 69vh;
+    width: 98%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0.5vh;
+    background-color: white;
+    box-shadow: 1rpx white;
+    border-bottom-right-radius: 15rpx;
+    border-bottom-left-radius: 15rpx;
+  }
+  ._page .other_part .class_total .class_total_item{
+    height: 100%;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    width: 12.5vw;
+  }
+  /* 课表每一块的样式 */
+  ._page .other_part .class_total .class_total_item .class_part{
+      width: 95%;
+      height: 12vh;
+      border-radius: 2vw;
+      box-shadow: 0.5rpx 1rpx 0.5rpx 0.5rpx#dddddd;
+      background-color: #faf9ff;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1vh;
+      /* border: 1rpx solid black; */
+  }
+  ._page .other_part .disslove_and_kickout{
+    width: 98vw;
+    height: 8vh;
+    bottom: 0%;
+    display: flex;
+  }
+  /* 解散部门与下划线的整体部分格式 */
+  ._page .other_part .disslove_and_kickout .style1{
+    width: 20vw;
+    height: 8vh;
+    /* border: 1rpx solid black; */
+    right: 30vw;
+    position: absolute;
+    display: flex;
+  }
+  /* “解散部门”的字体样式 */
+  ._page .other_part .disslove_and_kickout .dissolve_department_text{
+    height: 4vh;
+    width: 20vw;
+    font-size: 2.4vh;
+    font-family: SourceHanSansCN;
+    line-height: 24rpx;
+    /* border: 1rpx solid black; */
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #232426;
+    position: absolute;
+  }
+  /* 下划线样式 */
+  ._page .other_part .disslove_and_kickout .underline_style{
+    height: 1.5vw;
+    width: 80%;
+    margin-left: 10%;
+    background-color: yellow;
+    border-radius: 4rpx;
+    top: 11vw;
+    position: absolute;
+  }
+  
+
+/* 02 点击查看课表页面 */
+  .check_class .notification{
+    width: 70vw;
+    height: 38vh;
+    background-color: white;
+    margin-left: 15vw;
+    border-radius: 10rpx;
+  }
+  .check_class .notification .item-list{
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family: SourceHanSansCN;
+    font-size: 5vw;
+    background-color: rgb(254, 255, 205);
+    border-top-right-radius: 10rpx;
+    border-top-left-radius: 10rpx;
+  }
+  .check_class .notification .scroll_style{
+    width: 90%;
+    height: 30vh;
+    margin-left: 5%;
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+
+/* 03 解散部门页面的样式 */
+  /* 解散部门整体弹窗区域 */
+  .disslove .dissolve_department{
+    width: 80vw;
+    height: 35vh;
+    background-color: white;
+    margin-left: 10vw;
+    border-radius: 10rpx;
+  }
+  /* 解散部门文字提示 */
+  .disslove .dissolve_department .text_tip{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 6vw;
+  }
+  /* 解散部门选项（确认/取消）的整体区域 */
+  .disslove .dissolve_department .selection{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  /* 确认加下划线或取消加下划线的区域 */
+  .disslove .dissolve_department .selection .text_and_line{
+    width: 30%;
+    height: 40%;
+    display: inline;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+  }
+  /* 确认加下划线或取消加下划线的区域中的下划线 */
+  .disslove .dissolve_department .selection .text_and_line .line{
+    width: 40%;
+    height: 10rpx;
+    background-color: yellow;
+    position: absolute;
+    margin-left: 30%;
+    bottom: 10%;
+  }
+
+/* 04 移除页面的设置 */
+  /* 整体区域设置 */
+  .kick_out_style{
+    position: absolute;
+  }
+  /* 05_1 中间弹窗 */
+  .kick_out_style ._notification{
+    width: 80vw;
+    height: 60vh;
+    background-color: white;
+    margin-left: 10vw;
+    border-radius: 10rpx;
+    position: absolute;
+    top: 20vh;
+  }
+  /* 移除的文字提示 */
+  .kick_out_style ._notification .texttip{
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    margin-left: 4vw;
+    margin-top: 2vw;
+    align-items: center;
+    font-family: SourceHanSansCN;
+    font-size: 6vw;
+    border-top-right-radius: 10rpx;
+    border-top-left-radius: 10rpx;
+  }
+  /* 滚动栏 */
+  .kick_out_style ._notification scroll-view{
+    width: 90%;
+    height: 41vh;
+    margin-left: 5%;
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    /* border: 1rpx solid black; */
+  }
+  /* 每个人的列表外部样式 */
+  .kick_out_style ._notification scroll-view ._person{
+    width: 90%;
+    margin-left: 5%;
+    height: 5.5vh;
+    /* border: 1rpx solid black; */
+    margin-top: 1vh;
+    position: relative;
+  }
+  /* 每个人列表中的选中图标 */
+  .kick_out_style ._notification scroll-view ._person ._img{
+    height: 70%;
+    width: 15%;
+    top:15%;
+    /* border: 1rpx solid black; */
+    position: absolute;
+    left: 0rpx;
+    transition: all 0.5;
+  }
+  /* 每个人列表中的个人信息 */
+  .kick_out_style ._notification scroll-view ._person ._members{
+    height: 100%;
+    width: 80%;
+    margin-left: 20%;
+    /* border: 1rpx solid black; */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 5vw;
+  }
+  .kick_out_style ._notification .selection{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 3%;
+    /* border: 1rpx solid black; */
+  }
+  .kick_out_style ._notification .selection .text_and_line{
+    width: 30%;
+    height: 100%;
+    display: inline;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    /* border: 1rpx solid black; */
+  }
+  .kick_out_style ._notification .selection .line{
+    width: 40%;
+    height: 10rpx;
+    background-color: yellow;
+    position: absolute;
+    margin-left: 30%;
+    bottom: 10%;
+  } 
+
+
+
+
+  /* 分隔线样式 */
+  .divide_line{
+    background-color: #cccccc40;
+    border-radius: 30rpx;
+    width: 120%;
+    height: 2rpx;
+  }
+
+
+
+
+
+
+
+
+/* 遮掩层 */
+.section_3 {
+  padding: 436rpx 0 660rpx;
+  background-color: #a6a6a61a;
+  backdrop-filter: blur(6rpx);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}

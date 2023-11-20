@@ -9,6 +9,20 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/Function/FoodLib/FoodLibContent/foodlibcontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Function/FoodLib/FoodWhatContent/foodwhatcontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/Function/DepartmentWork/SKYC/SKYCContent/SKYCContent",
           "query": "",
           "launchMode": "default",
@@ -64,7 +78,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/FoodWhat/foodwhat",
+          "pathName": "pages/FoodLib/foodwhat",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -96,13 +110,6 @@
         },
         {
           "name": "",
-          "pathName": "pages/Function/BookCheck/BookCheckContent/bookcheckcontent",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
           "pathName": "pages/Function/Schedule/BindSchedule/bindschedule",
           "query": "",
           "launchMode": "default",
@@ -114,8 +121,72 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Function/DeptClass/DeptClassContent/DeptClassContent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Function/NotePad/NotePadContent/notepadcontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/ceshi/ceshi",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/ceshi/ceshi",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Home/HomeContent/homecontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Function/ExamList/ExamListContent/examlistcontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Function/PhoneBook/LikeMinded/LikeMindedContent/LikeMindedContent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
-  }
+  },
+  "projectname": "WXFont-SXK"
 }

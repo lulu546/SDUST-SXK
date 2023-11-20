@@ -1,0 +1,100 @@
+  /* 01_2 部门模块的风格 */
+.class_part_style{
+    width: 76vw;
+    height: 5vh;
+    position: relative;
+    left: 7vw;
+    top: 7vh;
+    /* border: 1rpx solid black; */
+    margin-top: 2vh;
+    padding: 40rpx 34rpx 160rpx;
+    background-color: #ffffff;
+    border-radius: 17px;
+    box-shadow: 0px 4rpx 8rpx #00000040;
+    display: flex;
+  }
+  
+  /* 01_3 部门课表的图标 */
+._navigator_style ._class_image {
+    width: 9vw;
+    height: 5vh;
+    position: relative;
+    left: 3vw;
+    /* width: 82rpx;
+    height: 80rpx; */
+  }
+  /* 01_5 部门模块内左侧标记风格 */
+.class_part_style .section_2 {
+    background-color: #ffcf41;
+    border-radius: 3vh;
+    width: 1.5vw;
+    height: 4vh;
+    /* border: 1rpx solid black; */
+
+  }
+ 
+  /* 01_6 部门模块内“暂未加入”或部门名的样式 */
+.class_part_style ._font_1 {
+    /* border: 1rpx solid black; */
+    font-size: 3vh;
+    font-family: SourceHanSansCN;
+    line-height: 3vh;
+    font-weight: 700;
+    height: 4vh;
+    color: #232426;
+    width: 60vw;
+    margin-left: 1vw;
+    display: flex;
+    align-items: center;
+
+  }
+  
+  /* 01_7 新建/加入部门模块的整体风格 */
+.class_part_style ._selection_style{
+    width: 50%;
+    height: 20%;
+    margin-left: 40%;
+    /* border: 1rpx solid black; */
+    position: absolute;
+    bottom: 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  /* 01_8 块内间隔 */
+.class_part_style ._selection_style view:nth-of-type(1){
+    flex-grow: 1;
+  }
+.class_part_style ._selection_style view:nth-of-type(2){
+    flex-grow: 1;
+  }
+
+  /* 01_9 “新建部门”和“加入部门”字样格式 */
+.class_part_style ._selection_style ._font2{
+    font-size: 28rpx;
+    font-family: SourceHanSansCN;
+    line-height: 26rpx;
+    color: #232426;
+
+  }
+  /* 邀请码字样 */
+.class_part_style ._selection_style ._font_3{
+    /* border: 1rpx solid red; */
+    width: 60%;
+    height: 100%;
+    left: 0%;
+    color: #848484;
+    font-size: 4vw;
+    display: flex;
+    align-items: center;
+  }
+  /* 退出部门字样 */
+.class_part_style ._selection_style ._font_4{
+    /* border: 1rpx solid red; */
+    display: flex;
+    margin-left: 16%;
+    width: 40%;
+    height: 100%;
+    align-items: center;
+  }

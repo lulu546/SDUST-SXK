@@ -1,0 +1,377 @@
+/* 初始页面的设置，不做解释，从codefun中copy，我自己的部分修改，直接写在wxml中了 */
+.init_page{
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+}
+.init_page .head{
+  display: flex;
+  align-items: center;
+  /* position: fixed; */
+  width: 95vw;
+  margin-left: 2.5vw;
+  background-color: #fafafa;
+  margin-top: 1.5vh;
+  height: 7vh;
+  justify-content: center;
+  /* border: 1rpx solid red; */
+}
+.init_page .head .img1{
+  align-items: center;
+  display: flex;
+  width: 60%;
+}
+.init_page .head .add_img{
+  margin-left: 45%;
+  width: 14%;
+  align-items: center;
+  height: 100%;
+  align-items: center;
+  display: flex;
+}
+.init_page .other_part{
+  /* margin-top: 4vh; */
+  width: 89.5vw;
+  margin-left: 5vw;
+  height: 86vh;
+  margin-top: 1vh;
+  overflow: hidden;
+  /* border: 1rpx solid red; */
+}
+
+.init_page .other_part .scroll-content{
+  height: 86vh;
+  width: 96vw;
+  overflow: auto;
+}
+
+.init_page .other_part .navigator{
+  margin-top: 3%;
+  display: flex;
+  align-items: center;
+}
+.init_page .other_part .list-item {
+  padding: 32rpx 0 20rpx;
+  margin-top: 3%;
+  display: flex;
+  align-items: center;
+}
+.init_page .other_part .list-item .font_1 {
+  font-size: 4.6vw;
+  font-family: SourceHanSansCN;
+  line-height: 26rpx;
+  color: #808080;
+}
+
+.init_page .other_part .list .init_item{
+  display: flex;
+  align-items: center;
+  height: 70rpx;
+  margin-top: 2%;
+  border-radius: 25rpx;
+}
+.init_page .other_part .list .delete_item{
+  height: 170rpx;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  border-radius: 25rpx;
+}
+.init_page .other_part .list .list-item_2 {
+  margin-left: 36rpx;
+  margin-right: 46rpx;
+  padding: 40rpx 32rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+}
+.init_page .other_part .list .init_item .text_and_date{
+  display: inline;
+  height: 8vh;
+  width: 80%;
+  /* border: 1rpx solid black; */
+}
+.init_page .other_part .list .delete_item .img_style{
+  height: 100%;
+  width: 11%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+}
+.init_page .other_part .list .delete_item .list_content{
+  display: flex;
+  align-items: center;
+  height: 70rpx;
+  width: 80%;
+  margin-left: 2%;
+}
+.init_page .bottom_notification{
+  height: 180rpx;
+  bottom: 0;
+  background-color: #fafafa;
+  position: fixed;
+  left: 0%; 
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  right: 0%;
+  width: auto;
+}
+/* 整体弹窗格式 */
+.init_page .bottom_notification ._total_style{
+  /* border: 1rpx solid black; */
+  height:100rpx;
+  width: 80%;
+  /* position: absolute; */
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  top: 1200rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+  margin-top: 5%;
+}
+
+
+
+.group_3 {
+  padding: 30rpx 36rpx 1100rpx;
+  overflow-y: auto;
+}
+.space-y-6 > view:not(:first-child),
+.space-y-6 > text:not(:first-child),
+.space-y-6 > image:not(:first-child) {
+  margin-top: 12rpx;
+}
+.group_4 {
+  padding-left: 6rpx;
+}
+/* 待办图标和“待办”字体的整体部分 */
+.space-x-8 > view:not(:first-child),
+.space-x-8 > text:not(:first-child),
+.space-x-8 > image:not(:first-child) {
+  margin-left: 16rpx;
+}
+/* 待办图标样式 */
+.image_7 {
+  width: 76rpx;
+  height: 78rpx;
+}
+/* “待办”的字体图样 */
+.text {
+  color: #232426;
+  font-size: 48rpx;
+  font-family: PangMenZhengDao;
+  line-height: 35rpx;
+}
+/* 加号图标 */
+.image_8 {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.space-x-6 > view:not(:first-child),
+.space-x-6 > text:not(:first-child),
+.space-x-6 > image:not(:first-child) {
+  margin-left: 12rpx;
+}
+
+.image_9 {
+  width: 14rpx;
+  height: 22rpx;
+}
+
+/* 02 添加记事本的页面 */
+.add{
+  border: 1rpx solid black;
+  justify-content: center;
+  position: absolute;
+}
+.add .total_view{
+  /* border: 1rpx solid black; */
+  margin:auto;
+  height: 550rpx;
+}
+.add .total_view .except_confirm .font_3 {
+  font-size: 4.5vw;
+  font-family: SourceHanSansCN;
+  line-height: 26rpx;
+  color: #000000;
+}
+
+.add .total_view .except_confirm .select_time{
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 2vh;
+}
+
+.add .total_view .except_confirm .select_time ._Picker .font_4 {
+  font-size: 28rpx;
+  font-family: SourceHanSansCN;
+  line-height: 21rpx;
+  color: #0000001a;
+}
+.add .total_view .except_confirm .select_time ._Picker .font_4 ._time{
+  margin-left: 3vw;
+  color: #8a8a8a;
+  font-size: 32rpx;
+  font-family: SourceHanSansCN;
+  line-height: 28rpx;
+}
+
+.add .total_view .except_confirm .event_content{
+  margin-left: 5%;
+  margin-top: 2.5vh;
+  width: 90%;
+  height: 200rpx;
+  position: static;
+  display: flex;
+}
+
+.add .total_view .except_confirm .event_content ._textarea{
+  margin-left: 5%;
+  width: 90%;
+  height: 150rpx;
+}
+.add .total_view .except_confirm .event_content ._num{
+  width: 20%;
+  margin-left: 44%;
+  height: 25px;
+  color: rgba(136, 136, 136, 1);
+  font-size: 14px;
+  margin-top: 175rpx;
+  text-align: left;
+  font-family: PingFangSC-regular;
+  position: absolute;
+}
+
+.add .total_view ._confirm{
+  margin-top: 9%;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  font-size: 5vw;
+}
+
+
+.font_2 {
+  font-size: 4vw;
+  font-family: SourceHanSansCN;
+  line-height: 38rpx;
+  color: #000000;
+}
+
+.section_3 {
+  padding: 350rpx 0 554rpx;
+  background-color: #a6a6a61a;
+  backdrop-filter: blur(4rpx);
+}
+.pos {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.section_5 {
+  padding: 60rpx 22rpx 36rpx;
+  background-color: #fbfaff;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 8rpx #0000001a;
+  width: 476rpx;
+}
+.space-y-38 > view:not(:first-child),
+.space-y-38 > text:not(:first-child),
+.space-y-38 > image:not(:first-child) {
+  margin-top: 76rpx;
+}
+
+.text-wrapper {
+  margin-top: 20rpx;
+  padding: 28rpx 0;
+  background-color: #f0eff3;
+  border-radius: 12rpx;
+  width: 350rpx;
+}
+.text_4 {
+  margin-top: 36rpx;
+}
+.section_6 {
+  margin-right: 12rpx;
+  margin-top: 28rpx;
+  padding: 32rpx 0 28rpx;
+  background-color: #f0eff3;
+  border-radius: 12rpx;
+}
+.space-y-4 > view:not(:first-child),
+.space-y-4 > text:not(:first-child),
+.space-y-4 > image:not(:first-child) {
+  margin-top: 8rpx;
+}
+.text_5 {
+  margin-right: 4rpx;
+}
+
+
+/* 03 未完成部分的列表格式 */
+.space-y-8 > view:not(:first-child),
+.space-y-8 > text:not(:first-child),
+.space-y-8 > image:not(:first-child) {
+  margin-top: 16rpx;
+}
+
+.space-x-14 > view:not(:first-child),
+.space-x-14 > text:not(:first-child),
+.space-x-14 > image:not(:first-child) {
+  margin-left: 28rpx;
+}
+.image_10 {
+  width: 46rpx;
+  height: 44rpx;
+}
+.font_2 {
+  font-size: 4vw;
+  font-family: SourceHanSansCN;
+  color: #000000;
+  height: 10vh;
+  /* border: 1rpx solid red; */
+  display: flex;
+  align-items: center;
+  
+}
+.font_3 {
+  font-size: 24rpx;
+  font-family: SourceHanSansCN;
+  line-height: 22rpx;
+  color: #808080;
+}
+
+/* 04 删除时弹出框 */
+/* 删除时底部弹出框图标样式 */
+.image_9 {
+  width: 48rpx;
+  height: 48rpx;
+}
+/* 删除时底部弹出框图标加文字的整体部分 */
+._style1{
+  width: 20%;
+  margin-left: 6%;
+  margin-right: 6%;
+  height: 80%;
+  align-items: center;
+  display: inline;
+  text-align: center;
+  /* border: 1rpx solid black; */
+}
+/* 字体样式 */
+._font_1{
+  font-size: 28rpx;
+  font-family: SourceHanSansCN;
+  line-height: 26rpx;
+  color: #000000;
+}
+
+

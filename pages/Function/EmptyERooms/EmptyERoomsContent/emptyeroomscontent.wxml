@@ -1,0 +1,42 @@
+<view style=" display: flex;flex-direction: column; align-items: center;justify-content: center;height: 100%;padding: 5%;">
+<view style=" display: flex;align-items: center;justify-content: center;width: 94%;height:130px;padding: 20rpx;background-image: linear-gradient(135deg, #f6d365 0%, #fda085 100%);border: 2rpx solid #f6d365;border-radius: 15px;box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.1);">
+
+  <view style=" font-size: 78rpx;font-weight: bold;color: #ffffff;text-shadow: 1rpx 1rpx 2rpx rgba(0, 0, 0, 0.3);letter-spacing: 2rpx;text-align: center;">小科空教室</view>
+
+</view>
+
+</view>
+
+<view class="selection" catch:tap="hide_selection">
+  <!-- 条件筛选 -->
+  <view class="filter_part">
+    <!-- 校区 -->
+    <view class="list1">
+      <view class="font1">校区:</view>
+      <Select  datalist="{{Range_List.campus_list}}" is_show="{{select_status.status1}}" range_index="{{Index_List.campus_index}}" bind:click_to_confirm="change_index" data-id="1" bind:click_to_transfer="change_status"></Select>
+    </view>
+    <!-- 教学楼 -->
+    <view class="list1">
+      <view class="font1">教学楼:</view>
+      <Select  datalist="{{current_buildinglist}}" is_show="{{select_status.status2}}" range_index="{{Index_List.building_index}}" bind:click_to_confirm="change_index" data-id="2" bind:click_to_transfer="change_status"></Select>
+    </view>
+    <!-- 节次 -->
+    <view class="list1">
+      <view class="font1">开始节次:</view>
+      <Select  datalist="{{Range_List.selection_list}}" is_show="{{select_status.status3}}" range_index="{{Index_List.selection_index[0]}}" bind:click_to_confirm="change_index" data-id="3" bind:click_to_transfer="change_status"></Select>
+    </view>
+    <view class="list1">
+      <view class="font1">结束节次:</view>
+      <Select  datalist="{{Range_List.selection_list}}" is_show="{{select_status.status4}}" range_index="{{Index_List.selection_index[1]}}" bind:click_to_confirm="change_index" data-id="4" bind:click_to_transfer="change_status"></Select>
+    </view>
+  </view>
+  <!-- 空教室显示 -->
+  <view class="empty_room" wx:if="{{empty_room.length>0}}">
+    <view class="list2">
+      <view wx:for="{{empty_room}}" wx:key="index" class="list-item">
+      {{item}}
+    </view>
+    </view>
+  </view>
+  <view wx:if="{{empty_room.length==0}}" class="no_emptyroom">暂无空教室~</view>
+</view>

@@ -1,0 +1,248 @@
+/* 部门导航栏整体样式 */
+/* 页面整体风格 */
+.page{
+  background-color: white;
+}
+/* 01 初始页面 */
+   /* 01_1 导航栏整体风格 */
+  .initial_page ._navigator_style{
+    width: 100vw;
+    height: 5vh;
+    /* border: 1rpx solid black; */
+    top: 5vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* 01_2 部门模块的风格 */
+  .initial_page .class_part_style{
+    width: 76vw;
+    height: 5vh;
+    position: relative;
+    left: 7vw;
+    top: 7vh;
+    /* border: 1rpx solid black; */
+    margin-top: 2vh;
+    padding: 40rpx 34rpx 160rpx;
+    background-color: #ffffff;
+    border-radius: 15rpx;
+    box-shadow: 0px 4rpx 8rpx #00000040;
+    display: flex;
+  }
+  
+  /* 01_3 部门课表的图标 */
+  .initial_page ._navigator_style ._class_image {
+    width: 9vw;
+    height: 5vh;
+    position: relative;
+    left: 3vw;
+    /* width: 82rpx;
+    height: 80rpx; */
+  }
+
+   /* 01_4 导航栏中“部门课表”字体的样式 */
+  .initial_page ._navigator_style ._class_text{
+    color: #232426;
+    font-size: 3vh;
+    font-family: PangMenZhengDao;
+    line-height: 3vh;
+    position: relative;
+    left: 6vw;
+  }
+  
+  /* 01_5 部门模块内左侧标记风格 */
+  .initial_page .class_part_style .section_2 {
+    background-color: #ffcf41;
+    border-radius: 3vh;
+    width: 1.5vw;
+    height: 4vh;
+    /* border: 1rpx solid black; */
+
+  }
+ 
+  /* 01_6 部门模块内“暂未加入”或部门名的样式 */
+  .initial_page .class_part_style ._font_1 {
+    /* border: 1rpx solid black; */
+    font-size: 3vh;
+    font-family: SourceHanSansCN;
+    line-height: 3vh;
+    font-weight: 700;
+    height: 4vh;
+    color: #232426;
+    width: 60vw;
+    margin-left: 1vw;
+    display: flex;
+    align-items: center;
+
+  }
+  
+  /* 01_7 新建/加入部门模块的整体风格 */
+  .initial_page .class_part_style ._selection_style{
+    width: 50%;
+    height: 20%;
+    margin-left: 40%;
+    /* border: 1rpx solid black; */
+    position: absolute;
+    bottom: 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  /* 01_8 块内间隔 */
+  .initial_page .class_part_style ._selection_style view:nth-of-type(1){
+    flex-grow: 1;
+  }
+  .initial_page .class_part_style ._selection_style view:nth-of-type(2){
+    flex-grow: 1;
+  }
+
+  /* 01_9 “新建部门”和“加入部门”字样格式 */
+  .initial_page .class_part_style ._selection_style ._font2{
+    font-size: 28rpx;
+    font-family: SourceHanSansCN;
+    line-height: 26rpx;
+    color: #232426;
+
+  }
+  /* 邀请码字样 */
+  .initial_page .class_part_style ._selection_style ._font_3{
+    /* border: 1rpx solid red; */
+    width: 60%;
+    height: 100%;
+    left: 0%;
+    color: #848484;
+    font-size: 4vw;
+    display: flex;
+    align-items: center;
+  }
+  /* 退出部门字样 */
+  .initial_page .class_part_style ._selection_style ._font_4{
+    /* border: 1rpx solid red; */
+    display: flex;
+    margin-left: 16%;
+    width: 40%;
+    height: 100%;
+    align-items: center;
+  }
+
+
+/* 02 新建部门页面的样式 */
+  /* 02_1 弹窗整体格式 */
+  ._notification_style{
+    width: 60vw;
+    height: 21vh;
+    position: absolute;
+    left: 10vw;
+    display: inline;
+    justify-content: center;
+    padding: 7vh 10vw 0;
+    background-color: #ffffff;
+    border-radius: 24rpx;
+    box-shadow: 0px 4rpx 8rpx #0000001a;
+  }
+  /* 输入框外部view格式 */
+  ._input_style{
+    /* border: 1rpx solid black; */
+    position: relative;
+    width: 90%;
+    height: 2vh;
+    left: 5%;
+    padding: 40rpx 0 32rpx;
+    background-color: #e5e5e5;
+    border-radius: 10rpx;
+    display: flex;
+    align-items: center;
+  }
+  /* 输入框的内部格式 */
+  .text_2 {
+    color: #808080;
+    font-size: 32rpx;
+    font-family: SourceHanSansCN;
+    line-height: 30rpx;
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  /* 遮掩层 */
+  .section_3 {
+    padding: 436rpx 0 660rpx;
+    background-color: #a6a6a61a;
+    backdrop-filter: blur(6rpx);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  /* 底部确定及标记的部分 */
+  .buttom_button_style{
+    position: absolute;
+    bottom: 8%;
+    width: 20%;
+    left: 40%;
+    height: 2%;
+    /* border: 1rpx solid black; */
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6vh 0;
+  }
+  /* 底部确定 */
+  .buttom_button_text_style{
+    font-size: 3vh;
+    font-family: SourceHanSansCN;
+    line-height: 45rpx;
+    font-weight: 700;
+    color: #232426;
+    font-weight: unset;
+    /* border: 1rpx solid black; */
+  }
+  /* 底部标记 */
+  .buttom_button_signal_style{
+    background-color: #ffcf41;
+    border-radius: 10rpx;
+    position: relative;
+    width: 70%;
+    left: 15%;
+    height: 0.6vh;
+    margin-top: 8%;
+    /* border: 1rpx solid black; */
+  }
+
+/* 03 退出部门弹窗 */
+._quit_name{
+  position: absolute;
+  /* border: 1rpx solid red; */
+  height: 15vw;
+  width: 60vw;
+  top: 4vh;
+  display: flex;
+  justify-content: center;
+}
+.justufy_font{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5.3vw;
+}
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

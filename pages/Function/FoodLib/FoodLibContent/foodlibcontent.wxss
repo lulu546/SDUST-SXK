@@ -1,0 +1,84 @@
+/* pages/test/test.wxss */
+page{
+	background-color: #fffef9;
+  }
+  
+  scroll-view ::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+	color: transparent;
+	display: none;
+  }
+  .instance-Right{
+	right: 15vw;
+	transition: all 1s;
+  }
+  .instance-Right-after{
+	right: 7vw;
+	transition: all 1s;
+  }
+  .notification{
+	height: 0vh;
+	width: 90vw;
+	margin-bottom: 0vh;
+	border-radius: 10px;
+	margin-left: 5vw; 
+	position: relative;
+	background-color: white; 
+	transition-property:height,margin-bottom,margin-top,border,box-shadow;
+	transition: 1s;
+  }
+  .notification-after{
+	height: 20vh;
+	width: 90vw;
+	margin-left: 5vw; 
+	position: relative;
+	background-color: white; 
+	border: 1rpx solid rgba(219, 219, 219, 0.75);
+	box-shadow: -1.4px 1px 0.5px rgba(243, 243, 243, 0.75), 1.5px 0.5px 0.5px rgba(243, 243, 243, 0.75), 0px -0.4px 0.5px rgba(243, 243, 243, 0.75), 1.5px 1px 0.5px rgba(243, 243, 243, 0.75);
+	margin-bottom: 3vh;
+	margin-top: 2vh;
+	border-radius: 10px;
+	transition-property:height,margin-bottom,margin-top;
+	transition:1s;
+  }
+  .scrollarea{
+	height: 70vh;
+	transition: all 1s;
+  }
+  .scrollarea-after{
+	height: 48vh;
+	transition: all 1s;
+  }
+  .imgShow{
+	right: -22vh;
+	top: -22vh;
+	height: 20vh;
+	width: 20vh;
+	transition: all 1s;
+  }
+  .imgShow-after{
+	right: 0vh;
+	top: 0vh;
+	height: 20vh;
+	width: 20vh;
+	transition: all 1s;
+  }
+  .textShow{
+	position: absolute;
+	height: 6vh;
+	font-size: 5vw;
+	left: -20vh;
+	top: -20vh;
+	transition-property:left;
+	transition: 1s;
+  }
+  .textShow-after{
+	position: absolute;
+	height: 6vh;
+	font-size: 5vw;
+	left: 6vw;
+	top: 7vh;
+	transition-property:left,top;
+	transition: 1s;
+  }

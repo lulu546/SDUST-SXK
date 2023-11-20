@@ -1,0 +1,102 @@
+
+
+.picker-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+
+
+.room-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  }
+.flower-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' width='50' height='50'%3E%3Cpath d='M25 2.5s1.545 10.224 1.545 10.224S37.5 17.5 37.5 25s-10.224 1.545-10.224 1.545S22.5 37.5 15 37.5s-1.545-10.224-1.545-10.224S2.5 17.5 2.5 10s10.224-1.545 10.224-1.545S17.5 2.5 25 2.5z' fill='%23FFF' fill-opacity='.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+}
+.room-item {
+display: flex;
+justify-content: space-between;
+padding: 20rpx;
+background-color: #ffffff;
+border-radius: 10rpx;
+box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+.room-name {
+font-size: 32rpx;
+color: #333;
+}
+.room-seats {
+font-size: 28rpx;
+color: #666;
+}
+
+.selection{
+  width: 90vw;
+  margin-left: 5vw;
+  height: 70vh;
+  /* border: 1rpx solid red; */
+}
+.selection .filter_part{
+  width: 80vw;
+  height: 20vh;
+  margin-left: 5vw;
+  /* border: 1rpx solid red; */
+}
+.selection .filter_part .list1{
+  height: 5vh;
+  width: 90vw;
+  /* border: 1rpx solid red; */
+  display: flex;
+  align-items: center;
+}
+.selection .filter_part .list1 .font1{
+  width: 30%;
+}
+.selection .empty_room{
+  height: 46vh;
+  width: 86vw;
+  margin-top: 2vh;
+  /* border: 1rpx solid yellow; */
+  overflow: scroll;
+  padding: 1vh 1vh 2vw 2vw;
+  background-color: white;
+}
+.selection .empty_room .list2{
+  display: flex;
+  flex-wrap: wrap;
+}
+.selection .empty_room .list2 .list-item{
+  height: 6vh;
+  width: 17.5vw;
+  font-size: 3.2vw;
+  margin-left: 1.6vw;
+  margin-right: 1.6vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid rgb(177, 175, 175);
+}
+.selection .no_emptyroom{
+  height: 46vh;
+  width: 90vw;
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 13vh; */
+  font-size: 5vw;
+  color: rgb(172, 166, 166);
+  background-color: white;
+  /* border: 1rpx solid red; */
+}

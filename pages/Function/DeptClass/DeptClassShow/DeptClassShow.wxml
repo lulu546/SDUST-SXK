@@ -1,0 +1,160 @@
+<!--pages/Function/DeptClass/DeptClassShow/DeptClassShow.wxml-->
+
+<!-- 01 部门课表查看页面 -->
+<view class="flex-col _page" style="background-color: #faf9ff;"  >
+  <!-- "部门名称"字样 -->
+  <view class="flex-col justify-start self-start _text-wrapper" style="width: {{(department_name.length*7<21)?21:department_name.length*6.3}}vw;">
+    <view>{{department_name}}</view> 
+  </view>
+  <!-- 显示无课还是有课 -->
+  <view class="flex-col justify-start self-start _text-wrapper class_status">
+    <view style="margin-right: 1.5vw;color: #858383;" wx:if="{{show_have_or_not_class==1}}">（有课）</view>
+    <view style="margin-right: 1.5vw;color: #858383;" wx:if="{{show_have_or_not_class==0}}">（无课）</view>
+    <switch checked="{{show_have_or_not_class}}" bindchange="change_checked_status"/>
+  </view>
+  <!-- 除了部门名称和解散部门的其他部分 -->
+  <view class="other_part">
+    <!-- 第几周，及切换和刷新符号 -->
+    <view class="flex-row justify-between items-center group_1">
+      <view class="_font_style">第{{week_num}}周</view>
+      <view class="flex-row items-center all_img_style">
+        <!-- 图标1(刷新) -->
+        <view class="flex-col justify-start items-center image-wrapper" bindtap="update_class" style="align-items: baseline;">
+          <image style="width: 5.5vw;height: 5.5vw;margin-top: 0.6vh;"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/649d139bbba52700111875ba/16880171334077767010.png"
+          />
+        </view>
+        <!-- 图标2（上一周） -->
+        <view class="flex-col justify-start items-center image-wrapper" bindtap="get_weekupdate" data-id="1">
+          <image style="width: 3.4vw;height: 4.5vw;"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/649d139bbba52700111875ba/16880171337266320277.png"
+          />
+        </view>
+        <!-- 图标3（下一周） -->
+        <view class="flex-col justify-start items-center image-wrapper" bindtap="get_weekupdate" data-id="2" style="align-items: baseline;">
+          <image style="width: 6.9vw;height: 6.7vw;margin-top: 1.1vh;"
+            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/649d139bbba52700111875ba/16894947132169211284.png"
+          />
+        </view>
+      </view>
+    </view>
+
+    <!-- 星期及日期 -->
+    <view class="week_time">
+      <view wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="index" class="week_time_list">
+        <!-- 哪一天 -->
+        <view class="total_font_style">{{week_flag[item]}}</view>
+        <!-- 日期 -->
+        <view class="total_font_style">{{((current_week_time[item][1]<=9)?('0'+current_week_time[item][1]):current_week_time[item][1])+'/'+((current_week_time[item][2]<=9)?('0'+current_week_time[item][2]):current_week_time[item][2])}}</view>
+      </view>
+    </view>
+    <!-- 横线 -->
+    <!-- 如果当前日期等于当天则为黄色 -->
+    <view class="_underline">
+      <view wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="index" class="_underline_list">
+          <view style="width: 10vw;background-color: yellow;height: 10rpx;" wx:if="{{current_week_time[item][1]==nowtime[1]&&current_week_time[item][2]==nowtime[2]&&current_week_time[item][0]==nowtime[0]}}"></view>
+          <view style="width: 10vw;background-color: white;height: 10rpx;" wx:if="{{current_week_time[item][1]!=nowtime[1]||current_week_time[item][2]!=nowtime[2]||current_week_time[item][0]!=nowtime[0]}}"></view>
+      </view>
+    </view>
+    
+    <!-- 整体课表 -->
+
+    <view class="class_total">
+      <!-- 每一列 每天的-->
+      <view wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="index" wx:for-index="whichday" class="class_total_item">
+        <!-- 每节课 -->
+        <view wx:for="{{[0,1,2,3,4]}}" wx:for-index="whichclass" wx:key="index" class="class_part" data-personlist="{{current_datalist02[whichday][whichclass]}}" bindtap="check_classperson_detail" style="margin-top: {{(index==2||index==4)?2:1}}vh;">
+        <!-- 显示几人有课时 -->
+          <view wx:if="{{current_datalist02[whichday][whichclass].length>0&&show_have_or_not_class==1}}" style="width: 60%;font-size: 3.5vw;">
+            {{current_datalist02[whichday][whichclass].length}}人有课
+          </view>
+        <!-- 显示几人没课 -->
+          <view wx:if="{{current_datalist02[whichday][whichclass].length>0&&show_have_or_not_class==0&&current_datalist02[whichday][whichclass].length<department_members.length}}" style="width: 60%;font-size: 3.5vw;">
+            {{current_datalist02[whichday][whichclass].length}}人无课
+          </view>
+          <view wx:if="{{current_datalist02[whichday][whichclass].length>0&&show_have_or_not_class==0&&current_datalist02[whichday][whichclass].length==department_members.length}}" style="width: 60%;font-size: 3.5vw;">全员无课
+          </view>
+          <view wx:if="{{current_datalist02[whichday][whichclass].length==0}}" style="width: 60%;font-size: 3.5vw;">
+          </view>
+        </view>
+        
+      </view>
+    </view>
+    <!-- 解散部门、踢出成员 -->
+    <view class="disslove_and_kickout">
+      <!-- 解散部门 -->
+      <view class="style1" bindtap="dissolve_department">
+        <!-- "解散部门"字样 -->
+        <view class="dissolve_department_text">解散部门</view>
+        <!-- 下方黄色标记 -->
+        <view class="underline_style"></view>
+      </view>
+      <!-- 踢出成员 -->
+      <view class="style1" style="right: 4vw;" bindtap="kick_out_department">
+        <!-- "踢出成员"字样 -->
+        <view class="dissolve_department_text">移出成员</view>
+        <!-- 下方黄色标记 -->
+        <view class="underline_style"></view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<!-- 02 点击具体课程节次查看有课人数 -->
+<view class="flex-col justify-start items-center section_3 check_class" wx:if="{{is_check_noclassperson==true}}" catchtap="close_create_shade" data-whichpart="2">
+  <!-- 中间弹窗 -->
+  <view catchtap="show_create_shade" class="notification">
+    <!-- “无课成员列表”字样 -->
+    <view wx:if="{{show_have_or_not_class==1}}" class="item-list">有课成员</view>
+    <view wx:if="{{show_have_or_not_class==0}}" class="item-list">无课成员</view>
+    <!-- 具体成员名称和学号 -->
+    <scroll-view class="scroll_style">
+      <view wx:for="{{current_class_datalist}}" wx:key="index" style="width: 80%;height: 4vh;margin-top: {{index==0?4:0.5}}vh;margin-left: 10%;">
+      {{item[1]+" "+item[0]}}
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<!-- 03 点击“解散部门”，弹出是否确认删除 -->
+<department-page which_page="4" which_status="{{is_going_to_dissolve}}" bind:click_to_close="close_create_shade" bind:click_to_confirm="confirm_dissolve_department"></department-page>
+
+<!-- 07 点击“踢出成员”，进行成员移除 -->
+<view class="section_3 kick_out_style" wx:if="{{is_going_to_kickout==true}}" catchtap="close_create_shade" data-whichpart="3">
+  <!-- 中间弹窗 -->
+  <view catchtap="show_create_shade" class="_notification">
+    <!-- “无课成员列表”字样 -->
+    <view  class="texttip">请选择成员:</view>
+    <!-- 下划线 -->
+    <view class="divide_line"></view>
+    <!-- 具体成员名称和学号 -->
+    <scroll-view scroll-y>
+      <view wx:for="{{department_members}}" wx:key="index"class="_person">
+        <!-- 如果没有被选中且不是自己 -->
+        <image src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" wx:if="{{is_selected_department_members[index]==0&&department_members[index].Snumber!=useraccount}}" class="_img" mode="aspectFit" bindtap="change_select_status" data-index="{{index}}"></image>
+        <!-- 如果选中且不是自己 -->
+        <image src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" wx:if="{{is_selected_department_members[index]==1&&department_members[index].Snumber!=useraccount}}" class="_img" mode="aspectFit" bindtap="change_select_status" data-index="{{index}}"></image>
+        <!-- 如果是你本人 -->
+        <image src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" wx:if="{{department_members[index].Snumber==useraccount}}" class="_img" mode="aspectFit" style="opacity: 0.3;"></image>
+        <view class="_members">{{item.Name+' '+item.Snumber}}</view>
+        <view class="divide_line"></view>
+      </view>
+    </scroll-view>
+    <!-- 分割线 -->
+    <view class="divide_line"></view>
+    <!-- 确定与取消 -->
+    <view class="selection"> 
+      <!-- 确定 -->
+       <view class="text_and_line" catchtap="confirm_kickout_members">
+        <view style="width: 100%;height: 20%;font-size: 6vw;">确定</view>
+        <view class="line"></view>
+      </view>
+      <!-- 取消 -->
+      <view class="text_and_line" catchtap="cancel_kickout_members">
+        <view style="width: 100%;height: 20%;font-size: 6vw;">取消</view>
+        <view class="line"></view>
+      </view>
+    </view>
+  </view>
+</view>

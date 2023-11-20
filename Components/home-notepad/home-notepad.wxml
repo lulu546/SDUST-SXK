@@ -1,0 +1,18 @@
+<!--Components/home-notepad/home-notpad.wxml-->
+<view wx:for="{{datalist}}" wx:key="index" wx:if="{{(index<len)}}" class="list">
+  <view class="flex-row items-center list-item_2 space-x-14" style="border-radius: 5rpx;background-color: {{whichone==3 ? 'rgba(255, 0, 0, 0.075)' : 'white'}};">
+    <!-- 选择框 -->
+    <image
+      class="image_10"
+      src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" catchtap="transfer_to_finished" data-id="{{whichone}}" data-num="{{index}}"
+    />
+    <!-- 文字加日期 -->
+    <view class="flex-col items-start flex-auto space-y-8" style="display: inline;height: 50rpx;width: 80%;">
+      <!-- 标题 -->
+      <view class="font_2 text_2" style="height: 40%;width: 110%;">{{(item[1].length<12)?item[1]:(item[1][0]+item[1][1]+item[1][2]+item[1][3]+item[1][4]+item[1][5]+item[1][6]+item[1][7]+item[1][8]+item[1][9]+item[1][10]+"...")}}</view>
+      <!-- 日期 -->
+      <view class="font_3" style="height: 20%;width: 100%;margin-top: 5%;" wx:if="{{whichone==1||whichone==3}}">{{whichone==1?'截止至 ':'于 '}} {{item[0][0]}}.{{(item[0][1]>9)?item[0][1]:('0'+item[0][1])}}.{{(item[0][2]>9)?item[0][2]:('0'+item[0][2])}} {{item[0][3]}}:{{(item[0][4]>9)?item[0][4]:('0'+item[0][4])}}{{whichone==3?' 已过期':''}}</view>
+      <view class="font_3" style="height: 20%;width: 100%;margin-top: 5%;" wx:if="{{whichone==2}}">未设置时间</view>
+    </view>
+  </view>
+</view>
