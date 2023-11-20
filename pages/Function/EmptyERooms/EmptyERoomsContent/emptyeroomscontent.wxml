@@ -35,8 +35,8 @@
     <view class="list2">
       <view wx:for="{{empty_room}}" wx:key="index" class="list-item">
       {{item}}
-    </view>
+      </view>
     </view>
   </view>
-  <view wx:if="{{empty_room.length==0}}" class="no_emptyroom">暂无空教室~</view>
+  <view wx:if="{{empty_room.length==0}}" class="no_emptyroom" >暂无空教室~</view>
 </view>

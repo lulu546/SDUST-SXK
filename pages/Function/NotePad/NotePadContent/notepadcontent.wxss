@@ -89,7 +89,6 @@
   display: inline;
   height: 8vh;
   width: 80%;
-  /* border: 1rpx solid black; */
 }
 .init_page .other_part .list .delete_item .img_style{
   height: 100%;
@@ -120,7 +119,6 @@
 }
 /* 整体弹窗格式 */
 .init_page .bottom_notification ._total_style{
-  /* border: 1rpx solid black; */
   height:100rpx;
   width: 80%;
   /* position: absolute; */
@@ -186,14 +184,26 @@
 
 /* 02 添加记事本的页面 */
 .add{
-  border: 1rpx solid black;
-  justify-content: center;
+  /* border: 1rpx solid white; */
   position: absolute;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  z-index: 2;
+  top: 0vh;
+  left: 0vw;
 }
 .add .total_view{
-  /* border: 1rpx solid black; */
+  position: absolute;
+  border: 1rpx solid white;
+  box-shadow: 3rpx 3rpx 3rpx 3rpx rgb(211, 211, 211);
   margin:auto;
-  height: 550rpx;
+  z-index: 4;
+  height: 42vh;
+  width: 70vw;
+  top: 20vh;
+  left: 11vw;
+  background-color: white;
 }
 .add .total_view .except_confirm .font_3 {
   font-size: 4.5vw;
@@ -217,9 +227,9 @@
 .add .total_view .except_confirm .select_time ._Picker .font_4 ._time{
   margin-left: 3vw;
   color: #8a8a8a;
-  font-size: 32rpx;
+  font-size: 2vh;
   font-family: SourceHanSansCN;
-  line-height: 28rpx;
+  line-height: 2vh;
 }
 
 .add .total_view .except_confirm .event_content{
@@ -264,11 +274,6 @@
   color: #000000;
 }
 
-.section_3 {
-  padding: 350rpx 0 554rpx;
-  background-color: #a6a6a61a;
-  backdrop-filter: blur(4rpx);
-}
 .pos {
   position: absolute;
   left: 0;
@@ -352,23 +357,21 @@
 /* 04 删除时弹出框 */
 /* 删除时底部弹出框图标样式 */
 .image_9 {
-  width: 48rpx;
-  height: 48rpx;
+  width: 3vh;
+  height: 3vh;
 }
 /* 删除时底部弹出框图标加文字的整体部分 */
 ._style1{
-  width: 20%;
-  margin-left: 6%;
-  margin-right: 6%;
-  height: 80%;
+  width: 16vw;
+  height: 6vh;
   align-items: center;
   display: inline;
   text-align: center;
-  /* border: 1rpx solid black; */
 }
 /* 字体样式 */
 ._font_1{
-  font-size: 28rpx;
+  font-size: 2vh;
+  margin-top: 0.3vh;
   font-family: SourceHanSansCN;
   line-height: 26rpx;
   color: #000000;

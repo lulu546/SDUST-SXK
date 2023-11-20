@@ -2,6 +2,5 @@
   "usingComponents": {
     "myTab":"../../../../Components/tab/tab"
   },
-  "navigationBarBackgroundColor": "#fffef9",
-  "navigationBarTitleText": "食物列表"
+  "navigationBarTitleText": "小科食物库"
 }

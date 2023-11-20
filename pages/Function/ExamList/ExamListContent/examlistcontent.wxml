@@ -1,5 +1,5 @@
 <view class="flex-col page">
-  <view class="flex-col justify-start flex-auto group_4" style="width: 750rpx; height: 100vh; display: flex; box-sizing: border-box">
+  <view class="flex-col justify-start flex-auto group_4" style="width: 750rpx; height: 100vh; display: flex; box-sizing: border-box;">
     <view class="flex-col section_2" style=" display: flex; box-sizing: border-box">
       <view class="flex-row justify-between items-center group_5">
         <view class="flex-row items-center space-x-6">

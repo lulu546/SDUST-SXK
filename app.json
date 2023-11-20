@@ -31,7 +31,6 @@
     "pages/Function/Schedule/ScheduleContent/schedulecontent",
     "pages/Function/DepartmentWork/DepartmentWorkContent/departmentworkcontent",
     "pages/Function/DepartmentWork/SaturdayMovie/SaturdayMovieContent/saturdaymoviecontent",
-    "pages/Function/DepartmentWork/ScienceBase/ScienceBaseContent/sciencebasecontent",
     "pages/Function/DepartmentWork/TimeMail/TimeMailContent/timemailcontent",
     "pages/Function/NotePad/NotePadContent/notepadcontent",
     "pages/Function/GradeFind/GradeFindContent/gradefindcontent",
@@ -50,7 +49,8 @@
     "pages/Function/DeptClass/DeptClassContent/DeptClassContent",
     "pages/Function/DeptClass/DeptClassShow/DeptClassShow",
     "pages/Function/DepartmentWork/SKYC/SKYCContent/SKYCContent",
-    "pages/Function/FoodLib/FoodLibContent/foodlibcontent"
+    "pages/Function/FoodLib/FoodLibContent/foodlibcontent",
+    "pages/User/UserAbout/useabout"
   ],
   "window": {
     "backgroundTextStyle": "light",

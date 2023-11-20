@@ -1,7 +1,7 @@
 <!--pages/Function/DeptClass/DeptClassShow/DeptClassShow.wxml-->
 
 <!-- 01 部门课表查看页面 -->
-<view class="flex-col _page" style="background-color: #faf9ff;"  >
+<view class="flex-col _page" style="background-color: #faf9ff;" >
   <!-- "部门名称"字样 -->
   <view class="flex-col justify-start self-start _text-wrapper" style="width: {{(department_name.length*7<21)?21:department_name.length*6.3}}vw;">
     <view>{{department_name}}</view> 

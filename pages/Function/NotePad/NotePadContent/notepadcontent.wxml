@@ -43,8 +43,8 @@
 
   </view>
   <!-- 01_13 删除时的底部弹窗 -->
-  <view wx:if="{{is_to_delete==1&&page_num==0}}" class="bottom_notification" >
-    <view  class="_total_style">
+  <view wx:if="{{is_to_delete==1&&page_num==0}}" class="bottom_notification" style="height: 16vh;">
+    <view  class="_total_style" style="display: flex;justify-content: space-around;height: 8vh;">
       <view class="_style1 " style="align-items: center;display: inline;" bindtap="cancel_to_delete">
         <image
           class="image_9"
@@ -52,14 +52,14 @@
         />
         <view class="_font_1" style="width: 100%;margin-left: 0.7vw;">取消</view>
       </view>
-      <view class="_style1" catchtap="confirm_delete" style="align-items: center;display: inline;">
+      <view class="_style1" bindtap="confirm_delete" style="align-items: center;display: inline;">
           <image
             class="image_9"
             src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928552622892.png" 
           />
         <view class="_font_1" style="margin-left: 1.5vw;">删除</view>
       </view>
-      <view class="_style1" catchtap="all_select_to_delete">
+      <view class="_style1" bindtap="all_select_to_delete">
         <image
           class="image_9"
           src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/7db8083a4cbcef9309da4121e8acdcf0.png" 
@@ -72,18 +72,18 @@
 </view>
 
 <!-- 02 添加页面 -->
-<view class="flex-col justify-start items-center section_3 pos add"   wx:if="{{is_have_shade==1}}" catchtap="close_shade">
+<view class="add" wx:if="{{is_have_shade==1}}" catchtap="close_shade">
   <view class="flex-col section_5 space-y-38 total_view" catchtap="show_shade">
     <!-- 除了“确认”外的其他部分 -->
     <view class="flex-col except_confirm">
       <!-- “时间选择”文字部分 -->
-      <view class="self-start font_3" >时间选择:</view>
+      <view class="self-start font_3" style="font-size: 2.5vh;height: 2.5vh;" >时间选择:</view>
       <!-- 时间选择部分，点击可更换时间 -->
-      <view class="flex-col justify-start items-center self-start text-wrapper select_time">
+      <view class="flex-col justify-start items-center self-start text-wrapper select_time" style="height: 3vh;">
         <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" class="_Picker">
           <!-- 01 没有选择过的 -->
           <view wx:if="{{is_have_select_time==0}}" class="font4">
-            <view class="_time" style="margin-left: 2.5vw;">请选择时间（可选）</view>
+            <view class="_time" style="margin-left: 2.5vw;color: rgb(95, 95, 95);">请选择时间（可选）</view>
           </view>
           <!-- 02 选择过的 -->
           <view class="picker" wx:if="{{is_have_select_time==1}}">
@@ -95,14 +95,15 @@
         </picker> 
       </view>
       <!-- “事项内容”文字部分 -->
-      <view class="self-start font_3 text_4" style="margin-top: 6%;">事项内容:</view>
+      <view class="self-start font_3 text_4" style="margin-top: 3vh;font-size: 2.5vh;height: 2.5vh;">事项简述:</view>
       <!-- 事件主题内容 -->
-      <view class="flex-col items-center section_6 space-y-4 event_content">
-        <textarea type="text" placeholder="请输入内容" value="{{event_content}}" catchinput="getevent_content" maxlength="{{25}}" class="_textarea"></textarea>
-        <view class="_num">{{area_num}}/25</view>
+      <view class="flex-col items-center section_6 space-y-4 event_content" style="height: 14vh;position: relative;">
+        <textarea type="text" placeholder="请输入内容" value="{{event_content}}" catchinput="getevent_content" maxlength="{{25}}" class="_textarea" style="height: 12vh;font-size: 2.2vh;"></textarea>
+        <view class="_num" style="height: 3vh;right: 2vw;">{{area_num}}/25</view>
       </view>
     </view>
-    <view class="self-end font_3 text_5 _confirm" bindtap="confirm_add_event">确认</view>
+    <view class="font_3 _confirm" style="height: 6vh;position: absolute;bottom: 0vh;left: 0vw;display: flex;justify-content: center;align-items: center;" bindtap="confirm_add_event">确认</view>
   </view>
+  <view style="height: 100vh;width: 100vw;background-color: rgb(216, 215, 215);opacity: 0.4;position: absolute;z-index: 3;transition-property: background-color; transition: 0.5s;"></view>
 </view>
 

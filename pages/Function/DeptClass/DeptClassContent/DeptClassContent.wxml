@@ -1,15 +1,10 @@
 <!-- 01 初始界面 -->
-<view class="flex-col initial_page">
+<view class="flex-col initial_page" style="height: 95vh;display: flex;flex-direction: column;justify-content: center;gap: 1vh;">
   <!-- 图标+“部门课表”字样 -->
-  <view class="flex-row items-center _navigator_style">
-    <image 
-      class="_class_image"
-      src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/649d139bbba52700111875ba/16880171328197475800.png"
-    />
-    <view class="._class_text">部门课表</view>
-  </view>
+
   <!-- 部门模块的样式 -->
   <!-- 部门1 -->
+  
   <department-view department_name="{{department_name.name1}}" department_invitation="{{department_invitation.code1}}" department_id="A" bind:click_to_add="add_department" bind:click_to_quit="quit_department" bind:click_to_check="click_to_classpage"></department-view>
   <!-- 部门2 -->
   <department-view department_name="{{department_name.name2}}" department_invitation="{{department_invitation.code2}}" department_id="B" bind:click_to_add="add_department" bind:click_to_quit="quit_department" bind:click_to_check="click_to_classpage"></department-view>

@@ -9,21 +9,36 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/User/UserAbout/useabout",
+          "query": "",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "",
           "pathName": "pages/Function/FoodLib/FoodLibContent/foodlibcontent",
           "query": "",
           "launchMode": "default",
-          "scene": null
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         },
         {
           "name": "",
-          "pathName": "pages/Function/FoodLib/FoodWhatContent/foodwhatcontent",
+          "pathName": "pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/Function/DepartmentWork/SKYC/SKYCContent/SKYCContent",
+          "pathName": "pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent",
           "query": "",
           "launchMode": "default",
           "scene": null,
@@ -33,6 +48,13 @@
               "pages/Function/FunctionContent/functioncontent"
             ]
           }
+        },
+        {
+          "name": "",
+          "pathName": "pages/Function/FoodLib/FoodWhatContent/foodwhatcontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "",

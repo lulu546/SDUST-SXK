@@ -1,16 +1,16 @@
 <!--Components/notepad-content/notepad-content.wxml-->
 <!-- 01_3 未完成设置时间的部分初始的事项列表 -->
 <view wx:for="{{datalist}}" wx:key="index" wx:if="{{open_status==1&&delete_status==0}}" bindlongpress="delete_press" class="list">
-  <view class="flex-row items-center list-item_2 space-x-14 init_item">
+  <view class="list-item_2 space-x-14 init_item" style="height: 5vh;">
     <!-- 选择框 -->
-    <image
-      class="image_10"
-      src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" bindtap="transfer_to_finished" data-id="{{kind}}" data-num="{{index}}" wx:if="{{kind!=4}}"
-    />
-    <image
-      class="image_10"
-      src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" bindtap="transfer_to_finished" data-id="{{kind}}" data-num="{{index}}" wx:if="{{kind==4}}"
-    />
+    <view style="height: 8vh;width: 10vw;display: flex;justify-content: center;align-items: center;" bindtap="transfer_to_finished" data-id="{{kind}}" data-num="{{index}}" >
+      <image style="height: 3.4vh;width: 3.4vh;"
+      src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" wx:if="{{kind!=4}}"
+      />
+      <image style="height: 3.4vh;width: 3.4vh;"
+        src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" wx:if="{{kind==4}}"
+      />
+    </view>
     <!-- 文字加日期 -->
     <view class="flex-col items-start flex-auto space-y-8 text_and_date">
       <!-- 标题 -->
@@ -24,24 +24,22 @@
   </view>
 </view>
 <!-- 01_4 删除时未完成设置时间的部分的事项列表 -->
-<view wx:for="{{datalist}}" wx:key="index" wx:if="{{open_status==1&&delete_status==1}}" class="list">
-  <view class="delete_item">
+<view wx:for="{{datalist}}" wx:key="index" wx:if="{{open_status==1&&delete_status==1}}" class="list" style="height: 12vh;">
+  <view class="delete_item" style="height: 12vh;" >
     <!-- 选择框 id用于区分哪一个数据分类，num表示分类中的哪一个，status表示是勾选删除还是取消勾选删除，此处为勾选删除 -->
-    <view data-id="{{kind}}" data-num="{{index}}" wx:if="{{item[2]==0}}" catchtap="select_to_delete" data-status="0" class="img_style">
-      <image
-          class="image_10"
+    <view data-id="{{kind}}" data-num="{{index}}" wx:if="{{item[2]==0}}" catchtap="select_to_delete" data-status="0" class="img_style" style="height: 100%;">
+      <image style="height: 3.4vh;width: 3.4vh;"
           src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" 
       />
     </view>
       <!-- 选择框 id用于区分哪一个数据分类，num表示分类中的哪一个，status表示是勾选删除还是取消勾选删除，此处为取消勾选删除 -->
     <view data-id="{{kind}}" data-num="{{index}}" wx:if="{{item[2]==1}}" bindtap="select_to_delete" data-status="1" class="img_style">
-      <image
-          class="image_10"
+      <image style="height: 3.4vh;width: 3.4vh;"
           src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" 
       />
     </view>
     <!-- 正文内容 -->
-    <view class="flex-row items-center list-item_2 space-x-14" style="display: flex;align-items: center;height: 70rpx;width: 80%;margin-left: 2%;">
+    <view class="flex-row items-center list-item_2 space-x-14" style="display: flex;align-items: center;height: 5vh;width: 80%;margin-left: 2%;">
       <!-- 文字加日期 -->
       <view class="flex-col items-start flex-auto space-y-8" style="display: inline;height: 80rpx;width: 95%;" data-id="1" data-num="{{index}}">
         <!-- 标题 -->

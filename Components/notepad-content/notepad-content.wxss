@@ -2,7 +2,7 @@
 .list .init_item{
   display: flex;
   align-items: center;
-  height: 70rpx;
+  height: 4vh;
   margin-top: 2%;
   border-radius: 25rpx;
 }

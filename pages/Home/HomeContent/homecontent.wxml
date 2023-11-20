@@ -1,6 +1,7 @@
 <!-- <view class="curriculum" bindtap="turn_crouselist2" style="height:{{homeOutObj.height}};"> -->
   <wxs src='../../../utils/utils.wxs' module='tools'/>
-<!-- 课程名长度显示问题，第11周等长周数不适配问题，留出的字符空间至少+1 -->
+<scroll-view scroll-y style="height: 100vh;width: 100vw;">
+  <!-- 课程名长度显示问题，第11周等长周数不适配问题，留出的字符空间至少+1 -->
 <view class="homegraph">
 </view>
 
@@ -59,14 +60,14 @@
 </view> -->
 
 <view class="flex-col section_7 space-y-13 notpad" catchtap="navigator_to_notpad"
- style="border-radius: 17px;  border: 1px solid #E6E8EE;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);"
+ style="border-radius: 17px;  border: 1px solid #E6E8EE;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1); "
 >
-    <view style="display: flex;">
+    <view style="display: flex;height: 5vh;">
       <image
-        class="self-start image_7" mode="widthFix"
+        class="self-start image_7" style="height: 5vh;width: 5vh;"
         src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262936444418584.png" 
       />
-      <view class="_text">待办预提醒</view>
+      <view class="_text" style="height: 100%;">待办预提醒</view>
     </view>
     <view class="divider"></view>
     <view class="flex-row items-center section_8 space-x-18" wx:if="{{not_selected_time_event_datalist.length+selected_time_event_datalist.length+overtime_event_datalist.length==0}}" bindtap="navigator_to_notpad">
@@ -87,3 +88,5 @@
 
 
 
+
+</scroll-view>

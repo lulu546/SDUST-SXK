@@ -1,8 +1,6 @@
 /* 部门导航栏整体样式 */
 /* 页面整体风格 */
-.page{
-  background-color: white;
-}
+
 /* 01 初始页面 */
    /* 01_1 导航栏整体风格 */
   .initial_page ._navigator_style{

@@ -669,6 +669,7 @@ Page({
 //03 删除页面的函数设定
   //03_1 点击取消返回初始界面
   cancel_to_delete(){
+    console.log("触发了")
     this.setData({
       is_to_delete:0,
       is_all_selected:0,

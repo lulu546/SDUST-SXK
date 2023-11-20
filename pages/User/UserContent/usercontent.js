@@ -81,7 +81,12 @@ Page({
       })
 
     }
-       
+    if(e.target.dataset.turn=="about"){
+      wx.navigateTo({
+        url: '../UserAbout/useabout',
+      })
+
+    }
   
 
   },
