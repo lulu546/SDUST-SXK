@@ -177,7 +177,7 @@ App({
     let val = wx.getStorageSync(key)
     return val !== '' && val !== null & val !== undefined
    }
-   if(isset('isshareshowclass')){wx.setStorageSync('isshareshowclass',true);}
+
   
     
 
@@ -201,8 +201,6 @@ App({
     current_time: null, //时间信息
     week_time: 1, //第几周
     set_all_data: {
-      isshareshowclass: wx.getStorageSync('isshareshowclass')==undefined?true:wx.getStorageSync('isshareshowclass'), //是否显示分享
-      isshareshowgrade:wx.getStorageSync('isshareshowclass')==undefined?true:wx.getStorageSync('isshareshowclass'),
       islogin: wx.getStorageSync('islogin'), //是否登录
     }, 
     sharedata:{},

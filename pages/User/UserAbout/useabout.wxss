@@ -1,1 +1,11 @@
 /* pages/User/UserAbout/useabout.wxss */
+.fade-image {
+	width: 100%; /* 响应式设计 */
+	opacity: 1; /* 初始不透明 */
+	transition: opacity 3s ease; /* 设置透明度变化的过渡效果 */
+  }
+  
+  .fade-image.hide {
+	opacity: 0; /* 完全透明 */
+  }
+  

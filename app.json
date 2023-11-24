@@ -36,7 +36,6 @@
     "pages/Function/GradeFind/GradeFindContent/gradefindcontent",
     "pages/Function/FunctionContent/functioncontent",
     "pages/User/UserContent/usercontent",
-    "pages/User/UserSetContent/usersetcontent",
     "pages/Function/GradeFind/BindGrade/bindgrade",
     "pages/test",
     "pages/Function/ExamList/ExamListContent/examlistcontent",

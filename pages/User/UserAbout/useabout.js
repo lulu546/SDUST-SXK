@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    show_GigaBox:true
   },
 
   /**
@@ -81,14 +81,14 @@ Page({
         }
       })
     }
-    if(e.target.dataset.change=="2"){
+    else if(e.target.dataset.change=="2"){
       wx.setClipboardData({
         data: '862055705',
         success: function (res) {
           wx.getClipboardData({
             success: function (res) {
               wx.showToast({
-                title: 'ଇ害羞',
+                title: 'ଇ害羞羞~',
                 icon: 'success',
                 duration: 2000
               })
@@ -97,7 +97,7 @@ Page({
         }
       })
     }
-    if(e.target.dataset.change=="3"){
+    else if(e.target.dataset.change=="3"){
       wx.setClipboardData({
         data: 'https://github.com/lulu546',
         success: function (res) {
@@ -113,7 +113,7 @@ Page({
         }
       })
     }
-    if(e.target.dataset.change=="4"){
+    else if(e.target.dataset.change=="4"){
       wx.setClipboardData({
         data: 'https://space.bilibili.com/32090268?spm_id_from=333.337.0.0',
         success: function (res) {
@@ -129,14 +129,14 @@ Page({
         }
       })
     }
-    if(e.target.dataset.change=="5"){
+    else if(e.target.dataset.change=="5"){
       wx.setClipboardData({
         data: 'lyloveslife@qq.com',
         success: function (res) {
           wx.getClipboardData({
             success: function (res) {
               wx.showToast({
-                title: '写有价值的文章',
+                title: '寻找自我',
                 icon: 'success',
                 duration: 2000
               })
@@ -145,6 +145,24 @@ Page({
         }
       })
     }
+    else if(e.target.dataset.change=="6"){
+      wx.showToast({
+        title: '右滑有唠叨👉',
+        icon: 'success',
+        duration: 2000
+      })
+    }
+},
+gigabox(e) {
+  var that=this;
+  var GigaBox=!that.data.show_GigaBox;
+  console.log(that.data.show_GigaBox)
+  that.setData({
+  show_GigaBox:GigaBox
+ })
+ 
+
+
 }
   
 })

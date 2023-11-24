@@ -1,6 +1,6 @@
 <!-- 差动画 -->
 <view style="height: 100vh;width: 100vw; background-color:rgb(33,93,147) ;">
-	<view style=" overflow: hidden; display: flex;flex-direction: column; width: 86vw;height: 74vh;left: 7vw; top: 7vw;position: absolute;background-color: white;  border-radius: 17px;border: 1px solid rgb(33,93,147);box-shadow:inset 0px 10px 20px rgba(76, 93, 105, 0.1);">
+	<view style="box-shadow: rgba(33,93,147, 0.5) 0px 5px 10px 0px inset; overflow: hidden; display: flex;flex-direction: column; width: 86vw;height: 74vh;left: 7vw; top: 7vw;position: absolute;background-color: white;  border-radius: 17px;border:1px solid rgb(33,93,147); ">
 		<swiper style="height:74vh ;">
 			<swiper-item style="height:74vh ; width: 94%;">
 				<view style="width: 100%;   display: flex;justify-content: center; flex-direction: column; overflow-y: auto; ">
@@ -9,7 +9,7 @@
 							<view style="width: 30vw;height: 100%;position: absolute;left: 0px;font-size: 20px;margin-left: 3vw; display: flex;justify-content: start;align-items: center;">
 								反馈QQ群
 							</view>
-							<view data-change="1" bindtap="getinfo" style="color: rgb(33,93,147);width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
+							<view data-change="1" bindtap="getinfo" style="text-decoration:underline;color: rgb(33,93,147);width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
 								23122141
 							</view>
 						</view>
@@ -17,7 +17,7 @@
 							<view style="width: 30vw;height: 100%;position: absolute;left: 0px;font-size: 20px;margin-left: 3vw; display: flex;justify-content: start;align-items: center;">
 								联系Jrenc
 							</view>
-							<view data-change="2" bindtap="getinfo" style="color: rgb(33,93,147);width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
+							<view data-change="2" bindtap="getinfo" style="text-decoration:underline;color: rgb(33,93,147);width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
 								复制QQ号
 							</view>
 						</view>
@@ -25,7 +25,7 @@
 							<view style="width: 30vw;height: 100%;position: absolute;left: 0px;font-size: 20px;margin-left: 3vw; display: flex;justify-content: start;align-items: center;">
 								Github
 							</view>
-							<view data-change="3" bindtap="getinfo" style="color: rgb(33,93,147); width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
+							<view data-change="3" bindtap="getinfo" style="text-decoration:underline;color: rgb(33,93,147); width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
 								复制链接
 							</view>
 						</view>
@@ -33,7 +33,7 @@
 							<view style="width: 30vw;height: 100%;position: absolute;left: 0px;font-size: 20px;margin-left: 3vw; display: flex;justify-content: start;align-items: center;">
 								哔哩哔哩
 							</view>
-							<view data-change="4" bindtap="getinfo" style="color: rgb(33,93,147);width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
+							<view data-change="4" bindtap="getinfo" style="text-decoration:underline;color: rgb(33,93,147);width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
 								Jrenc
 							</view>
 						</view>
@@ -41,7 +41,7 @@
 							<view style="width: 30vw;height: 100%;position: absolute;left: 0px;font-size: 20px;margin-left: 3vw; display: flex;justify-content: start;align-items: center;">
 								微信公众号
 							</view>
-							<view data-change="5" bindtap="getinfo" style="color: rgb(33,93,147);width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
+							<view data-change="5" bindtap="getinfo" style="text-decoration:underline;color: rgb(33,93,147);width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
 								Jrenc
 							</view>
 						</view>
@@ -49,7 +49,7 @@
 							<view style="width: 30vw;height: 100%;position: absolute;left: 0px;font-size: 20px;margin-left: 3vw; display: flex;justify-content: start;align-items: center;">
 								(⑅˃◡˂⑅)
 							</view>
-							<view style="color: rgb(190, 190, 190);width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
+							<view data-change="6" bindtap="getinfo" style="color: rgb(33,93,147);width: 30vw;height: 100%;position: absolute;right: 0px;font-size: 20px;display: flex;justify-content: center;align-items: center;">
 								--->
 							</view>
 						</view>
@@ -69,5 +69,6 @@
 
 	</view>
 	<image src="http://127.0.0.1:8000/static/function/GigaBoxBack.png" mode="widthFix" style="position:absolute; bottom: 0px;left:0px;width: 100vw;"></image>
-	<image src="http://127.0.0.1:8000/static/function/GigaBox2.png" mode="widthFix" style="position:absolute; bottom: 2vh;left:40vw;width: 60vw;"></image>
+	<!-- 盒子 -->
+	<image class="fade-image" wx:if="{{show_GigaBox}}" bindtap="gigabox" src="http://127.0.0.1:8000/static/function/GigaBox2.png" mode="widthFix" style="position:absolute; bottom: 2vh;left:40vw;width: 60vw;"></image>
 </view>
