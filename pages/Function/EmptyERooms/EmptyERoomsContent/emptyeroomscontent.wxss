@@ -48,7 +48,8 @@ color: #666;
 .selection .filter_part{
   width: 80vw;
   height: 20vh;
-  margin-left: 5vw;
+  margin-left: 10vw;
+  margin-top: 5vw;
   /* border: 1rpx solid red; */
 }
 .selection .filter_part .list1{
@@ -62,13 +63,11 @@ color: #666;
   width: 30%;
 }
 .selection .empty_room{
-  height: 46vh;
+  height: 42vh;
   width: 86vw;
   margin-top: 2vh;
   overflow: scroll;
   padding: 1vh 1vh 2vw 2vw;
-  background-color: white;
-  box-shadow: 2rpx 2rpx 3rpx 2rpx rgb(187, 187, 187);
 }
 .selection .empty_room .list2{
   display: flex;
@@ -76,7 +75,7 @@ color: #666;
 }
 .selection .empty_room .list2 .list-item{
   height: 6vh;
-  width: 17.5vw;
+  width: 17.77vw;
   font-size: 3.2vw;
   margin-left: 1.6vw;
   margin-right: 1.6vw;
@@ -88,7 +87,10 @@ color: #666;
   /* border: 1rpx solid rgb(177, 175, 175); */
   border: 1rpx solid white;
   color: rgb(122, 120, 120);
-  box-shadow: 3rpx 3rpx 5rpx 5rpx rgb(177, 175, 175) ;
+  box-shadow: 0px 5px 10px rgba(76, 93, 105, 0.1);
+   border: 1px solid #E6E8EE;
+   border-radius: 5px;
+   text-align: center;
 }
 .selection .no_emptyroom{
   height: 46vh;
@@ -100,7 +102,5 @@ color: #666;
   /* margin-top: 13vh; */
   font-size: 5vw;
   color: rgb(172, 166, 166);
-  background-color: white;
-  box-shadow: 1rpx 1rpx 3rpx 3rpx rgb(219, 218, 218);
-  /* border: 1rpx solid red; */
+  
 }

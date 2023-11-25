@@ -1,11 +1,13 @@
-/* pages/User/UserAbout/useabout.wxss */
-.fade-image {
-	width: 100%; /* 响应式设计 */
-	opacity: 1; /* 初始不透明 */
-	transition: opacity 3s ease; /* 设置透明度变化的过渡效果 */
-  }
-  
-  .fade-image.hide {
-	opacity: 0; /* 完全透明 */
-  }
-  
+.fade-in {
+    animation: fade-in-animation 1s cubic-bezier(0, 0, 1, 1) 0s 1 normal both running;
+}
+
+@keyframes fade-in-animation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

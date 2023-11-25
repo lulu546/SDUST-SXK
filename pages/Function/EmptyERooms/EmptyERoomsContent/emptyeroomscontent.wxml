@@ -7,9 +7,9 @@
 
 </view>
 
-<view class="selection" catch:tap="hide_selection">
+<view class="selection" catch:tap="hide_selection" style="border-radius: 17px; border: 1px solid #E6E8EE;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);background-color: white;">
   <!-- 条件筛选 -->
-  <view class="filter_part">
+  <view class="filter_part" >
     <!-- 校区 -->
     <view class="list1">
       <view class="font1">校区:</view>
@@ -31,7 +31,7 @@
     </view>
   </view>
   <!-- 空教室显示 -->
-  <view class="empty_room" wx:if="{{empty_room.length>0}}">
+  <view class="empty_room" wx:if="{{empty_room.length>0}}" style="border-top: 1px solid #E6E8EE;">
     <view class="list2">
       <view wx:for="{{empty_room}}" wx:key="index" class="list-item">
       {{item}}

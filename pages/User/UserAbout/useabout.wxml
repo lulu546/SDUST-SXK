@@ -1,4 +1,5 @@
-<!-- 差动画 -->
+
+
 <view style="height: 100vh;width: 100vw; background-color:rgb(33,93,147) ;">
 	<view style="box-shadow: rgba(33,93,147, 0.5) 0px 5px 10px 0px inset; overflow: hidden; display: flex;flex-direction: column; width: 86vw;height: 74vh;left: 7vw; top: 7vw;position: absolute;background-color: white;  border-radius: 17px;border:1px solid rgb(33,93,147); ">
 		<swiper style="height:74vh ;">
@@ -68,7 +69,9 @@
 
 
 	</view>
+
 	<image src="http://127.0.0.1:8000/static/function/GigaBoxBack.png" mode="widthFix" style="position:absolute; bottom: 0px;left:0px;width: 100vw;"></image>
 	<!-- 盒子 -->
-	<image class="fade-image" wx:if="{{show_GigaBox}}" bindtap="gigabox" src="http://127.0.0.1:8000/static/function/GigaBox2.png" mode="widthFix" style="position:absolute; bottom: 2vh;left:40vw;width: 60vw;"></image>
+	<image class="fade-in " wx:if="{{show_GigaBox}}" src="http://127.0.0.1:8000/static/function/GigaBox2.png" mode="widthFix" style="position:absolute; bottom: 2vh;left:40vw;width: 60vw;"></image>
+	<view  bindtap="gigabox"  style="width: 16vw;height: 12vh;position: absolute;right: 19vw;bottom: 2vh;"></view>
 </view>

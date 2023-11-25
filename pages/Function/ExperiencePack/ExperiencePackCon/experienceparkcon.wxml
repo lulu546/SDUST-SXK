@@ -1,0 +1,42 @@
+<!--pages/function/function.wxml-->
+
+<view style="height: 94vh;width: 90vw;background-color: white;left: 5vw;top:3vh;position: relative;display: flex-col; border-radius: 17px; border: 1px solid #E6E8EE;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);">
+  <view style="height:10vh;margin:4vw;padding-top: 2vh;padding-left: 3vw;">
+    <view id="_headtest">小科经验包</view>
+    <view id="_headtestlast">੭ ᐕ)੭*⁾⁾直升100级！</view>
+  </view>
+  <view style=" width: 86%;left: 6%;position: relative; display: flex;flex-direction: column;align-items: flex-start;padding: 0px;gap: 30px;">
+    <view style="width:100%;position: relative;" wx:for="{{functions}}" wx:key="index">
+      <!-- 具体各个功能 -->
+      <view style="width: 100%;">
+        <view class="style_one" data-tar="{{item.id}}" bindtap="turnpage"  style="{{'background:'+(item.backgroundcolor)+'box-shadow:'+(item.shadow)}}">
+         <view style="top:10%;height:80%;position: relative;width: 100%;display: flex;">
+        
+         <view  class="_text" style="font-weight:bold;margin-left: 20px;">{{item.name}}
+          <view style="font-size: 30rpx;font-weight:lighter;margin-top: 2px;">
+            {{item.detail}}
+          </view>
+         </view>
+         </view>
+        </view>
+      </view>
+    </view>
+    <view class="_contentflex" wx:key="index">
+      <!-- 具体各个功能 -->
+      <view style="width: 100%;">
+        <view class="style_one" data-tar="none" bindtap="turnpage"  style="background:#FFFFFF;box-shadow:0px 10px 20px rgba(76, 93, 105, 0.1);border: 1px solid #E6E8EE;">
+         <view style="top:10%;height:80%;position: relative;width: 100%;display: flex;flex-direction: row;">
+         <view style="position: relative;flex: 1; height:100%;display: flex;justify-content: center;align-items: center;">
+          <text style="width: 80%;position: relative;  color: #2A2D32;  opacity: 0.6;font-size: 14px;">(●'◡'●)ฅ( ̳• · • ̳ฅ)\n(✧∇✧) ୧⍤⃝ ₍ᐢ.ˬ.⑅ᐢ₎ (ᕑᗢᓫ∗)˒❛‿˂̵✧✿ଳ ̊ ⌯'▾'⌯('ヮ')✩| ᐕ)⁾⁾</text>
+         </view>
+         <view  class="_text2">更多功能开发中，
+         <view></view>
+         更好的服务同学们！</view></view>
+          
+        </view>
+        
+      </view>
+    </view>
+  </view>
+  <div style="clear:both;height:0px;font-size: 1px;line-height: 0px;"></div>
+</view>

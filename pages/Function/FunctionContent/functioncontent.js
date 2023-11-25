@@ -187,7 +187,7 @@ Page({
     }
     else if(e.currentTarget.dataset.tar=="10"){
       wx.navigateTo({
-        url: "/pages/Function/"
+        url: "/pages/Function/ExperiencePack/ExperiencePackCon/experienceparkcon"
       })
     }
     else if(e.currentTarget.dataset.tar=="11"){

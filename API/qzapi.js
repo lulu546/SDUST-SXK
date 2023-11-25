@@ -265,7 +265,7 @@ function only_data(account) {
                 console.log(res.code);
                 //发起网络请求
                 wx.request({
-                  url: app.globalData.TotalUrl+'/qz/login-info',
+                  url: app.globalData.TotalUrl+'/qz/login-info/',
                   method:'POST',
                   //向后端发送的数据
                   data: {

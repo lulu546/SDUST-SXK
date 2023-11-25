@@ -99,7 +99,7 @@
         />
       </view>
       <text class="font_3 pos_34">经验包</text>
-      <view class="flex-col justify-start items-center image-wrapper_3 pos_32" data-tar="10" bindtap="turnNull" style="background-color: rgb(211, 211, 211);">
+      <view class="flex-col justify-start items-center image-wrapper_3 pos_32" data-tar="10" bindtap="turnpage" >
         <image
           class="image_10"
           src="../../../static/icon/Function/92551edf3db16f5d06b8533a91afcfa1.png"
