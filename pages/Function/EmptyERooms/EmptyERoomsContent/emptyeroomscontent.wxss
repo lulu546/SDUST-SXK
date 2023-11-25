@@ -84,7 +84,6 @@ color: #666;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border: 1rpx solid rgb(177, 175, 175); */
   border: 1rpx solid white;
   color: rgb(122, 120, 120);
   box-shadow: 0px 5px 10px rgba(76, 93, 105, 0.1);
