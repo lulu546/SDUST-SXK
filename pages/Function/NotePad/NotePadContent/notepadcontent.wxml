@@ -1,22 +1,30 @@
+
 <!-- 01 初始界面 -->
-<view class="flex-col flex-auto init_page space-y-6" wx:if="{{page_num==0}}">
+<view class="flex-col flex-auto init_page space-y-6 " style="{{is_to_delete==1?'  height: 84vh;':'  height: 94vh;'}}" >
   <!-- 01_1 待办行 -->
   <view class="head">
         <!-- 图标与“待办”的整体 -->
-        <view class="flex-row items-center space-x-8 img1" wx:if="{{is_to_delete==0}}">
-          <image
-            class="shrink-0 image_7" style="width: 9vw;"mode="aspectFit"
-            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262936444418584.png" 
-          />
-          <view class="text" style="width: 60%;">待办</view>
+        <view class="  img1" wx:if="{{is_to_delete==0}}" >
+        <view style="display: flex;justify-items: start;flex-direction: column;">
+          <view style=" font-size: 23px;font-weight:bold;">
+          及时归家，适时望月。
+          </view>
+          <view style=" font-size: 17px;font-weight:normal;margin-top:5px ;color:rgba(46, 46, 46, 0.9) ;">
+            点击月亮可以新建事项！
+          </view>
         </view>
-        <!-- 加号，用于添加记事本 -->
-        <view class="add_img" bindtap="add_event" wx:if="{{is_to_delete==0}}">
-          <image
-            class="image_8"
-            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/3620b05b4c11939fc7e5ee79da8e51ae.png" 
-          />
+
+
+          <view class="moon-container"  bindtap="add_event" wx:if="{{is_to_delete==0}}">
+            <view class="big-moon" animation="{{moonAnimation}}"></view>
+            <view class="small-moon" ></view>
+          </view>
+
+
+
         </view>
+        
+
         <!-- 统计已选择的个数 -->
         <view wx:if="{{is_to_delete==1}}">
           已选择{{selected_to_delete_num}}项
@@ -43,8 +51,8 @@
 
   </view>
   <!-- 01_13 删除时的底部弹窗 -->
-  <view wx:if="{{is_to_delete==1&&page_num==0}}" class="bottom_notification" style="height: 16vh;">
-    <view  class="_total_style" style="display: flex;justify-content: space-around;height: 8vh;">
+  <view wx:if="{{is_to_delete==1}}" class="bottom_notification" >
+    <view  class="_total_style" style="display: flex;justify-content: space-around;">
       <view class="_style1 " style="align-items: center;display: inline;" bindtap="cancel_to_delete">
         <image
           class="image_9"
@@ -77,13 +85,13 @@
     <!-- 除了“确认”外的其他部分 -->
     <view class="flex-col except_confirm">
       <!-- “时间选择”文字部分 -->
-      <view class="self-start font_3" style="font-size: 2.5vh;height: 2.5vh;" >时间选择:</view>
+      <view class="self-start font_3" style="font-size: 2.5vh;height: 2.5vh;margin-left: 4vw;">截止时间:</view>
       <!-- 时间选择部分，点击可更换时间 -->
       <view class="flex-col justify-start items-center self-start text-wrapper select_time" style="height: 3vh;">
         <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" class="_Picker">
           <!-- 01 没有选择过的 -->
           <view wx:if="{{is_have_select_time==0}}" class="font4">
-            <view class="_time" style="margin-left: 2.5vw;color: rgb(95, 95, 95);">请选择时间（可选）</view>
+            <view class="_time" style="margin-left: 2.5vw;color: rgb(95, 95, 95);font-size: 2.2vh;">请选截止时间（可选）</view>
           </view>
           <!-- 02 选择过的 -->
           <view class="picker" wx:if="{{is_have_select_time==1}}">
@@ -95,14 +103,14 @@
         </picker> 
       </view>
       <!-- “事项内容”文字部分 -->
-      <view class="self-start font_3 text_4" style="margin-top: 3vh;font-size: 2.5vh;height: 2.5vh;">事项简述:</view>
+      <view class="self-start font_3 text_4" style="margin-top: 3vh;font-size: 2.5vh;height: 2.3vh;margin-left: 4vw;">事项简述:</view>
       <!-- 事件主题内容 -->
       <view class="flex-col items-center section_6 space-y-4 event_content" style="height: 14vh;position: relative;">
-        <textarea type="text" placeholder="请输入内容" value="{{event_content}}" catchinput="getevent_content" maxlength="{{25}}" class="_textarea" style="height: 12vh;font-size: 2.2vh;"></textarea>
-        <view class="_num" style="height: 3vh;right: 2vw;">{{area_num}}/25</view>
+        <textarea type="text" placeholder="(*/ω＼*)输入想做的事情吧！" value="{{event_content}}" catchinput="getevent_content" maxlength="{{25}}" class="_textarea" style="height: 20vh;font-size: 2.2vh;align-items: center;text-align: start;"></textarea>
+        <view class="_num" style="height: 3vh;right: 0.5vw;">{{area_num}}/25</view>
       </view>
     </view>
-    <view class="font_3 _confirm" style="height: 6vh;position: absolute;bottom: 0vh;left: 0vw;display: flex;justify-content: center;align-items: center;" bindtap="confirm_add_event">确认</view>
+    <view class="font_3 _confirm" style="height: 4vh;position: absolute;bottom: 1.5vh;left: 0vw;display: flex;justify-content: center;align-items: center;color: black;letter-spacing:2px; " bindtap="confirm_add_event">确认</view>
   </view>
   <view style="height: 100vh;width: 100vw;background-color: rgb(216, 215, 215);opacity: 0.4;position: absolute;z-index: 3;transition-property: background-color; transition: 0.5s;"></view>
 </view>

@@ -6,7 +6,8 @@ var Storage3=user+"_overtime_event_datalist"
 var Storage4=user+"_finished_event_datalist"
 Page({
   data: {
-    page_num:0,//初始页面
+    direction:1,
+    moonAnimation: null,
     is_have_shade:0,//是否由设置掩膜，用于区分添加页面和初始页面
     time_selection:"（可选）",//添加事件时，时间选择部分的内容，初始设置为（可选），点击可实现数据切换
     event_content:"",//添加时事项内容
@@ -265,6 +266,7 @@ Page({
   
   //01_4 点击各部分前面的选择框进行改变
   transfer_to_finished(e){
+    var that=this
     //哪一个分类
     var id=e.detail.kind
     //分类中的第几个
@@ -360,6 +362,7 @@ Page({
     }
     //处于删除状态
     else{
+
       if(id==1)list1[num][2]=1
       else if(id==2)list2[num][2]=1
       else if(id==3)list3[num][2]=1
@@ -371,6 +374,9 @@ Page({
         overtime_event_datalist:list3,
         finished_event_datalist:list
       })
+
+    that.startMoonAnimation()
+
     }
     // console.log(this.data.finished_event_datalist)
     
@@ -836,17 +842,22 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
+    var that=this
+    that.startMoonAnimation()
     //02 初始化页面
     this.datalist_init()
     //初始化
     // const app=getApp()
     this.getStorageSyncdatda()
+
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
+
     const app=getApp()
     this.setData({
       selected_time_event_datalist:app.globalData.selected_time_event_datalist,
@@ -895,5 +906,27 @@ Page({
   onShareAppMessage() {
 
   },
+  startMoonAnimation: function() {
+    var that=this
+    const animation = wx.createAnimation({
+      duration: 7000, // 动画持续时间
+      timingFunction: 'linear',
+    });
+
+    // 根据 direction 的值来决定动画的移动方向
+    const distance = that.data.direction * 58; // 移动距离
+    animation.translateX(distance).step();
+
+    // 更新动画并切换方向
+    that.setData({
+      moonAnimation: animation.export(),
+      direction: -that.data.direction, // 改变方向
+    });
+
+    // 循环动画
+    setTimeout(() => {
+      that.startMoonAnimation();
+    }, 7000);
+  }
 
 });

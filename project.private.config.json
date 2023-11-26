@@ -9,6 +9,17 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/Function/NotePad/NotePadContent/notepadcontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "",
           "pathName": "pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent",
           "query": "",
           "launchMode": "default",
