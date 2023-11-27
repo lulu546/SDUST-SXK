@@ -1,34 +1,93 @@
 <!--pages/login/login.wxml-->
 
 <view style="background: rgba(255, 255, 255, 1); width: 90%; height: 80%; left: 38rpx; position: absolute; top: 125rpx; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 8px 16px rgba(0, 0, 0, 0.14);border-radius: 14px;">
-  
-    <!-- <text style="position: relative; left: 205rpx; top: 234rpx; text-align: -webkit-center; font-size: -webkit-xxx-large;color: white;">山小科</text> -->
-    <view style="position: absolute; height: 80%; width: 100%; top: 116rpx; left: 0rpx">
-      <view style="position: absolute;width: 80%;left: 10%; top: 0%; height: 30%;border-radius: 3px;background-color:#5B5FC7; display: flex;justify-content: center;align-items: center;">
-        <text style="position: absolute;color: white;font-size: 70px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">山小科</text>
-      </view>
 
-      <view style="position: absolute;font-weight:bold;font-size:14px;display: block; box-sizing: border-box;  top: 36%;  background-color: white;border-radius: 3px; left: 10%;color: #484644;">
-        Student ID
-      </view>
-      <view style="position: absolute;font-weight:bold;font-size:14px;display: block; box-sizing: border-box;  top: 51%;  background-color: white;border-radius: 3px; left: 10%;color: #484644;">
-        Password QZ 
-      </view>
-      <view style="position: absolute; height: 90rpx; display: block; box-sizing: border-box; background-color: #F3F2F1; top: 40%; width: 80%; border-radius: 3px; left: 10%;">
-        <input placeholder="请输入学号" value="{{useraccount}}" bindinput="getaccount" style="color:#484644;position: absolute;height: 95%; display: block; box-sizing: border-box;width: 90%;border-radius: 15px;left: 5%;" />
-        <view style="position: absolute;top: 95%;height: 5%;width:100%;background: #5B5FC7;"></view>
-      </view>
-      <view style="position: absolute; height: 90rpx; display: block; box-sizing: border-box; background-color: #F3F2F1; top: 55%; width: 80%; border-radius: 3px; left: 10%">
-        <view bindtap="changeshow" style="position: absolute;height: 95%;width: 15%;left: 85%;display: flex;justify-content: center;align-items: center;">
-          <image src="{{_src}}" style="height: 50rpx;width: 50rpx;"></image>
-        </view>
-        <input password="{{!isshow}}" bindinput="getpassword" placeholder="请输入密码" style="color:#484644;position: absolute;height: 95%; display: block; box-sizing: border-box;width: 80%;border-radius: 15px;left: 5%;" value="{{userpws}}"  />
-
-        <view style="position: absolute;top:95%;height: 5%;width:100%;background: #5B5FC7;"></view>
-      </view>
-      <view style="position: relative;top: 80%;height: 80rpx;"><button bindtap="loginTo" style="background-color:#5B5FC7;color: white;">登录</button></view>
-  
+  <!-- <text style="position: relative; left: 205rpx; top: 234rpx; text-align: -webkit-center; font-size: -webkit-xxx-large;color: white;">山小科</text> -->
+  <view wx:if="{{!isShowAgreement}}" style="position: absolute; height: 80%; width: 100%; top: 116rpx; left: 0rpx">
+    <view style="position: absolute;width: 80%;left: 10%; top: 0%; height: 30%;border-radius: 3px;background-color:#5B5FC7; display: flex;justify-content: center;align-items: center;">
+      <text style="position: absolute;color: white;font-size: 70px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">山小科</text>
     </view>
-    
+
+    <view style="position: absolute;font-weight:bold;font-size:14px;display: block; box-sizing: border-box;  top: 36%;  background-color: white;border-radius: 3px; left: 10%;color: #484644;">
+      Student ID
+    </view>
+    <view style="position: absolute;font-weight:bold;font-size:14px;display: block; box-sizing: border-box;  top: 51%;  background-color: white;border-radius: 3px; left: 10%;color: #484644;">
+      Password QZ
+    </view>
+    <view style="position: absolute; height: 90rpx; display: block; box-sizing: border-box; background-color: #F3F2F1; top: 40%; width: 80%; border-radius: 3px; left: 10%;">
+      <input placeholder="请输入学号" value="{{useraccount}}" bindinput="getaccount" style="color:#484644;position: absolute;height: 95%; display: block; box-sizing: border-box;width: 90%;border-radius: 15px;left: 5%;" />
+      <view style="position: absolute;top: 95%;height: 5%;width:100%;background: #5B5FC7;"></view>
+    </view>
+    <view style="position: absolute; height: 90rpx; display: block; box-sizing: border-box; background-color: #F3F2F1; top: 55%; width: 80%; border-radius: 3px; left: 10%">
+      <view bindtap="changeshow" style="position: absolute;height: 95%;width: 15%;left: 85%;display: flex;justify-content: center;align-items: center;">
+        <image src="{{_src}}" style="height: 50rpx;width: 50rpx;"></image>
+      </view>
+      <input password="{{!isshow}}" bindinput="getpassword" placeholder="请输入密码" style="color:#484644;position: absolute;height: 95%; display: block; box-sizing: border-box;width: 80%;border-radius: 15px;left: 5%;" value="{{userpws}}" />
+
+      <view style="position: absolute;top:95%;height: 5%;width:100%;background: #5B5FC7;"></view>
+    </view>
+    <view style="position: absolute; height: 50rpx; display: block; box-sizing: border-box;color:#5B5FC7;font-weight:bold;font-size:15px; top: 65%; width: 80%; border-radius: 3px; left: 10%;justify-content: start;display: flex;align-items: center;">
+    <text style="height: 50rpx;justify-content: start;display: flex;align-items: center;text-decoration:underline;" bindtap="checkAgreement">用户协议</text>
+    <checkbox style="height: 50rpx;width: 50rpx;  margin-left: 7px;justify-content: start;display: flex;align-items: center;"bindtap="changeAgreement" color="#5B5FC7" ></checkbox>
+    </view>
+    <view style="position: relative;top: 80%;height: 80rpx;"><button bindtap="loginTo" style="background-color:#5B5FC7;color: white; font-family: -apple-system-font, 'Helvetica Neue', sans-serif;">登录</button></view>
+ 
+  </view>
+  <view wx:if="{{isShowAgreement}}" style="position: absolute; height: 92%; width: 92%; top: 4%; left: 4%;" bindtap="checkAgreement">
+  <text style="position: absolute; height: 100%; width: 100%;overflow-y: auto; ">
+    尊敬的用户：
+
+欢迎您使用归家望月（青岛）软件有限公司（以下简称“平台方”）提供的服务。在使用本产品之前，请务必仔细阅读并理解以下用户许可使用协议（以下简称“本协议”）中规定的所有权利和限制。
+
+定义
+
+用户：指在手机、平板电脑、电脑等设备上注册成为本平台的使用者，通过平台发布、查看、接收图文/音频/视频信息或其他文件的个人或实体。
+平台方：归家望月（青岛）软件有限公司。
+运行原理声明
+
+出于第三方服务安全考虑，平台方不直接或间接存储您的强智系统密码。您的密码将以缓存形式仅存储于您的本地设备。
+
+使用条款
+
+在使用本产品前，您同意遵守以下约定：
+
+您同意遵守《中华人民共和国合同法》、《中华人民共和国著作权法》等相关中国法律法规的所有规定，并对使用您的密码和账号进行的所有行为及其结果承担全部责任。
+
+您理解本产品包含第三方的信息和服务。您同意：
+
+对使用第三方信息和服务的风险承担法律责任。
+当访问第三方信息和服务时，适用第三方的条款和政策。
+我们仅为方便您使用或为第三方提供的承诺和保证而提供这些信息和服务。
+您已知晓并同意我们的部分服务基于第三方技术支持提供。您同意遵守并授权给本产品限制您有条件地使用本服务。
+
+您同意授权平台方在法律范围内使用您提供的用户信息，用于改善和提供本平台的服务。
+
+权利限制
+
+您同意不在本产品中从事以下行为：
+
+发布或分享违反《中华人民共和国宪法》基本原则的内容。
+进行任何危害国家安全、泄露国家秘密、颠覆国家政权等活动。
+发布损害国家荣誉和利益的内容。
+煽动民族仇恨、民族歧视或破坏民族团结的言论。
+散布淫秽、色情、赌博、暴力等非法信息。
+侮辱或诽谤他人，侵害他人合法权益。
+发布含有法律、行政法规禁止的其他内容。
+使用未授权的方式收集其他用户信息或数据，如电子邮箱地址等。
+恶意使用本产品，干扰或损害网站服务器和网络链接。
+
+免责声明
+在任何情况下，如果平台方有理由认为您的任何行为，包括但不限于您的言论和其他行为违反或可能违反上述法律和法规的任何规定，平台方可在任何时候不经事先通知终止向您提供服务。
+
+版权声明
+用户在本平台上分享的所有内容版权归原作者所有，用户需确保其分享的内容不侵犯他人的版权和知识产权。
+
+争议解决
+本协议的解释和适用，以及用户与平台方之间的争议解决，均适用中华人民共和国法律。
+
+
+  </text>
   
+  </view>
+
 </view>

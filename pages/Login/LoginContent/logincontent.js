@@ -33,14 +33,29 @@
     isshow: false, //是否显示密码
     _src: '/static/image/hidepws.png/', //隐藏的图片，初始均为不可见
     islogin: true, //是否登录
+    isAgreement:false,
+    isShowAgreement:false
     
 
   },
 
 
   //将账号和密码进行传参到后端，返回值为ispermit,判断是否允许
-  getdatalist() {
+
+  checkAgreement(){
     var that = this;
+    var isShowAgreement_=that.data.isShowAgreement
+    that.setData({
+      isShowAgreement:!isShowAgreement_
+    })
+  },
+  changeAgreement(){
+    var that = this;
+    var isAgreement_=that.data.isAgreement
+    that.setData({
+      isAgreement:!isAgreement_
+    })
+
   },
 
   //进行登录的设置
@@ -51,9 +66,18 @@
     var that = this;
     let {
       useraccount,
-      userpws
-    } = this.data;
-
+      userpws,
+      isAgreement
+    } = that.data;
+    // 前端验证
+    console.log(isAgreement)
+    if (!isAgreement) {
+      wx.showToast({
+        title: '用户协议',
+        icon: 'error'
+      })
+      return;
+    }
     // 前端验证
     if (!useraccount) {
       wx.showToast({
@@ -163,7 +187,7 @@
   getaccount(e) {
     
     var that=this
-    this.setData({
+    that.setData({
       useraccount: e.detail.value
     })
   },
