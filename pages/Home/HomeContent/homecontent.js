@@ -1,6 +1,7 @@
 const app = getApp()
 const qzapi = require('../../../API/qzapi');
 const shareapi = require('../../../API/shareapi');
+const staticapi = require('../../../API/static');
 Page({
   /**
    * BUG
@@ -127,7 +128,7 @@ Page({
   },
   //05 点击事件前的单选框，将事件更改为完成
   transfer_to_finished(e){
-    //当处于非删除状态时
+      //当处于非删除状态时
       //哪一个分类
       var id=e.detail.id
       //分类中的第几个
@@ -227,13 +228,14 @@ Page({
     app.globalData.not_selected_time_event_datalist=wx.getStorageSync(Storage1)
     app.globalData.finished_event_datalist=wx.getStorageSync(Storage4)
     this.init_datalist()
+    this.post_staticapi()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onLoad(options) {
-    
-    
+
+
     var that = this;
     //计划表的读取
     //如果全局变量其
@@ -494,7 +496,18 @@ Page({
       //登录
     })
   },
-
+  post_staticapi(e){
+    staticapi.getScheduleResource().then(res =>{
+      console.log(res)
+      app.globalData.scheduleResource=res
+    }).catch(err => {
+      // 获取课程表信息失败，处理错误
+      wx.showToast({
+        title: '请求失败',
+        icon: 'error'
+        })
+      });
+  }
 
 
 

@@ -47,6 +47,7 @@ Page({
     set_schedule: {},
     chanceshare:null,
     chancenumber:null,
+    scheduleResource:[]
 
   },
 
@@ -74,12 +75,16 @@ Page({
     var share_schedule = app.globalData.set_all_data;
     var table_schedule = app.globalData.class_info;
     var week_ordinal = app.globalData.week_time;
+    var scheduleresource=app.globalData.scheduleResource
     that.setData({
       set_schedule,
       table1: table_schedule,
       week_ordinal,
-      chanceshare:wx.getStorageSync("chanceshare")
+      chanceshare:wx.getStorageSync("chanceshare"),
+      scheduleResource:scheduleresource
     })
+    
+
 
   },
 

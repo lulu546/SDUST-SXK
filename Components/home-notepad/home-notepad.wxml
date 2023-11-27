@@ -1,6 +1,6 @@
 <!--Components/home-notepad/home-notpad.wxml-->
 <view wx:for="{{datalist}}" wx:key="index" wx:if="{{(index<len)}}" class="list">
-  <view class="flex-row items-center list-item_2 space-x-14" style="border-radius: 5rpx;background-color: {{whichone==3 ? 'rgba(255, 0, 0, 0.075)' : 'white'}};">
+  <view class="flex-row items-center list-item_2 space-x-14" style="background-color: {{whichone==3 ? 'rgba(255, 0, 0, 0.075)' : 'white'}};">
     <!-- 选择框 -->
     <image
       class="image_10"
