@@ -105,7 +105,7 @@
     //后端鉴权有个核心问题，你没办法保证你的你在规定时间里获得request里的信息。
     //request的函数是回调函数
     wx.request({
-      url: 'http://jwgl.sdust.edu.cn/app.do',
+      url: 'https://jwgl.sdust.edu.cn/app.do',
         method: 'GET',
         data: {
           "method": "authUser",

@@ -13,7 +13,7 @@ Page({
             name:'小科同好',
             detail:'遇见每一种爱好！',
             id:0,
-            image:'http://127.0.0.1:8000/static/function/phoneList/Blue.png',
+            image:'http://sxksxk.work:18000/static/function/phoneList/Blue.png',
             backgroundcolor: '#5374A5;',
             shadow:'0px 10px 20px rgba(102, 125, 159, 0.2);'
           }
@@ -23,7 +23,7 @@ Page({
             name:'小科科创',
             detail:'一起创造理想！',
             id:1,
-            image:'http://127.0.0.1:8000/static/function/phoneList/Green.png',
+            image:'http://sxksxk.work:18000/static/function/phoneList/Green.png',
             backgroundcolor: '#00C67E;',
             shadow:'0px 10px 20px rgba(36, 209, 147, 0.2);'
           },

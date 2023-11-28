@@ -10,6 +10,7 @@ Page({
     name:null,
     academy:null,
     student_info:null,
+    url:null
   },
 
   /**
@@ -34,8 +35,8 @@ Page({
     const app = getApp();
     var that = this;
     that.setData({
-      student_info:app.globalData.student_info
-
+      student_info:app.globalData.student_info,
+      url:app.globalData.TotalUrl
     })
   },
 

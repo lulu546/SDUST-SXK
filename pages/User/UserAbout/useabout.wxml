@@ -70,8 +70,8 @@
 
 	</view>
 
-	<image src="http://127.0.0.1:8000/static/function/GigaBoxBack.png" mode="widthFix" style="position:absolute; bottom: 0px;left:0px;width: 100vw;"></image>
+	<image src="http://sxksxk.work:18000/static/function/GigaBoxBack.png" mode="widthFix" style="position:absolute; bottom: 0px;left:0px;width: 100vw;"></image>
 	<!-- 盒子 -->
-	<image class="fade-in " wx:if="{{show_GigaBox}}" src="http://127.0.0.1:8000/static/function/GigaBox2.png" mode="widthFix" style="position:absolute; bottom: 2vh;left:40vw;width: 60vw;"></image>
+	<image class="fade-in " wx:if="{{show_GigaBox}}" src="http://sxksxk.work:18000/static/function/GigaBox2.png" mode="widthFix" style="position:absolute; bottom: 2vh;left:40vw;width: 60vw;"></image>
 	<view  bindtap="gigabox"  style="width: 16vw;height: 12vh;position: absolute;right: 19vw;bottom: 2vh;"></view>
 </view>

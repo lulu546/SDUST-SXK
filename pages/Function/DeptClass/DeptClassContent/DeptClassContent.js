@@ -14,7 +14,7 @@ Page({
     //创建部门页面
     current_department_name:'',//创建部门名
     //后端url
-    url:"http://127.0.0.1:8000/",
+    url:"http://sxksxk.work:18000/",
     //四个部门的数据
       //名称
       department_name:{

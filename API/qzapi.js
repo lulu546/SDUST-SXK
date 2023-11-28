@@ -126,7 +126,7 @@ function init_data(account, pwd) {
 
     //客户端登录
       wx.request({
-        url: 'http://jwgl.sdust.edu.cn/app.do',
+        url: 'https://jwgl.sdust.edu.cn/app.do',
         method: 'GET',
         data: {
           "method": "authUser",
@@ -180,7 +180,7 @@ function only_data(account) {
 
       //请求时间信息然后请求课表信息
       wx.request({
-        url: 'http://jwgl.sdust.edu.cn/app.do',
+        url: 'https://jwgl.sdust.edu.cn/app.do',
         method: 'get',
         data: {
           method: "getCurrentTime",
@@ -207,7 +207,7 @@ function only_data(account) {
     
           // 请求课表数据
           wx.request({
-            url: 'http://jwgl.sdust.edu.cn/app.do',
+            url: 'https://jwgl.sdust.edu.cn/app.do',
             method: 'GET',
             data: {
               method: "getKbcxAzc",
@@ -238,7 +238,7 @@ function only_data(account) {
       })
       //请求学生信息
       wx.request({
-        url: "http://jwgl.sdust.edu.cn/app.do",
+        url: "https://jwgl.sdust.edu.cn/app.do",
         method: 'GET',
         data: {
           method: "getUserInfo",
@@ -335,7 +335,7 @@ function postclass(week_ordinal=app.globalData.week_time,table_ord=app.globalDat
 function getpostclass(week_ordinal) {
 // 从强智系统读取第week_ordinal周课程信息
   wx.request({
-    url: 'http://jwgl.sdust.edu.cn/app.do',
+    url: 'https://jwgl.sdust.edu.cn/app.do',
     method: 'GET',
     data: {
       method: "getKbcxAzc",

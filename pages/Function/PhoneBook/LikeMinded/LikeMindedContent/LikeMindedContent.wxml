@@ -42,7 +42,7 @@
     <block wx:else>
       <view style="position:relative;width: 90%;left:5%;height: 67vh;background-color: #262334;  border-radius: 17px;border: 1px solid #E6E8EE;display: flex-col;align-items: center;justify-content: center;">
       <view style="width:50%;left:25% ;position: absolute;top: 20%;">
-        <image src="http://127.0.0.1:8000/static/function/phoneList/Thief.png" mode="widthFix" style="width:100%;background: linear-gradient(114.24deg, rgba(38, 35, 52, 1) 0%, rgba(48, 45, 67, 1) 100%);border: white 2px;"/>
+        <image src="http://sxksxk.work:18000/static/function/phoneList/Thief.png" mode="widthFix" style="width:100%;background: linear-gradient(114.24deg, rgba(38, 35, 52, 1) 0%, rgba(48, 45, 67, 1) 100%);border: white 2px;"/>
         <view style="width:100%;text-align: center;">
           <text style="color: white;width: 100%;font-size: 17px;">  吖！社团被偷走啦！
           (,,#ﾟДﾟ)</text>

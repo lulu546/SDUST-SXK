@@ -13,7 +13,7 @@ App({
 
       //客户端登录
         wx.request({
-          url: 'http://jwgl.sdust.edu.cn/app.do',
+          url: 'https://jwgl.sdust.edu.cn/app.do',
           method: 'GET',
           data: {
             "method": "authUser",
@@ -40,7 +40,7 @@ App({
               wx.setStorageSync('token', res.data["token"]);
               //请求时间信息
               wx.request({
-                url: 'http://jwgl.sdust.edu.cn/app.do',
+                url: 'https://jwgl.sdust.edu.cn/app.do',
                 method: 'get',
                 data: {
                   method: "getCurrentTime",
@@ -65,7 +65,7 @@ App({
                   }
                   // 请求课表数据
                   wx.request({
-                    url: 'http://jwgl.sdust.edu.cn/app.do',
+                    url: 'https://jwgl.sdust.edu.cn/app.do',
                     method: 'GET',
                     data: {
                       method: "getKbcxAzc",
@@ -96,7 +96,7 @@ App({
               })
               //请求学生信息
               wx.request({
-                url: "http://jwgl.sdust.edu.cn/app.do",
+                url: "https://jwgl.sdust.edu.cn/app.do",
                 method: 'GET',
                 data: {
                   method: "getUserInfo",
@@ -208,7 +208,7 @@ App({
     todatabasesflag:0,//判断数据库请求状态
     examlist:[],
     scheduleResource:[],
-    TotalUrl:"http://127.0.0.1:8000",
+    TotalUrl:"http://sxksxk.work:18000",
     //备忘录部分全局变量声明
       //01 未设置时间的事件
       not_selected_time_event_datalist:[],
