@@ -1,46 +1,49 @@
 <!--pages/Function/DeptClass/DeptClassShow/DeptClassShow.wxml-->
 
 <!-- 01 部门课表查看页面 -->
-<view class="flex-col _page" style="background-color: #faf9ff;" >
-  <!-- "部门名称"字样 -->
-  <view class="flex-col justify-start self-start _text-wrapper" style="width: {{(department_name.length*7<21)?21:department_name.length*6.3}}vw;">
-    <view>{{department_name}}</view> 
-  </view>
+<view class=" _page"  >
+
+  <view style="margin-top:2vh ;margin-left: 2vw; display: flex;align-items: center;  width: 96vw; height: 13vh;   border-radius: 17px;border: 1px solid #E6E8EE;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);background: white;">
+    <!-- "部门名称"字样 -->
+    <view class="  _text-wrapper" style="left: 2vw;position: relative; font-size: 23px;font-weight:bold; width: {{(department_name.length*7<21)?21:department_name.length*6.3}}vw;">
+    {{department_name}} </view>
   <!-- 显示无课还是有课 -->
-  <view class="flex-col justify-start self-start _text-wrapper class_status">
-    <view style="margin-right: 1.5vw;color: #858383;" wx:if="{{show_have_or_not_class==1}}">（有课）</view>
-    <view style="margin-right: 1.5vw;color: #858383;" wx:if="{{show_have_or_not_class==0}}">（无课）</view>
+  <view class="  _text-wrapper class_status" style="left: 52vw;position: relative; flex-direction: column;display: flex;top: 1.4vh;">
     <switch checked="{{show_have_or_not_class}}" bindchange="change_checked_status"/>
+    <view style="margin-right: 1.5vw;color: #858383;font-size: 15px;" wx:if="{{show_have_or_not_class==1}}">（有课）</view>
+    <view style="margin-right: 1.5vw;color: #858383;font-size: 15px;" wx:if="{{show_have_or_not_class==0}}">（无课）</view>
+
+  </view>
   </view>
   <!-- 除了部门名称和解散部门的其他部分 -->
-  <view class="other_part">
+  <view class="other_part" style="margin-top:2vh ;">
     <!-- 第几周，及切换和刷新符号 -->
-    <view class="flex-row justify-between items-center group_1">
-      <view class="_font_style">第{{week_num}}周</view>
-      <view class="flex-row items-center all_img_style">
+    <view class="  group_1">
+      <view class="_font_style"  style="    ">第{{week_num}}周</view>
+      <view class=" all_img_style" style="     height: 100%;" >
         <!-- 图标1(刷新) -->
-        <view class="flex-col justify-start items-center image-wrapper" bindtap="update_class" style="align-items: baseline;">
-          <image style="width: 5.5vw;height: 5.5vw;margin-top: 0.6vh;"
-            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/649d139bbba52700111875ba/16880171334077767010.png"
+        <view class="  image-wrapper" bindtap="update_class" >
+          <image style="height: 3.2vh;" mode="heightFix"
+            src="http://sxksxk.work:18000/static/icon/refresh.png"
           />
         </view>
         <!-- 图标2（上一周） -->
-        <view class="flex-col justify-start items-center image-wrapper" bindtap="get_weekupdate" data-id="1">
-          <image style="width: 3.4vw;height: 4.5vw;"
-            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/649d139bbba52700111875ba/16880171337266320277.png"
+        <view class="  image-wrapper" bindtap="get_weekupdate" data-id="1">
+          <image style="height: 4vh;" mode="heightFix"
+            src="http://sxksxk.work:18000/static/icon/left.png"
           />
         </view>
         <!-- 图标3（下一周） -->
-        <view class="flex-col justify-start items-center image-wrapper" bindtap="get_weekupdate" data-id="2" style="align-items: baseline;">
-          <image style="width: 6.9vw;height: 6.7vw;margin-top: 1.1vh;"
-            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/649d139bbba52700111875ba/16894947132169211284.png"
+        <view class="  image-wrapper" bindtap="get_weekupdate" data-id="2" >
+          <image  style="height: 4vh;" mode="heightFix"
+            src="http://sxksxk.work:18000/static/icon/right.png"
           />
         </view>
       </view>
     </view>
 
     <!-- 星期及日期 -->
-    <view class="week_time">
+    <view class="week_time" style="border-top: 3rpx solid rgb(224, 224, 224)">
       <view wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="index" class="week_time_list">
         <!-- 哪一天 -->
         <view class="total_font_style">{{week_flag[item]}}</view>
@@ -52,14 +55,15 @@
     <!-- 如果当前日期等于当天则为黄色 -->
     <view class="_underline">
       <view wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="index" class="_underline_list">
-          <view style="width: 10vw;background-color: yellow;height: 10rpx;" wx:if="{{current_week_time[item][1]==nowtime[1]&&current_week_time[item][2]==nowtime[2]&&current_week_time[item][0]==nowtime[0]}}"></view>
-          <view style="width: 10vw;background-color: white;height: 10rpx;" wx:if="{{current_week_time[item][1]!=nowtime[1]||current_week_time[item][2]!=nowtime[2]||current_week_time[item][0]!=nowtime[0]}}"></view>
+          <view style="width: 10vw;background-color: rgb(7,193,96);height: 10rpx;border-radius: 20px;" wx:if="{{current_week_time[item][1]==nowtime[1]&&current_week_time[item][2]==nowtime[2]&&current_week_time[item][0]==nowtime[0]}}"></view>
+          <view style="width: 10vw;background-color: rgb(223, 223, 223);height: 10rpx;border-radius: 20px;" wx:if="{{current_week_time[item][1]!=nowtime[1]||current_week_time[item][2]!=nowtime[2]||current_week_time[item][0]!=nowtime[0]}}"></view>
       </view>
     </view>
     
     <!-- 整体课表 -->
 
     <view class="class_total">
+    <view style=" padding: 0.5vh;display: flex;justify-content: space-evenly;height: 66vh;">
       <!-- 每一列 每天的-->
       <view wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="index" wx:for-index="whichday" class="class_total_item">
         <!-- 每节课 -->
@@ -77,32 +81,36 @@
           <view wx:if="{{current_datalist02[whichday][whichclass].length==0}}" style="width: 60%;font-size: 3.5vw;">
           </view>
         </view>
-        
       </view>
     </view>
-    <!-- 解散部门、踢出成员 -->
-    <view class="disslove_and_kickout">
+    <view style="width: 100%;height: 10vh;">
+        <!-- 解散部门、踢出成员 -->
+    <view class="disslove_and_kickout" >
       <!-- 解散部门 -->
-      <view class="style1" bindtap="dissolve_department">
+      <view class="style1" style="left: 73vw;" bindtap="dissolve_department" >
         <!-- "解散部门"字样 -->
         <view class="dissolve_department_text">解散部门</view>
         <!-- 下方黄色标记 -->
         <view class="underline_style"></view>
       </view>
       <!-- 踢出成员 -->
-      <view class="style1" style="right: 4vw;" bindtap="kick_out_department">
+      <view class="style1" style="left: 30vw;" bindtap="kick_out_department">
         <!-- "踢出成员"字样 -->
         <view class="dissolve_department_text">移出成员</view>
         <!-- 下方黄色标记 -->
         <view class="underline_style"></view>
       </view>
     </view>
+    </view>
+    
+    </view>
+
   </view>
 
 </view>
 
 <!-- 02 点击具体课程节次查看有课人数 -->
-<view class="flex-col justify-start items-center section_3 check_class" wx:if="{{is_check_noclassperson==true}}" catchtap="close_create_shade" data-whichpart="2">
+<view class="  section_3 check_class" wx:if="{{is_check_noclassperson==true}}" catchtap="close_create_shade" data-whichpart="2">
   <!-- 中间弹窗 -->
   <view catchtap="show_create_shade" class="notification">
     <!-- “无课成员列表”字样 -->

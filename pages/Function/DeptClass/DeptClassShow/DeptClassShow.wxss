@@ -13,32 +13,28 @@
   ._page ._text-wrapper {
     margin-left: 2vw;
     padding: 2vw 0;
-    background-color: #ffff00;
     border-radius: 10rpx;
-    margin-top: 3vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: large;
   }
   ._page .class_status{
-    position: absolute;
-    background-color: #faf9ff;
-    top: 0vh;
-    right: 3vw;
-    width: 40vw;
+    width: 20vw;
   }
   ._page .other_part{
     width: 96vw;
     margin-left: 2vw;
     padding: 1rpx;
-    box-shadow: 2rpx white; 
-    border-radius: 15rpx;
+    border-radius: 17px;
+    border: 1px solid #E6E8EE;
+    box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
+    background: white;
   }
   /* 第几周及符号的整体区域 */
   ._page .other_part .group_1 {
     width: 96vw;
-    height: 5vh;
+    height: 7vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,9 +53,10 @@
     font-size: 36rpx;
     font-family: SourceHanSansCN;
     line-height: 33rpx;
-    align-items: center;
     display: flex;
     font-size: 4vw;
+    justify-content: center;
+    align-items: center;
   }
   /* 所有图标的整体外部区域样式 */
   ._page .other_part .group_1 .all_img_style{
@@ -126,15 +123,10 @@
   /* 课表整体的外部样式 */
   ._page .other_part .class_total{
     /* border: 1rpx solid black; */
-    height: 69vh;
-    width: 98%;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 0.5vh;
+    height: 76vh;
+    border-radius: 17px;
     background-color: white;
     box-shadow: 1rpx white;
-    border-bottom-right-radius: 15rpx;
-    border-bottom-left-radius: 15rpx;
   }
   ._page .other_part .class_total .class_total_item{
     height: 100%;
@@ -146,9 +138,11 @@
   ._page .other_part .class_total .class_total_item .class_part{
       width: 95%;
       height: 12vh;
-      border-radius: 2vw;
-      box-shadow: 0.5rpx 1rpx 0.5rpx 0.5rpx#dddddd;
-      background-color: #faf9ff;
+      border-radius: 7px;
+      border: 1px solid #E6E8EE;
+      box-shadow: 0px 2px 6px rgba(76, 93, 105, 0.1);
+      background: white;
+      background-color: #ffffff;
       display: flex;
       text-align: center;
       justify-content: center;
@@ -157,9 +151,8 @@
       /* border: 1rpx solid black; */
   }
   ._page .other_part .disslove_and_kickout{
-    width: 98vw;
+    width: 100%;
     height: 8vh;
-    bottom: 0%;
     display: flex;
   }
   /* 解散部门与下划线的整体部分格式 */
@@ -167,13 +160,13 @@
     width: 20vw;
     height: 8vh;
     /* border: 1rpx solid black; */
-    right: 30vw;
-    position: absolute;
+    
+    position: relative;
     display: flex;
   }
   /* “解散部门”的字体样式 */
   ._page .other_part .disslove_and_kickout .dissolve_department_text{
-    height: 4vh;
+    height: 4.4vh;
     width: 20vw;
     font-size: 2.4vh;
     font-family: SourceHanSansCN;
@@ -190,10 +183,10 @@
   /* 下划线样式 */
   ._page .other_part .disslove_and_kickout .underline_style{
     height: 1.5vw;
-    width: 80%;
-    margin-left: 10%;
-    background-color: yellow;
-    border-radius: 4rpx;
+    width: 92%;
+    margin-left: 4%;
+    background-color: rgb(7,193,96);
+    border-radius: 17px;
     top: 11vw;
     position: absolute;
   }

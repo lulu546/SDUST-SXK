@@ -9,6 +9,17 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/Function/DeptClass/DeptClassShow/DeptClassShow",
+          "query": "departmentflag=A&name=%E7%A7%91%E5%88%9B%E9%83%A8",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "",
           "pathName": "pages/Function/NotePad/NotePadContent/notepadcontent",
           "query": "",
           "launchMode": "default",

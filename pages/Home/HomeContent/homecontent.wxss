@@ -105,7 +105,7 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
   background: #ffffff;
   border-radius: 17px;
   border: 1px solid #E6E8EE;
-box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
+  box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
 }
 .lookcourselist {
   position: relative;
