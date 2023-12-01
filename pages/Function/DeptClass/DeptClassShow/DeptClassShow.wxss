@@ -196,9 +196,11 @@
   .check_class .notification{
     width: 70vw;
     height: 38vh;
-    background-color: white;
     margin-left: 15vw;
-    border-radius: 10rpx;
+    border-radius: 17px;
+    border: 1px solid #E6E8EE;
+    box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
+    background: white;
   }
   .check_class .notification .item-list{
     width: 100%;
@@ -208,10 +210,11 @@
     justify-content: center;
     align-items: center;
     font-family: SourceHanSansCN;
+    font-weight: bold;
     font-size: 5vw;
-    background-color: rgb(254, 255, 205);
-    border-top-right-radius: 10rpx;
-    border-top-left-radius: 10rpx;
+    border-bottom: 1px solid #E6E8EE;
+    border-top-right-radius: 17px;
+    border-top-left-radius: 17px;
   }
   .check_class .notification .scroll_style{
     width: 90%;
@@ -282,9 +285,11 @@
     height: 60vh;
     background-color: white;
     margin-left: 10vw;
-    border-radius: 10rpx;
     position: absolute;
     top: 20vh;
+    border-radius: 17px;
+    border: 1px solid #E6E8EE;
+    box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
   }
   /* 移除的文字提示 */
   .kick_out_style ._notification .texttip{
@@ -295,9 +300,7 @@
     margin-top: 2vw;
     align-items: center;
     font-family: SourceHanSansCN;
-    font-size: 6vw;
-    border-top-right-radius: 10rpx;
-    border-top-left-radius: 10rpx;
+    font-size: 5vw;
   }
   /* 滚动栏 */
   .kick_out_style ._notification scroll-view{

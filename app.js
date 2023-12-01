@@ -208,7 +208,7 @@ App({
     todatabasesflag:0,//判断数据库请求状态
     examlist:[],
     scheduleResource:[],
-    TotalUrl:"http://sxksxk.work:18000",
+    TotalUrl:"https://sxksxk.work:18001",
     //备忘录部分全局变量声明
       //01 未设置时间的事件
       not_selected_time_event_datalist:[],

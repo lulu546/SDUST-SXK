@@ -24,7 +24,7 @@
   <view style="min-height: 300rpx; margin-top: 5%; position: relative; width: 90%; left: 40rpx; top: 0rpx">
     <!-- border-radius: 17px;background: #FFFFFF;border: 1px solid #E6E8EE;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1); -->
     <view  wx:for="{{coursedata}}" wx:key="index" >
-    <view style="position:relative;display: flex;border-radius:18px;height:220rpx;align-items: center;width: 100%;background: #FFFFFF;border: 1px solid #E6E8EE;flex: none;order: 1;align-self: stretch;flex-grow: 0;margin:10px 0;" bindtap="turndetil" data-index="{{index}}">
+    <view style="position:relative;display: flex;border-radius:18px;height:220rpx;align-items: center;width: 100%;background: #FFFFFF;border: 1px solid #E6E8EE;flex: none;order: 1;align-self: stretch;flex-grow: 0;margin:10px 0;box-shadow: 0px 6px 10px rgba(76, 93, 105, 0.1);" bindtap="turndetil" data-index="{{index}}">
 
       <text style="position: absolute; left: 34rpx; top: 30rpx; width:90%;height:45%;font-weight: bold; font-size: 22px;line-height: 28px; color: #000000; text-align: left; display: inline-flex; flex-direction: column; align-items: left; justify-content: space-evenly;">{{item.CourseName}}</text>
       <text style="position: absolute;left:5%;top: 55%;width:90%;height:30%;font-weight: bold;font-size: 18px;line-height: 20px;color: #616161;text-align:left; display: flex; flex-direction: column; align-items: left; justify-content: space-evenly;">{{item.CourseTeacher}}</text>
