@@ -50,7 +50,9 @@
     "pages/Function/DepartmentWork/SKYC/SKYCContent/SKYCContent",
     "pages/Function/FoodLib/FoodLibContent/foodlibcontent",
     "pages/User/UserAbout/useabout",
-    "pages/Function/ExperiencePack/ExperiencePackCon/experienceparkcon"
+    "pages/Function/ExperiencePack/ExperiencePackCon/experienceparkcon",
+    "pages/Function/ExperiencePack/LearningMaterials/learningmaterials",
+    "pages/Function/ExperiencePack/LifeGuide/lifeguide"
   ],
   "window": {
     "backgroundTextStyle": "light",

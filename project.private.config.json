@@ -244,5 +244,6 @@
       ]
     }
   },
-  "projectname": "WXFont-SXK"
+  "projectname": "WXFont-SXK",
+  "libVersion": "3.3.4"
 }

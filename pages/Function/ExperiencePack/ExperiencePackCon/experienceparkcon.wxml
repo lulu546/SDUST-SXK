@@ -11,7 +11,6 @@
       <view style="width: 100%;">
         <view class="style_one" data-tar="{{item.id}}" bindtap="turnpage"  style="{{'background:'+(item.backgroundcolor)+'box-shadow:'+(item.shadow)}}">
          <view style="top:10%;height:80%;position: relative;width: 100%;display: flex;">
-        
          <view  class="_text" style="font-weight:bold;margin-left: 20px;">{{item.name}}
           <view style="font-size: 30rpx;font-weight:lighter;margin-top: 2px;">
             {{item.detail}}
@@ -27,8 +26,8 @@
         <view class="style_one" data-tar="none" bindtap="turnpage"  style="background:#FFFFFF;box-shadow:0px 10px 20px rgba(76, 93, 105, 0.1);border: 1px solid #E6E8EE;">
          <view style="top:10%;height:80%;position: relative;width: 100%;display: flex;flex-direction: row;">
          <view style="position: relative;flex: 1; height:100%;display: flex;justify-content: center;align-items: center;">
-          <text style="width: 80%;position: relative;  color: #2A2D32;  opacity: 0.6;font-size: 14px;">(●'◡'●)ฅ( ̳• · • ̳ฅ)\n(✧∇✧) ୧⍤⃝ ₍ᐢ.ˬ.⑅ᐢ₎ (ᕑᗢᓫ∗)˒❛‿˂̵✧✿ଳ ̊ ⌯'▾'⌯('ヮ')✩| ᐕ)⁾⁾</text>
-         </view>
+          <text style="width: 80%;position: relative;  color: #2A2D32;  opacity: 0.6;font-size: 14px;">(●'◡'●)ଘ(੭ˊ꒳​ˋ)੭\n(✧∇✧) ୧⍤⃝ ₍ᐢ.ˬ.⑅ᐢ₎ (ᕑᗢᓫ∗)˒❛‿˂̵✧✿ଳ ̊ ⌯'▾'⌯✿('ヮ')✩| ᐕ)⁾⁾</text>
+       </view>
          <view  class="_text2">更多功能开发中，
          <view></view>
          更好的服务同学们！</view></view>
