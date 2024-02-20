@@ -58,7 +58,7 @@ App({
                   that.globalData.current_time = res.data
 
                   if (that.globalData.current_time["zc"] == null) {
-                    that.globalData.week_time = 21
+                    that.globalData.week_time = 20
                   }
                   else {
                     that.globalData.week_time = res.data["zc"]

@@ -198,7 +198,7 @@ function only_data(account) {
           app.globalData.current_time = res.data
 
           if (app.globalData.current_time["zc"] == null) {
-            app.globalData.week_time = 21
+            app.globalData.week_time = 20
           }
           else {
             app.globalData.week_time = res.data["zc"]

@@ -18,7 +18,7 @@ const count_weekday = (cont) =>{
   
   var day2 = new Date();
   day2.setTime(day2.getTime());
-  var data = day2.getFullYear()+"-" + (day2.getMonth()+1) + "-" + (day2.getDate());
+  var data = day2.getFullYear()+"/" + (day2.getMonth()+1) + "/" + (day2.getDate());
   var weekList = [];
 	var date_b = new Date(data);
 	//判断本日期是否为周日，获取本周一日期
