@@ -6,7 +6,7 @@
 
     <view class="userInfoCon" style="width: 100%;top: 0%;border-radius: 13px; background: #ffffff; width: 90%; left: 5%; position: relative; overflow: hidden;">
       <view class="x-CenterCon">
-        <image style="width: 100%;  position: relative;  " mode="widthFix" src="{{url}}/static/function/SetHead.png"></image>
+        <image style="width: 100%;  position: relative;  " mode="widthFix" src="https://sxksxk.work:18001/static/function/SetHead.png"></image>
       </view>
       <view class="unitInfo" style="border-top:0px;">
         <view class="titleCon">

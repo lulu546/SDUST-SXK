@@ -24,19 +24,19 @@
         <!-- 图标1(刷新) -->
         <view class="  image-wrapper" bindtap="update_class" >
           <image style="height: 3.2vh;" mode="heightFix"
-            src="https://sxksxk.work:18001//static/icon/refresh.png"
+            src="https://sxksxk.work:18001/static/icon/refresh.png"
           />
         </view>
         <!-- 图标2（上一周） -->
         <view class="  image-wrapper" bindtap="get_weekupdate" data-id="1">
           <image style="height: 4vh;" mode="heightFix"
-            src="https://sxksxk.work:18001//static/icon/left.png"
+            src="https://sxksxk.work:18001/static/icon/left.png"
           />
         </view>
         <!-- 图标3（下一周） -->
         <view class="  image-wrapper" bindtap="get_weekupdate" data-id="2" >
           <image  style="height: 4vh;" mode="heightFix"
-            src="https://sxksxk.work:18001//static/icon/right.png"
+            src="https://sxksxk.work:18001/static/icon/right.png"
           />
         </view>
       </view>

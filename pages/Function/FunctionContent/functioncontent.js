@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    url:null,
     islogin:false,
     functions:[
       [
@@ -204,8 +205,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-      console.log(this.data.functions[0][0].backgroundcolor)
-      console.log(this.data.functions[0][1].backgroundcolor)
+    const app = getApp();
+    var that = this;
+    that.setData({
+      url:app.globalData.TotalUrl
+    })
   },
 
   /**
