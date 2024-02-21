@@ -140,11 +140,11 @@
     <scroll-view scroll-y>
       <view wx:for="{{department_members}}" wx:key="index"class="_person">
         <!-- 如果没有被选中且不是自己 -->
-        <image src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" wx:if="{{is_selected_department_members[index]==0&&department_members[index].Snumber!=useraccount}}" class="_img" mode="aspectFit" bindtap="change_select_status" data-index="{{index}}"></image>
+        <image src="../../static/icon/Memo/memo-chance.png" wx:if="{{is_selected_department_members[index]==0&&department_members[index].Snumber!=useraccount}}" class="_img" mode="aspectFit" bindtap="change_select_status" data-index="{{index}}"></image>
         <!-- 如果选中且不是自己 -->
-        <image src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" wx:if="{{is_selected_department_members[index]==1&&department_members[index].Snumber!=useraccount}}" class="_img" mode="aspectFit" bindtap="change_select_status" data-index="{{index}}"></image>
+        <image src="../../static/icon/Memo/memo-chanced.png" wx:if="{{is_selected_department_members[index]==1&&department_members[index].Snumber!=useraccount}}" class="_img" mode="aspectFit" bindtap="change_select_status" data-index="{{index}}"></image>
         <!-- 如果是你本人 -->
-        <image src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" wx:if="{{department_members[index].Snumber==useraccount}}" class="_img" mode="aspectFit" style="opacity: 0.3;"></image>
+        <image src="../../static/icon/Memo/memo-chanced.png" wx:if="{{department_members[index].Snumber==useraccount}}" class="_img" mode="aspectFit" style="opacity: 0.3;"></image>
         <view class="_members">{{item.Name+' '+item.Snumber}}</view>
         <view class="divide_line"></view>
       </view>

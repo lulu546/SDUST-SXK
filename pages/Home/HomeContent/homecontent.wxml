@@ -65,7 +65,7 @@
     <view style="display: flex;height: 5vh;">
       <image
         class="self-start image_7" style="height: 5vh;width: 5vh;"
-        src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262936444418584.png" 
+        src="../../../static/icon/Memo/memo-head.png" 
       />
       <view class="_text" style="height: 100%;">待办预提醒</view>
     </view>

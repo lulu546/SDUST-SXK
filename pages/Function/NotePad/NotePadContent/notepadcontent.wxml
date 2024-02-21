@@ -7,7 +7,7 @@
         <view class="  img1" wx:if="{{is_to_delete==0}}" >
         <view style="display: flex;justify-items: start;flex-direction: column;">
           <view style=" font-size: 23px;font-weight:bold;">
-          及时归家，适时望月。
+            道阻且长，行则将至。
           </view>
           <view style=" font-size: 17px;font-weight:normal;margin-top:5px ;color:rgba(46, 46, 46, 0.9) ;">
             点击月亮可以新建事项！
@@ -56,21 +56,21 @@
       <view class="_style1 " style="align-items: center;display: inline;" bindtap="cancel_to_delete">
         <image
           class="image_9"
-          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928549223591.png" 
+          src="../../../../static/icon/Note/clear.png" 
         />
-        <view class="_font_1" style="width: 100%;margin-left: 0.7vw;">取消</view>
+        <view class="_font_1" >取消</view>
       </view>
       <view class="_style1" bindtap="confirm_delete" style="align-items: center;display: inline;">
           <image
             class="image_9"
-            src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928552622892.png" 
+            src="../../../../static/icon/Note/delete_forever.png" 
           />
-        <view class="_font_1" style="margin-left: 1.5vw;">删除</view>
+        <view class="_font_1" >删除</view>
       </view>
       <view class="_style1" bindtap="all_select_to_delete">
         <image
           class="image_9"
-          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/7db8083a4cbcef9309da4121e8acdcf0.png" 
+          src="../../../../static/icon/Note/library_add.png" 
         />
         <view class="_font_1" wx:if="{{is_all_selected==0}}">全选</view>
         <view class="_font_1" wx:if="{{is_all_selected==1}}">全不选</view>

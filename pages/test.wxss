@@ -17,7 +17,7 @@
 }
 .section_3 {
   padding: 3.733vw 5.333vw;
-  background-image: url('https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6471e04a5a7e3f03105feb4b/6472e69b54fe00001164f405/16876744464166033050.png');
+  background-color: #B9DB46;
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -140,8 +140,8 @@
 }
 .section_4 {
   padding: 3.733vw 5.333vw 0.533vw;
-  background-image: url('https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6471e04a5a7e3f03105feb4b/6472e69b54fe00001164f405/16876744476468672402.png');
-  background-size: 100% 100%;
+ 
+  background-color: #ffffff;background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .image_13 {
@@ -219,8 +219,8 @@
 }
 .section_5 {
   padding: 3.2vw 4.533vw;
-  background-image: url('https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6471e04a5a7e3f03105feb4b/6472e69b54fe00001164f405/16876744468951140005.png');
-  background-size: 100% 100%;
+  
+  background-color: #ffffff;background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 59.2vw;
 }

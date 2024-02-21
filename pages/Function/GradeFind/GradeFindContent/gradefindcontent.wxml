@@ -4,7 +4,7 @@
   <view class="flex-row items-center group space-x-6">
     <image
       class="image"
-      src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64c76846c430470012e7fbdd/16907899804936256594.png"
+      src="../../../../static/icon/Guide/guide-icon.png"
     />
     <view class="text">成绩查询</view>
     <view class="font5" wx:if="{{score.W_GPA>=3.9}}">学霸✧*｡ (ˊᗜˋ*) ✧*｡

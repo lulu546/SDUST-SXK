@@ -3,12 +3,12 @@
 <view wx:for="{{datalist}}" wx:key="index" wx:if="{{open_status==1&&delete_status==0}}" bindlongpress="delete_press" class="list">
   <view class="list-item_2 space-x-14 init_item" style="height: 5vh;">
     <!-- 选择框 -->
-    <view style="height: 8vh;width: 10vw;display: flex;justify-content: center;align-items: center;" bindtap="transfer_to_finished" data-id="{{kind}}" data-num="{{index}}" >
+    <view style="height: 8vh;width: 10vw;display: flex;justify-content: center;align-items: center;margin-right: 10px;" bindtap="transfer_to_finished" data-id="{{kind}}" data-num="{{index}}" >
       <image style="height: 3.4vh;width: 3.4vh;"
-      src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" wx:if="{{kind!=4}}"
+      src="../../static/icon/Memo/memo-chance.png" wx:if="{{kind!=4}}"
       />
       <image style="height: 3.4vh;width: 3.4vh;"
-        src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" wx:if="{{kind==4}}"
+        src="../../static/icon/Memo/memo-chanced.png" wx:if="{{kind==4}}"
       />
     </view>
     <!-- 文字加日期 -->
@@ -29,13 +29,13 @@
     <!-- 选择框 id用于区分哪一个数据分类，num表示分类中的哪一个，status表示是勾选删除还是取消勾选删除，此处为勾选删除 -->
     <view data-id="{{kind}}" data-num="{{index}}" wx:if="{{item[2]==0}}" catchtap="select_to_delete" data-status="0" class="img_style" style="height: 100%;">
       <image style="height: 3.4vh;width: 3.4vh;"
-          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928538070577.png" 
+          src="../../static/icon/Memo/memo-chance.png" 
       />
     </view>
       <!-- 选择框 id用于区分哪一个数据分类，num表示分类中的哪一个，status表示是勾选删除还是取消勾选删除，此处为取消勾选删除 -->
     <view data-id="{{kind}}" data-num="{{index}}" wx:if="{{item[2]==1}}" bindtap="select_to_delete" data-status="1" class="img_style">
       <image style="height: 3.4vh;width: 3.4vh;"
-          src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262928500954034.png" 
+          src="../../static/icon/Memo/memo-chanced.png" 
       />
     </view>
     <!-- 正文内容 -->

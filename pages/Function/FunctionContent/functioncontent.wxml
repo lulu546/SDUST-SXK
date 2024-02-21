@@ -6,7 +6,7 @@
       />
       <image
         class="image_11"
-        src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6471e04a5a7e3f03105feb4b/6472e69b54fe00001164f405/16876744419971953356.png"
+        src="../../../static/icon/Function/chun.png"
       />
    
       <text class="font_3 pos_7">空教室</text>
@@ -46,7 +46,7 @@
       />
       <image
         class="image_13"
-        src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6471e04a5a7e3f03105feb4b/6472e69b54fe00001164f405/16876744420002495799.png"
+        src="../../../static/icon/Function/qiu.png"
       />
 
       <text class="font_3 pos_18">通讯录</text>
@@ -114,7 +114,7 @@
       </view>
       <image
         class="image_14 pos_29"
-        src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6471e04a5a7e3f03105feb4b/6472e69b54fe00001164f405/16876744419990563871.png"
+        src="../../../static/icon/Function/qing.png"
       />
 
       <text class="font_1 " style="position: absolute;top: 15%;left: 52%;">小科爱生活</text>

@@ -3,7 +3,7 @@
     <view class="flex-col section_2" style=" display: flex; box-sizing: border-box">
       <view class="flex-row justify-between items-center group_5">
         <view class="flex-row items-center space-x-6">
-          <image class="shrink-0 image_7" src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6471e04a5a7e3f03105feb4b/6472e69b54fe00001164f405/16883656613648638460.png" />
+          <image class="shrink-0 image_7" src="../../../../static/icon/Exam/exam-icon.png" />
           <text class="font_1">考试安排</text>
         </view>
         <text class="font_1 text">当前周数为{{toweek}}周</text>

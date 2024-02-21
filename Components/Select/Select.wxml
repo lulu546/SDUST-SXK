@@ -2,9 +2,7 @@
 <view class='com-selectBox'>
   <view class='com-sContent' catch:tap="change_animation">
       <view class='com-sTxt' >{{datalist[range_index]}}</view>
-      <!-- <image src='https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873299204120923474.png'  class='com-sImg'  wx:if="{{!is_show}}" catch:tap="change_animation"></image>
-      <image src='https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/649017e85a7e3f03102b078f/64928c43726ab50011f2e8ed/16873262937789484920.png'  class='com-sImg'  wx:if="{{is_show}}" catch:tap="change_animation" style="height: 2vh;"></image> -->
-  </view>
+     </view>
   <view class='com-sList' wx:if="{{is_show}}">
       <view wx:for="{{datalist}}" data-index="{{index}}" wx:key='index' catchtap='setText'>
         <view class='com-sItem' hover-class="hover_com-sItem" >{{item}}</view>
