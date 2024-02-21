@@ -268,7 +268,7 @@
   .disslove .dissolve_department .selection .text_and_line .line{
     width: 40%;
     height: 10rpx;
-    background-color: yellow;
+    background-color: rgb(7,193,96);
     position: absolute;
     margin-left: 30%;
     bottom: 10%;
@@ -364,12 +364,13 @@
     /* border: 1rpx solid black; */
   }
   .kick_out_style ._notification .selection .line{
-    width: 40%;
+    width: 50%;
     height: 10rpx;
-    background-color: yellow;
+    background-color: rgb(7,193,96);
     position: absolute;
-    margin-left: 30%;
+    margin-left: 25%;
     bottom: 10%;
+    border-radius: 20px;
   } 
 
 

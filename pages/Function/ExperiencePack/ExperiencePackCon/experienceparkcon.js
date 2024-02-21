@@ -10,7 +10,7 @@ Page({
       
           {
             src:'/image/jishiben.jpg',
-            name:'小科学习资料',
+            name:'小科资料库',
             id:0,
             detail:'这是属于我科的传承！(✧∇✧)',
             backgroundcolor: '#5374A5;',
@@ -60,8 +60,9 @@ Page({
 
     }
     else if(e.currentTarget.dataset.tar=="1"){
-      wx.navigateTo({
-        url: "/pages/Function/ExperiencePack/LifeGuide/lifeguide"
+      wx.showToast({
+        title: '正在制作中！',
+        icon:'none'
       })
     }
    
