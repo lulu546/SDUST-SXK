@@ -60,7 +60,7 @@
 			<swiper-item style="height:74vh ; width: 94%;">
 				<view style="width: 100%;   display: flex;justify-content: center; flex-direction: column; overflow-y: auto; ">
 					<view style="margin-left: 4%;height:74vh ; top: 2vh;position: relative; width: 94%; display: flex;flex-direction: column;">
-						<image src="https://image.sxksxk.work/i/2023/11/20/655b63452e5f9.png" mode="widthFix" style="position:absolute; left:0px;width: 100%;"></image>
+						<image src="https://www.sxksxk.work/static/set/log.png" mode="widthFix" style="position:absolute; left:0px;width: 100%;"></image>
 
 					</view>
 				</view>
@@ -70,8 +70,8 @@
 
 	</view>
 
-	<image src="https://sxksxk.work:18001//static/function/GigaBoxBack.png" mode="widthFix" style="position:absolute; bottom: 0px;left:0px;width: 100vw;"></image>
+	<image src="https://www.sxksxk.work/static/function/GigaBoxBack.png" mode="widthFix" style="position:absolute; bottom: 0px;left:0px;width: 100vw;"></image>
 	<!-- 盒子 -->
-	<image class="fade-in " wx:if="{{show_GigaBox}}" src="https://sxksxk.work:18001//static/function/GigaBox2.png" mode="widthFix" style="position:absolute; bottom: 2vh;left:40vw;width: 60vw;"></image>
+	<image class="fade-in " wx:if="{{show_GigaBox}}" src="https://www.sxksxk.work/static/function/GigaBox2.png" mode="widthFix" style="position:absolute; bottom: 2vh;left:40vw;width: 60vw;"></image>
 	<view  bindtap="gigabox"  style="width: 16vw;height: 12vh;position: absolute;right: 19vw;bottom: 2vh;"></view>
 </view>

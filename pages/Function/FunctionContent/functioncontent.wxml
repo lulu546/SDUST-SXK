@@ -6,7 +6,7 @@
       />
       <image
         class="image_11"
-        src="https://sxksxk.work:18001/static/function/chun.png"
+        src="https://www.sxksxk.work/static/function/chun.png"
       />
    
       <text class="font_3 pos_7">空教室</text>
@@ -46,7 +46,7 @@
       />
       <image
         class="image_13"
-        src="https://sxksxk.work:18001/static/function/qiu.png"
+        src="https://www.sxksxk.work/static/function/qiu.png"
       />
 
       <text class="font_3 pos_18">通讯录</text>
@@ -114,7 +114,7 @@
       </view>
       <image
         class="image_14 pos_29"
-        src="https://sxksxk.work:18001/static/function/qing.png"
+        src="https://www.sxksxk.work/static/function/qing.png"
       />
 
       <text class="font_1 " style="position: absolute;top: 15%;left: 52%;">小科爱生活</text>

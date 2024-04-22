@@ -207,8 +207,30 @@ App({
     requestflag: 0,//判断QZ请求状态
     todatabasesflag:0,//判断数据库请求状态
     examlist:[],
-    scheduleResource:[],
-    TotalUrl:"https://sxksxk.work:18001",
+    scheduleResource:[
+      "https://www.sxksxk.work/static/schedule/1.png",
+      "https://www.sxksxk.work/static/schedule/2.png",
+      "https://www.sxksxk.work/static/schedule/3.png",
+      "https://www.sxksxk.work/static/schedule/4.png",
+      "https://www.sxksxk.work/static/schedule/5.png",
+      "https://www.sxksxk.work/static/schedule/6.png",
+      "https://www.sxksxk.work/static/schedule/7.png",
+      "https://www.sxksxk.work/static/schedule/8.png",
+      "https://www.sxksxk.work/static/schedule/9.png",
+      "https://www.sxksxk.work/static/schedule/10.png",
+      "https://www.sxksxk.work/static/schedule/11.png",
+      "https://www.sxksxk.work/static/schedule/12.png",
+      "https://www.sxksxk.work/static/schedule/13.png",
+      "https://www.sxksxk.work/static/schedule/14.png",
+      "https://www.sxksxk.work/static/schedule/15.png",
+      "https://www.sxksxk.work/static/schedule/16.png",
+      "https://www.sxksxk.work/static/schedule/17.png",
+      "https://www.sxksxk.work/static/schedule/18.png",
+      "https://www.sxksxk.work/static/schedule/19.png",
+      "https://www.sxksxk.work/static/schedule/20.png",
+      "https://www.sxksxk.work/static/schedule/21.png",
+    ],
+    TotalUrl:"https://www.sxksxk.work",
     //备忘录部分全局变量声明
       //01 未设置时间的事件
       not_selected_time_event_datalist:[],

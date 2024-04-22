@@ -54,6 +54,7 @@
     "pages/Function/ExperiencePack/LearningMaterials/learningmaterials",
     "pages/Function/ExperiencePack/LifeGuide/lifeguide"
   ],
+  
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFFFFF",

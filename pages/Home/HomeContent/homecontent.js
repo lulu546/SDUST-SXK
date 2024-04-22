@@ -228,7 +228,6 @@ Page({
     app.globalData.not_selected_time_event_datalist=wx.getStorageSync(Storage1)
     app.globalData.finished_event_datalist=wx.getStorageSync(Storage4)
     this.init_datalist()
-    this.post_staticapi()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -496,18 +495,7 @@ Page({
       //登录
     })
   },
-  post_staticapi(e){
-    staticapi.getScheduleResource().then(res =>{
-      console.log(res)
-      app.globalData.scheduleResource=res
-    }).catch(err => {
-      // 获取课程表信息失败，处理错误
-      wx.showToast({
-        title: '请求失败',
-        icon: 'error'
-        })
-      });
-  }
+
 
 
 
