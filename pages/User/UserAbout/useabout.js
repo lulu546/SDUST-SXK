@@ -28,7 +28,7 @@ Page({
   onShow() {
     setTimeout(()=>{
       this.setData({
-        show_GigaBox:true
+        show_GigaBox:false
        })
     },1000)
   },
@@ -67,6 +67,7 @@ Page({
   onShareAppMessage() {
 
   },
+ 
   getinfo(e){
     var that=this
     if(e.target.dataset.change=="1"){
@@ -118,43 +119,18 @@ Page({
       })
     }
     else if(e.target.dataset.change=="4"){
-      wx.setClipboardData({
-        data: 'https://space.bilibili.com/32090268?spm_id_from=333.337.0.0',
-        success: function (res) {
-          wx.getClipboardData({
-            success: function (res) {
-              wx.showToast({
-                title: '-(゜-゜)つロ',
-                icon: 'success',
-                duration: 2000
-              })
-            }
-          })
-        }
+      wx.navigateTo({
+        url: "/pages/WechatPage/JrencMature/JrencMature"
+      }).then(()=>{
+        wx.showToast({
+          title: '(•‾⌣‾•) 很高兴与你相遇',
+          icon: 'none',
+          duration: 2000
+        })
       })
     }
     else if(e.target.dataset.change=="5"){
-      wx.setClipboardData({
-        data: 'lyloveslife@qq.com',
-        success: function (res) {
-          wx.getClipboardData({
-            success: function (res) {
-              wx.showToast({
-                title: '寻找自我',
-                icon: 'success',
-                duration: 2000
-              })
-            }
-          })
-        }
-      })
-    }
-    else if(e.target.dataset.change=="6"){
-      wx.showToast({
-        title: '右滑有唠叨👉',
-        icon: 'success',
-        duration: 2000
-      })
+      
     }
 },
 gigabox(e) {

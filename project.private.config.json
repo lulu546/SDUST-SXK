@@ -10,6 +10,13 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/User/UserAbout/useabout",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/Home/HomeContent/homecontent",
           "query": "",
           "launchMode": "default",

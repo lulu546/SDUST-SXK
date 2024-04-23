@@ -37,7 +37,6 @@
     "pages/Function/FunctionContent/functioncontent",
     "pages/User/UserContent/usercontent",
     "pages/Function/GradeFind/BindGrade/bindgrade",
-    "pages/test",
     "pages/Function/ExamList/ExamListContent/examlistcontent",
     "pages/Function/EmptyERooms/EmptyERoomsContent/emptyeroomscontent",
     "pages/Function/CourseLib/CourseLibContent/courselibcontent",
@@ -52,9 +51,9 @@
     "pages/User/UserAbout/useabout",
     "pages/Function/ExperiencePack/ExperiencePackCon/experienceparkcon",
     "pages/Function/ExperiencePack/LearningMaterials/learningmaterials",
-    "pages/Function/ExperiencePack/LifeGuide/lifeguide"
+    "pages/Function/ExperiencePack/LifeGuide/lifeguide",
+    "pages/WechatPage/JrencMature/JrencMature"
   ],
-  
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFFFFF",
