@@ -70,6 +70,9 @@ Page({
  
   getinfo(e){
     var that=this
+    if(that.data.show_GigaBox){
+      return;
+    }
     if(e.target.dataset.change=="1"){
       wx.setClipboardData({
         data: 'lyloveslife@qq.com',
