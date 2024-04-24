@@ -52,7 +52,8 @@
     "pages/Function/ExperiencePack/ExperiencePackCon/experienceparkcon",
     "pages/Function/ExperiencePack/LearningMaterials/learningmaterials",
     "pages/Function/ExperiencePack/LifeGuide/lifeguide",
-    "pages/WechatPage/JrencMature/JrencMature"
+    "pages/WechatPage/JrencMature/JrencMature",
+    "pages/WechatPage/HappyFriend/happyfriend"
   ],
   "window": {
     "backgroundTextStyle": "light",

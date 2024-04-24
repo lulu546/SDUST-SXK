@@ -104,13 +104,13 @@ Page({
     }
     else if(e.target.dataset.change=="3"){
       wx.setClipboardData({
-        data: 'https://github.com/lulu546',
+        data: 'https://github.com/lulu546/SXK',
         success: function (res) {
           wx.getClipboardData({
             success: function (res) {
               wx.showToast({
-                title: '☆ ★',
-                icon: 'success',
+                title: '代码Bug太多，等我修一下QAQ',
+                icon: 'none',
                 duration: 2000
               })
             }
@@ -130,7 +130,15 @@ Page({
       })
     }
     else if(e.target.dataset.change=="5"){
-      
+      wx.navigateTo({
+        url: "/pages/WechatPage/HappyFriend/happyfriend"
+      }).then(()=>{
+        wx.showToast({
+          title: '╮/(＞▽<)人(>▽＜)╭',
+          icon: 'none',
+          duration: 2000
+        })
+      })
     }
 },
 gigabox(e) {
