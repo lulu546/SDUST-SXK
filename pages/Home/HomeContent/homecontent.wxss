@@ -1,13 +1,12 @@
 /* pages/prime/Page.wxss */
 .homegraph{
-  position: absolute;
-  width: 90%;
-  height: 29.5vh;
-  left: 5%;
-  top: 2.5vh;
+  position: relative;
+  width: 90vw;
+  height: 49.5vw;
+
   
   background: #ffffff;
-  border-radius: 17px;
+  border-radius:17px;
   border: 1px solid #E6E8EE;
 box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
 }
@@ -100,8 +99,7 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
   position: relative;
   width: 90%;
   height: 19vh;
-  left: 5%;
-  top: 36vh;
+
   background: #ffffff;
   border-radius: 17px;
   border: 1px solid #E6E8EE;
@@ -243,10 +241,8 @@ top: 261px;269 */
 /* 记事本 */
 /* pages/home/home.wxss */
 .notpad{
-  position: absolute;
-  top: 59vh;
-  width: 90%;
-  left: 5%;
+  position: relative;
+
   border-radius: 17px;
   border: 1px solid #E6E8EE;
   padding: 5vw 5vw 5vw;

@@ -1,8 +1,9 @@
 <!-- <view class="curriculum" bindtap="turn_crouselist2" style="height:{{homeOutObj.height}};"> -->
-  <wxs src='../../../utils/utils.wxs' module='tools'/>
-<scroll-view scroll-y style="height: 100vh;width: 100vw;">
+<wxs src='../../../utils/utils.wxs' module='tools'/>
+<view style="gap: 5vh;margin-top: 5vh; width: 100%; height: 100%;display: flex;flex-direction: column; justify-content: center;align-items: center;">
   <!-- 课程名长度显示问题，第11周等长周数不适配问题，留出的字符空间至少+1 -->
 <view class="homegraph">
+<image style="width: 100%;height: 100%;  border: 1px solid #E6E8EE;  border-radius:17px;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);" src="https://www.sxksxk.work/static/function/headImage.png" mode="widthFix"/>
 </view>
 
 <view class="curriculum" bindtap="turn_crouselist" style="height:{{homeOutObj.height}};">
@@ -55,9 +56,7 @@
 
 
 
-<!-- <view class="outnotepadall">
 
-</view> -->
 
 <view class="flex-col section_7 space-y-13 notpad" catchtap="navigator_to_notpad"
  style="border-radius: 17px;  border: 1px solid #E6E8EE;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1); "
@@ -82,6 +81,7 @@
 </view>
     
 
+</view>
   
 
 
@@ -89,4 +89,3 @@
 
 
 
-</scroll-view>
