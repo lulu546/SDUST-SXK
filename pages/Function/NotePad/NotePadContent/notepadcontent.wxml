@@ -79,9 +79,10 @@
   </view>
 </view>
 
-<!-- 02 添加页面 -->
-<view class="add" wx:if="{{is_have_shade==1}}" catchtap="close_shade">
-  <view class="flex-col section_5 space-y-38 total_view" catchtap="show_shade">
+<!-- 02 添加页面+掩膜 -->
+<view class="add" wx:if="{{is_have_shade==1}}" style="">
+  <view style="position: absolute;z-index: 4;width: 100vw;height: 100vh;"  catchtap="close_shade"></view>
+  <view class="flex-col section_5 space-y-38 total_view" style="">
     <!-- 除了“确认”外的其他部分 -->
     <view class="flex-col except_confirm">
       <!-- “时间选择”文字部分 -->
@@ -110,7 +111,7 @@
         <view class="_num" style="height: 3vh;right: 0.5vw;">{{area_num}}/25</view>
       </view>
     </view>
-    <view class="font_3 _confirm" style="height: 4vh;position: absolute;bottom: 1.5vh;left: 0vw;display: flex;justify-content: center;align-items: center;color: black;letter-spacing:2px; " bindtap="confirm_add_event">确认</view>
+    <view class="font_3 _confirm" style="height: 4vh;position: absolute;bottom: 1.5vh;left: 0vw;display: flex;justify-content: center;align-items: center;color: black;letter-spacing:2px; z-index: 14;" bindtap="confirm_add_event">确认</view>
   </view>
   <view style="height: 100vh;width: 100vw;background-color: rgb(216, 215, 215);opacity: 0.4;position: absolute;z-index: 3;transition-property: background-color; transition: 0.5s;"></view>
 </view>

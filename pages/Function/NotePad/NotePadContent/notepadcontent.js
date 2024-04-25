@@ -609,6 +609,7 @@ Page({
 
   //02_5 确定添加事件
   confirm_add_event(){
+    console.log("dsad")
     var _event_length=this.data.event_content.length
     console.log(this.data.event_content)
     //首先判断事项内容是否为空，若为空，则提示错误
