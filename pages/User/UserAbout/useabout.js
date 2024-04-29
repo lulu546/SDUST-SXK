@@ -75,7 +75,7 @@ Page({
     }
     if(e.target.dataset.change=="1"){
       wx.setClipboardData({
-        data: 'lyloveslife@qq.com',
+        data: '584646697',
         success: function (res) {
           wx.getClipboardData({
             success: function (res) {
@@ -91,7 +91,7 @@ Page({
     }
     else if(e.target.dataset.change=="2"){
       wx.setClipboardData({
-        data: '862055705',
+        data: 'lyloveslife@qq.com',
         success: function (res) {
           wx.getClipboardData({
             success: function (res) {

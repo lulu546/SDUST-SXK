@@ -54,10 +54,13 @@ Page({
 
     }
     else if(e.currentTarget.dataset.tar=="0"){
-      wx.navigateTo({
-        url: "/pages/Function/DepartmentWork/SKYC/SKYCContent/SKYCContent"
+      // wx.navigateTo({
+      //   url: "/pages/Function/DepartmentWork/SKYC/SKYCContent/SKYCContent"
+      // })
+      wx.showToast({
+        title: '五一不休息，五月十五之前一定做出来！(ᕑᗢᓫ∗)˒',
+        icon:'none'
       })
-
     }
     else if(e.currentTarget.dataset.tar=="1"){
       wx.showToast({

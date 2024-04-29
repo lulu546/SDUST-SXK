@@ -27,28 +27,21 @@
         <view>{{student_info.yxmc}}</view>
       </view>
       <view class="{{['a-hide',(today>'2020-03-26')?'a-show':'']}}">
-        <view class="unitInfo" data-copy="722942376" data-event-opts="{{[['tap',[['copy',['$event']]]]]}}" bindtap="__e">
+        <view bindtap="getInfo" class="unitInfo"  >
           <view class="titleCon">QQ群</view>
-          <view>691478474</view>
+          <view>584646697</view>
         </view>
       </view>
-      <view class="unitInfo" bindtap="turn">
+      <view class="unitInfo" bindtap="turn" data-turn="blog">
         <view style="display:flex;">
           <view class="titleCon">
-            <view>公告</view>
+            <view>日志</view>
           </view>
           <view class="point" style="{{'background:'+('green')+';'+('display:'+(point)+';')}}"></view>
         </view>
         <view>></view>
       </view>
-      <view class="unitInfo" bindtap="turn">
-        <view style="display:flex;">
-          <view class="titleCon">
-            <view>赞赏</view>
-          </view>
-        </view>
-        <view>></view>
-      </view>
+
       <view class="unitInfo" bindtap="turn" data-turn="about">
         <view class="titleCon">
           <view>关于</view>

@@ -53,7 +53,8 @@
     "pages/Function/ExperiencePack/LearningMaterials/learningmaterials",
     "pages/Function/ExperiencePack/LifeGuide/lifeguide",
     "pages/WechatPage/JrencMature/JrencMature",
-    "pages/WechatPage/HappyFriend/happyfriend"
+    "pages/WechatPage/HappyFriend/happyfriend",
+    "pages/User/UserBlog/userblog"
   ],
   "window": {
     "backgroundTextStyle": "light",

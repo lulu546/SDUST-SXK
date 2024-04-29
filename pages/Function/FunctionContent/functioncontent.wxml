@@ -91,7 +91,7 @@
           src="../../../static/icon/Function/d5f38d555848d95d6bd1acedd5eb2ccb.png"
         />
       </view>
-      <text class="font_3 pos_35">教室课表</text>
+      <text class="font_3 pos_35">小科活动</text>
       <view class="flex-col justify-start items-center image-wrapper_3 pos_33"data-tar="9" bindtap="turnNull" style="background-color: rgb(211, 211, 211);">
         <image
           class="image_10"

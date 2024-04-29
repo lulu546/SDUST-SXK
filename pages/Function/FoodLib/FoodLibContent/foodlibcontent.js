@@ -15,7 +15,7 @@ Page({
     pageList:[],//分页数组
     randomList:[], // 随机的食物库列表
     instanceR:false,// 拖动块距离右侧的距离远
-    functionStatus:false,// 功能切换状态，false为食物原始列表，true为随机列表
+    functionStatus:true,// 功能切换状态，false为食物原始列表，true为随机列表
   },
   // 点击获取随机食物库
   startRandomSelection(){
@@ -172,7 +172,10 @@ console.log(res.foodList)
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    wx.showToast({
+      title: '....正在统计咱山科的食物中QAQ',
+      icon:'none'
+    })
   },
 
   /**

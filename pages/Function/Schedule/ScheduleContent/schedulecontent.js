@@ -359,9 +359,13 @@ Page({
   
   // 添加课程
   buttonadd() {
-    wx.navigateTo({
-      url: '../new_schedule/new_shedule',
+    wx.showToast({
+      title: '正在开发课表绑定备忘录功能中ฅ˙Ⱉ˙ฅ',
+      icon: 'none'
     })
+    // wx.navigateTo({
+    //   url: '../new_schedule/new_shedule',
+    // })
 
   },
   // 刷新

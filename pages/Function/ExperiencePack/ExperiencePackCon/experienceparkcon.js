@@ -54,9 +54,14 @@ Page({
 
     }
     else if(e.currentTarget.dataset.tar=="0"){
-      wx.navigateTo({
-        url: "/pages/Function/ExperiencePack/LearningMaterials/learningmaterials"
+      wx.showToast({
+        title: '五月十五之前一定做出来！',
+        icon:'none'
       })
+
+      // wx.navigateTo({
+      //   url: "/pages/Function/ExperiencePack/LearningMaterials/learningmaterials"
+      // })
 
     }
     else if(e.currentTarget.dataset.tar=="1"){

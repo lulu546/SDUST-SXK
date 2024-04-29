@@ -10,15 +10,16 @@ Page({
     name:null,
     academy:null,
     student_info:null,
-    url:null
+    url:null,
+    point:'none'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
- 
     
+    wx.setStorageSync("point", "none");
   },
 
   /**
@@ -82,13 +83,18 @@ Page({
       })
 
     }
-    if(e.target.dataset.turn=="about"){
+    else if(e.target.dataset.turn=="about"){
       wx.navigateTo({
         url: '../UserAbout/useabout',
       })
 
     }
-  
+    else if(e.target.dataset.turn=="blog"){
+      wx.navigateTo({
+        url: '../UserBlog/userblog',
+      })
+
+    }
 
   },
   logout(e) {
@@ -103,5 +109,22 @@ Page({
     })
   
 
+  },
+  getInfo(){
+    wx.setClipboardData({
+      data: '584646697',
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: 'Tecent，启动！',
+              icon: 'success',
+              duration: 2000
+            })
+          }
+        })
+      }
+    })
   }
+
 })
