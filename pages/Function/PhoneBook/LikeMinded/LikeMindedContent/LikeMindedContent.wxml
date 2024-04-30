@@ -15,8 +15,8 @@
     <view style="position: absolute;height: 26%;top: 56%; left:33%;background: rgba(255, 255, 255, 0.5);border-radius: 15px; color: #3730A3;width: 30%;background: #E0E7FF;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;font-weight:bold;">第{{pageNum}}页
     </view>
     <view style="position: absolute;height: 26%;top: 56%; left:65%;background: rgba(255, 255, 255, 0.5);border-radius: 15px; color: #3730A3;width: 30%;background: #E0E7FF;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;">
-      <image data-change="pre" bindtap="weekchange" mode="widthFix" style="width: 65rpx;  display: block; box-sizing: border-box" src="../../../../../static/icon/Schedule/left-square.png"></image>
-      <image data-change="next" bindtap="weekchange" mode="widthFix" style="width: 65rpx;  display: block; box-sizing: border-box" src="../../../../../static/icon/Schedule/right-square.png"></image>
+      <image data-change="pre" bindtap="weekchange" mode="widthFix" style="height: auto;width: 65rpx;  display: block; box-sizing: border-box" src="../../../../../static/icon/Schedule/left-square.png"></image>
+      <image data-change="next" bindtap="weekchange" mode="widthFix" style="height: auto;width: 65rpx;  display: block; box-sizing: border-box" src="../../../../../static/icon/Schedule/right-square.png"></image>
     </view>
     <view style="position: absolute;height: 26%;top: 56%; left:5%;background: #8E97FD;border-radius: 15px; color:#F6F1FB ;width: 26%;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;font-weight:bold;">投稿
     </view>
@@ -33,8 +33,8 @@
         <view style="position:relative;display: flex-col;min-height: 20vh;align-items: center;border-radius: 15px;background: #FFFFFF;border: 1px solid #E6E8EE;padding: 1.3rem; margin: 5%;margin-top: 0%;margin-bottom: 3%;" data-index="{{index}}" bindtap="copyText" data-key="{{item.QQGroupNumber}}">
 
           <text style="position: relative;width:96%;font-weight: bold; font-size: 27px; color: #000000; ">{{item.Groupname}}</text>
-          <text style="position: relative;width:96%;font-family:宋体;height:30%;font-weight: bold;font-size: 20px;line-height: 33px;color: #000000;text-align:left; display: flex; flex-direction: column; align-items: left; justify-content: space-evenly;" selectable="true">QQ群:{{item.QQGroupNumber}}</text>
-          <text style="position: relative;font-family:宋体; top: 60%;width:96%;height:30%;font-size: 20px;line-height: 1.5rem;color: #616161;text-align:left; display: flex; flex-direction: column; align-items: left; ">{{item.InfoContent}}</text>
+          <text style="position: relative;width:96%;font-family:宋体;height:30%;font-weight: bold;font-size: 20px;line-height: 33px;color: #000000;text-align:left; display: flex; flex-direction: column; align-items: left; justify-content: space-evenly;" selectable="true">{{item.QQGroupNumber}}</text>
+          <text style="position: relative;font-family:宋体; top: 60%;width:96%;height:30%;font-size: 20px;line-height: 2rem;color: #616161;text-align:left; display: flex; flex-direction: column; align-items: left; ">{{item.InfoContent}}</text>
 
         </view>
       </view>
@@ -42,7 +42,7 @@
     <block wx:else>
       <view style="position:relative;width: 90%;left:5%;height: 67vh;background-color: #262334;  border-radius: 17px;border: 1px solid #E6E8EE;display: flex-col;align-items: center;justify-content: center;">
       <view style="width:50%;left:25% ;position: absolute;top: 20%;">
-        <image src="https://www.sxksxk.work/static/function/phoneList/Thief.png" mode="widthFix" style="width:100%;background: linear-gradient(114.24deg, rgba(38, 35, 52, 1) 0%, rgba(48, 45, 67, 1) 100%);border: white 2px;"/>
+        <image src="https://www.sxksxk.work/static/function/phoneList/Thief.png" mode="widthFix" style="height: auto;width:100%;background: linear-gradient(114.24deg, rgba(38, 35, 52, 1) 0%, rgba(48, 45, 67, 1) 100%);border: white 2px;"/>
         <view style="width:100%;text-align: center;">
           <text style="color: white;width: 100%;font-size: 19px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">  吖！社团被偷走啦！
           (,,#ﾟДﾟ)</text>

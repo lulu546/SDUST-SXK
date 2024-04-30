@@ -13,8 +13,8 @@
       
     </view>
     <view style="position: absolute;height: 26%;top: 58%; left:65%;background: rgba(255, 255, 255, 0.5);border-radius: 15px; color: #3730A3;width: 30%;background: #E0E7FF;align-items:center;justify-content: space-evenly;font-size:20px;text-align:center;display: flex;">
-      <image data-change="pre" bindtap="weekchange" mode="widthFix" style="width: 65rpx;  display: block; box-sizing: border-box"  src="../../../../static/icon/Schedule/left-square.png"></image>
-      <image data-change="next" bindtap="weekchange" mode="widthFix" style="width: 65rpx;  display: block; box-sizing: border-box"  src="../../../../static/icon/Schedule/right-square.png"></image>
+      <image data-change="pre" bindtap="weekchange" mode="widthFix" style="height: auto;width: 65rpx;  display: block; box-sizing: border-box"  src="../../../../static/icon/Schedule/left-square.png"></image>
+      <image data-change="next" bindtap="weekchange" mode="widthFix" style="height: auto;width: 65rpx;  display: block; box-sizing: border-box"  src="../../../../static/icon/Schedule/right-square.png"></image>
     </view>
 
     

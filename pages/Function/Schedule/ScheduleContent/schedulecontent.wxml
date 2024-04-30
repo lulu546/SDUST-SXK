@@ -19,24 +19,24 @@
 <view class="outer">
   <view style="position: relative;width: 100%; height: 250rpx; display: block; box-sizing: border-box">
     <view style="position: absolute;height:100%; width: 30%;align-items:center;display:flex;justify-content:center;">
-      <image bindtap="buttonadd" mode="widthFix" style="width:200rpx;margin-left: 4vw;" src="{{scheduleResource[week_ordinal-1]}}"></image>
+      <image bindtap="buttonadd" mode="widthFix" style="height: auto;width:200rpx;margin-left: 4vw;" src="{{scheduleResource[week_ordinal-1]}}"></image>
     </view>
     <view  class="buttonshare" style="position: absolute; top:10%; left: 35%; height: 35%;border-radius: 10px; color: #3730A3;width: 60%;background: #E0E7FF;align-items:center;display:flex;justify-content: space-evenly;">
       <view bindtap="turnshareset" style="position: absolute;font-size:44rpx; left: 8%; letter-spacing:1rpx;  ">
         共享课表
       </view>
-      <image bindtap="turnshareset" mode="widthFix" style=" position: absolute;width: 44rpx;  display: block; left: 48%;box-sizing: border-box" src="../../../../static/icon/Schedule/setting.png"></image>
+      <image bindtap="turnshareset" mode="widthFix" style="height: auto; position: absolute;width: 44rpx;  display: block; left: 48%;box-sizing: border-box" src="../../../../static/icon/Schedule/setting.png"></image>
       <switch checked="{{checked_value}}" style="position: absolute; left: 70%; " bindchange="switchShare"></switch>
     </view>
 
     <view style="position: absolute; top:55%; left: 35%; height: 35%;border-radius: 10px; width: 60%;background: #E0E7FF;align-items:center;display:flex;justify-content: space-evenly;">
 
-      <image bindtap="buttonadd" mode="widthFix" style="  width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/add.png"></image>
+      <image bindtap="buttonadd" mode="widthFix" style="height: auto;  width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/add.png"></image>
 
-      <image bindtap="rechange" mode="widthFix" style=" width: 60rpx; display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/refresh.png"></image>
+      <image bindtap="rechange" mode="widthFix" style="height: auto; width: 60rpx; display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/refresh.png"></image>
 
-      <image data-change="pre" bindtap="weekchange" mode="widthFix" style="width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/left-square.png"></image>
-      <image data-change="next" bindtap="weekchange" mode="widthFix" style=" width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/right-square.png"></image>
+      <image data-change="pre" bindtap="weekchange" mode="widthFix" style="height: auto;width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/left-square.png"></image>
+      <image data-change="next" bindtap="weekchange" mode="widthFix" style="height: auto; width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/right-square.png"></image>
     </view>
 
 

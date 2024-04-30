@@ -149,7 +149,7 @@ console.log(res.foodList)
        uniqueTypesArray = ['全部', ...uniqueTypesArray];
 
       let arrayList2New=[
-        ["全部","A餐","B餐","C餐","北门","南门","外卖"],
+        ["全部","A餐","B餐","C餐","北门","南门","外卖","其它"],
         uniqueTypesArray
       ]
       console.log(arrayList2New);

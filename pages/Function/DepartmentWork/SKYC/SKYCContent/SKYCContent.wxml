@@ -3,8 +3,8 @@
 
 <view  style="width: 90%;left: 5%;position: relative;top: 2.5vh;border-radius: 5px;box-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.1);background: rgba(255, 255, 255, 1);">
   <!-- 可以实现类预加载的丝滑迁移 -->
-  <image bindtap="getemail" src="https://www.sxksxk.work/static/function/SKYC2.png" mode="widthFix" style="width: 100%;position: absolute;"/>
-  <image wx:if="{{!flag}}" bindtap="getemail" src="https://www.sxksxk.work/static/function/SKYC1.png" mode="widthFix" style="width: 100%;position: absolute;"/>
+  <image bindtap="getemail" src="https://www.sxksxk.work/static/function/SKYC2.png" mode="widthFix" style="height: auto;width: 100%;position: absolute;"/>
+  <image wx:if="{{!flag}}" bindtap="getemail" src="https://www.sxksxk.work/static/function/SKYC1.png" mode="widthFix" style="height: auto;width: 100%;position: absolute;"/>
 
   
 </view>

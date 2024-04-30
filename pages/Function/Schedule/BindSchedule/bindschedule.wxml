@@ -31,7 +31,7 @@
       </view>
 
 
-      <image src="https://www.sxksxk.work/static/schedule/LineFrame.png" mode="widthFix" style="position: absolute;width: 50%;top:60%;left:50%;" />
+      <image src="https://www.sxksxk.work/static/schedule/LineFrame.png" mode="widthFix" style="height: auto;position: absolute;width: 50%;top:60%;left:50%;" />
     </swiper-item>
     <swiper-item>
       <view style="position: absolute;left:10%;width: 200px;height: 100%;background: linear-gradient(69.52deg, #6d20f193 17.1%, rgba(107, 32, 241, 0) 62.03%);background-blend-mode: overlay;border-radius: 100px 100px 100px 336.5px;transform: matrix(0.9, -0.48, 0.42, 0.89, 0, 0);">
@@ -62,7 +62,7 @@
             <text style="color: #D3D3D3;font-family: ‘Segoe UI’, Tahoma, Geneva, Verdana, sans-serif;letter-spacing:1rpx;">共享绑定为{{chanceshare}}</text>
         </view>
       </view>
-      <image src="https://www.sxksxk.work/static/schedule/LineFrame.png" mode="widthFix" style="position: absolute;width: 50%;top:60%;left:50%;" />
+      <image src="https://www.sxksxk.work/static/schedule/LineFrame.png" mode="widthFix" style="height: auto;position: absolute;width: 50%;top:60%;left:50%;" />
     </swiper-item>
     <swiper-item>
       <view style="position: absolute;left:10%;width: 200px;height: 100%;background: linear-gradient(69.52deg, #6d20f193 17.1%, rgba(107, 32, 241, 0) 62.03%);background-blend-mode: overlay;border-radius: 100px 100px 100px 336.5px;transform: matrix(0.9, -0.48, 0.42, 0.89, 0, 0);">
@@ -92,7 +92,7 @@
             <text style="color: #D3D3D3;font-family: ‘Segoe UI’, Tahoma, Geneva, Verdana, sans-serif;letter-spacing:1rpx;">共享绑定为{{chanceshare}}</text>
         </view>
       </view>
-      <image src="https://www.sxksxk.work/static/schedule/LineFrame.png" mode="widthFix" style="position: absolute;width: 50%;top:60%;left:50%;" />
+      <image src="https://www.sxksxk.work/static/schedule/LineFrame.png" mode="widthFix" style="height: auto;position: absolute;width: 50%;top:60%;left:50%;" />
     </swiper-item>
     <swiper-item>
       <view style="position: absolute;left:10%;width: 200px;height: 100%;background: linear-gradient(69.52deg, #6d20f193 17.1%, rgba(107, 32, 241, 0) 62.03%);background-blend-mode: overlay;border-radius: 100px 100px 100px 336.5px;transform: matrix(0.9, -0.48, 0.42, 0.89, 0, 0);">
@@ -121,7 +121,7 @@
             <text style="color: #D3D3D3;font-family: ‘Segoe UI’, Tahoma, Geneva, Verdana, sans-serif;letter-spacing:1rpx;">共享绑定为{{chanceshare}}</text>
         </view>
       </view>
-      <image src="https://www.sxksxk.work/static/schedule/LineFrame.png" mode="widthFix" style="position: absolute;width: 50%;top:60%;left:50%;" />
+      <image src="https://www.sxksxk.work/static/schedule/LineFrame.png" mode="widthFix" style="height: auto;position: absolute;width: 50%;top:60%;left:50%;" />
     </swiper-item>
     <swiper-item>
       <view style="position: absolute;left:10%;width: 200px;height: 100%;background: linear-gradient(69.52deg, #6d20f193 17.1%, rgba(107, 32, 241, 0) 62.03%);background-blend-mode: overlay;border-radius: 100px 100px 100px 336.5px;transform: matrix(0.9, -0.48, 0.42, 0.89, 0, 0);">
@@ -150,7 +150,7 @@
             <text style="color: #D3D3D3;font-family: ‘Segoe UI’, Tahoma, Geneva, Verdana, sans-serif;letter-spacing:1rpx;">共享绑定为{{chanceshare}}</text>
         </view>
       </view>
-      <image src="https://www.sxksxk.work/static/schedule/LineFrame.png" mode="widthFix" style="position: absolute;width: 50%;top:60%;left:50%;" />
+      <image src="https://www.sxksxk.work/static/schedule/LineFrame.png" mode="widthFix" style="height: auto;position: absolute;width: 50%;top:60%;left:50%;" />
     </swiper-item>
 
 

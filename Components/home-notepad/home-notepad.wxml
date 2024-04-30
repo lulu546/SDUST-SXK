@@ -3,7 +3,7 @@
   <view class="flex-row items-center list-item_2 space-x-14" style="background-color: {{whichone==3 ? 'rgba(255, 0, 0, 0.075)' : 'white'}};">
     <!-- 选择框 -->
     <image
-      class="image_10"
+      class="image_10" 
       src="../../static/icon/Memo/memo-chance.png" catchtap="transfer_to_finished" data-id="{{whichone}}" data-num="{{index}}"
     />
     <!-- 文字加日期 -->
