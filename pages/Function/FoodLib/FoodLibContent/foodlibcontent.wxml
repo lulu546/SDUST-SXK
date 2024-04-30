@@ -22,8 +22,8 @@
         <view style="width: 80%;height: 20%;position: absolute;margin-top: 28%;margin-left: 6%;font-size: 15px;color: #aaa9a9;font-weight: 530;">地点：{{item.location}}</view>
       </view>
       <!-- 标签项 -->
-      <view style="position: absolute; width: 20%; height: 100%; right: 0px; border-bottom-right-radius: 10px; border-top-right-radius: 10px; background-color: {{stringContains(item.address, 'A') ? 'rgb(247, 247, 204)' : '#D5E5FF'}}; display: flex; align-items: center; justify-content: center;">
-        <view style="font-weight: 320;line-height: 1.2rem; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;width: 70%; height: 90%; font-size: 3.5vw; color: #3A4DE9; justify-content: center; align-items: center; display: flex;">
+      <view style="position: absolute; width: 30%; height: 100%; right: 0px;justify-content: center;align-items: center; border-bottom-right-radius: 10px; border-top-right-radius: 10px; background-color: {{stringContains(item.address, 'A') ? 'rgb(247, 247, 204)' : '#D5E5FF'}}; display: flex; align-items: center; justify-content: center;">
+        <view style="font-weight: 320;line-height: 1.4rem; width: 85%; height: 90%; font-size: 15px; color: #3A4DE9; justify-content: center; align-items: center; display: flex;">
           {{item.address}}
           <!-- {{item.address.includes('A')}} -->
         </view>
