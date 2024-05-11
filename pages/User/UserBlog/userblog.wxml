@@ -1,3 +1,16 @@
-<!--pages/User/UserBlog/userblog.wxml-->
-<text>我还没做更新日志，Emmm....要不要做一个呢？会不会没必要，会不会让人觉得“什么破事就叫大伙出来？”</text>
-<text>还是有必要的，等之后搞一个出来。</text>
+<view style=" width: 100vw;height: 100vh;justify-content: start;display: flex;flex-direction: column;align-items: center;">
+
+	<view class="card">
+		<view class="card-details">
+			<view class="text-title">2024.5.12 增加了日志功能</view>
+			<view class="text-body">
+					<li>1. 增加了<span class="black  pad">更新日志功能</span>₍ᐢ..ᐢ₎♡，也就是这个页面！<span class="black">看这里就能知道这个项目死活辣！</span>（👀还活着吗？</li>
+					<li>2. 我会加油更新的💌！嘿嘿👏</li>
+					<li>3. ❤️‍🔥明天去做<span class="black pad" style="color: cadetblue;">自定义课表</span>，然后把<span class="black" >备忘录和课表统一起来</span>。那样感觉更好用。</li>
+					
+			</view>
+		</view>
+	</view>
+
+	
+</view>
