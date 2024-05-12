@@ -53,3 +53,6 @@
 	padding-left: .25rem;
 	padding-right: .25rem;
 }
+.delete {
+    text-decoration-line: line-through;
+}

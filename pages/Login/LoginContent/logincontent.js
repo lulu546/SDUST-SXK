@@ -51,12 +51,14 @@
   },
   changeAgreement(){
     var that = this;
-    var isAgreement_=that.data.isAgreement
+    var isAgreement_ = that.data.isAgreement;
     that.setData({
-      isAgreement:!isAgreement_
-    })
-
+      isAgreement: !isAgreement_
+    });
+    
+    wx.setStorageSync('isAgreement',that.data.isAgreement)
   },
+  
 
   //进行登录的设置
   loginTo() {
@@ -73,7 +75,7 @@
     console.log(isAgreement)
     if (!isAgreement) {
       wx.showToast({
-        title: '用户协议',
+        title: '请看一眼用户协议',
         icon: 'error'
       })
       return;
@@ -211,11 +213,24 @@
   onLoad(options) {
     //页面加载时，从微信缓存读取账号密码
     var that = this;
+
     that.setData({
       useraccount: wx.getStorageSync('useraccount'),
       userpws: wx.getStorageSync('userpws'),
       islogin: wx.getStorageSync('islogin')
     })
+    try {
+      var isAgreement = wx.getStorageSync('isAgreement');
+      if (isAgreement !== null) {
+        // 这里设置 isAgreement 到 data 使得页面正确显示状态
+        that.setData({
+          isAgreement: isAgreement
+        });
+      }
+    } catch (e) {
+      console.log('Failed to retrieve data from storage: ', e);
+    }
+
 
   },
 
@@ -266,6 +281,6 @@
    * 用户点击右上角分享
    */
   onShareAppMessage() {
-
-  }
+ 
+  } 
 })

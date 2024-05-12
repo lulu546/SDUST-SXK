@@ -10,6 +10,13 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/Login/LoginContent/logincontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/User/UserAbout/useabout",
           "query": "",
           "launchMode": "default",

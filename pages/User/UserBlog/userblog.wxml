@@ -1,8 +1,17 @@
 <view style=" width: 100vw;height: 100vh;justify-content: start;display: flex;flex-direction: column;align-items: center;">
-
 	<view class="card">
 		<view class="card-details">
-			<view class="text-title">2024.5.12 增加了日志功能</view>
+			<view class="text-title">2024.5.12 修复了BUG</view>
+			<view class="text-body">
+					<li>1. 有朋友反馈<span class="black  pad">存在无法登录</span>的问题，<span class="delete">说实话我不知道哪里问题😭</span>。定位了一下✋，是强智系统API不支持GIWIFI的事情。</li>
+					<li>2. 优化了<span class="black">登录界面</span>。增加了<span class="black">注意事项</span>，<span class="black">内容显示</span>。</li>
+		
+			</view>
+		</view>
+	</view>
+	<view class="card">
+		<view class="card-details">
+			<view class="text-title">2024.5.11 增加了日志功能</view>
 			<view class="text-body">
 					<li>1. 增加了<span class="black  pad">更新日志功能</span>₍ᐢ..ᐢ₎♡，也就是这个页面！<span class="black">看这里就能知道这个项目死活辣！</span>（👀还活着吗？</li>
 					<li>2. 我会加油更新的💌！嘿嘿👏</li>
