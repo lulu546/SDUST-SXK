@@ -55,7 +55,7 @@
     that.setData({
       isAgreement: !isAgreement_
     });
-    
+    console.log(isAgreement_,that.data.isAgreement)
     wx.setStorageSync('isAgreement',that.data.isAgreement)
   },
   
@@ -75,7 +75,7 @@
     console.log(isAgreement)
     if (!isAgreement) {
       wx.showToast({
-        title: '请看一眼用户协议',
+        title: '用户协议',
         icon: 'error'
       })
       return;

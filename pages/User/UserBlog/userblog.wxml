@@ -1,10 +1,11 @@
 <view style=" width: 100vw;height: 100vh;justify-content: start;display: flex;flex-direction: column;align-items: center;">
 	<view class="card">
 		<view class="card-details">
-			<view class="text-title">2024.5.12 修复了BUG</view>
+			<view class="text-title">2024.5.12 优化了登录页面</view>
 			<view class="text-body">
 					<li>1. 有朋友反馈<span class="black  pad">存在无法登录</span>的问题，<span class="delete">说实话我不知道哪里问题😭</span>。定位了一下✋，是强智系统API不支持GIWIFI的事情。</li>
-					<li>2. 优化了<span class="black">登录界面</span>。增加了<span class="black">注意事项</span>，<span class="black">内容显示</span>。</li>
+					<li>2. 优化了<span class="black">登录界面</span>。增加了<span class="black">注意事项</span>，<span class="black">优化了内容显示</span>。</li>
+					<li>3. 调整了图片尺寸，<span class="black">加载内容更丝滑🛴</span>。</li>
 		
 			</view>
 		</view>
