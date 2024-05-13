@@ -107,12 +107,12 @@ Page({
     }
     else if(e.target.dataset.change=="3"){
       wx.setClipboardData({
-        data: 'https://github.com/lulu546/SXK',
+        data: 'https://github.com/lulu546/SDUST-SXK',
         success: function (res) {
           wx.getClipboardData({
             success: function (res) {
               wx.showToast({
-                title: '代码Bug太多，等我修一下QAQ',
+                title: '代码有点拉QAQ，等我有空就重构😗',
                 icon: 'none',
                 duration: 2000
               })

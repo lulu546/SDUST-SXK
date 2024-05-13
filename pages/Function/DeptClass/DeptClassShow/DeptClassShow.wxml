@@ -8,7 +8,7 @@
     <view class="  _text-wrapper" style="left: 2vw;position: relative; font-size: 23px;font-weight:bold; width: {{(department_name.length*7<21)?21:department_name.length*6.3}}vw;">
     {{department_name}} </view>
   <!-- 显示无课还是有课 -->
-  <view class="  _text-wrapper class_status" style="left: 52vw;position: relative; flex-direction: column;display: flex;top: 1.4vh;">
+  <view class="  _text-wrapper class_status" style="left: 40vw;position: relative; flex-direction: column;display: flex;top: 1.4vh;">
     <switch checked="{{show_have_or_not_class}}" bindchange="change_checked_status"/>
     <view style="margin-right: 1.5vw;color: #858383;font-size: 15px;" wx:if="{{show_have_or_not_class==1}}">（有课）</view>
     <view style="margin-right: 1.5vw;color: #858383;font-size: 15px;" wx:if="{{show_have_or_not_class==0}}">（无课）</view>

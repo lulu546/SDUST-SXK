@@ -15,7 +15,7 @@
   <view class="flex-col section_2 space-y-34">
     <!-- 学期加文字 -->
     <view class="part1">
-      <picker class="font1" mode="selector" range="{{termList}}" bindchange="onTermConfirm" value="{{term_index[0]}}" style="display: flex;align-items: center;margin-top: 12%;" wx:if="{{!is_open_status}}">{{termList[term_index[0]]}}</picker>
+      <picker class="font1" mode="selector" range="{{termList}}" bindchange="onTermConfirm" value="{{term_index[0]}}" style="display: flex;align-items: center;margin-top: 12%; " wx:if="{{!is_open_status}}">{{termList[term_index[0]]}}</picker>
       <picker class="font1" mode="selector" range="{{termList}}" bindchange="onTermConfirm" value="{{term_index[0]}}" style="display: flex;align-items: center;margin-top: 10%;" wx:if="{{is_open_status}}" data-id="1">{{termList[term_index[0]]}}</picker>
       <picker class="font1" mode="selector" range="{{termList}}" bindchange="onTermConfirm" value="{{term_index[1]}}" wx:if="{{is_open_status}}" style="display: flex;align-items: center;margin-top: 1vh;" data-id="2">{{termList[term_index[1]]}}</picker>
       <view class="font2" style="display: flex;align-items: center;font-size: 4vw;" wx:if="{{!is_open_status}}">੭ ᐕ)੭*⁾⁾

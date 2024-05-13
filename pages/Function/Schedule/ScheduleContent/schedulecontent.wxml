@@ -31,7 +31,7 @@
 
     <view style="position: absolute; top:55%; left: 35%; height: 35%;border-radius: 10px; width: 60%;background: #E0E7FF;align-items:center;display:flex;justify-content: space-evenly;">
 
-      <image bindtap="buttonadd" mode="widthFix" style="height: auto;  width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/add.png"></image>
+      <image bindtap="buttonadd" mode="widthFix" style=" width: 60rpx;  display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/add.png"></image>
 
       <image bindtap="rechange" mode="widthFix" style="height: auto; width: 60rpx; display: block; box-sizing: border-box" src="../../../../static/icon/Schedule/refresh.png"></image>
 

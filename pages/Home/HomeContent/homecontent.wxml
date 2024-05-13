@@ -1,91 +1,79 @@
 <!-- <view class="curriculum" bindtap="turn_crouselist2" style="height:{{homeOutObj.height}};"> -->
-<wxs src='../../../utils/utils.wxs' module='tools'/>
+<wxs src='../../../utils/utils.wxs' module='tools' />
 <view style="gap: 5vh;margin-top: 5vh; width: 100%; height: 100%;display: flex;flex-direction: column; justify-content: center;align-items: center;">
   <!-- 课程名长度显示问题，第11周等长周数不适配问题，留出的字符空间至少+1 -->
-<view class="homegraph">
-<image style="width: 100%;height: 100%;  border: 1px solid #E6E8EE;  border-radius:17px;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);" src="https://www.sxksxk.work/static/function/headImage.png" mode="widthFix"/>
-</view>
-
-<view class="curriculum" bindtap="turn_crouselist" style="height:{{homeOutObj.height}};">
-  <view style="width: 100%;height: 100%; position: relative;display: flex;">
-  <view style="top: 30rpx;width: 30%;height: 100%;display: flex;flex-direction: column;">
-  <text class="csswhatweek">第{{week_ordinal}}周</text>
-  <text class="cssweekwhat">周{{weekwhat}}</text>
-  <text class="cssdata">{{nowtimes.month}}月{{nowtimes.day}}日</text>
-  <text class="csstime">{{nowtimes.hour}}:{{nowtimes.minutes}}</text>
-</view>
-
-  <!-- 课程正常 -->
-  <view wx:if="{{requestflag==2&&courseflag&&set_schedule.islogin}}" class="lookcourselist">
-
-    <view class="crousetime_begin">{{timeTable[coursetimei].timebegin}}</view>
-    <view class="crousetime_end">{{timeTable[coursetimei].timeend}}</view>
-    <view class="crouse_name">{{tools.substring(now_course[0],0,6)}}</view>
-    <view class="crouse_place">{{tools.substring(now_course[1],0,6)}}</view>
-    <view class="crouse_teacher">{{tools.substring(now_course[2],0,6)}}</view>
+  <view class="homegraph">
+    <image style="width: 100%;height: 100%;  border: 1px solid #E6E8EE;  border-radius:17px;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);" src="https://www.sxksxk.work/static/function/headImage.png" mode="widthFix" />
   </view>
-  <!-- 课程结束 -->
-  <view wx:if="{{requestflag==2&&!courseflag&&set_schedule.islogin}}" class="lookcourselist">
 
-    <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">今日的课程结束啦！</view>
-    <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
-      (//▽//)
+  <view class="curriculum" bindtap="turn_crouselist" style="height:{{homeOutObj.height}};">
+    <view style="width: 100%;height: 100%; position: relative;display: flex;">
+      <view style="top: 30rpx;width: 30%;height: 100%;display: flex;flex-direction: column;">
+        <text class="csswhatweek">第{{week_ordinal}}周</text>
+        <text class="cssweekwhat">周{{weekwhat}}</text>
+        <text class="cssdata">{{nowtimes.month}}月{{nowtimes.day}}日</text>
+        <text class="csstime">{{nowtimes.hour}}:{{nowtimes.minutes}}</text>
       </view>
-  </view>
-  <!-- 未绑定账号 -->
-  <view wx:if="{{!set_schedule.islogin}}" class="lookcourselist" catchtap="turn_bind">
 
-    <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">
-    请绑定强智账号捏！</view>
-    <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
-      点击即可绑定(//▽//)
+      <!-- 课程正常 -->
+      <view wx:if="{{requestflag==2&&courseflag&&set_schedule.islogin}}" class="lookcourselist">
+
+        <view class="crousetime_begin">{{timeTable[coursetimei].timebegin}}</view>
+        <view class="crousetime_end">{{timeTable[coursetimei].timeend}}</view>
+        <view class="crouse_name">{{tools.substring(now_course[0],0,6)}}</view>
+        <view class="crouse_place">{{tools.substring(now_course[1],0,6)}}</view>
+        <view class="crouse_teacher">{{tools.substring(now_course[2],0,6)}}</view>
       </view>
-  </view>
-  <!-- 请求失败 -->
-  <view wx:if="{{requestflag!=2&&set_schedule.islogin}}" class="lookcourselist" catchtap="turn_bind">
+      <!-- 课程结束 -->
+      <view wx:if="{{requestflag==2&&!courseflag&&set_schedule.islogin}}" class="lookcourselist">
 
-    <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">
-    请求失败了....</view>
-    <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
-      请刷新重试(ᕑᗢᓫ∗)˒
+        <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">今日的课程结束啦！</view>
+        <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
+          (//▽//)
+        </view>
       </view>
+      <!-- 未绑定账号 -->
+      <view wx:if="{{!set_schedule.islogin}}" class="lookcourselist" catchtap="turn_bind">
+
+        <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">
+          请绑定强智账号捏！</view>
+        <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
+          点击即可绑定(//▽//)
+        </view>
+      </view>
+      <!-- 请求失败 -->
+      <view wx:if="{{requestflag!=2&&set_schedule.islogin}}" class="lookcourselist" catchtap="turn_bind">
+
+        <view class="crouse_name" style="position: absolute; left: 61rpx; top: 36rpx; width: 325rpx; height: 44rpx; display: block; box-sizing: border-box">
+          请求失败了....</view>
+        <view class="crouse_teacher" style="position: absolute; left: 60rpx; top: 85rpx; width: 325rpx; height: 45rpx; display: block; box-sizing: border-box; font-size: inherit">
+          请刷新重试(ᕑᗢᓫ∗)˒
+        </view>
+      </view>
+    </view>
+    <view style="background: #4E11D1;position: absolute; left: 33%; top: 25%; width: 10rpx; height: 50%; border-radius: 100rpx; display: block; box-sizing: border-box"></view>
   </view>
-  </view>
-  <view class="line" style="position: absolute; left: 34%; top: 25%; width: 10rpx; height: 40%; display: block; box-sizing: border-box"></view>
-</view>
 
 
 
 
 
-<view class="flex-col section_7 space-y-13 notpad" catchtap="navigator_to_notpad"
- style="border-radius: 17px;  border: 1px solid #E6E8EE;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1); "
->
+  <view class="flex-col section_7 space-y-13 notpad" catchtap="navigator_to_notpad" style="border-radius: 17px;  border: 1px solid #E6E8EE;box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1); ">
     <view style="display: flex;height: 5vh;">
-      <image
-        class="self-start image_7" style="height: 5vh;width: 5vh;"
-        src="../../../static/icon/Memo/memo-head.png" 
-      />
+      <image class="self-start image_7" style="height: 5vh;width: 5vh;" src="../../../static/icon/Memo/memo-head.png" />
       <view class="_text" style="height: 100%;">待办预提醒</view>
     </view>
     <view class="divider"></view>
     <view class="flex-row items-center section_8 space-x-18" wx:if="{{not_selected_time_event_datalist.length+selected_time_event_datalist.length+overtime_event_datalist.length==0}}" bindtap="navigator_to_notpad">
-      <view class="text" >点我一下可以新建待办哦~</view>
+      <view class="text">点我一下可以新建待办哦~</view>
     </view>
     <!-- 当不为空 -->
     <home-notepad whichone="1" len="{{3}}" datalist="{{selected_time_event_datalist}}" bind:click_to_transfer="transfer_to_finished"></home-notepad>
     <home-notepad whichone="2" len="{{3-selected_time_event_datalist.length}}" datalist="{{not_selected_time_event_datalist}}" bind:click_to_transfer="transfer_to_finished"></home-notepad>
     <home-notepad whichone="3" len="{{3-selected_time_event_datalist.length-not_selected_time_event_datalist.length}}" datalist="{{overtime_event_datalist}}" bind:click_to_transfer="transfer_to_finished" my-class="my_color"></home-notepad>
-    
+
+
+  </view>
+
 
 </view>
-    
-
-</view>
-  
-
-
-
-
-
-

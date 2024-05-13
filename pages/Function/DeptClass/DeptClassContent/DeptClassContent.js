@@ -229,11 +229,11 @@ Page({
     var _invitation_id=this.data.invitation_id
     if(_invitation_id.length>0){
       wx.showLoading({
-        title: '加入部门中~',
+        title: '加入部门中',
       })
       shareapi.joindepartment(_invitation_id,this.data.departmentflag)
-      .then(res=>{
-        if(res.success==true){
+      .then(resa=>{
+        if(resa.success==true){
           wx.hideLoading({
             success:(res)=>{
               wx.showToast({
@@ -246,7 +246,7 @@ Page({
           wx.hideLoading({
             success:(res)=>{
               wx.showToast({
-                title: '请求失败',
+                title: resa.data.message,
                 icon:'error'
               })
             }
@@ -254,11 +254,11 @@ Page({
         }
         this.init_datalist()
       })
-      .catch(res=>{
+      .catch(resa=>{
         wx.hideLoading({
           success:(res)=>{
             wx.showToast({
-              title: '请求失败',
+              title: `${resa.data.message}`,
               icon:'error'
             })
           }

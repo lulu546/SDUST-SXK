@@ -9,6 +9,20 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/Function/DeptClass/DeptClassContent/DeptClassContent",
+          "pathName": "pages/Function/DeptClass/DeptClassContent/DeptClassContent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/Function/Schedule/ScheduleContent/schedulecontent",
+          "pathName": "pages/Function/Schedule/ScheduleContent/schedulecontent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "",
           "pathName": "pages/Login/LoginContent/logincontent",
           "query": "",

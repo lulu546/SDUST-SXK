@@ -311,8 +311,10 @@ function joindepartment(code,cont)  {
       },
       success: function (res) {
         if (res.statusCode == 200 ) {
+          
           resolve(res.data);
         } else {
+          
           reject(res);
         }
       },

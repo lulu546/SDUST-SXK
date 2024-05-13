@@ -1,6 +1,16 @@
 <view style=" width: 100vw;height: 100vh;justify-content: start;display: flex;flex-direction: column;align-items: center;">
 	<view class="card">
 		<view class="card-details">
+			<view class="text-title">2024.5.12 开源到Github</view>
+			<view class="text-body">
+					<li>1. 要交大作业，所以开源到Github了。我是TailwindCSS党🍃，代码很乱还请见谅🥲，仓库名是<span class="black">SDUST-SXK</span>⭐。</li>
+					<li>2. 修复一些BUG，优化了一些体验。</li>
+		
+			</view>
+		</view>
+	</view>
+	<view class="card">
+		<view class="card-details">
 			<view class="text-title">2024.5.12 优化了登录页面</view>
 			<view class="text-body">
 					<li>1. 有朋友反馈<span class="black  pad">存在无法登录</span>的问题，<span class="delete">说实话我不知道哪里问题😭</span>。定位了一下✋，是强智系统API不支持GIWIFI的事情。</li>

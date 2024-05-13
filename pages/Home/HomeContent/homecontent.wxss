@@ -81,7 +81,7 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
   position: absolute;
   width: 100px;
   height: 30px;
-  left: 14px;
+  left: 10px;
   top: 63%;
 
   font-family: 'ABeeZee';
@@ -119,12 +119,10 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
 .line {
   position: absolute;
   width: 4px;
-  height: 23px;
+  height: 400%;
   left: 50rpx;
-  top: 20%;
-
+  top: 10%;
   background: #4E11D1;
-  border-radius: 30rpx;
 }
 
 .crousetime_begin {
@@ -132,7 +130,7 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
   width: 54px;
   height: 24px;
   left: 40rpx;
-  top: 10%;
+  top: 13%;
 
   font-family: 'ABeeZee';
   font-style: normal;
@@ -153,7 +151,7 @@ box-shadow: 0px 10px 20px rgba(76, 93, 105, 0.1);
   width: 54px;
   height: 24px;
   left: 40rpx;
-  top: 70%;
+  top: 60%;
 
   font-family: 'ABeeZee';
   font-style: normal;

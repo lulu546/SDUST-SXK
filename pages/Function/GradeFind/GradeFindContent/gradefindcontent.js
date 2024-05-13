@@ -122,10 +122,18 @@ Page({
     }
   },
   // 筛选课程
+
   filterElementsByTerm(term, arr) {
-    const filteredElements = arr.filter((element) => element.xqmc === term);
+    // 检查 arr 是否为数组以及是否为空，防止调用 filter 方法时出错
+    if (!Array.isArray(arr) || arr.length === 0) {
+      return []; // 如果 arr 不是数组或为空，返回空数组
+    }
+  
+    // 使用 filter 方法进行过滤，同时增加安全检查确保每个元素都有 xqmc 属性
+    const filteredElements = arr.filter((element) => element && element.xqmc === term);
     return filteredElements;
   },
+  
   // 计算对应的学分、绩点、加权绩点
   calculateGPA(arr) {
     let totalCredits = 0;
