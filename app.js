@@ -6,35 +6,77 @@ App({
   onLaunch() {
     
     var that = this;
-    wx.setStorage({
-      key: "islogin",
-      data: true,
-      success() {
-        wx.setStorage({
-          key: "useraccount",
-          data: "202001041412",
-          success() {
-            wx.setStorage({
-              key: "userpws",
-              data: "lu112112",
-              success() {
-                //请求基础数据-app.js不好封装
-                if (wx.getStorageSync('islogin') == true) {
-                  console.log('1111111111111')
-                  var account=wx.getStorageSync('useraccount')
-                  var pwd=wx.getStorageSync('userpws');
-            
-                  //客户端登录
+    
+      //请求基础数据-app.js不好封装
+      if (wx.getStorageSync('islogin') == true) {
+        console.log('1111111111111')
+        var account=wx.getStorageSync('useraccount')
+        var pwd=wx.getStorageSync('userpws');
+  
+        //客户端登录
+          wx.request({
+            url: 'https://jwgl.sdust.edu.cn/app.do',
+            method: 'GET',
+            data: {
+              "method": "authUser",
+              "xh": account,
+              "pwd": pwd
+            },
+            header: {
+        
+              "Referer": "http://www.baidu.com",
+              "Accept-encoding": "gzip, deflate, br",
+              "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+              "Cache-control": "max-age=0",
+              token: wx.getStorageSync('token')
+            },
+            success: (res) => {
+              if (res.data["flag"] != "1") {
+                wx.showToast({
+                  title: '登录失败',
+                  icon: "error"
+                });
+                wx.setStorageSync('islogin', false);
+              } else {
+        
+                wx.setStorageSync('token', res.data["token"]);
+                //请求时间信息
+                wx.request({
+                  url: 'https://jwgl.sdust.edu.cn/app.do',
+                  method: 'get',
+                  data: {
+                    method: "getCurrentTime",
+                    currDate: new Date().toISOString().slice(0, 10)
+                  },
+                  header: {
+        
+                    "Referer": "http://www.baidu.com",
+                    "Accept-encoding": "gzip, deflate, br",
+                    "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+                    "Cache-control": "max-age=0",
+                    token: wx.getStorageSync('token')
+                  },
+                  success: (res) => {
+                    that.globalData.current_time = res.data
+  
+                    if (that.globalData.current_time["zc"] == null) {
+                      that.globalData.week_time = 20
+                    }
+                    else {
+                      that.globalData.week_time = res.data["zc"]
+                    }
+                    // 请求课表数据
                     wx.request({
                       url: 'https://jwgl.sdust.edu.cn/app.do',
                       method: 'GET',
                       data: {
-                        "method": "authUser",
-                        "xh": account,
-                        "pwd": pwd
+                        method: "getKbcxAzc",
+                        xnxqid: res.data["xnxqh"],
+                        zc: that.globalData.week_time,
+                        xh: account
                       },
                       header: {
-                  
+        
                         "Referer": "http://www.baidu.com",
                         "Accept-encoding": "gzip, deflate, br",
                         "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
@@ -42,153 +84,95 @@ App({
                         token: wx.getStorageSync('token')
                       },
                       success: (res) => {
-                        if (res.data["flag"] != "1") {
-                          wx.showToast({
-                            title: '登录失败',
-                            icon: "error"
-                          });
-                          wx.setStorageSync('islogin', false);
-                        } else {
-                  
-                          wx.setStorageSync('token', res.data["token"]);
-                          //请求时间信息
-                          wx.request({
-                            url: 'https://jwgl.sdust.edu.cn/app.do',
-                            method: 'get',
-                            data: {
-                              method: "getCurrentTime",
-                              currDate: new Date().toISOString().slice(0, 10)
-                            },
-                            header: {
-                  
-                              "Referer": "http://www.baidu.com",
-                              "Accept-encoding": "gzip, deflate, br",
-                              "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
-                              "Cache-control": "max-age=0",
-                              token: wx.getStorageSync('token')
-                            },
-                            success: (res) => {
-                              that.globalData.current_time = res.data
-            
-                              if (that.globalData.current_time["zc"] == null) {
-                                that.globalData.week_time = 20
-                              }
-                              else {
-                                that.globalData.week_time = res.data["zc"]
-                              }
-                              // 请求课表数据
-                              wx.request({
-                                url: 'https://jwgl.sdust.edu.cn/app.do',
-                                method: 'GET',
-                                data: {
-                                  method: "getKbcxAzc",
-                                  xnxqid: res.data["xnxqh"],
-                                  zc: that.globalData.week_time,
-                                  xh: account
-                                },
-                                header: {
-                  
-                                  "Referer": "http://www.baidu.com",
-                                  "Accept-encoding": "gzip, deflate, br",
-                                  "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
-                                  "Cache-control": "max-age=0",
-                                  token: wx.getStorageSync('token')
-                                },
-                                success: (res) => {
-                  
-                                  // 将课表传输到schedule_table
-                                    that.globalData.requestflag++;
-                                    var resjson=res.data;
-                                    const tableformat = require('./utils/table');
-                                    that.globalData.class_info = tableformat.processTableOrd(resjson);
-                                    that.globalData.table_ord=resjson;
-                                  
-                                }
-                              })
-                            }
-                          })
-                          //请求学生信息
-                          wx.request({
-                            url: "https://jwgl.sdust.edu.cn/app.do",
-                            method: 'GET',
-                            data: {
-                              method: "getUserInfo",
-                              xh: account
-                            },
-                  
-                            header: {
-                              "Referer": "http://www.baidu.com",
-                              "Accept-encoding": "gzip, deflate, br",
-                              "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
-                              "Cache-control": "max-age=0",
-                              token: wx.getStorageSync('token')
-                            },
-                            success: (res) => {
-                              if (res.data["token"] == "-1") {
-                                wx.setStorageSync('islogin', false);
-                              }
-                              that.globalData.student_info = res.data
-                              that.globalData.requestflag++;
-                              var content=res.data
-                              wx.login({
-                                success: function(res) {
-                                  if (res.code) {  //wx.login获取code。
-                                    console.log(res.code);
-                                    //发起网络请求
-                                    wx.request({
-                                      url: that.globalData.TotalUrl+'/qz/login-info/',
-                                      method:'POST',
-                                      //向后端发送的数据
-                                      data: {
-                                        code: res.code,    //将code发送到后台服务器。
-                                        snumber: content["xh"],  //替换为实际的账号值
-                                        name: content["xm"],        //替换为实际的姓名值
-                                        classname: content["bj"], //替换为实际的班级名值
-                                        majorname: content["zymc"], //替换为实际的专业名值
-                                        collegename: content["yxmc"], //替换为实际的学院名值
-                                        enteryear: content["rxnf"], //替换为实际的入学年份值
-                                        gradenumber: content["usertype"], //替换为实际的年级号值
-                                      },
-                                      header: { 
-                                        "Referer": "http://www.baidu.com",
-                                        "Accept-encoding": "gzip, deflate, br",
-                                        "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
-                                        "Cache-control": "max-age=0",
-                                    }, success: (res) => {
-                                      
-                                      if(res.data['status']=="success"){
-                                        that.globalData.todatabasesflag++;
-                                        wx.setStorageSync('tokentoset', res.data["token"]);
-                                      }}
-                                    })
-                                  } else {
-                                    console.log('获取用户登录态失败！' + res.errMsg)
-                                  }
-                                }
-                                
-                              });
-                            }
-                           
-                          })
-                  
-                        }
-                      },
-                      fail: (res) => {
-                        that.globalData.requestflag = 0
-                        that.globalData.todatabasesflag = 0
+        
+                        // 将课表传输到schedule_table
+                          that.globalData.requestflag++;
+                          var resjson=res.data;
+                          const tableformat = require('./utils/table');
+                          that.globalData.class_info = tableformat.processTableOrd(resjson);
+                          that.globalData.table_ord=resjson;
+                        
                       }
                     })
-                    
-            
-            
-            
-                }
+                  }
+                })
+                //请求学生信息
+                wx.request({
+                  url: "https://jwgl.sdust.edu.cn/app.do",
+                  method: 'GET',
+                  data: {
+                    method: "getUserInfo",
+                    xh: account
+                  },
+        
+                  header: {
+                    "Referer": "http://www.baidu.com",
+                    "Accept-encoding": "gzip, deflate, br",
+                    "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+                    "Cache-control": "max-age=0",
+                    token: wx.getStorageSync('token')
+                  },
+                  success: (res) => {
+                    if (res.data["token"] == "-1") {
+                      wx.setStorageSync('islogin', false);
+                    }
+                    that.globalData.student_info = res.data
+                    that.globalData.requestflag++;
+                    var content=res.data
+                    wx.login({
+                      success: function(res) {
+                        if (res.code) {  //wx.login获取code。
+                          console.log(res.code);
+                          //发起网络请求
+                          wx.request({
+                            url: that.globalData.TotalUrl+'/qz/login-info/',
+                            method:'POST',
+                            //向后端发送的数据
+                            data: {
+                              code: res.code,    //将code发送到后台服务器。
+                              snumber: content["xh"],  //替换为实际的账号值
+                              name: content["xm"],        //替换为实际的姓名值
+                              classname: content["bj"], //替换为实际的班级名值
+                              majorname: content["zymc"], //替换为实际的专业名值
+                              collegename: content["yxmc"], //替换为实际的学院名值
+                              enteryear: content["rxnf"], //替换为实际的入学年份值
+                              gradenumber: content["usertype"], //替换为实际的年级号值
+                            },
+                            header: { 
+                              "Referer": "http://www.baidu.com",
+                              "Accept-encoding": "gzip, deflate, br",
+                              "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+                              "Cache-control": "max-age=0",
+                          }, success: (res) => {
+                            
+                            if(res.data['status']=="success"){
+                              that.globalData.todatabasesflag++;
+                              wx.setStorageSync('tokentoset', res.data["token"]);
+                            }}
+                          })
+                        } else {
+                          console.log('获取用户登录态失败！' + res.errMsg)
+                        }
+                      }
+                      
+                    });
+                  }
+                 
+                })
+        
               }
-            })
-          }
-        })
+            },
+            fail: (res) => {
+              that.globalData.requestflag = 0
+              that.globalData.todatabasesflag = 0
+            }
+          })
+          
+  
+  
+  
       }
-    })
+    
 
   },
   onShow() {
