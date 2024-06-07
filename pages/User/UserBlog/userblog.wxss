@@ -56,3 +56,9 @@
 .delete {
     text-decoration-line: line-through;
 }
+
+.adventurex{
+	background-image: url('https://www.sxksxk.work/static/function/adventurex.png');
+	background-size: cover;
+	background-position: center;
+}

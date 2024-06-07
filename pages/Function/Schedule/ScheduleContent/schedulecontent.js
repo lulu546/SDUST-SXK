@@ -45,9 +45,9 @@ Page({
     /* ————————————————————————————*/
     //  此数据需要后端调取，其数据格式反应是否已经绑定了共享课表
     set_schedule: {},
-    chanceshare:null,
-    chancenumber:null,
-    scheduleResource:[]
+    chanceshare: null,
+    chancenumber: null,
+    scheduleResource: []
 
   },
 
@@ -75,35 +75,70 @@ Page({
     var share_schedule = app.globalData.set_all_data;
     var table_schedule = app.globalData.class_info;
     var week_ordinal = app.globalData.week_time;
-    var scheduleresource=app.globalData.scheduleResource
+    var scheduleresource = app.globalData.scheduleResource
     that.setData({
       set_schedule,
       table1: table_schedule,
       week_ordinal,
-      chanceshare:wx.getStorageSync("chanceshare"),
-      scheduleResource:scheduleresource
+      chanceshare: wx.getStorageSync("chanceshare"),
+      scheduleResource: scheduleresource
     })
-    
 
+    const custom_schedule = wx.getStorageSync('newschedule');
+    for (let i = 0; i < custom_schedule.length; i++) {
+      for (let j = 0; j < custom_schedule[i].length; j++) {
+        console.log(table_schedule[i][j],j,i)
+        if (table_schedule[i][j][0].length==0 && custom_schedule[i][j].length > 0) {
+          
+          if(that.data.week_ordinal>=custom_schedule[i][j][4]&&that.data.week_ordinal<=custom_schedule[i][j][5]){
+            table_schedule[i][j] = custom_schedule[i][j];
+          }
+         
+        }
+      }
+    }
+    that.setData({
+      table1: table_schedule,
+
+    })
 
   },
-
+ 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-  // 请求共享状态绑定API，并保存至APP的sharedata中
-  const that = this;
-  shareapi.getsharestate().then(res => {
-    app.globalData.sharedata = res;
-  }).catch(err => {
-    // 获取课程表信息失败，处理错误
-    wx.showToast({
-      title: '请求失败',
-      icon: 'error'
+
+    // 请求共享状态绑定API，并保存至APP的sharedata中
+    const that = this;
+
+    shareapi.getsharestate().then(res => {
+      app.globalData.sharedata = res;
+    }).catch(err => {
+      // 获取课程表信息失败，处理错误
+      wx.showToast({
+        title: '请求失败',
+        icon: 'error'
       })
     });
+    var table_schedule = that.data.table1;
+    const custom_schedule = wx.getStorageSync('newschedule');
+    for (let i = 0; i < custom_schedule.length; i++) {
+      for (let j = 0; j < custom_schedule[i].length; j++) {
 
+        if (table_schedule[i][j][0].length==0 && custom_schedule[i][j].length > 0) {
+          
+          if(that.data.week_ordinal>=custom_schedule[i][j][4]&&that.data.week_ordinal<=custom_schedule[i][j][5]){
+            table_schedule[i][j] = custom_schedule[i][j];
+          }
+         
+        }
+      }
+    }
+    that.setData({
+      table1: table_schedule,
+
+    })
   },
 
   /**
@@ -143,21 +178,21 @@ Page({
   //打开共享课表模式
   switchShare(e) {
     const that = this;
-    const {  checked_value, shareflag, week_ordinal } = that.data;
+    const { checked_value, shareflag, week_ordinal } = that.data;
     // app.globalData.sharedata.
     switch (that.data.chanceshare) {
       case "A":
         var bindshareflag = app.globalData.sharedata['CBindAState'];
         break;
-      case "B":  
+      case "B":
         var bindshareflag = app.globalData.sharedata['CBindBState'];
-        break;  
-      case "C":   
+        break;
+      case "C":
         var bindshareflag = app.globalData.sharedata['CBindCState'];
-        break;  
-      case "D":   
+        break;
+      case "D":
         var bindshareflag = app.globalData.sharedata['CBindDState'];
-        break;  
+        break;
       case "E":
         var bindshareflag = app.globalData.sharedata['CBindEState'];
         break;
@@ -165,10 +200,10 @@ Page({
         break;
     }
 
-   
+
     const newshareflag = !shareflag;
     const value = !checked_value;
-  
+
     that.setData({
       checked_value: value,
       shareflag: newshareflag
@@ -189,55 +224,55 @@ Page({
       switch (that.data.chanceshare) {
         case "A":
           that.setData({
-            chancenumber : wx.getStorageSync('postnumA'),
+            chancenumber: wx.getStorageSync('postnumA'),
           })
           break;
-        case "B":  
-          that.setData({  
-            chancenumber : wx.getStorageSync('postnumB'),
-          })  
-          break;  
-        case "C":   
-           that.setData({  
-            chancenumber : wx.getStorageSync('postnumC'),
-          })  
-          break;  
-        case "D":   
-          that.setData({  
-            chancenumber : wx.getStorageSync('postnumD'),
-          })  
-          break;  
+        case "B":
+          that.setData({
+            chancenumber: wx.getStorageSync('postnumB'),
+          })
+          break;
+        case "C":
+          that.setData({
+            chancenumber: wx.getStorageSync('postnumC'),
+          })
+          break;
+        case "D":
+          that.setData({
+            chancenumber: wx.getStorageSync('postnumD'),
+          })
+          break;
         case "E":
-          that.setData({  
-            chancenumber : wx.getStorageSync('postnumE'),
-          }) 
+          that.setData({
+            chancenumber: wx.getStorageSync('postnumE'),
+          })
           break;
         default:
           break;
       }
       console.log(bindshareflag);
-        // 请求共享课表数据
-        shareapi.getshareinfo(that.data.chanceshare,week_ordinal,that.data.chancenumber).then(res => {
-          that.setData({
-            table2:res,
-            shareflag: newshareflag
-          })
-          console.log(res)
-        }).catch(err => {
-          console.log(err.data.message);
-          // 获取课程表信息失败，处理错误
-          wx.showToast({
-            title: err.data.message,
-            icon: 'error',
-            duration: 2000,
-            mask: true
-
-          })
-          that.setData({
-            shareflag: !newshareflag,
-            checked_value: !value,
-          })
+      // 请求共享课表数据
+      shareapi.getshareinfo(that.data.chanceshare, week_ordinal, that.data.chancenumber).then(res => {
+        that.setData({
+          table2: res,
+          shareflag: newshareflag
         })
+        console.log(res)
+      }).catch(err => {
+        console.log(err.data.message);
+        // 获取课程表信息失败，处理错误
+        wx.showToast({
+          title: err.data.message,
+          icon: 'error',
+          duration: 2000,
+          mask: true
+
+        })
+        that.setData({
+          shareflag: !newshareflag,
+          checked_value: !value,
+        })
+      })
     } else {
       that.setData({
         shareflag: newshareflag
@@ -245,15 +280,15 @@ Page({
     }
 
   },
-  
+
   // 左右更换课表
-  weekchange(e,pn=0) {
+  weekchange(e, pn = 0) {
     var that = this;
     var week_ordinal = that.data.week_ordinal;
     var utils = require('../../../../utils/util');
-    if(pn!=0){
+    if (pn != 0) {
       // 左右跳转
-      if (pn==1) {
+      if (pn == 1) {
         if (week_ordinal > 1) {
           week_ordinal--;
         } else {
@@ -263,7 +298,7 @@ Page({
           })
           return;
         }
-      } else if (pn==2) {
+      } else if (pn == 2) {
         if (week_ordinal <= 19) {
           week_ordinal = week_ordinal + 1;
         } else {
@@ -276,30 +311,31 @@ Page({
       }
 
     }
-    else{
-        // 左右跳转
-        if (e.target.dataset.change == "pre") {
-          if (week_ordinal > 1) {
-            week_ordinal--;
-          } else {
-            wx.showToast({
-              title: '前面的道路以后再来探索吧！',
-              icon: 'none'
-            })
-            return;
-          }
-        } else if (e.target.dataset.change == "next") {
-          if (week_ordinal <= 19) {
-            week_ordinal = week_ordinal + 1;
-          } else {
-            wx.showToast({
-              title: '前面的道路以后再来探索吧！',
-              icon: 'none'
-            })
-            return;
-          }
+    else {
+      // 左右跳转
+      if (e.target.dataset.change == "pre") {
+        if (week_ordinal > 1) {
+          week_ordinal--;
+        } else {
+          wx.showToast({
+            title: '前面的道路以后再来探索吧！',
+            icon: 'none'
+          })
+          return;
         }
-        console.log(week_ordinal);
+      } else if (e.target.dataset.change == "next") {
+        if (week_ordinal <= 19) {
+          week_ordinal = week_ordinal + 1;
+        } else {
+          wx.showToast({
+            title: '前面的道路以后再来探索吧！',
+            icon: 'none'
+          })
+          return;
+        }
+      }
+      console.log(week_ordinal);
+      
     }
     // 更新周次
     var count_weekdaywhat = utils.count_weekday(week_ordinal - app.globalData.week_time);
@@ -307,65 +343,81 @@ Page({
       weekday: count_weekdaywhat,
       week_ordinal: week_ordinal
     });
-  
+
     // 请求课表数据
     var new_table1;
     var getClassInfoPromise = api.getClassInfo(wx.getStorageSync('useraccount'), app.globalData.current_time['xnxqh'], week_ordinal);
 
-      // 请求双方课表数据
+    // 请求双方课表数据
     if (that.data.checked_value == true) {
       // 请求我课表数据
       getClassInfoPromise.then(res => {
         if (res.length === 1) {
-          new_table1=[];
+          new_table1 = [];
         }
-        else{
+        else {
           new_table1 = tableformat.processTableOrd(res);
         }
         that.setData({
           table1: new_table1
         });
+
         app.globalData.todatabasesflag--;
-        api.postclass(week_ordinal,res)
+        api.postclass(week_ordinal, res)
       }).catch((error) => {
         wx.showToast({
           title: '请求失败',
           icon: 'error'
         });
       });
- 
+
     } else {
-    // 单独请求我课表数据
-    getClassInfoPromise.then(res => {
-      if (res.length === 1) {
-        new_table1=[];
-      }
-      else{
-        new_table1 = tableformat.processTableOrd(res);
-      }
-      that.setData({
-        table1: new_table1
+      // 单独请求我课表数据
+      getClassInfoPromise.then(res => {
+        console.log(res)
+        if (res.length === 1) {
+          new_table1 = [];
+          const custom_schedule = wx.getStorageSync('newschedule');
+          new_table1 = custom_schedule;
+        }
+        else {
+          new_table1 = tableformat.processTableOrd(res);
+          const custom_schedule = wx.getStorageSync('newschedule');
+          for (let i = 0; i < custom_schedule.length; i++) {
+            for (let j = 0; j < custom_schedule[i].length; j++) {
+      
+              if (new_table1[i][j][0].length==0 && custom_schedule[i][j].length > 0) {
+                
+                if(that.data.week_ordinal>=custom_schedule[i][j][4]&&that.data.week_ordinal<=custom_schedule[i][j][5]){
+                  new_table1[i][j] = custom_schedule[i][j];
+                }
+                
+               
+              }
+            }
+          }
+          
+        
+        }
+        that.setData({
+          table1: new_table1
+        });
+        app.globalData.todatabasesflag--;
+        api.postclass(week_ordinal, res)
+      }).catch((error) => {
+        wx.showToast({
+          title: '请求失败',
+          icon: 'error'
+        });
       });
-      app.globalData.todatabasesflag--;
-      api.postclass(week_ordinal,res)
-    }).catch((error) => {
-      wx.showToast({
-        title: '请求失败',
-        icon: 'error'
-      });
-    });
     }
   },
-  
+
   // 添加课程
   buttonadd() {
-    wx.showToast({
-      title: '正在开发课表绑定备忘录功能中ฅ˙Ⱉ˙ฅ',
-      icon: 'none'
+    wx.navigateTo({
+      url: '../AddSchedule/addshedule',
     })
-    // wx.navigateTo({
-    //   url: '../new_schedule/new_shedule',
-    // })
 
   },
   // 刷新
@@ -462,16 +514,16 @@ Page({
       // 单独请求我课表数据
       getClassInfoPromise.then(res => {
         if (res.length === 1) {
-          new_table1=[];
+          new_table1 = [];
         }
-        else{
+        else {
           new_table1 = tableformat.processTableOrd(res);
         }
         that.setData({
           table1: new_table1
         });
         app.globalData.todatabasesflag--;
-        api.postclass(week_ordinal,res)
+        api.postclass(week_ordinal, res)
       }).catch((error) => {
         wx.showToast({
           title: '请求失败',
@@ -493,12 +545,12 @@ Page({
     if (moveFlag) {
       if (endX - startX > 50) {
         console.log("move right");
-        this.weekchange(0,1);
+        this.weekchange(0, 1);
         moveFlag = false;
       }
       if (startX - endX > 50) {
         console.log("move left");
-        this.weekchange(0,2);
+        this.weekchange(0, 2);
         moveFlag = false;
       }
     }

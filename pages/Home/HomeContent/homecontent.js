@@ -381,7 +381,6 @@ Page({
             table_schedule,
             requestflag
           })
-           console.log("2111")
           clearTimeout(read);
       }
       if(app.globalData.requestflag==2&&app.globalData.todatabasesflag==1&&postclassflag==false){
