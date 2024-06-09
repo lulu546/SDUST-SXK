@@ -97,10 +97,10 @@ Page({
     let newcolor;
     const dayIndex = this.data.days.indexOf(selectedDay);
     const periodIndex = this.data.periods.indexOf(selectedPeriod);
-    // const tableColor = ["#ebb5cc", "#b2c196", "#edd492", "#fee5a3", "#e9daa3", "#ea7375", "#a286ea", "#776fdf", "#7bc6e6", "#efb293"]; // 颜色表，用于为不同课程名对应不同颜色
-    if(!color){
-       newcolor="#efb293"
+      if(!color){
+       newcolor="rgb(57,180,72)"
     }
+    
     if (schedule[dayIndex][periodIndex].length > 0) {
       wx.showToast({
         title: '该时间段已有课程',
@@ -113,7 +113,6 @@ Page({
     this.setData({
       schedule
     });
-    console.log(schedule)
     wx.setStorageSync('newschedule', schedule);
 
     wx.showToast({

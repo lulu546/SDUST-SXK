@@ -87,7 +87,7 @@ Page({
     const custom_schedule = wx.getStorageSync('newschedule');
     for (let i = 0; i < custom_schedule.length; i++) {
       for (let j = 0; j < custom_schedule[i].length; j++) {
-        console.log(table_schedule[i][j],j,i)
+
         if (table_schedule[i][j][0].length==0 && custom_schedule[i][j].length > 0) {
           
           if(that.data.week_ordinal>=custom_schedule[i][j][4]&&that.data.week_ordinal<=custom_schedule[i][j][5]){
@@ -122,23 +122,26 @@ Page({
       })
     });
     var table_schedule = that.data.table1;
-    const custom_schedule = wx.getStorageSync('newschedule');
-    for (let i = 0; i < custom_schedule.length; i++) {
-      for (let j = 0; j < custom_schedule[i].length; j++) {
-
-        if (table_schedule[i][j][0].length==0 && custom_schedule[i][j].length > 0) {
-          
-          if(that.data.week_ordinal>=custom_schedule[i][j][4]&&that.data.week_ordinal<=custom_schedule[i][j][5]){
-            table_schedule[i][j] = custom_schedule[i][j];
+    if(table_schedule.length>0){
+      const custom_schedule = wx.getStorageSync('newschedule');
+      for (let i = 0; i < custom_schedule.length; i++) {
+        for (let j = 0; j < custom_schedule[i].length; j++) {
+          console.log(table_schedule,j,i)
+          if (table_schedule[i][j][0].length==0 && custom_schedule[i][j].length > 0) {
+            
+            if(that.data.week_ordinal>=custom_schedule[i][j][4]&&that.data.week_ordinal<=custom_schedule[i][j][5]){
+              table_schedule[i][j] = custom_schedule[i][j];
+            }
+           
           }
-         
         }
       }
+      that.setData({
+        table1: table_schedule,
+  
+      })
     }
-    that.setData({
-      table1: table_schedule,
 
-    })
   },
 
   /**

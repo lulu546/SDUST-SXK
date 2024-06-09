@@ -4,7 +4,9 @@
 function processTableOrd(tableOrd) {
 
   const tableSame = [...Array(35)].map(() => Array(2).fill(-1)); // 课程名表，用于比对相同课程名
+  // const tableColor = ["#1C5A85","#7D39B4", "#39B4B4", "#B43948", "#B44839", "#B4397D",  "#72CD85"]; // 颜色表，用于为不同课程名对应不同颜色
   const tableColor = ["#ebb5cc", "#b2c196", "#edd492", "#fee5a3", "#e9daa3", "#ea7375", "#a286ea", "#776fdf", "#7bc6e6", "#efb293"]; // 颜色表，用于为不同课程名对应不同颜色
+  
   const table = Array.from({length: 7}, () => Array.from({length: 5}, () => Array(5).fill([]))); // 课表，最外层是星期数，中间层是上课节数，最内层是课程信息数组
   
   let flagIColor = 0; // 颜色表下标，用于选取不同颜色

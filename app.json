@@ -54,7 +54,8 @@
     "pages/Function/ExperiencePack/LifeGuide/lifeguide",
     "pages/WechatPage/JrencMature/JrencMature",
     "pages/WechatPage/HappyFriend/happyfriend",
-    "pages/User/UserBlog/userblog"
+    "pages/User/UserBlog/userblog",
+    "pages/WechatPage/MutuelHelp/meturehelp"
   ],
   "window": {
     "backgroundTextStyle": "light",

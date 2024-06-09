@@ -1,19 +1,28 @@
 <view style=" width: 100vw;height: 100vh;justify-content: start;display: flex;flex-direction: column;align-items: center;">
 	<view class="card ">
 		<view class="card-details ">
-			<view class="text-title" >2024.6.07 自定义课表</view>
-			<view class="text-body " >
-					<li >1. 准备去跳蚤市场宣传一波，在此之前<span class="black">把小程序打磨的更加完美一些</span>！</li>
-					<li >2. 完成了<span class="black" style="color: blue;">自定义课表</span>,明天继续搞。感觉效果一般，因为现在一门课只绑了一个时间，应该<span class="black">绑定多个时间比较科学</span>。</li>
+			<view class="text-title">2024.6.08 打磨自定义课表</view>
+			<view class="text-body ">
+				<li>1. 打磨自定义课表，<span style="color: blueviolet;" class="black">让它更好看，更好用了</span>。</li>
+				<li>2. 尝试换课表颜色，Emmm...感觉不如不换，失败。</li>		
+			</view>
+		</view>
+	</view>
+	<view class="card ">
+		<view class="card-details ">
+			<view class="text-title">2024.6.07 自定义课表</view>
+			<view class="text-body ">
+				<li>1. 准备去跳蚤市场宣传一波，在此之前<span class="black">把小程序打磨的更加完美一些</span>！</li>
+				<li>2. 完成了<span class="black" style="color: blue;">自定义课表</span>,明天继续搞。感觉效果一般，因为现在一门课只绑了一个时间，应该<span class="black">绑定多个时间比较科学</span>。</li>
 			</view>
 		</view>
 	</view>
 	<view class="card adventurex">
 		<view class="card-details ">
 			<view class="text-title" style="color: white;">2024.6.06 私密马赛🙇</view>
-			<view class="text-body " >
-					<li style="color: white;">1. 最近事情太多，<span class="black">因为在外面租房子🏠不得不卖身干外包养活自己</span>，但现在我<span class="black">正式回归</span>啦！</li>
-					<li style="color: white;">2. 这一个月参加了好多了比赛，然后入选了<span class="black">AdventureX 2024</span>。</li>
+			<view class="text-body ">
+				<li style="color: white;">1. 最近事情太多，<span class="black">因为在外面租房子🏠不得不卖身干外包养活自己</span>，但现在我<span class="black">正式回归</span>啦！</li>
+				<li style="color: white;">2. 这一个月参加了好多了比赛，然后入选了<span class="black">AdventureX 2024</span>。</li>
 			</view>
 		</view>
 	</view>
@@ -21,9 +30,9 @@
 		<view class="card-details">
 			<view class="text-title">2024.5.13 修复一些BUG。</view>
 			<view class="text-body">
-					<li>1. 修复了很多显示BUG。</li>
-					<li>2. 最近事情太多，忙忘就去做自定义课表。</li>
-		
+				<li>1. 修复了很多显示BUG。</li>
+				<li>2. 最近事情太多，忙忘就去做自定义课表。</li>
+
 			</view>
 		</view>
 	</view>
@@ -31,9 +40,9 @@
 		<view class="card-details">
 			<view class="text-title">2024.5.12 开源到Github</view>
 			<view class="text-body">
-					<li>1. 要交大作业，所以开源到Github了。我是TailwindCSS党🍃，代码很乱还请见谅🥲，仓库名是<span class="black">SDUST-SXK</span>⭐。</li>
-					<li>2. 修复一些BUG，优化了一些体验。</li>
-		
+				<li>1. 要交大作业，所以开源到Github了。我是TailwindCSS党🍃，代码很乱还请见谅🥲，仓库名是<span class="black">SDUST-SXK</span>⭐。</li>
+				<li>2. 修复一些BUG，优化了一些体验。</li>
+
 			</view>
 		</view>
 	</view>
@@ -41,10 +50,10 @@
 		<view class="card-details">
 			<view class="text-title">2024.5.12 优化了登录页面</view>
 			<view class="text-body">
-					<li>1. 有朋友反馈<span class="black  pad">存在无法登录</span>的问题，<span class="delete">说实话我不知道哪里问题😭</span>。定位了一下✋，是强智系统API不支持GIWIFI的事情。</li>
-					<li>2. 优化了<span class="black">登录界面</span>。增加了<span class="black">注意事项</span>，<span class="black">优化了内容显示</span>。</li>
-					<li>3. 调整了图片尺寸，<span class="black">加载内容更丝滑🛴</span>。</li>
-		
+				<li>1. 有朋友反馈<span class="black  pad">存在无法登录</span>的问题，<span class="delete">说实话我不知道哪里问题😭</span>。定位了一下✋，是强智系统API不支持GIWIFI的事情。</li>
+				<li>2. 优化了<span class="black">登录界面</span>。增加了<span class="black">注意事项</span>，<span class="black">优化了内容显示</span>。</li>
+				<li>3. 调整了图片尺寸，<span class="black">加载内容更丝滑🛴</span>。</li>
+
 			</view>
 		</view>
 	</view>
@@ -52,13 +61,13 @@
 		<view class="card-details">
 			<view class="text-title">2024.5.11 增加了日志功能</view>
 			<view class="text-body">
-					<li>1. 增加了<span class="black  pad">更新日志功能</span>₍ᐢ..ᐢ₎♡，也就是这个页面！<span class="black">看这里就能知道这个项目死活辣！</span>（👀还活着吗？</li>
-					<li>2. 我会加油更新的💌！嘿嘿👏</li>
-					<li>3. ❤️‍🔥明天去做<span class="black pad" style="color: cadetblue;">自定义课表</span>，然后把<span class="black" >备忘录和课表统一起来</span>。那样感觉更好用。</li>
-					
+				<li>1. 增加了<span class="black  pad">更新日志功能</span>₍ᐢ..ᐢ₎♡，也就是这个页面！<span class="black">看这里就能知道这个项目死活辣！</span>（👀还活着吗？</li>
+				<li>2. 我会加油更新的💌！嘿嘿👏</li>
+				<li>3. ❤️‍🔥明天去做<span class="black pad" style="color: cadetblue;">自定义课表</span>，然后把<span class="black">备忘录和课表统一起来</span>。那样感觉更好用。</li>
+
 			</view>
 		</view>
 	</view>
 
-	
+
 </view>

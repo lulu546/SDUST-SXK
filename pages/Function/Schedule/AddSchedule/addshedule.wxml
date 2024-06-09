@@ -17,9 +17,12 @@
     <input style="margin: 15px 0;" placeholder="课程名称" bindinput="onCourseNameInput" />
     <input style="margin: 15px 0;" placeholder="教室" bindinput="onClassroomInput" />
     <input style="margin: 15px 0;" placeholder="老师" bindinput="onTeacherInput" />
-    <input style="margin: 15px 0;" placeholder="颜色(选填) 请输入16进制颜色代码" bindinput="onColorInput" />
+    <input style="margin: 15px 0;" placeholder="颜色(选填) 例rgb(57,180,72)或#ebb5cc" bindinput="onColorInput" />
     <view style="display: flex;justify-content: center;align-items: center;">
       <button formType="submit" class="add-button" bindtap="addCourse">添加课程</button>
+    </view>
+    <view style="color: darkgray; width: 90%; margin-left: 5%;margin-top:10px ;">
+    注: 课程表只能显示一门课程，如若冲突<span style="font-weight: 900;">强智课表优先级</span>更大。
     </view>
   </form>
 
