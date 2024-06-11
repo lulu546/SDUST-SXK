@@ -1,4 +1,31 @@
 <view style=" width: 100vw;height: 100vh;justify-content: start;display: flex;flex-direction: column;align-items: center;">
+	<view class="card">
+		<view class="card-details " >
+			<view class="text-title">2024.6.12 修复BUG</view>
+			<view class="text-body " style="color: rgb(68, 68, 68); font-weight:normal;">
+				<li> 1. <span class="black">小科资料库</span>上线，大伙一起报薪取火！</li>
+				<li> 2. 给部门课表增加了<span class="black"></span>的功能！</li>
+			</view>
+		</view>
+	</view>
+	<view class="card tzsc">
+		<view class="card-details text-container" >
+			<view class="text-title">2024.6.11 等待跳蚤市场</view>
+			<view class="text-body " style="color: rgb(68, 68, 68); font-weight:normal;">
+				<li> 1. <span class="black">跳蚤市场的宣传物料</span>准备好辣，Pump🚀。</li>
+				<li> 2. 增加了登录失败的错误提醒❣</li>
+			</view>
+		</view>
+	</view>
+	<view class="card ">
+		<view class="card-details ">
+			<view class="text-title">2024.6.09 小科互助会上线</view>
+			<view class="text-body ">
+				<li> 1. 完成了<span class="black">小科互助会</span>功能，希望能留下东西。</li>
+						
+			</view>
+		</view>
+	</view>
 	<view class="card ">
 		<view class="card-details ">
 			<view class="text-title">2024.6.08 打磨自定义课表</view>

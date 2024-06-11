@@ -22,7 +22,7 @@
   */
 
 
- Page({
+Page({
 
   /**
    * 页面的初始数据
@@ -33,111 +33,102 @@
     isshow: false, //是否显示密码
     _src: '/static/image/hidepws.png/', //隐藏的图片，初始均为不可见
     islogin: true, //是否登录
-    isAgreement:false,
-    isShowAgreement:false
-    
+    isAgreement: false,
+    isShowAgreement: false
+
 
   },
 
 
   //将账号和密码进行传参到后端，返回值为ispermit,判断是否允许
 
-  checkAgreement(){
+  checkAgreement() {
     var that = this;
-    var isShowAgreement_=that.data.isShowAgreement
+    var isShowAgreement_ = that.data.isShowAgreement
     that.setData({
-      isShowAgreement:!isShowAgreement_
+      isShowAgreement: !isShowAgreement_
     })
   },
-  changeAgreement(){
+  changeAgreement() {
     var that = this;
     var isAgreement_ = that.data.isAgreement;
     that.setData({
       isAgreement: !isAgreement_
     });
-    console.log(isAgreement_,that.data.isAgreement)
-    wx.setStorageSync('isAgreement',that.data.isAgreement)
+    console.log(isAgreement_, that.data.isAgreement)
+    wx.setStorageSync('isAgreement', that.data.isAgreement)
   },
-  
+
 
   //进行登录的设置
   loginTo() {
-    const app = getApp()
-    app.globalData.todatabasesflag=0;
-    app.globalData.requestflag=0;
+    const app = getApp();
+    app.globalData.todatabasesflag = 0;
+    app.globalData.requestflag = 0;
     var that = this;
     let {
       useraccount,
       userpws,
       isAgreement
     } = that.data;
+
     // 前端验证
-    console.log(isAgreement)
     if (!isAgreement) {
       wx.showToast({
-        title: '用户协议',
+        title: '请同意用户协议',
         icon: 'error'
-      })
+      });
       return;
     }
-    // 前端验证
+
     if (!useraccount) {
       wx.showToast({
         title: '学号不能为空',
         icon: 'error'
-      })
+      });
       return;
     }
+
     let phoneReg = /^\d{12}$/;
     if (!phoneReg.test(useraccount)) {
       wx.showToast({
         title: '学号格式错误',
         icon: 'error'
-      })
+      });
       return;
     }
+
     if (!userpws) {
       wx.showToast({
         title: '密码不能为空',
         icon: 'error'
-      })
+      });
       return;
     }
-    
-    //后端鉴权
-    //后端鉴权有个核心问题，你没办法保证你的你在规定时间里获得request里的信息。
-    //request的函数是回调函数
+
+    // 后端鉴权
     wx.request({
       url: 'https://jwgl.sdust.edu.cn/app.do',
-        method: 'GET',
-        data: {
-          "method": "authUser",
-          "xh": useraccount,
-          "pwd": userpws
-        },
-        header: {
-
-          "Referer": "http://www.baidu.com",
-          "Accept-encoding": "gzip, deflate, br",
-          "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
-          "Cache-control": "max-age=0"
-        },
+      method: 'GET',
+      data: {
+        "method": "authUser",
+        "xh": useraccount,
+        "pwd": userpws
+      },
+      header: {
+        "Referer": "http://www.baidu.com",
+        "Accept-encoding": "gzip, deflate, br",
+        "Accept-language": "zh-CN,zh-TW;q=0.8,zh;q=0.6,en;q=0.4,ja;q=0.2",
+        "Cache-control": "max-age=0"
+      },
       success: (res) => {
-        console.log(res.data["flag"])
         if (res.data["flag"] == "0") {
           wx.setStorageSync('islogin', false);
           wx.showToast({
             title: '密码错误',
             icon: "error"
           });
-
-        }
-        else if (!res.data["flag"]) {
-          wx.setStorageSync('islogin', false);
-
-        }
-       
-        else {
+        } else if (res.data["flag"] == "1") {
           wx.setStorageSync('token', res.data["token"]);
           wx.setStorageSync('islogin', true);
           wx.showToast({
@@ -146,34 +137,35 @@
           });
           that.setData({
             islogin: true
-          })
+          });
           wx.setStorageSync('useraccount', that.data.useraccount);
           wx.setStorageSync('userpws', that.data.userpws);
 
           const api = require('../../../API/qzapi');
-          console.log(wx.getStorageSync('islogin'))
-          api.only_data(wx.getStorageSync('useraccount'))
-          wx.reLaunch({//重定向
+          api.only_data(wx.getStorageSync('useraccount'));
+          wx.reLaunch({
             url: '../../Home/HomeContent/homecontent',
-          })
+          });
+        } else {
+          wx.setStorageSync('islogin', false);
+          wx.showToast({
+            title: '未知错误',
+            icon: "error"
+          });
         }
-
-
-
-        
       },
       fail: (res) => {
         wx.showToast({
           title: '网络请求失败',
           icon: 'error'
-        })
+        });
       }
-    })
+    });
   },
 
   // 改变密码状态
   changeshow() {
-    var that=this;
+    var that = this;
     if (that.data.isshow) {
       that.setData({
         _src: '/static/image/hidepws.png',
@@ -188,15 +180,15 @@
   },
   //获取账号名
   getaccount(e) {
-    
-    var that=this
+
+    var that = this
     that.setData({
       useraccount: e.detail.value
     })
   },
   //获取密码
   getpassword(e) {
-    var that=this
+    var that = this
     that.setData({
       userpws: e.detail.value
     })
@@ -282,6 +274,6 @@
    * 用户点击右上角分享
    */
   onShareAppMessage() {
- 
-  } 
+
+  }
 })

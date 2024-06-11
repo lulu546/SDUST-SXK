@@ -55,7 +55,7 @@ Page({
     }
     else if(e.currentTarget.dataset.tar=="0"){
       wx.showToast({
-        title: '五月十五之前一定做出来！',
+        title: '六月十五之前一定做出来！',
         icon:'none'
       })
 

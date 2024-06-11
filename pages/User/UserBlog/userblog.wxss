@@ -8,6 +8,9 @@
 	border: 2px solid #c3c6ce;
 	transition: 0.5s ease-out;
 	overflow: visible;
+	justify-content: center;
+	display: flex;
+	align-items: center;
 }
 
 .card-details {
@@ -27,6 +30,7 @@
 	flex-direction: column; /* 设置方向为纵向 */
 	gap: .5rem;
 	letter-spacing: 2rpx;
+	font-weight: normal;
 }
 
 
@@ -61,4 +65,18 @@
 	background-image: url('https://www.sxksxk.work/static/function/adventurex.png');
 	background-size: cover;
 	background-position: center;
+}
+.tzsc{
+	background-image: url('https://www.sxksxk.work/static/function/tzsc.png');
+	background-size: cover;
+	background-position: center;
+}
+
+.text-container {
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+    padding: 10px; /* 内边距，使背景框不紧贴文字 */
+    border-radius: 5px; /* 圆角边框 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加模糊阴影 */
+    color: #000; /* 文字颜色为黑色 */
+    font-weight: bold; /* 加粗文字 */
 }
