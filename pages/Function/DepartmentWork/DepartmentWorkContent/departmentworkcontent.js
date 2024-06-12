@@ -54,9 +54,11 @@ Page({
 
     }
     else if(e.currentTarget.dataset.tar=="0"){
+      const url = encodeURIComponent('https://mp.weixin.qq.com/s?__biz=Mzk0OTYzMTgwNw==&amp;mid=2247483787&amp;idx=1&amp;sn=53b783363eeaa550eb43753d595f56e6&amp;chksm=c3542fdbf423a6cd5ae4dfb4fa338a6c6b32682b31c8d198dbcbbb7d85f42a6972fd4bdc27d9&token=615884996&lang=zh_CN&poc_token=HNxeZWajzFWzrpXQ9_Jj5xsylxUSY29IaJPnbTab');
       wx.navigateTo({
-        url: "/pages/WechatPage/MutuelHelp/meturehelp"
-      })
+        url: `/pages/WechatPage/wechatpage?src=${url}`
+      });
+      
     
     }
     else if(e.currentTarget.dataset.tar=="1"){

@@ -54,7 +54,9 @@
     "pages/WechatPage/JrencMature/JrencMature",
     "pages/WechatPage/HappyFriend/happyfriend",
     "pages/User/UserBlog/userblog",
-    "pages/WechatPage/MutuelHelp/meturehelp"
+    "pages/WechatPage/MutuelHelp/meturehelp",
+    "Components/dynamic-web-view/dynamic-web-view",
+    "pages/WechatPage/wechatpage"
   ],
   "window": {
     "backgroundTextStyle": "light",

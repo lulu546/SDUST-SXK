@@ -54,14 +54,12 @@ Page({
 
     }
     else if(e.currentTarget.dataset.tar=="0"){
-      wx.showToast({
-        title: '六月十五之前一定做出来！',
-        icon:'none'
-      })
+      const url = encodeURIComponent('https://mp.weixin.qq.com/s?__biz=Mzk0OTYzMTgwNw==&mid=2247483790&idx=1&sn=3a44fa86049c6c0de229bb6ce5d54b13&chksm=c3542fdef423a6c854679c58a5c9da1d2dec5359f63c83ad85518dbe2d539df92183611ef537&token=228303648&lang=zh_CN#rd');
+      wx.navigateTo({
+        url: `/pages/WechatPage/wechatpage?src=${url}`
+      });
 
-      // wx.navigateTo({
-      //   url: "/pages/Function/ExperiencePack/LearningMaterials/learningmaterials"
-      // })
+     
 
     }
     else if(e.currentTarget.dataset.tar=="1"){

@@ -12,7 +12,7 @@
     </view>
     <!-- 当有部门时显示邀请码和退出部门的选项 -->
     <view class="flex-row justify-end space-x-14-reverse _selection_style" wx:if="{{department_invitation.length>0}}" style="width: 83vw;margin-left: 0%;">
-      <text class="_font_3" selectable="true">邀请码：{{department_invitation}}</text>
+      <view class="_font_3"  catchtap="copy_code" data-code="{{department_invitation}}" >邀请码：{{department_invitation}}</view>
       <view class="_font_4" catchtap="quit_department" data-id="{{department_id}}">退出部门</view>
     </view>
 </view>

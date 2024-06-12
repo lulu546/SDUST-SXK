@@ -4,7 +4,8 @@
 			<view class="text-title">2024.6.12 修复BUG</view>
 			<view class="text-body " style="color: rgb(68, 68, 68); font-weight:normal;">
 				<li> 1. <span class="black">小科资料库</span>上线，大伙一起报薪取火！</li>
-				<li> 2. 给部门课表增加了<span class="black"></span>的功能！</li>
+				<li> 2. 给部门课表增加了<span class="black">一键复制</span>的功能！</li>
+				<li> 3. 将静态文章页面集成到单个页面</li>
 			</view>
 		</view>
 	</view>

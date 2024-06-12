@@ -122,8 +122,9 @@ Page({
       })
     }
     else if(e.target.dataset.change=="4"){
+      const url = encodeURIComponent('https://mp.weixin.qq.com/s?__biz=Mzk0OTYzMTgwNw==&mid=2247483700&idx=1&sn=436aaabf60fcd377ab776d4294eac34c&chksm=c3542f64f423a672ad8a6db839499762b07c7236a574db6e43ec267edf7cf00a678fc5fefbe5#rd');
       wx.navigateTo({
-        url: "/pages/WechatPage/JrencMature/JrencMature"
+        url: `/pages/WechatPage/wechatpage?src=${url}`
       }).then(()=>{
         wx.showToast({
           title: '(•‾⌣‾•) 很高兴与你相遇',
@@ -133,8 +134,10 @@ Page({
       })
     }
     else if(e.target.dataset.change=="5"){
+      const url = encodeURIComponent('https://mp.weixin.qq.com/s?__biz=Mzk0OTYzMTgwNw==&mid=2247483740&idx=1&sn=4ba46bbc248b7a742023f231123a1012&chksm=c3542f0cf423a61a306211150eb4214c119f507a166ddad57400fb07db126caacbdac9227985&token=126416898&lang=zh_CN#rd');
+
       wx.navigateTo({
-        url: "/pages/WechatPage/HappyFriend/happyfriend"
+        url: `/pages/WechatPage/wechatpage?src=${url}`
       }).then(()=>{
         wx.showToast({
           title: '╮/(＞▽<)人(>▽＜)╭',

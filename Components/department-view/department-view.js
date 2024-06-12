@@ -55,6 +55,20 @@ Component({
     // 点击已创建好的部门查看课表
     click_to_classpage(e){
       this.triggerEvent("click_to_check",{cont:e.currentTarget.dataset.whichone,name:this.properties.department_name})
+    },
+    copy_code(e){
+      wx.setClipboardData({ //设置系统剪贴板的内容
+        data: e.currentTarget.dataset.code,
+        success(res) {
+          wx.getClipboardData({ // 获取系统剪贴板的内容
+            success(res) {
+              wx.showToast({
+                title: '到达粘贴板！',
+              })
+            }
+          })
+        }
+      })
     }
   }
 })
