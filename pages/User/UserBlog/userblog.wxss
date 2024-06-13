@@ -71,12 +71,20 @@
 	background-size: cover;
 	background-position: center;
 }
-
+.hyb{
+	background-image: url('https://www.sxksxk.work/static/function/hyb.jpg');
+	background-size: cover;
+	background-position: center;
+}
 .text-container {
     background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
     padding: 10px; /* 内边距，使背景框不紧贴文字 */
     border-radius: 5px; /* 圆角边框 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加模糊阴影 */
     color: #000; /* 文字颜色为黑色 */
-    font-weight: bold; /* 加粗文字 */
+	font-weight: bold; /* 加粗文字 */
+	backdrop-filter: blur(5px);
+
+
+
 }
