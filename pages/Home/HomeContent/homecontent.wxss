@@ -3,8 +3,6 @@
   position: relative;
   width: 90vw;
   height: 49.5vw;
-
-  
   background: #ffffff;
   border-radius:17px;
   border: 1px solid #E6E8EE;
@@ -556,4 +554,17 @@ text {
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
-  
+  /* 定义一个名为rotate的关键帧 */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);  /* 开始时旋转角度为0 */
+  }
+  to {
+    transform: rotate(360deg);  /* 结束时旋转角度为360度 */
+  }
+}
+
+/* 应用动画到具体的类 */
+.slow-rotate {
+  animation: rotate 30s infinite linear; /* 持续时间10秒，无限循环，线性过渡 */
+}

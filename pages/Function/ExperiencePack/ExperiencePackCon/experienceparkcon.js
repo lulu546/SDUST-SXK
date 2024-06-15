@@ -63,10 +63,10 @@ Page({
 
     }
     else if(e.currentTarget.dataset.tar=="1"){
-      wx.showToast({
-        title: '正在制作中！',
-        icon:'none'
-      })
+      const url = encodeURIComponent('https://mp.weixin.qq.com/s?__biz=Mzk0OTYzMTgwNw==&mid=2247483802&idx=1&sn=bf9217596bdeece60c9d8b89b9b11a1a&chksm=c3542fcaf423a6dcb2de8a7a86197c0cc8cf46e330d5c3ca3d3c01a7dc561d7d8c3c14c7c601&token=1442570213&lang=zh_CN#rd');
+      wx.navigateTo({
+        url: `/pages/WechatPage/wechatpage?src=${url}`
+      });
     }
    
 

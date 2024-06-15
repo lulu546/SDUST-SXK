@@ -1,6 +1,16 @@
 <view style=" width: 100vw;height: 100vh;justify-content: start;display: flex;flex-direction: column;align-items: center;">
+	<view class="card">
+		<view class="card-details ">
+			<view class="text-title">2024.6.14 </view>
+			<view class="text-body " style="color: rgb(68, 68, 68); font-weight:normal;">
+				<li> 1. 完成了<span class="black">小科生活指南🏠</span>功能。</li>
+				<li> 2. 重新设计了海报，<span class="black">将首页头图</span>更换成了<span class="black">毕业季版本🧑🏻‍🎓</span>。</li>
+				<li> 3. 完成了<span class="black" style="color: darkgreen;">小科生活指南和小科资料库公众号投稿🌒</span>。</li>			
+			</view>
+		</view>
+	</view>
 	<view class="card hyb">
-		<view class="card-details text-container" >
+		<view class="card-details text-container">
 			<view class="text-title">2024.6.14 </view>
 			<view class="text-body " style="color: rgb(68, 68, 68); font-weight:normal;">
 				<li> 1. 6月16日便是<span class="black">跳蚤市场🌆</span>了，山小科要<span class="black">开门迎客</span>了，想一想还<span class="black">有没有没备齐的菜</span>。</li>
@@ -10,7 +20,7 @@
 		</view>
 	</view>
 	<view class="card">
-		<view class="card-details " >
+		<view class="card-details ">
 			<view class="text-title">2024.6.12 小科资料库上线</view>
 			<view class="text-body " style="color: rgb(68, 68, 68); font-weight:normal;">
 				<li> 1. <span class="black">小科资料库</span>上线，大伙一起报薪取火！</li>
@@ -20,7 +30,7 @@
 		</view>
 	</view>
 	<view class="card tzsc">
-		<view class="card-details text-container" >
+		<view class="card-details text-container">
 			<view class="text-title">2024.6.11 等待跳蚤市场</view>
 			<view class="text-body " style="color: rgb(68, 68, 68); font-weight:normal;">
 				<li> 1. <span class="black">跳蚤市场的宣传物料</span>准备好辣，Pump🚀。</li>
@@ -33,7 +43,7 @@
 			<view class="text-title">2024.6.09 小科互助会上线</view>
 			<view class="text-body ">
 				<li> 1. 完成了<span class="black">小科互助会</span>功能，希望能留下东西。</li>
-						
+
 			</view>
 		</view>
 	</view>
@@ -42,7 +52,7 @@
 			<view class="text-title">2024.6.08 打磨自定义课表</view>
 			<view class="text-body ">
 				<li>1. 打磨自定义课表，<span style="color: blueviolet;" class="black">让它更好看，更好用了</span>。</li>
-				<li>2. 尝试换课表颜色，Emmm...感觉不如不换，失败。</li>		
+				<li>2. 尝试换课表颜色，Emmm...感觉不如不换，失败。</li>
 			</view>
 		</view>
 	</view>
