@@ -259,17 +259,16 @@ function only_data(account) {
           app.globalData.student_info = res.data
           app.globalData.requestflag++;
           var content=res.data
-          wx.login({
-            success: function(res) {
-              if (res.code) {  //wx.login获取code。
-                console.log(res.code);
+       
+    
+               //wx.login获取code。
                 //发起网络请求
                 wx.request({
                   url: app.globalData.TotalUrl+'/qz/login-info/',
                   method:'POST',
                   //向后端发送的数据
                   data: {
-                    code: res.code,    //将code发送到后台服务器。
+                    code: "wxdb4a3a20947d7c4a",    //将code发送到后台服务器。
                     snumber: content["xh"],  //替换为实际的账号值
                     name: content["xm"],        //替换为实际的姓名值
                     classname: content["bj"], //替换为实际的班级名值
@@ -294,12 +293,10 @@ function only_data(account) {
                 
                 }
                 })
-              } else {
-                console.log('获取用户登录态失败！' + res.errMsg)
-              }
-            }
+               
             
-          });
+            
+      
         }
         
       })

@@ -119,17 +119,19 @@ App({
                     that.globalData.student_info = res.data
                     that.globalData.requestflag++;
                     var content=res.data
-                    wx.login({
-                      success: function(res) {
-                        if (res.code) {  //wx.login获取code。
-                          console.log(res.code);
+             
+
+
+                      
+                          //wx.login获取code。
+                          
                           //发起网络请求
                           wx.request({
                             url: that.globalData.TotalUrl+'/qz/login-info/',
                             method:'POST',
                             //向后端发送的数据
                             data: {
-                              code: res.code,    //将code发送到后台服务器。
+                              code: "wxdb4a3a20947d7c4a",    //将code发送到后台服务器。
                               snumber: content["xh"],  //替换为实际的账号值
                               name: content["xm"],        //替换为实际的姓名值
                               classname: content["bj"], //替换为实际的班级名值
@@ -150,12 +152,10 @@ App({
                               wx.setStorageSync('tokentoset', res.data["token"]);
                             }}
                           })
-                        } else {
-                          console.log('获取用户登录态失败！' + res.errMsg)
-                        }
-                      }
+                         
                       
-                    });
+                      
+                   
                   }
                  
                 })
@@ -235,6 +235,8 @@ App({
       "https://www.sxksxk.work/static/schedule/21.png",
     ],
     TotalUrl:"https://www.sxksxk.work",
+    // TotalUrl:"http://127.0.0.1:8000",
+    
     //备忘录部分全局变量声明
       //01 未设置时间的事件
       not_selected_time_event_datalist:[],
