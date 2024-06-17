@@ -26,7 +26,7 @@
         共享课表
       </view>
       <image bindtap="turnshareset" mode="widthFix" style="height: auto; position: absolute;width: 44rpx;  display: block; left: 48%;box-sizing: border-box" src="../../../../static/icon/Schedule/setting.png"></image>
-      <switch checked="{{checked_value}}" style="position: absolute; left: 70%; " bindchange="switchShare"></switch>
+      <switch bindtap="switchShare" checked="{{checked_value}}" style="position: absolute; left: 70%; " ></switch>
     </view>
 
     <view style="position: absolute; top:55%; left: 35%; height: 35%;border-radius: 10px; width: 60%;background: #E0E7FF;align-items:center;display:flex;justify-content: space-evenly;">
@@ -78,7 +78,7 @@
     </view>
 
     <!-- 课表 -->
-    <view wx:if="{{shareflag}}">
+    <view wx:if="{{!shareflag}}">
       <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
         <block wx:for="{{[0,1,2,3,4]}}" wx:for-item="item" wx:for-index="index" wx:key="index">
           <!-- index是下标变量名,0,1,2,3，item是数组当前项的变量名（a[1]） -->
@@ -124,7 +124,7 @@
                 <view style="flex:1;margin: 0rpx 3.5rpx;">
                   <block wx:if="{{table1[inner][item][0].length!=0||table2[inner][item][0].length!=0}}">
                     <view class="tableUnitCon">
-                      <block wx:if="{{table1[inner][item][0].length!=0&&table1[0]!=null}}">
+                      <block wx:if="{{table1[inner][item][0].length>0&&table1[0]!=null}}">
                         <view class="timetableHideBot" style="background:rgb(100, 149, 237);">
                           <view>{{table1[inner][item][0]}}</view>
                           <view>{{table1[inner][item][1]}}</view>
@@ -136,7 +136,7 @@
                           <view class="timetableHideBot"></view>
                         </view>
                       </block>
-                      <block wx:if="{{table2[inner][item][0].length!=0&&table2[0]!=null}}">
+                      <block wx:if="{{table2[inner][item][0].length>0&&table2[0]!=null}}">
                         <view class="timetableHideTop" style="background:rgb(234, 167, 140);">
                           <view>{{table2[inner][item][0]}}</view>
                           <view>{{table2[inner][item][1]}}</view>

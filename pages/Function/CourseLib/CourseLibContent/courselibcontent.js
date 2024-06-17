@@ -23,7 +23,7 @@ Page({
       that.setData({
         coursedata : res.data
       })
-      console.log(res)
+      
     }).catch(err => {
       // 获取课程表信息失败，处理错误
       wx.showToast({
@@ -102,7 +102,7 @@ Page({
             page:_page,
             coursedata : res.data
           })
-          console.log(res)
+          
         }).catch(err => {
           // 获取课程表信息失败，处理错误
           wx.showToast({
@@ -129,7 +129,7 @@ Page({
             page:_page,
             coursedata : res.data
           })
-          console.log(res)
+          
         }).catch(err => {
           // 获取课程表信息失败，处理错误
           wx.showToast({
@@ -157,7 +157,7 @@ Page({
       that.setData({
         coursedata : res.data
       })
-      console.log(res)
+      
     }).catch(err => {
       // 获取课程表信息失败，处理错误
       wx.showToast({

@@ -9,10 +9,10 @@
       </view>
 
     <view style="position: absolute;font-weight:bold;font-size:14px;display: block; box-sizing: border-box;  top: 36%;  background-color: white;border-radius: 3px; left: 10%;color: #484644;">
-      Student ID
+      强智系统账号
     </view>
     <view style="position: absolute;font-weight:bold;font-size:14px;display: block; box-sizing: border-box;  top: 51%;  background-color: white;border-radius: 3px; left: 10%;color: #484644;">
-      Password QZ
+      强智系统密码
     </view>
     <view style="position: absolute; height: 90rpx; display: block; box-sizing: border-box; background-color: #F3F2F1; top: 40%; width: 80%; border-radius: 3px; left: 10%;">
       <input placeholder="请输入学号" value="{{useraccount}}" bindinput="getaccount" style="color:#484644;position: absolute;height: 95%; display: block; box-sizing: border-box;width: 90%;border-radius: 15px;left: 5%;" />

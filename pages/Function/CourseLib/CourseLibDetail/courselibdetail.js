@@ -100,7 +100,7 @@ Page({
         coursedetildata : res,
         toweek:week_ordinal
       })
-      console.log(res)
+      
     }).catch(err => {
       // 获取课程表信息失败，处理错误
       wx.showToast({
@@ -208,7 +208,7 @@ Page({
             that.setData({
               coursedetildata : res
             })
-            console.log(res)
+            
           }).catch(err => {
             // 获取课程表信息失败，处理错误
             wx.showToast({
@@ -239,7 +239,7 @@ Page({
             coursedetildata : res
         
           })
-          console.log(res)
+          
         }).catch(err => {
           // 获取课程表信息失败，处理错误
           wx.showToast({

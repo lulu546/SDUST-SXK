@@ -25,7 +25,6 @@ function processTableOrd(tableOrd) {
       const kcsj = tableOrd[i]["kcsj"]; // 上课时间
       const kcsjDay = parseInt(kcsj[0]) - 1; // 上课星期数
     const kcsjTime = parseInt(kcsj.substring(3, 5)) / 2 - 1; // 上课节数
-    
     // 将课程信息存入表格
     table[kcsjDay][kcsjTime][0] = kcmc; // 课程名称
     table[kcsjDay][kcsjTime][1] = jsmc; // 上课地址
